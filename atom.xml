@@ -4,7 +4,7 @@
   <title><![CDATA[bd808's blog]]></title>
   <link href="http://bd808.github.com/atom.xml" rel="self"/>
   <link href="http://bd808.github.com/"/>
-  <updated>2012-03-14T23:13:08-06:00</updated>
+  <updated>2012-03-15T22:54:56-06:00</updated>
   <id>http://bd808.github.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -22,7 +22,7 @@
 three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print
 &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print
 &#8220;FizzBuzz&#8221;.
-<br><small>&mdash; <a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p></blockquote>
+<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p></blockquote>
 
 <figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
