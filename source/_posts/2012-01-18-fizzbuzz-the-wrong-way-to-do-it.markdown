@@ -9,7 +9,7 @@ categories:
 > three print "Fizz" instead of the number and for the multiples of five print
 > "Buzz". For numbers which are multiples of both three and five print
 > "FizzBuzz".
-> <br><small>&mdash; <a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small>
+> <small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small>
 
 {% codeblock fizzbuzz.py %}
 #!/usr/bin/env python

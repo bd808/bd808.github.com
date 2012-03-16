@@ -1,2 +1,27 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+body > header {
+  font-size: 1em !important;
+  padding: .5em !important;
+}
+
+h1 {
+  font-size: 1.5em !important;
+}
+
+blockquote {
+  font-size: 1em;
+  padding-left: 1em;
+  font-style: normal;
+  small {
+    :before {
+      content: "— ";
+    }
+    display: block;
+  }
+}
+
+a {
+  text-shadow: none !important;
+}
