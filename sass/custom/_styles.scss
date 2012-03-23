@@ -25,3 +25,26 @@ blockquote {
 a {
   text-shadow: none !important;
 }
+
+#content > div {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+article {
+  header {
+    background: none transparent;
+    margin-bottom: 1em;
+    padding-bottom: 0;
+  }
+}
+
+#content {
+  article {
+    padding-top: 2em;
+  }
+}
+
+figure.code figcaption {
+  background: $base2;
+}

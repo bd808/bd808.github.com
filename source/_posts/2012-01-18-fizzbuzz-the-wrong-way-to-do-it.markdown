@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FizzBuzz <small>the wrong way to do it</small>"
+title: "FizzBuzz &mdash; the wrong way to do it"
 date: 2012-01-18 21:47
 comments: true
 categories: 
