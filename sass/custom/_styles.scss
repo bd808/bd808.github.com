@@ -61,6 +61,7 @@ $home-link-width: 200px !default;
     font-size: .8em;
     h2 {
       font-size: 1.2em;
+      margin-bottom: .25em;
     }
     dl {
       dt {
@@ -68,6 +69,7 @@ $home-link-width: 200px !default;
       dd {
         font-size: .8em;
         color: $text-color-light;
+        line-height: 1.1em;
       }
     }
     ul {
@@ -78,6 +80,7 @@ $home-link-width: 200px !default;
         margin: 0;
         padding: 0;
         color: $base00;
+        line-height: 1.5em;
         span {
           color: $text-color;
         }
