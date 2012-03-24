@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>FizzBuzz <small>the wrong way to do it</small> - bd808's blog</title>
+  <title>FizzBuzz &mdash; the wrong way to do it - bd808.com</title>
   <meta name="author" content="Bryan Davis">
 
   
@@ -19,7 +19,7 @@ three print &#8220;Fizz&#8221; instead of the number and for the &hellip;">
 
   
   <link rel="canonical" href="http://bd808.github.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it">
-  <link href="/atom.xml" rel="alternate" title="bd808's blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 <script src="/javascripts/modernizr-2.0.js"></script>
@@ -30,7 +30,7 @@ three print &#8220;Fizz&#8221; instead of the number and for the &hellip;">
 
 <body    class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
-  <h1><a href="/">bd808's blog</a></h1>
+  <h1><a href="/">bd808.com</a></h1>
   
     <h2>FOSS in, FOSS out: software, process and operations</h2>
   
@@ -50,7 +50,8 @@ three print &#8220;Fizz&#8221; instead of the number and for the &hellip;">
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -62,7 +63,7 @@ three print &#8220;Fizz&#8221; instead of the number and for the &hellip;">
   
   <header>
     
-      <h1 class="entry-title">FizzBuzz <small>the Wrong Way to Do It</small></h1>
+      <h1 class="entry-title">FizzBuzz &mdash; the Wrong Way to Do It</h1>
     
     
       <p class="meta">
@@ -190,51 +191,30 @@ three print &#8220;Fizz&#8221; instead of the number and for the multiples of fi
 
 <aside class="sidebar">
   
-    <section>
+    <section id="about-me">
+  <h1>About</h1>
+  <p><img src="http://www.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
+  highly opinionated geek.</p>
+  <ul>
+    <li><a href="http://www.linkedin.com/in/bd808">Résumé</a></li>
+    <li><a href="http://claimid.com/bd808">Elsewhere on teh internets</a></li>
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz <small>the wrong way to do it</small></a>
+        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the wrong way to do it</a>
       </li>
     
   </ul>
 </section>
 
 <section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/bd808">@bd808</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'bd808',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-<section>
   <h1>On Delicious</h1>
   <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
   <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
 </section>
 
@@ -245,8 +225,18 @@ three print &#8220;Fizz&#8221; instead of the number and for the multiples of fi
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Bryan Davis
-  <span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
+Copyright &copy; 2012 - Bryan Davis
+<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
+<span id="license">
+  <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
+    Commons License"
+    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
+  otherwise noted, content on <span rel="cc:attributionURL"
+    property="cc:attributionName" href="http://bd808.github.com">this
+    site</span> is licensed under a <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+    Attribution-ShareAlike 3.0 Unported License</a>.</span>
 </p>
 
 </footer>
