@@ -1,9 +1,11 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
-body > header {
-  font-size: 1em !important;
-  padding: .5em !important;
+body {
+  > header {
+    font-size: 1em !important;
+    padding: .5em !important;
+  }
 }
 
 h1 {
@@ -26,25 +28,98 @@ a {
   text-shadow: none !important;
 }
 
-#content > div {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-article {
-  header {
-    background: none transparent;
-    margin-bottom: 1em;
+#content {
+  > div {
+    padding-top: 0;
     padding-bottom: 0;
+  }
+  article {
+    padding-top: 2em;
+    header {
+      background: none transparent;
+      margin-bottom: 1em;
+      padding-bottom: 0;
+    }
   }
 }
 
-#content {
-  article {
-    padding-top: 2em;
+$home-link-width: 200px !default;
+#home {
+  .front-matter {
+    float: left;
+    width: 100%;
+    div {
+      margin-right: $home-link-width;
+      padding-right: 2em;
+    }
+  }
+  .links {
+    float: left;
+    width: $home-link-width;
+    margin-left: 0px - $home-link-width;
+    @extend .sans;
+    font-size: .8em;
+    h2 {
+      font-size: 1.2em;
+    }
+    dl {
+      dt {
+      }
+      dd {
+        font-size: .8em;
+        color: $text-color-light;
+      }
+    }
+    ul {
+      margin-bottom: 0.5em;
+      margin-left: 0;
+      li {
+        list-style: circle inside none;
+        margin: 0;
+        padding: 0;
+        color: $base00;
+        span {
+          color: $text-color;
+        }
+      }
+    }
+    a {
+      color: inherit;
+      @include transition(color .5s);
+    }
+    &:hover a {
+      color: $sidebar-link-color;
+      &:hover { color: $sidebar-link-color-hover; }
+    }
   }
 }
 
 figure.code figcaption {
   background: $base2;
+}
+
+#about-me {
+  #gravitar {
+    float: left;
+    margin-right: .5em;
+  }
+  ul {
+    clear: both;
+    padding-left: .5em;
+    li {
+      border: none;
+      box-shadow: none;
+      padding: .5em 0 0 0;
+    }
+  }
+}
+
+#license {
+  display: block;
+  font-size: smaller;
+  img {
+    border: 0;
+    margin-right: .25em;
+    vertical-align: text-bottom;
+  }
 }
