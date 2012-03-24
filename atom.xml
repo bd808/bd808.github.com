@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[bd808.com]]></title>
-  <link href="http://bd808.github.com/atom.xml" rel="self"/>
-  <link href="http://bd808.github.com/"/>
-  <updated>2012-03-23T23:44:20-06:00</updated>
-  <id>http://bd808.github.com/</id>
+  <link href="http://bd808.com/atom.xml" rel="self"/>
+  <link href="http://bd808.com/"/>
+  <updated>2012-03-24T14:46:15-06:00</updated>
+  <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
-    <link href="http://bd808.github.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
+    <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
     <updated>2012-01-18T21:47:00-07:00</updated>
-    <id>http://bd808.github.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
+    <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
     <content type="html"><![CDATA[<blockquote><p>Write a program that prints the numbers from 1 to 100. But for multiples of
 three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print
 &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print

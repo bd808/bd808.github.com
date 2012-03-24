@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://bd808.github.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/</loc>
+        <loc>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/</loc>
         <lastmod>2012-03-22T22:34:52-06:00</lastmod>
     </url>
     <url>
-        <loc>http://bd808.github.com/blog/archives/</loc>
+        <loc>http://bd808.com/blog/archives/</loc>
         <lastmod>2012-03-22T22:34:52-06:00</lastmod>
     </url>
     <url>
-        <loc>http://bd808.github.com/blog/</loc>
+        <loc>http://bd808.com/blog/</loc>
         <lastmod>2012-03-22T22:34:52-06:00</lastmod>
     </url>
     <url>
-        <loc>http://bd808.github.com/</loc>
-        <lastmod>2012-03-23T23:40:36-06:00</lastmod>
+        <loc>http://bd808.com/</loc>
+        <lastmod>2012-03-24T14:36:26-06:00</lastmod>
     </url>
 </urlset>
