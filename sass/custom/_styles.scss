@@ -35,10 +35,15 @@ a {
   }
   article {
     padding-top: 2em;
+    margin-bottom: 1em;
     header {
       background: none transparent;
       margin-bottom: 1em;
-      padding-bottom: 0;
+      padding-bottom:0;
+    }
+    > footer {
+      margin-top:0;
+      padding-bottom:0;
     }
   }
 }
@@ -99,6 +104,15 @@ $home-link-width: 200px !default;
 
 figure.code figcaption {
   background: $base2;
+}
+
+aside.sidebar {
+  clear:both;
+  section {
+    h1 {
+      margin:.75em 0 0;
+    }
+  }
 }
 
 #about-me {
