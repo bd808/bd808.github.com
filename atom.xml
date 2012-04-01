@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2012-03-31T12:09:36-06:00</updated>
+  <updated>2012-03-31T21:30:52-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -14,48 +14,53 @@
 
   
   <entry>
-    <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
-    <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
-    <updated>2012-01-18T21:47:00-07:00</updated>
-    <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
-    <content type="html"><![CDATA[<blockquote><p>Write a program that prints the numbers from 1 to 100. But for multiples of
-three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print
-&#8220;Buzz&#8221;. For numbers which are multiples of both three and five print
-&#8220;FizzBuzz&#8221;.
-<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p></blockquote>
+    <title type="html"><![CDATA[Generating an Apparently Random Unique Sequence]]></title>
+    <link href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/"/>
+    <updated>2012-03-31T15:40:00-06:00</updated>
+    <id>http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence</id>
+    <content type="html"><![CDATA[<p>Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#8217;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them more information than you would really like them to have about the number of ids you are allocating per unit time. We&#8217;d really like to obfuscate the id somehow while retaining the uniqueness of the original sequence.</p>
 
-<figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
-</span><span class='line'>  <span class="k">print</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Fizz&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Buzz&quot;</span> <span class="ow">or</span> <span class="n">i</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>One way to do this is to use a combination of multiplication and modulo arithmetic to map the sequence number into a constrained set. With careful choice of the multiplicative constant and the modulo value the resulting number can be made to wander rather effectively over the entire space of the target set.</p>
 
+<p>The basic math looks like this: <code>f(n) := (n * p) % q</code></p>
 
+<ul>
+<li>n := input sequence value</li>
 
+<li>p := step size</li>
 
-<figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="nv">$p</span> <span class="o">=</span> <span class="s2">&quot;printf&quot;</span><span class="p">;</span> <span class="nv">$r</span> <span class="o">=</span> <span class="s2">&quot;str_repeat&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$r</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s%s&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)),</span> <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<li>q := maximum result size</li>
+</ul>
 
+<p><code>p</code> and <code>q</code> must be chosen such that:</p>
 
+<ul>
+<li>p &lt; q</li>
 
+<li>p * q &lt; arithmetic limit (2^31, 2^32, 2^63, 2^64, &#8230; depending on the precision of the underlying system)</li>
 
-<figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li>p ⊥ q (<a href='https://en.wikipedia.org/wiki/Coprime'>coprime</a> or relatively prime)</li>
+</ul>
+
+<p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br /><table class='border padded'>
+  <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
+  <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
+</table></p>
+
+<p>Change <code>p</code> to 7 and you&#8217;ll get:<br /><table class='border padded'>
+  <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
+  <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
+</table></p>
+
+<p>The rational for keeping <code>p * q &lt; limit</code> is that as <code>n</code> approaches <code>q</code> the initial multiplication will approach <code>p * q</code> and if this calculation overflows the available precision the result will wrap back into a previously traversed space causing duplication. The same sort of thing will occur if <code>p</code> and <code>q</code> are not coprime. The result of the modulo will exhibit a period equivalent to the <abbr title='Greatest Common Divisor'>GCD</abbr> of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code> evenly.</p>
+
+<p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output of the function and maintaining the uniqueness of the result. One easy way to ensure that the chosen coefficients are coprime is to make them both be prime powers of prime numbers (eg 9^17, 13^11, 13^15, 19^7, &#8230;).</p>
+
+<p>This method is a type of <a href='https://en.wikipedia.org/wiki/Linear_congruential_generator'>Linear congruential generator</a> almost exactly equivalent to the <a href='https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG'>Park–Miller random number generator</a>.</p>
+
+<h2 id='examples'>Examples</h2>
+<figure class='code'><figcaption><span>PHP  </span></figcaption>
+ <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -63,19 +68,81 @@ three print &#8220;Fizz&#8221; instead of the number and for the multiples of fi
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/usr/bin/env bash</span>
-</span><span class='line'><span class="k">for </span>i in <span class="o">{</span>1..100<span class="o">}</span>; <span class="k">do</span>
-</span><span class='line'><span class="k">  if</span>   <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span> <span class="m">15</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;FizzBuzz&quot;</span>;
-</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">3</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Fizz&quot;</span>;
-</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">5</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Buzz&quot;</span>;
-</span><span class='line'>  <span class="k">else                       </span><span class="nb">echo</span> <span class="nv">$i</span>;
-</span><span class='line'>  <span class="k">fi</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class='cp'>&lt;?php</span>
+</span><span class='line'><span class='sd'>/**</span>
+</span><span class='line'><span class='sd'> * Obfuscate an id generated from a linear sequence.</span>
+</span><span class='line'><span class='sd'> *</span>
+</span><span class='line'><span class='sd'> * @param int $n Input value</span>
+</span><span class='line'><span class='sd'> * @param int $p Random walk step size</span>
+</span><span class='line'><span class='sd'> * @param int $q Maximum result value</span>
+</span><span class='line'><span class='sd'> * @return int Obfuscated result</span>
+</span><span class='line'><span class='sd'> */</span>
+</span><span class='line'><span class='k'>function</span> <span class='nf'>obfuscate_id</span> <span class='p'>(</span><span class='nv'>$n</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>,</span> <span class='nv'>$q</span><span class='p'>)</span> <span class='p'>{</span>
+</span><span class='line'>  <span class='k'>return</span> <span class='p'>(</span><span class='nv'>$n</span> <span class='o'>*</span> <span class='nv'>$p</span><span class='p'>)</span> <span class='o'>%</span> <span class='nv'>$q</span><span class='p'>;</span>
+</span><span class='line'><span class='p'>}</span>
+</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>PL/SQL  </span></figcaption>
+ <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class='k'>FUNCTION</span> <span class='n'>obfuscate_id</span> <span class='p'>(</span><span class='n'>n</span> <span class='nb'>NUMBER</span><span class='p'>,</span> <span class='n'>p</span> <span class='nb'>NUMBER</span><span class='p'>,</span> <span class='n'>q</span> <span class='nb'>NUMBER</span><span class='p'>)</span> <span class='k'>RETURN</span> <span class='nb'>NUMBER</span> <span class='k'>IS</span>
+</span><span class='line'><span class='k'>BEGIN</span>
+</span><span class='line'>  <span class='k'>RETURN</span> <span class='k'>MOD</span><span class='p'>(</span><span class='n'>n</span> <span class='o'>*</span> <span class='n'>p</span><span class='p'>,</span> <span class='n'>q</span><span class='p'>);</span>
+</span><span class='line'><span class='k'>END</span> <span class='n'>f</span><span class='p'>;</span>
+</span></code></pre></td></tr></table></div></figure><hr />
+<p>Thanks to <a href='http://www.timbarber.org/'>Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&#8217;t getting.</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
+    <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
+    <updated>2012-01-18T21:47:00-07:00</updated>
+    <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
+</blockquote>
+<figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
+ <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class='c'>#!/usr/bin/env python</span>
+</span><span class='line'><span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>101</span><span class='p'>):</span>
+</span><span class='line'>  <span class='k'>print</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Fizz&quot;</span> <span class='o'>+</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Buzz&quot;</span> <span class='ow'>or</span> <span class='n'>i</span>
+</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
+ <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class='cp'>&lt;?php</span>
+</span><span class='line'><span class='nv'>$p</span> <span class='o'>=</span> <span class='s2'>&quot;printf&quot;</span><span class='p'>;</span> <span class='nv'>$r</span> <span class='o'>=</span> <span class='s2'>&quot;str_repeat&quot;</span><span class='p'>;</span>
+</span><span class='line'><span class='k'>for</span> <span class='p'>(</span><span class='nv'>$i</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span> <span class='nv'>$i</span> <span class='o'>&lt;=</span> <span class='mi'>100</span><span class='p'>;</span> <span class='nv'>$i</span><span class='o'>++</span><span class='p'>)</span> <span class='p'>{</span>
+</span><span class='line'>  <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s</span><span class='se'>\n</span><span class='s2'>&quot;</span><span class='p'>,</span> <span class='nv'>$r</span><span class='p'>(</span><span class='nv'>$i</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s%s&quot;</span><span class='p'>,</span>
+</span><span class='line'>      <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Fizz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)),</span> <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Buzz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)))</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>));</span>
+</span><span class='line'><span class='p'>}</span>
+</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
+ <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class='c'>#!/usr/bin/env bash</span>
+</span><span class='line'><span class='k'>for </span>i in <span class='o'>{</span>1..100<span class='o'>}</span>; <span class='k'>do</span>
+</span><span class='line'><span class='k'>  if</span>   <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='m'>15</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;FizzBuzz&quot;</span>;
+</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>3</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Fizz&quot;</span>;
+</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>5</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Buzz&quot;</span>;
+</span><span class='line'>  <span class='k'>else                       </span><span class='nb'>echo</span> <span class='nv'>$i</span>;
+</span><span class='line'>  <span class='k'>fi</span>
+</span><span class='line'><span class='k'>done</span>
+</span></code></pre></td></tr></table></div></figure>]]></content>
   </entry>
   
 </feed>
