@@ -39,11 +39,78 @@ a {
     header {
       background: none transparent;
       margin-bottom: 1em;
-      padding-bottom:0;
+      padding-bottom: 0;
     }
     > footer {
-      margin-top:0;
-      padding-bottom:0;
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  .hentry {
+    ul, ol {
+      margin-left: 1.3em;
+      li {
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    table.border {
+      tr, td {
+        border: 1px solid $base1;
+      }
+      th {
+        background: $sidebar-bg;
+      }
+    }
+    table.padded {
+      th, td {
+        padding:.25em;
+      }
+    }
+  }
+  #comments {
+    header {
+      h2 {
+        margin-bottom:.25em;
+        color: $base00;
+      }
+      p {
+        margin: 0 0 1em;
+      }
+    }
+    div.comment {
+      margin: 0 3em 1em 3em;
+      border: 1px solid #E6E0CE;
+      .comment-header {
+        background: $sidebar-bg;
+        border-bottom: 1px solid #E6E0CE;
+        padding: 3px;
+        .comment-gravatar {
+          border: 1px solid #E6E0CE;
+          vertical-align: text-bottom;
+        }
+        a {
+          color: inherit;
+          @include transition(color .5s);
+        }
+        &:hover a {
+          color: $sidebar-link-color;
+          &:hover { color: $sidebar-link-color-hover; }
+        }
+        a.comment-user {
+          margin-right: 2em;
+        }
+      }
+      .comment-body {
+        margin-left: 1em;
+        p {
+          margin-bottom: 1em;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
