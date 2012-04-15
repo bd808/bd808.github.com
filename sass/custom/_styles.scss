@@ -123,12 +123,19 @@ $home-link-width: 200px !default;
     div {
       margin-right: $home-link-width;
       padding-right: 2em;
+      @media only screen and (max-width: 480px) {
+        margin-right: 0;
+      }
     }
   }
   .links {
     float: left;
     width: $home-link-width;
     margin-left: 0px - $home-link-width;
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+      margin-left: 0;
+    }
     @extend .sans;
     font-size: .8em;
     h2 {
