@@ -4,6 +4,7 @@
 .pygments-cache
 .sass-cache
 _deploy
+_github.yml
 drafts
 node_modules
 public
