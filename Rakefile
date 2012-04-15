@@ -99,6 +99,9 @@ task :new_post, :title do |t, args|
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
+  # XXX: hackey hack hack
+  issue = create_comment_issue(title,
+      "http://bd808.com/blog/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}/")
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
     post.puts "---"
@@ -106,6 +109,7 @@ task :new_post, :title do |t, args|
     post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
     post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
     post.puts "comments: true"
+    post.puts "github_issue_id: #{issue}"
     post.puts "categories: "
     post.puts "---"
   end
@@ -346,6 +350,29 @@ task :setup_github_pages, :repo do |t, args|
     end
   end
   puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
+end
+
+def create_comment_issue(title, url)
+  require 'octopi'
+  include Octopi
+
+  authenticated :config => "_github.yml"  do
+    user = User.find("bd808")
+    repo = user.repository(:name => "bd808.github.com")
+    # puts repo.description
+
+    issue = Issue.open :user => user, :repo => repo,
+      :params => {
+      :title => title,
+      :body => "Reader comments on [#{title}](#{url})"
+    }
+    puts "Successfully opened issue \##{issue.number}"
+
+    labels = issue.add_label "blog-post"
+    # puts "Labels: #{labels.inspect}"
+
+    return issue.number
+  end
 end
 
 def ok_failed(condition)
