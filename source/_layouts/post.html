@@ -12,6 +12,9 @@ single: true
       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
       {% include post/categories.html %}
     </p>
+    {% unless page.sharing == false %}
+      {% include post/sharing.html %}
+    {% endunless %}
     <p class="meta">
       {% if page.previous.url %}
         <a class="basic-alignment left" href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo; {{page.previous.title}}</a>
@@ -22,13 +25,11 @@ single: true
     </p>
   </footer>
 </article>
-{% if site.github_comments and page.github_issue_id %}
-<section id="comments">
-  <header>
-    <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}">this post's issue page on GitHub</a> to add a comment.</p>
-  </header>
-</section>
+{% if site.disqus_short_name and page.comments == true %}
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+  </section>
 {% endif %}
 </div>
 {% unless page.sidebar == false %}
