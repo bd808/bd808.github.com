@@ -5,6 +5,7 @@ $.ajax({
     url: "https://api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;

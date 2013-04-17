@@ -31,6 +31,14 @@ single: true
     <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
   </section>
 {% endif %}
+{% if site.github_comments and page.github_issue_id %}
+<section id="comments">
+  <header>
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}">this post's issue page on GitHub</a> to add a comment.</p>
+  </header>
+</section>
+{% endif %}
 </div>
 {% unless page.sidebar == false %}
 <aside class="sidebar">
