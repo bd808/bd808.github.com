@@ -359,26 +359,25 @@ task :setup_github_pages, :repo do |t, args|
 end
 
 def create_comment_issue(title, url)
-  require 'octopi'
-  include Octopi
+  require 'json'
+  include JSON
+  require 'octokit'
+  include Octokit
 
-  authenticated :config => "_github.yml"  do
-    user = User.find("bd808")
-    repo = user.repository(:name => "bd808.github.com")
-    # puts repo.description
+  config = JSON.parse(open("_github.json").read)
+  client = Octokit::Client.new(
+    :login => config['login'],
+    :oauth_token => config['oauth_token'])
 
-    issue = Issue.open :user => user, :repo => repo,
-      :params => {
-      :title => title,
-      :body => "Reader comments on [#{title}](#{url})"
-    }
-    puts "Successfully opened issue \##{issue.number}"
+  issue = client.create_issue(
+    "bd808/bd808.github.com",
+    title,
+    "Reader comments on [#{title}](#{url})",
+    { :labels => ["blog-post"] })
 
-    labels = issue.add_label "blog-post"
-    # puts "Labels: #{labels.inspect}"
+  puts "Successfully opened issue \##{issue.number}"
 
-    return issue.number
-  end
+  return issue.number
 end
 
 def ok_failed(condition)
