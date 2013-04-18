@@ -9,27 +9,43 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="I was inspired by Ivan Zuzak&#8217;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#8217; &hellip;">
+  <meta name="description" content="GitHub profile pages include a neat visualization of commit history that they call the &#8221;contributions calendar&#8221;. This 53x7 grid shows the &hellip;">
   
 
+  <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
   <link rel="canonical" href="http://bd808.com/blog">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-<script src="/javascripts/modernizr-2.0.js"></script>
-<script src="/javascripts/ender.js"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
 <link rel="openid.server" href="http://www.myopenid.com/server" />
 <link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
 <link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
 <link rel="openid2.provider" href="http://www.myopenid.com/server" />
 <meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18797634-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -65,6 +81,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-17T21:06:00-06:00" pubdate data-updated="true">2013-04-17</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they call the &#8221;<a href='https://help.github.com/articles/viewing-contributions#contributions-calendar'>contributions calendar</a>&#8221;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year.</p>
+
+<p><img alt='Example graph' src='/images/blog/timeline.png' /></p>
+
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors correspond to the <a href='https://en.wikipedia.org/wiki/Quartile'>quartiles</a> of the <a href='https://en.wikipedia.org/wiki/Normal_distribution'>normal distribution</a> over the range <code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+
+<p>If your all time high for the last year was 100 contributions in a single day, the cells would color like this:</p>
+<table><thead><tr><th>Contributions</th><th>Color</th></tr></thead><tbody><tr><td style='text-align: left;'>0</td><td style='text-align: center;'><img alt='gray' src='/images/blog/eeeeee.png' /></td>
+</tr><tr><td style='text-align: left;'>1 - 24</td><td style='text-align: center;'><img alt='pale green' src='/images/blog/d6e685.png' /></td>
+</tr><tr><td style='text-align: left;'>25 - 49</td><td style='text-align: center;'><img alt='light green' src='/images/blog/8cc665.png' /></td>
+</tr><tr><td style='text-align: left;'>50 - 74</td><td style='text-align: center;'><img alt='green' src='/images/blog/44a340.png' /></td>
+</tr><tr><td style='text-align: left;'>75+</td><td style='text-align: center;'><img alt='dark green' src='/images/blog/1e6823.png' /></td>
+</tr></tbody></table>
+<p>A tweet got me interested in the possibility of gaming the interaction data to control the display:</p>
+<blockquote class='twitter-tweet'><p>GitHub users might find this guy&#8217;s contribution graph interesting/funny: <a href='https://t.co/xOFjLbqUK2' title='https://github.com/will'>github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href='https://twitter.com/peterc/status/322636613018607617'>April 12, 2013</a></blockquote>
+<p><a href='https://github.com/will'>@will</a> has done something to make his calendar spell &#8220;WILL&#8221; over and over. Looking at his contribution activity list it was pretty obvious that this trick had something to do with the <a href='https://github.com/will/githubprofilecheat'>will/githubprofilecheat</a> and/or <a href='https://github.com/will/githubprofilecheat2'>will/githubprofilecheat2</a> repositories.</p>
+
+<p>I did some digging in the <a href='http://git-scm.com/docs'>git documentation</a> to see how hard it is to fake the date on a commit. It turns out that it&#8217;s as easy as setting an environment variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables can be used to provide <a href='http://git-scm.com/docs/git-commit-tree#_commit_information'>git-commit-tree</a> with dates for the author and commit dates that are attached to each commit object.</p>
+
+<p>Armed with this bit of trivia I decided that I would try to do something interesting with my contributions graph. I didn&#8217;t just want to copy <a href='https://github.com/will'>@will</a> and write my name in the graph. I decided that I would pay homage to my gravatar instead and make a series of <a href='https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29'>gliders</a> that ran across the timeline. The result of my experiment can be seen in the image at the top of this post.</p>
+
+<p>The script that I used to generate the commits with faked dates is available in my <a href='https://github.com/bd808/profile-life'>bd808/profile-life</a> repository.</p>
+
+<p>The script takes the path to a pattern file and an optional start date as arguments.</p>
+<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>./bin/pattern-to-commits.sh patterns/glider.cells 2012-04-15 | sh
+</span></code></pre></td></tr></table></div></figure>
+<p>The pattern file is expected to be in the <a href='http://www.conwaylife.com/wiki/Plaintext'>plaintext</a> Life format. This format allows you to specify an on/off pattern. When a cell is &#8220;on&#8221; the script will output 23 commits (one per hour) for the corresponding day. &#8220;Off&#8221; cells won&#8217;t generate any commit activity.</p>
+<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>!Name: Profile Glider Train
+</span><span class='line'>!A simulation of a glider cruising across the contributions timeline.
+</span><span class='line'>O.O...O.O....O..................................................................
+</span><span class='line'>.OO.O.O..OO...O.O.O...O.O....O..................................................
+</span><span class='line'>.O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..................................
+</span><span class='line'>.................O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..................
+</span><span class='line'>.................................O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..
+</span><span class='line'>.................................................O...OO.OO..OOO..OO.O.O..OO...O.
+</span><span class='line'>.................................................................O...OO.OO..OOO.
+</span></code></pre></td></tr></table></div></figure>
+<p>The script reads in this file a column at a time using the <code>cut</code> command. It loops over the characters from the column and when it finds an <code>O</code> it echos commit commands to stdout:</p>
+<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class='nv'>GIT_AUTHOR_DATE</span><span class='o'>=</span><span class='s1'>&#39;2013-04-17T20:00&#39;</span> <span class='nv'>GIT_COMMITTER_DATE</span><span class='o'>=</span><span class='s1'>&#39;2013-04-17T20:00&#39;</span> <span class='se'>\</span>
+</span><span class='line'>git commit --allow-empty -m <span class='s1'>&#39;2013-04-17T20:00&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+<p>This output can be piped to bash to apply the commits to the repository.</p>
+
+<p>An interesting extension of this script would be to support all 5 possible colors. It would also be nice if the script read your current contribution history to determine how many commits are necessary to hit the 4th quartile every time. For now these additions are left as an exercise for the reader. :)</p></div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -174,7 +280,7 @@
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
 <p>Those changes plus the OAuth application configuration described in Ivan&#8217;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#8217;t pretty, but they are pragmatic.</p>
-<figure class='code'><figcaption><span>Rakefile  </span></figcaption>
+<figure class='code'><figcaption><span>Rakefile </span></figcaption>
  <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -218,7 +324,7 @@
 </span></code></pre></td></tr></table></div></figure>
 <p>I plugged this function into the existing <code>new_post</code> task so that it will create an issue and plug it&#8217;s id into the front matter for the new post automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
-<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown </span></figcaption>
+<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
  <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -311,7 +417,7 @@ for Comments&quot;]</code>:</p>
 <p>This method is a type of <a href='https://en.wikipedia.org/wiki/Linear_congruential_generator'>Linear congruential generator</a> almost exactly equivalent to the <a href='https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG'>Park–Miller random number generator</a>.</p>
 
 <h2 id='examples'>Examples</h2>
-<figure class='code'><figcaption><span>PHP  </span></figcaption>
+<figure class='code'><figcaption><span>PHP </span></figcaption>
  <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -336,7 +442,7 @@ for Comments&quot;]</code>:</p>
 </span><span class='line'><span class='k'>function</span> <span class='nf'>obfuscate_id</span> <span class='p'>(</span><span class='nv'>$n</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>,</span> <span class='nv'>$q</span><span class='p'>)</span> <span class='p'>{</span>
 </span><span class='line'>  <span class='k'>return</span> <span class='p'>(</span><span class='nv'>$n</span> <span class='o'>*</span> <span class='nv'>$p</span><span class='p'>)</span> <span class='o'>%</span> <span class='nv'>$q</span><span class='p'>;</span>
 </span><span class='line'><span class='p'>}</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>PL/SQL  </span></figcaption>
+</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>PL/SQL </span></figcaption>
  <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -450,6 +556,10 @@ for Comments&quot;]</code>:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub issues for comments</a>
       </li>
     
@@ -496,17 +606,22 @@ Copyright &copy; 2013 - Bryan Davis
 
 
 
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
+
+
+
 
 
 
