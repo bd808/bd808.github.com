@@ -21,6 +21,8 @@ choice of the multiplicative constant and the modulo value the resulting
 number can be made to wander rather effectively over the entire space of the
 target set.
 
+<!-- more -->
+
 The basic math looks like this:  `f(n) := (n * p) % q`
 
 - n := input sequence value

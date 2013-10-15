@@ -11,6 +11,8 @@ I was inspired by [Ivan Zuzak's post](http://ivanzuzak.info/2011/02/18/github-ho
 
 I started by adding a new configuration setting to my `_config.yml` file: `github_comments: true`. I'll use this configuration switch to turn the new feature on in other places in the codebase.
 
+<!-- more -->
+
 Next I changed the [Liquid template](https://github.com/mojombo/jekyll/wiki/Liquid-Extensions) in source/\_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:
 
 {% codeblock source/_layout/post.html %}{% raw %}

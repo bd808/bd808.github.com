@@ -18,6 +18,8 @@ Each cell in the graph is shaded with one of 5 possible colors. These colors
 correspond to the [quartiles][] of the [normal distribution][] over the range
 `[0, max(v)]` where `v` is the sum of issues opened, pull requests proposed and commits authored per day.
 
+<!-- more -->
+
 If your all time high for the last year was 100 contributions in a single day,
 the cells would color like this:
 

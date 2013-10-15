@@ -11,6 +11,8 @@ categories:
 > "FizzBuzz".
 > <small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small>
 
+<!-- more -->
+
 {% codeblock fizzbuzz.py %}
 #!/usr/bin/env python
 for i in xrange(1, 101):
