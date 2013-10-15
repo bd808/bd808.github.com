@@ -113,7 +113,7 @@
 
 <p>Next I changed the <a href='https://github.com/mojombo/jekyll/wiki/Liquid-Extensions'>Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
 <figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -134,7 +134,7 @@
 
 <p>Next I wanted to display any current comments. I use a slightly tweaked version of Ivan&#8217;s javascript to do this.</p>
 <figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -183,12 +183,12 @@
 </span></code></pre></td></tr></table></div></figure>
 <p>I added an include for this new file in source/_includes/after_footer.html to get it tacked on to each page:</p>
 <figure class='code'><figcaption><span>source/_includes/after_footer.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
 <p>Those changes plus the OAuth application configuration described in Ivan&#8217;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#8217;t pretty, but they are pragmatic.</p>
 <figure class='code'><figcaption><span>Rakefile </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -232,7 +232,7 @@
 <p>I plugged this function into the existing <code>new_post</code> task so that it will create an issue and plug it&#8217;s id into the front matter for the new post automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
 <figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -278,7 +278,7 @@ for Comments&quot;]</code>:</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" data-via="" data-counturl="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" data-via="" data-counturl="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" >Tweet</a>
   
   
   
@@ -326,7 +326,7 @@ for Comments&quot;]</code>:</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub issues for comments</a>
+        <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub Issues for Comments</a>
       </li>
     
       <li class="post">
@@ -334,7 +334,7 @@ for Comments&quot;]</code>:</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the wrong way to do it</a>
+        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a>
       </li>
     
   </ul>
@@ -382,7 +382,7 @@ Copyright &copy; 2013 - Bryan Davis
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

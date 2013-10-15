@@ -206,7 +206,7 @@
 
 <p>Next I changed the <a href='https://github.com/mojombo/jekyll/wiki/Liquid-Extensions'>Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
 <figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -227,7 +227,7 @@
 
 <p>Next I wanted to display any current comments. I use a slightly tweaked version of Ivan&#8217;s javascript to do this.</p>
 <figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -276,12 +276,12 @@
 </span></code></pre></td></tr></table></div></figure>
 <p>I added an include for this new file in source/_includes/after_footer.html to get it tacked on to each page:</p>
 <figure class='code'><figcaption><span>source/_includes/after_footer.html </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
 <p>Those changes plus the OAuth application configuration described in Ivan&#8217;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#8217;t pretty, but they are pragmatic.</p>
 <figure class='code'><figcaption><span>Rakefile </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -325,7 +325,7 @@
 <p>I plugged this function into the existing <code>new_post</code> task so that it will create an issue and plug it&#8217;s id into the front matter for the new post automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
 <figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -418,7 +418,7 @@ for Comments&quot;]</code>:</p>
 
 <h2 id='examples'>Examples</h2>
 <figure class='code'><figcaption><span>PHP </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -443,7 +443,7 @@ for Comments&quot;]</code>:</p>
 </span><span class='line'>  <span class='k'>return</span> <span class='p'>(</span><span class='nv'>$n</span> <span class='o'>*</span> <span class='nv'>$p</span><span class='p'>)</span> <span class='o'>%</span> <span class='nv'>$q</span><span class='p'>;</span>
 </span><span class='line'><span class='p'>}</span>
 </span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>PL/SQL </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -491,14 +491,14 @@ for Comments&quot;]</code>:</p>
 <p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
 </blockquote>
 <figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='py'><span class='line'><span class='c'>#!/usr/bin/env python</span>
 </span><span class='line'><span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>101</span><span class='p'>):</span>
 </span><span class='line'>  <span class='k'>print</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Fizz&quot;</span> <span class='o'>+</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Buzz&quot;</span> <span class='ow'>or</span> <span class='n'>i</span>
 </span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -511,7 +511,7 @@ for Comments&quot;]</code>:</p>
 </span><span class='line'>      <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Fizz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)),</span> <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Buzz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)))</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>));</span>
 </span><span class='line'><span class='p'>}</span>
 </span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
- <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -560,7 +560,7 @@ for Comments&quot;]</code>:</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub issues for comments</a>
+        <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub Issues for Comments</a>
       </li>
     
       <li class="post">
@@ -568,7 +568,7 @@ for Comments&quot;]</code>:</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the wrong way to do it</a>
+        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a>
       </li>
     
   </ul>
@@ -615,7 +615,7 @@ Copyright &copy; 2013 - Bryan Davis
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
