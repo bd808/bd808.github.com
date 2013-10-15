@@ -6,6 +6,22 @@ body {
     font-size: 1em !important;
     padding: .5em !important;
   }
+  > nav {
+    form {
+      .search {
+        background-color: $base0;
+        color: $base03;
+        @include box-shadow($base01 0 0 4px, $base01 0 0 3px inset);
+        &:focus {
+          color: $base00;
+          border-color: $base01;
+          @include box-shadow($base1 0 0 4px, $base1 0 0 3px inset);
+          background-color: $base3;
+          outline: none;
+        }
+      }
+    }
+  }
 }
 
 h1 {
@@ -26,6 +42,8 @@ blockquote {
 
 a {
   text-shadow: none !important;
+  &:hover { text-decoration: underline; }
+  &:active { text-decoration: underline; }
 }
 
 #content {
