@@ -6,6 +6,7 @@
 _deploy
 _github.json
 _github.yml
+bin
 drafts
 node_modules
 public
