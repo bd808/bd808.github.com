@@ -110,7 +110,7 @@
 <div class="entry-content"><p>I was inspired by <a href='http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html'>Ivan Zuzak&#8217;s post</a> to try using GitHub issues on the <a href='https://github.com/bd808/bd808.github.com'>repository for this blog</a> to collect and display reader comments. I&#8217;m using <a href='http://octopress.org/'>Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#8217;s ideas easy for me.</p>
 
 <p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#8217;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
-
+<!-- more -->
 <p>Next I changed the <a href='https://github.com/mojombo/jekyll/wiki/Liquid-Extensions'>Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
 <figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
 <div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>

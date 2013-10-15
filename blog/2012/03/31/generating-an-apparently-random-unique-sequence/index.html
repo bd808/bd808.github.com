@@ -110,7 +110,7 @@
 <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#8217;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them more information than you would really like them to have about the number of ids you are allocating per unit time. We&#8217;d really like to obfuscate the id somehow while retaining the uniqueness of the original sequence.</p>
 
 <p>One way to do this is to use a combination of multiplication and modulo arithmetic to map the sequence number into a constrained set. With careful choice of the multiplicative constant and the modulo value the resulting number can be made to wander rather effectively over the entire space of the target set.</p>
-
+<!-- more -->
 <p>The basic math looks like this: <code>f(n) := (n * p) % q</code></p>
 
 <ul>
