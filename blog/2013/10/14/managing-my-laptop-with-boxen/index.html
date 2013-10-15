@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>bd808.com</title>
+  <title>Managing my laptop with Boxen - bd808.com</title>
   <meta name="author" content="Bryan Davis">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bd808.com/blog">
+  <link rel="canonical" href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
@@ -79,15 +79,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a></h1>
+      <h1 class="entry-title">Managing My Laptop With Boxen</h1>
     
     
       <p class="meta">
@@ -110,76 +107,51 @@
   </header>
 
 
-  <div class="entry-content"><p><a href='https://boxen.github.com/'>Boxen</a> is a framework and collection of libraries created by the fine folks at <a href='https://github.com/'>GitHub</a> to make setting up and managing Mac OS X computers easy and repeatable. Rather than a simple set of shell scripts or other provisioning tools, Boxen uses <a href='https://puppetlabs.com/'>Puppet</a> to automate installing and configuring software. I don&#8217;t have the time or space to explain how great Puppet is a configuration management is, so you&#8217;ll have to trust me or go do your own research.</p>
+<div class="entry-content"><p><a href='https://boxen.github.com/'>Boxen</a> is a framework and collection of libraries created by the fine folks at <a href='https://github.com/'>GitHub</a> to make setting up and managing Mac OS X computers easy and repeatable. Rather than a simple set of shell scripts or other provisioning tools, Boxen uses <a href='https://puppetlabs.com/'>Puppet</a> to automate installing and configuring software. I don&#8217;t have the time or space to explain how great Puppet is a configuration management is, so you&#8217;ll have to trust me or go do your own research.</p>
 
 <p>Anybody could take a stab at rolling their own collection of Puppet manifests to manage their laptop or their corporate install base. That&#8217;s actually exactly what GitHub did to create Boxen. Having tried (and failed) at doing just that before I was pretty impressed when I gave Boxen a test drive. GitHub has not only provided a system that &#8220;works for them&#8221;; they have also managed to engineer a reasonably extensible solution for a very complex problem.</p>
 
 <p>You can use your favorite search engine to find folks who can wax poetic about the magnitude of this accomplishment. Let&#8217;s get on with a description of what I&#8217;ve been able to do with it.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/14/managing-my-laptop-with-boxen/">More &rarr;</a>
-    </footer>
-  
+<!-- more -->
+<p>I&#8217;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start because I had a brand new laptop that needed to be setup and a brand new tool to use to do it. I started by following the <a href='https://github.com/boxen/our-boxen'>bootstrapping instructions</a> to create <a href='https://github.com/bd808/my-boxen'>my own copy of the template project</a>. I made a few changes to the <a href='https://github.com/bd808/my-boxen/blob/master/manifests/site.pp'>site manifest</a> and then started working on a <a href='https://github.com/bd808/my-boxen/blob/master/modules/people/manifests/bd808.pp'>manifest for myself</a>.</p>
+
+<p>Along the way I decided I didn&#8217;t like a few of the decisions that the Boxen architects had made. As I pointed out earlier, the team behind Boxen anticipated this and changing most things is as easy as forking a repo, making your change and updating the <a href='https://github.com/bd808/my-boxen/blob/master/Puppetfile'>Puppetfile</a> in your Boxen project.</p>
+
+<p>At the moment I have customized or created these repositories:</p>
+
+<ul>
+<li><a href='https://github.com/bd808/my-boxen'>my-boxen</a>: My fork of <a href='https://github.com/boxen/our-boxen'>boxen/our-boxen</a>.</li>
+
+<li><a href='https://github.com/bd808/puppet-boxen'>puppet-boxen</a>: Fork of the core <a href='https://github.com/boxen/puppet-boxen'>boxen/puppet-boxen</a> modules that installs <a href='http://brew.sh/'>Homebrew</a> in <code>/usr/local</code> instead of under <code>/opt/boxen</code>.</li>
+
+<li><a href='https://github.com/bd808/puppet-dnsmasq'>puppet-dnsmasq</a>: Fork of <a href='https://github.com/boxen/puppet-dnsmasq'>boxen/dnsmasq</a> that uses the stock Homebrew <code>dnsmasq</code> install and provides <code>dnsmasq::address</code> to configure new address mappings.</li>
+
+<li><a href='https://github.com/bd808/puppet-geektool'>puppet-geektool</a>: Original module to install <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>.</li>
+
+<li><a href='https://github.com/bd808/puppet-git'>puppet-git</a>: Fork of <a href='https://github.com/boxen/puppet-git'>boxen/puppet-git</a> to use the stock Homebrew version of <a href='http://git-scm.com/'>git</a>.</li>
+
+<li><a href='https://github.com/bd808/puppet-growl'>puppet-growl</a>: Fork of <a href='https://github.com/petems/puppet-growl'>petems/puppet-growl</a> that installs an aging version of <a href='http://growl.info/'>Growl</a>. I&#8217;ve since abandoned this in favor a <a href='http://growl.info/documentation/developer/growl-source-install.php'>self-compiled version</a> which I should figure out how to Puppetize.</li>
+
+<li><a href='https://github.com/bd808/puppet-homebrew'>puppet-homebrew</a>: Fork of <a href='https://github.com/nybblr/puppet-homebrew'>nybblr/puppet-homebrew</a> that adds support for installing in <code>/usr/local</code> and using custom Homebrew <a href='https://github.com/mxcl/homebrew/wiki/brew-tap'>taps</a>.</li>
+
+<li><a href='https://github.com/bd808/puppet-monolingual'>puppet-monolingual</a>: Original module to install <a href='http://monolingual.sourceforge.net/'>Monolingual</a>.</li>
+
+<li><a href='https://github.com/bd808/puppet-osx'>puppet-osx</a>: Fork of <a href='https://github.com/codec/puppet-osx'>codec/puppet-osx</a> that pulls in patches from <a href='https://github.com/joebadmo/puppet-osx'>joebadmo/puppet-osx</a> and adds a few system settings of my own.</li>
+
+<li><a href='https://github.com/bd808/puppet-slimbatterymonitor'>puppet-slimbatterymonitor</a>: Original module to install <a href='http://www.orange-carb.org/SBM/'>SlimBatteryMonitor</a>.</li>
+</ul>
+
+<p>The one thing I most wish someone would figure out how to do with Boxen/Pupept is install apps from the <a href='https://www.apple.com/osx/apps/app-store.html'>Mac App Store</a>.</p></div>
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
 
-<time datetime="2013-04-17T21:06:00-06:00" pubdate data-updated="true">2013-04-17</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they call the &#8221;<a href='https://help.github.com/articles/viewing-contributions#contributions-calendar'>contributions calendar</a>&#8221;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year.</p>
-
-<p><img alt='Example graph' src='/images/blog/timeline.png' /></p>
-
-<p>Each cell in the graph is shaded with one of 5 possible colors. These colors correspond to the <a href='https://en.wikipedia.org/wiki/Quartile'>quartiles</a> of the <a href='https://en.wikipedia.org/wiki/Normal_distribution'>normal distribution</a> over the range <code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/17/hacking-github-contributions-graph/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub Issues for Comments</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -191,117 +163,40 @@
   
 
 
-<time datetime="2012-04-14T20:22:00-06:00" pubdate data-updated="true">2012-04-14</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was inspired by <a href='http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html'>Ivan Zuzak&#8217;s post</a> to try using GitHub issues on the <a href='https://github.com/bd808/bd808.github.com'>repository for this blog</a> to collect and display reader comments. I&#8217;m using <a href='http://octopress.org/'>Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#8217;s ideas easy for me.</p>
-
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#8217;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/04/14/using-github-issues-for-comments/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2013-10-14T22:11:00-06:00" pubdate data-updated="true">2013-10-14</time>
       
-  <header>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+      <div class="sharing">
   
-
-
-<time datetime="2012-03-31T15:40:00-06:00" pubdate data-updated="true">2012-03-31</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#8217;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them more information than you would really like them to have about the number of ids you are allocating per unit time. We&#8217;d really like to obfuscate the id somehow while retaining the uniqueness of the original sequence.</p>
-
-<p>One way to do this is to use a combination of multiplication and modulo arithmetic to map the sequence number into a constrained set. With careful choice of the multiplicative constant and the modulo value the resulting number can be made to wander rather effectively over the entire space of the target set.</p>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/" data-via="" data-counturl="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">More &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/04/17/hacking-github-contributions-graph/" title="Previous Post: Hacking GitHub Contributions Calendar">&laquo; Hacking GitHub Contributions Calendar</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+<section id="comments">
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T21:47:00-07:00" pubdate data-updated="true">2012-01-18</time>
-        
-      </p>
-    
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/17">this post's issue page on GitHub</a> to add a comment.</p>
   </header>
+</section>
 
-
-  <div class="entry-content"><blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
-</blockquote>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">More &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section id="about-me">
@@ -350,6 +245,7 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -389,6 +285,29 @@ Copyright &copy; 2013 - Bryan Davis
 
 
 
+
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/17/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/17#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
 
 
 
