@@ -105,7 +105,7 @@ task :new_post, :title do |t, args|
   end
   # XXX: hackey hack hack
   issue = create_comment_issue(title,
-      "http://bd808.com/blog/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}/")
+      "http://bd808.com/blog/#{Time.now.strftime('%Y/%m/%d')}/#{title.to_url}/")
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
     post.puts "---"
