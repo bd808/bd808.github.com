@@ -374,7 +374,7 @@ def create_comment_issue(title, url)
   config = JSON.parse(open("_github.json").read)
   client = Octokit::Client.new(
     :login => config['login'],
-    :oauth_token => config['oauth_token'])
+    :access_token => config['oauth_token'])
 
   issue = client.create_issue(
     "bd808/bd808.github.com",
