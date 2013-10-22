@@ -9,7 +9,9 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Boxen is a framework and collection of libraries created by the fine folks at GitHub to make setting up and managing Mac OS X computers easy and &hellip;">
+  <meta name="description" content="I wanted to make my own build of Textual
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +89,60 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-21T21:38:00-06:00" pubdate data-updated="true">2013-10-21</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I wanted to make my own build of <a href="http://www.codeux.com/textual/">Textual</a>
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long-lived certificate to that I could reuse for
+building multiple applications.</p>
+
+<ol>
+<li><p>Open the &quot;Keychain Access&quot; application</p>
+<div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
+</code></pre>
+</div></li>
+<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
+
+<p><img src="/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
+</ol>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a></h1>
     
     
@@ -110,11 +166,24 @@
   </header>
 
 
-  <div class="entry-content"><p><a href='https://boxen.github.com/'>Boxen</a> is a framework and collection of libraries created by the fine folks at <a href='https://github.com/'>GitHub</a> to make setting up and managing Mac OS X computers easy and repeatable. Rather than a simple set of shell scripts or other provisioning tools, Boxen uses <a href='https://puppetlabs.com/'>Puppet</a> to automate installing and configuring software. I don&#8217;t have the time or space to explain how great Puppet is a configuration management is, so you&#8217;ll have to trust me or go do your own research.</p>
+  <div class="entry-content"><p><a href="https://boxen.github.com/">Boxen</a> is a framework and collection of libraries created by the fine folks
+at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
+repeatable. Rather than a simple set of shell scripts or other provisioning
+tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
+I don&#39;t have the time or space to explain how great Puppet is a configuration
+management is, so you&#39;ll have to trust me or go do your own research.</p>
 
-<p>Anybody could take a stab at rolling their own collection of Puppet manifests to manage their laptop or their corporate install base. That&#8217;s actually exactly what GitHub did to create Boxen. Having tried (and failed) at doing just that before I was pretty impressed when I gave Boxen a test drive. GitHub has not only provided a system that &#8220;works for them&#8221;; they have also managed to engineer a reasonably extensible solution for a very complex problem.</p>
+<p>Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That&#39;s actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that &quot;works for them&quot;; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.</p>
 
-<p>You can use your favorite search engine to find folks who can wax poetic about the magnitude of this accomplishment. Let&#8217;s get on with a description of what I&#8217;ve been able to do with it.</p>
+<p>You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let&#39;s get on with a description of what
+I&#39;ve been able to do with it.</p>
+
 </div>
   
   
@@ -154,11 +223,17 @@
   </header>
 
 
-  <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they call the &#8221;<a href='https://help.github.com/articles/viewing-contributions#contributions-calendar'>contributions calendar</a>&#8221;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year.</p>
+  <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they
+call the &quot;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&quot;. This 53x7 grid shows the number of
+commits and other GitHub interactions that the user performed on each day for
+the last year.</p>
 
-<p><img alt='Example graph' src='/images/blog/timeline.png' /></p>
+<p><img src="/images/blog/timeline.png" alt="Example graph"></p>
 
-<p>Each cell in the graph is shaded with one of 5 possible colors. These colors correspond to the <a href='https://en.wikipedia.org/wiki/Quartile'>quartiles</a> of the <a href='https://en.wikipedia.org/wiki/Normal_distribution'>normal distribution</a> over the range <code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
+<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+
 </div>
   
   
@@ -198,9 +273,10 @@
   </header>
 
 
-  <div class="entry-content"><p>I was inspired by <a href='http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html'>Ivan Zuzak&#8217;s post</a> to try using GitHub issues on the <a href='https://github.com/bd808/bd808.github.com'>repository for this blog</a> to collect and display reader comments. I&#8217;m using <a href='http://octopress.org/'>Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#8217;s ideas easy for me.</p>
+  <div class="entry-content"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
 
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#8217;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+
 </div>
   
   
@@ -240,9 +316,20 @@
   </header>
 
 
-  <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#8217;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them more information than you would really like them to have about the number of ids you are allocating per unit time. We&#8217;d really like to obfuscate the id somehow while retaining the uniqueness of the original sequence.</p>
+  <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy.
+Database sequences and auto-number columns make it fairly trivial to
+implement. If that isn&#39;t available a simple file or shared memory counter can
+be implemented in minutes. Displaying such a number to a client however may
+give them more information than you would really like them to have about the
+number of ids you are allocating per unit time. We&#39;d really like  to obfuscate
+the id somehow while retaining the uniqueness of the original sequence.</p>
 
-<p>One way to do this is to use a combination of multiplication and modulo arithmetic to map the sequence number into a constrained set. With careful choice of the multiplicative constant and the modulo value the resulting number can be made to wander rather effectively over the entire space of the target set.</p>
+<p>One way to do this is to use a combination of multiplication and modulo
+arithmetic to map the sequence number into a constrained set. With careful
+choice of the multiplicative constant and the modulo value the resulting
+number can be made to wander rather effectively over the entire space of the
+target set.</p>
+
 </div>
   
   
@@ -283,8 +370,13 @@
 
 
   <div class="entry-content"><blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
+<p>Write a program that prints the numbers from 1 to 100. But for multiples of
+three print &quot;Fizz&quot; instead of the number and for the multiples of five print
+&quot;Buzz&quot;. For numbers which are multiples of both three and five print
+&quot;FizzBuzz&quot;.
+<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
+
 </div>
   
   
@@ -318,6 +410,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a>
       </li>
     
@@ -331,10 +427,6 @@
     
       <li class="post">
         <a href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a>
       </li>
     
   </ul>

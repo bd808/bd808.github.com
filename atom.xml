@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2013-10-14T23:32:49-06:00</updated>
+  <updated>2013-10-21T23:16:04-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -14,45 +14,135 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Creating a Self-signed Code Certificate for XCode]]></title>
+    <link href="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/"/>
+    <updated>2013-10-21T21:38:00-06:00</updated>
+    <id>http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode</id>
+    <content type="html"><![CDATA[<p>I wanted to make my own build of <a href="http://www.codeux.com/textual/">Textual</a>
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long-lived certificate to that I could reuse for
+building multiple applications.</p>
+
+<ol>
+<li><p>Open the &quot;Keychain Access&quot; application</p>
+<div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
+</code></pre>
+</div></li>
+<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
+
+<p><img src="http://bd808.com/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
+</ol>
+
+<!-- more -->
+
+<ol>
+<li><p>Configure your new certificate</p>
+
+<p><img src="http://bd808.com/images/blog/ca-1.png" alt=""></p>
+
+<ul>
+<li> Name: Self-signed Applications</li>
+<li> Identity Type: Self Signed Root</li>
+<li> Certificate Type: Code Signing</li>
+<li> [x] Let me override defaults</li>
+<li> Continue</li>
+</ul></li>
+<li><p>Change expiration date</p>
+
+<p><img src="http://bd808.com/images/blog/ca-2.png" alt=""></p>
+
+<ul>
+<li>Validity Period (days): 3650</li>
+<li>Continue</li>
+</ul></li>
+<li><p>Just keep hitting Continue to accept defaults from here on out</p>
+
+<p><img src="http://bd808.com/images/blog/ca-last.png" alt=""></p></li>
+</ol>
+
+<p>Note: Xcode seems to cache certificate info on startup. If you had XCode open while you created this certificate, restart it.</p>
+
+<p>I have since used this same certificate to build
+<a href="http://growl.info/documentation/developer/growl-source-install.php">Growl</a>
+and a couple of other apps. I&#39;m thinking that I&#39;ll export the public
+certificate and import it on my other OSX hosts so I can share the compiled
+binaries from machine to machine without needing to recompile them.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Managing my laptop with Boxen]]></title>
     <link href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/"/>
     <updated>2013-10-14T22:11:00-06:00</updated>
     <id>http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen</id>
-    <content type="html"><![CDATA[<p><a href='https://boxen.github.com/'>Boxen</a> is a framework and collection of libraries created by the fine folks at <a href='https://github.com/'>GitHub</a> to make setting up and managing Mac OS X computers easy and repeatable. Rather than a simple set of shell scripts or other provisioning tools, Boxen uses <a href='https://puppetlabs.com/'>Puppet</a> to automate installing and configuring software. I don&#8217;t have the time or space to explain how great Puppet is a configuration management is, so you&#8217;ll have to trust me or go do your own research.</p>
+    <content type="html"><![CDATA[<p><a href="https://boxen.github.com/">Boxen</a> is a framework and collection of libraries created by the fine folks
+at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
+repeatable. Rather than a simple set of shell scripts or other provisioning
+tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
+I don&#39;t have the time or space to explain how great Puppet is a configuration
+management is, so you&#39;ll have to trust me or go do your own research.</p>
 
-<p>Anybody could take a stab at rolling their own collection of Puppet manifests to manage their laptop or their corporate install base. That&#8217;s actually exactly what GitHub did to create Boxen. Having tried (and failed) at doing just that before I was pretty impressed when I gave Boxen a test drive. GitHub has not only provided a system that &#8220;works for them&#8221;; they have also managed to engineer a reasonably extensible solution for a very complex problem.</p>
+<p>Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That&#39;s actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that &quot;works for them&quot;; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.</p>
 
-<p>You can use your favorite search engine to find folks who can wax poetic about the magnitude of this accomplishment. Let&#8217;s get on with a description of what I&#8217;ve been able to do with it.</p>
+<p>You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let&#39;s get on with a description of what
+I&#39;ve been able to do with it.</p>
+
 <!-- more -->
-<p>I&#8217;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start because I had a brand new laptop that needed to be setup and a brand new tool to use to do it. I started by following the <a href='https://github.com/boxen/our-boxen'>bootstrapping instructions</a> to create <a href='https://github.com/bd808/my-boxen'>my own copy of the template project</a>. I made a few changes to the <a href='https://github.com/bd808/my-boxen/blob/master/manifests/site.pp'>site manifest</a> and then started working on a <a href='https://github.com/bd808/my-boxen/blob/master/modules/people/manifests/bd808.pp'>manifest for myself</a>.</p>
 
-<p>Along the way I decided I didn&#8217;t like a few of the decisions that the Boxen architects had made. As I pointed out earlier, the team behind Boxen anticipated this and changing most things is as easy as forking a repo, making your change and updating the <a href='https://github.com/bd808/my-boxen/blob/master/Puppetfile'>Puppetfile</a> in your Boxen project.</p>
+<p>I&#39;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start
+because I had a brand new laptop that needed to be setup and a brand new tool
+to use to do it. I started by following the <a href="https://github.com/boxen/our-boxen">bootstrapping instructions</a> to
+create <a href="https://github.com/bd808/my-boxen">my own copy of the template project</a>. I made a few changes to the
+<a href="https://github.com/bd808/my-boxen/blob/master/manifests/site.pp">site manifest</a> and then started working on a <a href="https://github.com/bd808/my-boxen/blob/master/modules/people/manifests/bd808.pp">manifest for myself</a>.</p>
+
+<p>Along the way I decided I didn&#39;t like a few of the decisions that the Boxen
+architects had made. As I pointed out earlier, the team behind Boxen
+anticipated this and changing most things is as easy as forking a repo, making
+your change and updating the <a href="https://github.com/bd808/my-boxen/blob/master/Puppetfile">Puppetfile</a> in your Boxen project.</p>
 
 <p>At the moment I have customized or created these repositories:</p>
 
 <ul>
-<li><a href='https://github.com/bd808/my-boxen'>my-boxen</a>: My fork of <a href='https://github.com/boxen/our-boxen'>boxen/our-boxen</a>.</li>
-
-<li><a href='https://github.com/bd808/puppet-boxen'>puppet-boxen</a>: Fork of the core <a href='https://github.com/boxen/puppet-boxen'>boxen/puppet-boxen</a> modules that installs <a href='http://brew.sh/'>Homebrew</a> in <code>/usr/local</code> instead of under <code>/opt/boxen</code>.</li>
-
-<li><a href='https://github.com/bd808/puppet-dnsmasq'>puppet-dnsmasq</a>: Fork of <a href='https://github.com/boxen/puppet-dnsmasq'>boxen/dnsmasq</a> that uses the stock Homebrew <code>dnsmasq</code> install and provides <code>dnsmasq::address</code> to configure new address mappings.</li>
-
-<li><a href='https://github.com/bd808/puppet-geektool'>puppet-geektool</a>: Original module to install <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>.</li>
-
-<li><a href='https://github.com/bd808/puppet-git'>puppet-git</a>: Fork of <a href='https://github.com/boxen/puppet-git'>boxen/puppet-git</a> to use the stock Homebrew version of <a href='http://git-scm.com/'>git</a>.</li>
-
-<li><a href='https://github.com/bd808/puppet-growl'>puppet-growl</a>: Fork of <a href='https://github.com/petems/puppet-growl'>petems/puppet-growl</a> that installs an aging version of <a href='http://growl.info/'>Growl</a>. I&#8217;ve since abandoned this in favor a <a href='http://growl.info/documentation/developer/growl-source-install.php'>self-compiled version</a> which I should figure out how to Puppetize.</li>
-
-<li><a href='https://github.com/bd808/puppet-homebrew'>puppet-homebrew</a>: Fork of <a href='https://github.com/nybblr/puppet-homebrew'>nybblr/puppet-homebrew</a> that adds support for installing in <code>/usr/local</code> and using custom Homebrew <a href='https://github.com/mxcl/homebrew/wiki/brew-tap'>taps</a>.</li>
-
-<li><a href='https://github.com/bd808/puppet-monolingual'>puppet-monolingual</a>: Original module to install <a href='http://monolingual.sourceforge.net/'>Monolingual</a>.</li>
-
-<li><a href='https://github.com/bd808/puppet-osx'>puppet-osx</a>: Fork of <a href='https://github.com/codec/puppet-osx'>codec/puppet-osx</a> that pulls in patches from <a href='https://github.com/joebadmo/puppet-osx'>joebadmo/puppet-osx</a> and adds a few system settings of my own.</li>
-
-<li><a href='https://github.com/bd808/puppet-slimbatterymonitor'>puppet-slimbatterymonitor</a>: Original module to install <a href='http://www.orange-carb.org/SBM/'>SlimBatteryMonitor</a>.</li>
+<li><a href="https://github.com/bd808/my-boxen">my-boxen</a>: My fork of <a href="https://github.com/boxen/our-boxen">boxen/our-boxen</a>.</li>
+<li><a href="https://github.com/bd808/puppet-boxen">puppet-boxen</a>: Fork of the core
+<a href="https://github.com/boxen/puppet-boxen">boxen/puppet-boxen</a> modules that
+installs <a href="http://brew.sh/">Homebrew</a> in <code>/usr/local</code> instead of under
+<code>/opt/boxen</code>.</li>
+<li><a href="https://github.com/bd808/puppet-dnsmasq">puppet-dnsmasq</a>: Fork of
+<a href="https://github.com/boxen/puppet-dnsmasq">boxen/dnsmasq</a> that uses the stock
+Homebrew <code>dnsmasq</code> install and provides <code>dnsmasq::address</code> to configure new
+address mappings.</li>
+<li><a href="https://github.com/bd808/puppet-geektool">puppet-geektool</a>: Original
+module to install <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</li>
+<li><a href="https://github.com/bd808/puppet-git">puppet-git</a>: Fork of
+<a href="https://github.com/boxen/puppet-git">boxen/puppet-git</a> to use the stock
+Homebrew version of <a href="http://git-scm.com/">git</a>.</li>
+<li><a href="https://github.com/bd808/puppet-growl">puppet-growl</a>: Fork of
+<a href="https://github.com/petems/puppet-growl">petems/puppet-growl</a> that installs
+an aging version of <a href="http://growl.info/">Growl</a>. I&#39;ve since abandoned this
+in favor a <a href="http://growl.info/documentation/developer/growl-source-install.php">self-compiled version</a> which I should figure out how to Puppetize.</li>
+<li><a href="https://github.com/bd808/puppet-homebrew">puppet-homebrew</a>: Fork of
+<a href="https://github.com/nybblr/puppet-homebrew">nybblr/puppet-homebrew</a> that
+adds support for installing in <code>/usr/local</code> and using custom Homebrew
+<a href="https://github.com/mxcl/homebrew/wiki/brew-tap">taps</a>.</li>
+<li><a href="https://github.com/bd808/puppet-monolingual">puppet-monolingual</a>: Original
+module to install <a href="http://monolingual.sourceforge.net/">Monolingual</a>.</li>
+<li><a href="https://github.com/bd808/puppet-osx">puppet-osx</a>: Fork of
+<a href="https://github.com/codec/puppet-osx">codec/puppet-osx</a> that pulls in
+patches from <a href="https://github.com/joebadmo/puppet-osx">joebadmo/puppet-osx</a>
+and adds a few system settings of my own.</li>
+<li><a href="https://github.com/bd808/puppet-slimbatterymonitor">puppet-slimbatterymonitor</a>: Original module to install <a href="http://www.orange-carb.org/SBM/">SlimBatteryMonitor</a>.</li>
 </ul>
 
-<p>The one thing I most wish someone would figure out how to do with Boxen/Puppet is install apps from the <a href='https://www.apple.com/osx/apps/app-store.html'>Mac App Store</a>.</p>]]></content>
+<p>The one thing I most wish someone would figure out how to do with Boxen/Puppet
+is install apps from the <a href="https://www.apple.com/osx/apps/app-store.html">Mac App Store</a>.</p>
+]]></content>
   </entry>
   
   <entry>
@@ -60,35 +150,89 @@
     <link href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-graph/"/>
     <updated>2013-04-17T21:06:00-06:00</updated>
     <id>http://bd808.com/blog/2013/04/17/hacking-github-contributions-graph</id>
-    <content type="html"><![CDATA[<p>GitHub profile pages include a neat visualization of commit history that they call the &#8221;<a href='https://help.github.com/articles/viewing-contributions#contributions-calendar'>contributions calendar</a>&#8221;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year.</p>
+    <content type="html"><![CDATA[<p>GitHub profile pages include a neat visualization of commit history that they
+call the &quot;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&quot;. This 53x7 grid shows the number of
+commits and other GitHub interactions that the user performed on each day for
+the last year.</p>
 
-<p><img alt='Example graph' src='http://bd808.com/images/blog/timeline.png' /></p>
+<p><img src="http://bd808.com/images/blog/timeline.png" alt="Example graph"></p>
 
-<p>Each cell in the graph is shaded with one of 5 possible colors. These colors correspond to the <a href='https://en.wikipedia.org/wiki/Quartile'>quartiles</a> of the <a href='https://en.wikipedia.org/wiki/Normal_distribution'>normal distribution</a> over the range <code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
+<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+
 <!-- more -->
-<p>If your all time high for the last year was 100 contributions in a single day, the cells would color like this:</p>
-<table><thead><tr><th>Contributions</th><th>Color</th></tr></thead><tbody><tr><td style='text-align: left;'>0</td><td style='text-align: center;'><img alt='gray' src='http://bd808.com/images/blog/eeeeee.png' /></td>
-</tr><tr><td style='text-align: left;'>1 - 24</td><td style='text-align: center;'><img alt='pale green' src='http://bd808.com/images/blog/d6e685.png' /></td>
-</tr><tr><td style='text-align: left;'>25 - 49</td><td style='text-align: center;'><img alt='light green' src='http://bd808.com/images/blog/8cc665.png' /></td>
-</tr><tr><td style='text-align: left;'>50 - 74</td><td style='text-align: center;'><img alt='green' src='http://bd808.com/images/blog/44a340.png' /></td>
-</tr><tr><td style='text-align: left;'>75+</td><td style='text-align: center;'><img alt='dark green' src='http://bd808.com/images/blog/1e6823.png' /></td>
-</tr></tbody></table>
-<p>A tweet got me interested in the possibility of gaming the interaction data to control the display:</p>
-<blockquote class='twitter-tweet'><p>GitHub users might find this guy&#8217;s contribution graph interesting/funny: <a href='https://t.co/xOFjLbqUK2' title='https://github.com/will'>github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href='https://twitter.com/peterc/status/322636613018607617'>April 12, 2013</a></blockquote>
-<p><a href='https://github.com/will'>@will</a> has done something to make his calendar spell &#8220;WILL&#8221; over and over. Looking at his contribution activity list it was pretty obvious that this trick had something to do with the <a href='https://github.com/will/githubprofilecheat'>will/githubprofilecheat</a> and/or <a href='https://github.com/will/githubprofilecheat2'>will/githubprofilecheat2</a> repositories.</p>
 
-<p>I did some digging in the <a href='http://git-scm.com/docs'>git documentation</a> to see how hard it is to fake the date on a commit. It turns out that it&#8217;s as easy as setting an environment variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables can be used to provide <a href='http://git-scm.com/docs/git-commit-tree#_commit_information'>git-commit-tree</a> with dates for the author and commit dates that are attached to each commit object.</p>
+<p>If your all time high for the last year was 100 contributions in a single day,
+the cells would color like this:</p>
 
-<p>Armed with this bit of trivia I decided that I would try to do something interesting with my contributions graph. I didn&#8217;t just want to copy <a href='https://github.com/will'>@will</a> and write my name in the graph. I decided that I would pay homage to my gravatar instead and make a series of <a href='https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29'>gliders</a> that ran across the timeline. The result of my experiment can be seen in the image at the top of this post.</p>
+<table><thead>
+<tr>
+<th align="left">Contributions</th>
+<th align="center">Color</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">0</td>
+<td align="center"><img src="http://bd808.com/images/blog/eeeeee.png" alt="gray" title="#eeeeee"></td>
+</tr>
+<tr>
+<td align="left">1  - 24</td>
+<td align="center"><img src="http://bd808.com/images/blog/d6e685.png" alt="pale green" title="#d6e685"></td>
+</tr>
+<tr>
+<td align="left">25 - 49</td>
+<td align="center"><img src="http://bd808.com/images/blog/8cc665.png" alt="light green" title="#8cc665"></td>
+</tr>
+<tr>
+<td align="left">50 - 74</td>
+<td align="center"><img src="http://bd808.com/images/blog/44a340.png" alt="green" title="#44a340"></td>
+</tr>
+<tr>
+<td align="left">75+</td>
+<td align="center"><img src="http://bd808.com/images/blog/1e6823.png" alt="dark green" title="#1e6823"></td>
+</tr>
+</tbody></table>
 
-<p>The script that I used to generate the commits with faked dates is available in my <a href='https://github.com/bd808/profile-life'>bd808/profile-life</a> repository.</p>
+<p>A tweet got me interested in the possibility of gaming the interaction data to
+control the display:</p>
 
-<p>The script takes the path to a pattern file and an optional start date as arguments.</p>
-<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&#39;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="http://bd808.com//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &quot;WILL&quot; over and over.
+Looking at his contribution activity list it was pretty obvious that this
+trick had something to do with the <a href="https://github.com/will/githubprofilecheat">will/githubprofilecheat</a> and/or
+<a href="https://github.com/will/githubprofilecheat2">will/githubprofilecheat2</a> repositories.</p>
+
+<p>I did some digging in the <a href="http://git-scm.com/docs">git documentation</a> to see how hard it is to fake
+the date on a commit. It turns out that it&#39;s as easy as setting an environment
+variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables
+can be used to provide <a href="http://git-scm.com/docs/git-commit-tree#_commit_information">git-commit-tree</a> with dates for the author and
+commit dates that are attached to each commit object.</p>
+
+<p>Armed with this bit of trivia I decided that I would try to do something
+interesting with my contributions graph. I didn&#39;t just want to copy <a href="https://github.com/will">@will</a>
+and write my name in the graph. I decided that I would pay homage to my
+gravatar instead and make a series of <a href="https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29">gliders</a> that ran across the
+timeline. The result of my experiment can be seen in the image at the top of
+this post.</p>
+
+<p>The script that I used to generate the commits with faked dates is available
+in my <a href="https://github.com/bd808/profile-life">bd808/profile-life</a> repository.</p>
+
+<p>The script takes the path to a pattern file and an optional start date as
+arguments.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'>./bin/pattern-to-commits.sh patterns/glider.cells 2012-04-15 | sh
 </span></code></pre></td></tr></table></div></figure>
-<p>The pattern file is expected to be in the <a href='http://www.conwaylife.com/wiki/Plaintext'>plaintext</a> Life format. This format allows you to specify an on/off pattern. When a cell is &#8220;on&#8221; the script will output 23 commits (one per hour) for the corresponding day. &#8220;Off&#8221; cells won&#8217;t generate any commit activity.</p>
-<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+
+<p>The pattern file is expected to be in the <a href="http://www.conwaylife.com/wiki/Plaintext">plaintext</a> Life format. This
+format allows you to specify an on/off pattern. When a cell is &quot;on&quot; the script
+will output 23 commits (one per hour) for the corresponding day. &quot;Off&quot; cells
+won&#39;t generate any commit activity.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -107,15 +251,24 @@
 </span><span class='line'>.................................................O...OO.OO..OOO..OO.O.O..OO...O.
 </span><span class='line'>.................................................................O...OO.OO..OOO.
 </span></code></pre></td></tr></table></div></figure>
-<p>The script reads in this file a column at a time using the <code>cut</code> command. It loops over the characters from the column and when it finds an <code>O</code> it echos commit commands to stdout:</p>
-<figure class='code'><figcaption><span /></figcaption><div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+
+<p>The script reads in this file a column at a time using the <code>cut</code> command. It
+loops over the characters from the column and when it finds an <code>O</code> it echos
+commit commands to stdout:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class='nv'>GIT_AUTHOR_DATE</span><span class='o'>=</span><span class='s1'>&#39;2013-04-17T20:00&#39;</span> <span class='nv'>GIT_COMMITTER_DATE</span><span class='o'>=</span><span class='s1'>&#39;2013-04-17T20:00&#39;</span> <span class='se'>\</span>
-</span><span class='line'>git commit --allow-empty -m <span class='s1'>&#39;2013-04-17T20:00&#39;</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">GIT_AUTHOR_DATE</span><span class="o">=</span><span class="s1">&#39;2013-04-17T20:00&#39;</span> <span class="nv">GIT_COMMITTER_DATE</span><span class="o">=</span><span class="s1">&#39;2013-04-17T20:00&#39;</span> <span class="se">\</span>
+</span><span class='line'>git commit --allow-empty -m <span class="s1">&#39;2013-04-17T20:00&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
+
 <p>This output can be piped to bash to apply the commits to the repository.</p>
 
-<p>An interesting extension of this script would be to support all 5 possible colors. It would also be nice if the script read your current contribution history to determine how many commits are necessary to hit the 4th quartile every time. For now these additions are left as an exercise for the reader. :)</p>]]></content>
+<p>An interesting extension of this script would be to support all 5 possible
+colors. It would also be nice if the script read your current contribution
+history to determine how many commits are necessary to hit the 4th quartile
+every time. For now these additions are left as an exercise for the reader. :)</p>
+]]></content>
   </entry>
   
   <entry>
@@ -123,13 +276,16 @@
     <link href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
     <updated>2012-04-14T20:22:00-06:00</updated>
     <id>http://bd808.com/blog/2012/04/14/using-github-issues-for-comments</id>
-    <content type="html"><![CDATA[<p>I was inspired by <a href='http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html'>Ivan Zuzak&#8217;s post</a> to try using GitHub issues on the <a href='https://github.com/bd808/bd808.github.com'>repository for this blog</a> to collect and display reader comments. I&#8217;m using <a href='http://octopress.org/'>Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#8217;s ideas easy for me.</p>
+    <content type="html"><![CDATA[<p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
 
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#8217;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+
 <!-- more -->
-<p>Next I changed the <a href='https://github.com/mojombo/jekyll/wiki/Liquid-Extensions'>Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
+
+<p>Next I changed the <a href="https://github.com/mojombo/jekyll/wiki/Liquid-Extensions">Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
+
 <figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -138,19 +294,25 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.github_issue_id %}
-</span><span class='line'><span class='nt'>&lt;section</span> <span class='na'>id=</span><span class='s'>&quot;comments&quot;</span><span class='nt'>&gt;</span>
-</span><span class='line'>  <span class='nt'>&lt;header&gt;</span>
-</span><span class='line'>    <span class='nt'>&lt;h2&gt;</span>Comments<span class='nt'>&lt;/h2&gt;</span>
-</span><span class='line'>    <span class='nt'>&lt;p&gt;</span>Visit <span class='nt'>&lt;a</span> <span class='na'>href=</span><span class='s'>&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}&quot;</span><span class='nt'>&gt;</span>this post&#39;s issue page on GitHub<span class='nt'>&lt;/a&gt;</span> to add a comment.<span class='nt'>&lt;/p&gt;</span>
-</span><span class='line'>  <span class='nt'>&lt;/header&gt;</span>
-</span><span class='line'><span class='nt'>&lt;/section&gt;</span>
+</span><span class='line'><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;header&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h2&gt;</span>Comments<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>Visit <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}&quot;</span><span class="nt">&gt;</span>this post&#39;s issue page on GitHub<span class="nt">&lt;/a&gt;</span> to add a comment.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/header&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
 </span><span class='line'>{% endif %}
 </span></code></pre></td></tr></table></div></figure>
-<p>If the <code>github_comments: true</code> flag is set and the <a href='https://github.com/mojombo/jekyll/wiki/yaml-front-matter'>yaml front matter</a> for the post contains a <code>github_issue_id: N</code> setting, this block with display a link to issue N in the associated GitHub repository.</p>
 
-<p>Next I wanted to display any current comments. I use a slightly tweaked version of Ivan&#8217;s javascript to do this.</p>
+<p>If the <code>github_comments: true</code> flag is set and the <a href="https://github.com/mojombo/jekyll/wiki/yaml-front-matter">yaml front
+matter</a> for the post
+contains a <code>github_issue_id: N</code> setting, this block with display a link to
+issue N in the associated GitHub repository.</p>
+
+<p>Next I wanted to display any current comments. I use a slightly tweaked
+version of Ivan&#39;s javascript to do this.</p>
+
 <figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -174,37 +336,42 @@
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.comments == true %}
-</span><span class='line'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
-</span><span class='line'><span class='nx'>$</span><span class='p'>.</span><span class='nx'>ajax</span><span class='p'>({</span>
-</span><span class='line'>    <span class='nx'>url</span><span class='o'>:</span> <span class='s2'>&quot;https://api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments&quot;</span>
-</span><span class='line'>  <span class='p'>,</span> <span class='nx'>method</span><span class='o'>:</span> <span class='s2'>&quot;get&quot;</span>
-</span><span class='line'>  <span class='p'>,</span> <span class='nx'>headers</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>Accept</span><span class='o'>:</span> <span class='s2'>&quot;application/vnd.github.full+json&quot;</span> <span class='p'>}</span>
-</span><span class='line'>  <span class='p'>,</span> <span class='nx'>error</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>e</span><span class='p'>){}</span>
-</span><span class='line'>  <span class='p'>,</span> <span class='nx'>success</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>resp</span><span class='p'>){</span>
-</span><span class='line'>      <span class='kd'>var</span> <span class='nx'>cuser</span><span class='p'>,</span> <span class='nx'>cuserlink</span><span class='p'>,</span> <span class='nx'>clink</span><span class='p'>,</span> <span class='nx'>cbody</span><span class='p'>,</span> <span class='nx'>cavatarlink</span><span class='p'>,</span> <span class='nx'>cdate</span><span class='p'>;</span>
-</span><span class='line'>      <span class='k'>for</span> <span class='p'>(</span><span class='kd'>var</span> <span class='nx'>i</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>;</span> <span class='nx'>i</span><span class='o'>&lt;</span><span class='nx'>resp</span><span class='p'>.</span><span class='nx'>length</span><span class='p'>;</span> <span class='nx'>i</span><span class='o'>++</span><span class='p'>)</span> <span class='p'>{</span>
-</span><span class='line'>        <span class='nx'>cuser</span> <span class='o'>=</span> <span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>user</span><span class='p'>.</span><span class='nx'>login</span><span class='p'>;</span>
-</span><span class='line'>        <span class='nx'>cuserlink</span> <span class='o'>=</span> <span class='s2'>&quot;https://github.com/&quot;</span> <span class='o'>+</span> <span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>user</span><span class='p'>.</span><span class='nx'>login</span><span class='p'>;</span>
-</span><span class='line'>        <span class='nx'>clink</span> <span class='o'>=</span> <span class='s2'>&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}#issuecomment-&quot;</span> <span class='o'>+</span> <span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>url</span><span class='p'>.</span><span class='nx'>substring</span><span class='p'>(</span><span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>url</span><span class='p'>.</span><span class='nx'>lastIndexOf</span><span class='p'>(</span><span class='s2'>&quot;/&quot;</span><span class='p'>)</span><span class='o'>+</span><span class='mi'>1</span><span class='p'>);</span>
-</span><span class='line'>        <span class='nx'>cbody</span> <span class='o'>=</span> <span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>body_html</span><span class='p'>;</span>
-</span><span class='line'>        <span class='nx'>cavatarlink</span> <span class='o'>=</span> <span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>user</span><span class='p'>.</span><span class='nx'>avatar_url</span><span class='p'>;</span>
-</span><span class='line'>        <span class='nx'>cdate</span> <span class='o'>=</span> <span class='p'>(</span><span class='k'>new</span> <span class='nb'>Date</span><span class='p'>(</span><span class='nx'>resp</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>created_at</span><span class='p'>)).</span><span class='nx'>toLocaleString</span><span class='p'>();</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;https://api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments&quot;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">Accept</span><span class="o">:</span> <span class="s2">&quot;application/vnd.github.full+json&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){}</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">cuser</span><span class="p">,</span> <span class="nx">cuserlink</span><span class="p">,</span> <span class="nx">clink</span><span class="p">,</span> <span class="nx">cbody</span><span class="p">,</span> <span class="nx">cavatarlink</span><span class="p">,</span> <span class="nx">cdate</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">resp</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">cuser</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cuserlink</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/&quot;</span> <span class="o">+</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">clink</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}#issuecomment-&quot;</span> <span class="o">+</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">url</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">cbody</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">body_html</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cavatarlink</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">avatar_url</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cdate</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">created_at</span><span class="p">)).</span><span class="nx">toLocaleString</span><span class="p">();</span>
 </span><span class='line'>
-</span><span class='line'>        <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comments&quot;</span><span class='p'>).</span><span class='nx'>append</span><span class='p'>(</span><span class='s1'>&#39;&lt;div class=&quot;comment&quot;&gt;&lt;div class=&quot;comment-header&quot;&gt;&lt;a class=&quot;comment-user&quot; href=&quot;&#39;</span> <span class='o'>+</span> <span class='nx'>cuserlink</span> <span class='o'>+</span> <span class='s1'>&#39;&quot;&gt;&lt;img class=&quot;comment-gravatar&quot; src=&quot;&#39;</span> <span class='o'>+</span> <span class='nx'>cavatarlink</span> <span class='o'>+</span> <span class='s1'>&#39;&quot; alt=&quot;&quot; width=&quot;20&quot; height=&quot;20&quot;&gt; &#39;</span> <span class='o'>+</span> <span class='nx'>cuser</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/a&gt;&lt;a class=&quot;comment-date&quot; href=&quot;&#39;</span> <span class='o'>+</span> <span class='nx'>clink</span> <span class='o'>+</span> <span class='s1'>&#39;&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>cdate</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;comment-body&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>cbody</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class='p'>);</span>
-</span><span class='line'>      <span class='p'>}</span>
-</span><span class='line'>    <span class='p'>}</span>
-</span><span class='line'><span class='p'>});</span>
-</span><span class='line'><span class='nt'>&lt;/script&gt;</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#comments&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;comment&quot;&gt;&lt;div class=&quot;comment-header&quot;&gt;&lt;a class=&quot;comment-user&quot; href=&quot;&#39;</span> <span class="o">+</span> <span class="nx">cuserlink</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&lt;img class=&quot;comment-gravatar&quot; src=&quot;&#39;</span> <span class="o">+</span> <span class="nx">cavatarlink</span> <span class="o">+</span> <span class="s1">&#39;&quot; alt=&quot;&quot; width=&quot;20&quot; height=&quot;20&quot;&gt; &#39;</span> <span class="o">+</span> <span class="nx">cuser</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;a class=&quot;comment-date&quot; href=&quot;&#39;</span> <span class="o">+</span> <span class="nx">clink</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">cdate</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;comment-body&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">cbody</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
 </span><span class='line'>{% endif %}
 </span></code></pre></td></tr></table></div></figure>
-<p>I added an include for this new file in source/_includes/after_footer.html to get it tacked on to each page:</p>
+
+<p>I added an include for this new file in source/_includes/after_footer.html to
+get it tacked on to each page:</p>
+
 <figure class='code'><figcaption><span>source/_includes/after_footer.html </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
-<p>Those changes plus the OAuth application configuration described in Ivan&#8217;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#8217;t pretty, but they are pragmatic.</p>
+
+<p>Those changes plus the OAuth application configuration described in Ivan&#39;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#39;t pretty, but they are pragmatic.</p>
+
 <figure class='code'><figcaption><span>Rakefile </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -224,31 +391,35 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class='k'>def</span> <span class='nf'>create_comment_issue</span><span class='p'>(</span><span class='n'>title</span><span class='p'>,</span> <span class='n'>url</span><span class='p'>)</span>
-</span><span class='line'>  <span class='nb'>require</span> <span class='s1'>&#39;octopi&#39;</span>
-</span><span class='line'>  <span class='kp'>include</span> <span class='no'>Octopi</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">create_comment_issue</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;octopi&#39;</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Octopi</span>
 </span><span class='line'>
-</span><span class='line'>  <span class='n'>authenticated</span> <span class='ss'>:config</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;_github.yml&quot;</span>  <span class='k'>do</span>
-</span><span class='line'>    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='s2'>&quot;bd808&quot;</span><span class='p'>)</span>
-</span><span class='line'>    <span class='n'>repo</span> <span class='o'>=</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>repository</span><span class='p'>(</span><span class='ss'>:name</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;bd808.github.com&quot;</span><span class='p'>)</span>
+</span><span class='line'>  <span class="n">authenticated</span> <span class="ss">:config</span> <span class="o">=&gt;</span> <span class="s2">&quot;_github.yml&quot;</span>  <span class="k">do</span>
+</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;bd808&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">repo</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">repository</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;bd808.github.com&quot;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>    <span class='n'>issue</span> <span class='o'>=</span> <span class='no'>Issue</span><span class='o'>.</span><span class='n'>open</span> <span class='ss'>:user</span> <span class='o'>=&gt;</span> <span class='n'>user</span><span class='p'>,</span> <span class='ss'>:repo</span> <span class='o'>=&gt;</span> <span class='n'>repo</span><span class='p'>,</span>
-</span><span class='line'>      <span class='ss'>:params</span> <span class='o'>=&gt;</span> <span class='p'>{</span>
-</span><span class='line'>      <span class='ss'>:title</span> <span class='o'>=&gt;</span> <span class='n'>title</span><span class='p'>,</span>
-</span><span class='line'>      <span class='ss'>:body</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;Reader comments on [</span><span class='si'>#{</span><span class='n'>title</span><span class='si'>}</span><span class='s2'>](</span><span class='si'>#{</span><span class='n'>url</span><span class='si'>}</span><span class='s2'>)&quot;</span>
-</span><span class='line'>    <span class='p'>}</span>
-</span><span class='line'>    <span class='nb'>puts</span> <span class='s2'>&quot;Successfully opened issue </span><span class='se'>\#</span><span class='si'>#{</span><span class='n'>issue</span><span class='o'>.</span><span class='n'>number</span><span class='si'>}</span><span class='s2'>&quot;</span>
+</span><span class='line'>    <span class="n">issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="o">.</span><span class="n">open</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&gt;</span> <span class="n">repo</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">:params</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>      <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="n">title</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;Reader comments on [</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">](</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Successfully opened issue </span><span class="se">\#</span><span class="si">#{</span><span class="n">issue</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>
-</span><span class='line'>    <span class='n'>labels</span> <span class='o'>=</span> <span class='n'>issue</span><span class='o'>.</span><span class='n'>add_label</span> <span class='s2'>&quot;blog-post&quot;</span>
+</span><span class='line'>    <span class="n">labels</span> <span class="o">=</span> <span class="n">issue</span><span class="o">.</span><span class="n">add_label</span> <span class="s2">&quot;blog-post&quot;</span>
 </span><span class='line'>
-</span><span class='line'>    <span class='k'>return</span> <span class='n'>issue</span><span class='o'>.</span><span class='n'>number</span>
-</span><span class='line'>  <span class='k'>end</span>
-</span><span class='line'><span class='k'>end</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">number</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
-<p>I plugged this function into the existing <code>new_post</code> task so that it will create an issue and plug it&#8217;s id into the front matter for the new post automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
+
+<p>I plugged this function into the existing <code>new_post</code> task so that it will
+create an issue and plug it&#39;s id into the front matter for the new post
+automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
+
 <figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -256,15 +427,16 @@ for Comments&quot;]</code>:</p>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class='nn'>---</span>
-</span><span class='line'><span class='l-Scalar-Plain'>layout</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>post</span>
-</span><span class='line'><span class='l-Scalar-Plain'>title</span><span class='p-Indicator'>:</span> <span class='s'>&quot;Using</span><span class='nv'> </span><span class='s'>GitHub</span><span class='nv'> </span><span class='s'>issues</span><span class='nv'> </span><span class='s'>for</span><span class='nv'> </span><span class='s'>comments&quot;</span>
-</span><span class='line'><span class='l-Scalar-Plain'>date</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>2012-04-14 20:22</span>
-</span><span class='line'><span class='l-Scalar-Plain'>comments</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>true</span>
-</span><span class='line'><span class='l-Scalar-Plain'>github_issue_id</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>7</span>
-</span><span class='line'><span class='l-Scalar-Plain'>categories</span><span class='p-Indicator'>:</span>
-</span><span class='line'><span class='nn'>---</span>
-</span></code></pre></td></tr></table></div></figure>]]></content>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
+</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Using</span><span class="nv"> </span><span class="s">GitHub</span><span class="nv"> </span><span class="s">issues</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">comments&quot;</span>
+</span><span class='line'><span class="l-Scalar-Plain">date</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2012-04-14 20:22</span>
+</span><span class='line'><span class="l-Scalar-Plain">comments</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'><span class="l-Scalar-Plain">github_issue_id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">7</span>
+</span><span class='line'><span class="l-Scalar-Plain">categories</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="nn">---</span>
+</span></code></pre></td></tr></table></div></figure>
+]]></content>
   </entry>
   
   <entry>
@@ -272,49 +444,66 @@ for Comments&quot;]</code>:</p>
     <link href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/"/>
     <updated>2012-03-31T15:40:00-06:00</updated>
     <id>http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence</id>
-    <content type="html"><![CDATA[<p>Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#8217;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them more information than you would really like them to have about the number of ids you are allocating per unit time. We&#8217;d really like to obfuscate the id somehow while retaining the uniqueness of the original sequence.</p>
+    <content type="html"><![CDATA[<p>Using a sequentially increasing counter to generate an id token is easy.
+Database sequences and auto-number columns make it fairly trivial to
+implement. If that isn&#39;t available a simple file or shared memory counter can
+be implemented in minutes. Displaying such a number to a client however may
+give them more information than you would really like them to have about the
+number of ids you are allocating per unit time. We&#39;d really like  to obfuscate
+the id somehow while retaining the uniqueness of the original sequence.</p>
 
-<p>One way to do this is to use a combination of multiplication and modulo arithmetic to map the sequence number into a constrained set. With careful choice of the multiplicative constant and the modulo value the resulting number can be made to wander rather effectively over the entire space of the target set.</p>
+<p>One way to do this is to use a combination of multiplication and modulo
+arithmetic to map the sequence number into a constrained set. With careful
+choice of the multiplicative constant and the modulo value the resulting
+number can be made to wander rather effectively over the entire space of the
+target set.</p>
+
 <!-- more -->
-<p>The basic math looks like this: <code>f(n) := (n * p) % q</code></p>
+
+<p>The basic math looks like this:  <code>f(n) := (n * p) % q</code></p>
 
 <ul>
 <li>n := input sequence value</li>
-
 <li>p := step size</li>
-
 <li>q := maximum result size</li>
 </ul>
 
-<p><code>p</code> and <code>q</code> must be chosen such that:</p>
+<p><code>p</code> and <code>q</code> must be chosen such that:
+- p &lt; q
+- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &#8230; depending on the precision of the underlying system)
+- p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</p>
 
-<ul>
-<li>p &lt; q</li>
-
-<li>p * q &lt; arithmetic limit (2^31, 2^32, 2^63, 2^64, &#8230; depending on the precision of the underlying system)</li>
-
-<li>p ⊥ q (<a href='https://en.wikipedia.org/wiki/Coprime'>coprime</a> or relatively prime)</li>
-</ul>
-
-<p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br /><table class='border padded'>
+<p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br>
+<table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table></p>
 
-<p>Change <code>p</code> to 7 and you&#8217;ll get:<br /><table class='border padded'>
+<p>Change <code>p</code> to 7 and you&#39;ll get:<br>
+<table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
 </table></p>
 
-<p>The rational for keeping <code>p * q &lt; limit</code> is that as <code>n</code> approaches <code>q</code> the initial multiplication will approach <code>p * q</code> and if this calculation overflows the available precision the result will wrap back into a previously traversed space causing duplication. The same sort of thing will occur if <code>p</code> and <code>q</code> are not coprime. The result of the modulo will exhibit a period equivalent to the <abbr title='Greatest Common Divisor'>GCD</abbr> of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code> evenly.</p>
+<p>The rational for keeping <code>p * q &lt; limit</code> is that as <code>n</code> approaches <code>q</code> the
+initial multiplication will approach <code>p * q</code> and if this calculation overflows
+the available precision the result will wrap back into a previously traversed
+space causing duplication. The same sort of thing will occur if <code>p</code> and <code>q</code>
+are not coprime. The result of the modulo will exhibit a period equivalent to
+the GCD of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code>
+evenly.</p>
 
-<p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output of the function and maintaining the uniqueness of the result. One easy way to ensure that the chosen coefficients are coprime is to make them both be prime powers of prime numbers (eg 9^17, 13^11, 13^15, 19^7, &#8230;).</p>
+<p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output
+of the function and maintaining the uniqueness of the result. One easy way to
+ensure that the chosen coefficients are coprime is to make them both be prime
+powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &#8230;).</p>
 
-<p>This method is a type of <a href='https://en.wikipedia.org/wiki/Linear_congruential_generator'>Linear congruential generator</a> almost exactly equivalent to the <a href='https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG'>Park–Miller random number generator</a>.</p>
+<p>This method is a type of <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear congruential generator</a> almost exactly equivalent to the <a href="https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG">Park–Miller random number generator</a>.</p>
 
-<h2 id='examples'>Examples</h2>
+<h2 id="toc_0">Examples</h2>
+
 <figure class='code'><figcaption><span>PHP </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -326,29 +515,37 @@ for Comments&quot;]</code>:</p>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class='cp'>&lt;?php</span>
-</span><span class='line'><span class='sd'>/**</span>
-</span><span class='line'><span class='sd'> * Obfuscate an id generated from a linear sequence.</span>
-</span><span class='line'><span class='sd'> *</span>
-</span><span class='line'><span class='sd'> * @param int $n Input value</span>
-</span><span class='line'><span class='sd'> * @param int $p Random walk step size</span>
-</span><span class='line'><span class='sd'> * @param int $q Maximum result value</span>
-</span><span class='line'><span class='sd'> * @return int Obfuscated result</span>
-</span><span class='line'><span class='sd'> */</span>
-</span><span class='line'><span class='k'>function</span> <span class='nf'>obfuscate_id</span> <span class='p'>(</span><span class='nv'>$n</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>,</span> <span class='nv'>$q</span><span class='p'>)</span> <span class='p'>{</span>
-</span><span class='line'>  <span class='k'>return</span> <span class='p'>(</span><span class='nv'>$n</span> <span class='o'>*</span> <span class='nv'>$p</span><span class='p'>)</span> <span class='o'>%</span> <span class='nv'>$q</span><span class='p'>;</span>
-</span><span class='line'><span class='p'>}</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>PL/SQL </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="sd">/**</span>
+</span><span class='line'><span class="sd"> * Obfuscate an id generated from a linear sequence.</span>
+</span><span class='line'><span class="sd"> *</span>
+</span><span class='line'><span class="sd"> * @param int $n Input value</span>
+</span><span class='line'><span class="sd"> * @param int $p Random walk step size</span>
+</span><span class='line'><span class="sd"> * @param int $q Maximum result value</span>
+</span><span class='line'><span class="sd"> * @return int Obfuscated result</span>
+</span><span class='line'><span class="sd"> */</span>
+</span><span class='line'><span class="k">function</span> <span class="nf">obfuscate_id</span> <span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$p</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">*</span> <span class="nv">$p</span><span class="p">)</span> <span class="o">%</span> <span class="nv">$q</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span>PL/SQL </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class='k'>FUNCTION</span> <span class='n'>obfuscate_id</span> <span class='p'>(</span><span class='n'>n</span> <span class='nb'>NUMBER</span><span class='p'>,</span> <span class='n'>p</span> <span class='nb'>NUMBER</span><span class='p'>,</span> <span class='n'>q</span> <span class='nb'>NUMBER</span><span class='p'>)</span> <span class='k'>RETURN</span> <span class='nb'>NUMBER</span> <span class='k'>IS</span>
-</span><span class='line'><span class='k'>BEGIN</span>
-</span><span class='line'>  <span class='k'>RETURN</span> <span class='k'>MOD</span><span class='p'>(</span><span class='n'>n</span> <span class='o'>*</span> <span class='n'>p</span><span class='p'>,</span> <span class='n'>q</span><span class='p'>);</span>
-</span><span class='line'><span class='k'>END</span> <span class='n'>f</span><span class='p'>;</span>
-</span></code></pre></td></tr></table></div></figure><hr />
-<p>Thanks to <a href='http://www.timbarber.org/'>Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&#8217;t getting.</p>]]></content>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">FUNCTION</span> <span class="n">obfuscate_id</span> <span class="p">(</span><span class="n">n</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">p</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">q</span> <span class="nb">NUMBER</span><span class="p">)</span> <span class="k">RETURN</span> <span class="nb">NUMBER</span> <span class="k">IS</span>
+</span><span class='line'><span class="k">BEGIN</span>
+</span><span class='line'>  <span class="k">RETURN</span> <span class="k">MOD</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+</span><span class='line'><span class="k">END</span> <span class="n">f</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<hr>
+
+<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&#39;t getting.</p>
+
+<p>*[GCD]: Greatest Common Divisor</p>
+]]></content>
   </entry>
   
   <entry>
@@ -357,30 +554,41 @@ for Comments&quot;]</code>:</p>
     <updated>2012-01-18T21:47:00-07:00</updated>
     <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
     <content type="html"><![CDATA[<blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
+<p>Write a program that prints the numbers from 1 to 100. But for multiples of
+three print &quot;Fizz&quot; instead of the number and for the multiples of five print
+&quot;Buzz&quot;. For numbers which are multiples of both three and five print
+&quot;FizzBuzz&quot;.
+<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
-<!-- more --><figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+
+<!-- more -->
+
+<figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class='c'>#!/usr/bin/env python</span>
-</span><span class='line'><span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>101</span><span class='p'>):</span>
-</span><span class='line'>  <span class='k'>print</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Fizz&quot;</span> <span class='o'>+</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Buzz&quot;</span> <span class='ow'>or</span> <span class='n'>i</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Fizz&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Buzz&quot;</span> <span class="ow">or</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class='cp'>&lt;?php</span>
-</span><span class='line'><span class='nv'>$p</span> <span class='o'>=</span> <span class='s2'>&quot;printf&quot;</span><span class='p'>;</span> <span class='nv'>$r</span> <span class='o'>=</span> <span class='s2'>&quot;str_repeat&quot;</span><span class='p'>;</span>
-</span><span class='line'><span class='k'>for</span> <span class='p'>(</span><span class='nv'>$i</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span> <span class='nv'>$i</span> <span class='o'>&lt;=</span> <span class='mi'>100</span><span class='p'>;</span> <span class='nv'>$i</span><span class='o'>++</span><span class='p'>)</span> <span class='p'>{</span>
-</span><span class='line'>  <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s</span><span class='se'>\n</span><span class='s2'>&quot;</span><span class='p'>,</span> <span class='nv'>$r</span><span class='p'>(</span><span class='nv'>$i</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s%s&quot;</span><span class='p'>,</span>
-</span><span class='line'>      <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Fizz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)),</span> <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Buzz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)))</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>));</span>
-</span><span class='line'><span class='p'>}</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$p</span> <span class="o">=</span> <span class="s2">&quot;printf&quot;</span><span class="p">;</span> <span class="nv">$r</span> <span class="o">=</span> <span class="s2">&quot;str_repeat&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$r</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s%s&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)),</span> <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -388,15 +596,16 @@ for Comments&quot;]</code>:</p>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class='c'>#!/usr/bin/env bash</span>
-</span><span class='line'><span class='k'>for </span>i in <span class='o'>{</span>1..100<span class='o'>}</span>; <span class='k'>do</span>
-</span><span class='line'><span class='k'>  if</span>   <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='m'>15</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;FizzBuzz&quot;</span>;
-</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>3</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Fizz&quot;</span>;
-</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>5</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Buzz&quot;</span>;
-</span><span class='line'>  <span class='k'>else                       </span><span class='nb'>echo</span> <span class='nv'>$i</span>;
-</span><span class='line'>  <span class='k'>fi</span>
-</span><span class='line'><span class='k'>done</span>
-</span></code></pre></td></tr></table></div></figure>]]></content>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="k">for </span>i in <span class="o">{</span>1..100<span class="o">}</span>; <span class="k">do</span>
+</span><span class='line'><span class="k">  if</span>   <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span> <span class="m">15</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;FizzBuzz&quot;</span>;
+</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">3</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Fizz&quot;</span>;
+</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">5</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Buzz&quot;</span>;
+</span><span class='line'>  <span class="k">else                       </span><span class="nb">echo</span> <span class="nv">$i</span>;
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+]]></content>
   </entry>
   
 </feed>

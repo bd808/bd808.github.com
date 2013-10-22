@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - bd808.com</title>
+  <title>Creating a Self-signed Code Certificate for XCode - bd808.com</title>
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Blog Archive 2013 Creating a Self-signed Code Certificate for XCode
-Oct 21 2013 Managing my laptop with Boxen
-Oct 14 2013 Hacking GitHub &hellip;">
+  <meta name="description" content="I wanted to make my own build of Textual
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ Oct 14 2013 Hacking GitHub &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bd808.com/blog/archives">
+  <link rel="canonical" href="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
@@ -82,85 +82,135 @@ Oct 14 2013 Hacking GitHub &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Creating a Self-signed Code Certificate for XCode</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-21T21:38:00-06:00" pubdate data-updated="true">2013-10-21</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>I wanted to make my own build of <a href="http://www.codeux.com/textual/">Textual</a>
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long-lived certificate to that I could reuse for
+building multiple applications.</p>
 
-  
-  <h2>2013</h2>
+<ol>
+<li><p>Open the &quot;Keychain Access&quot; application</p>
+<div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
+</code></pre>
+</div></li>
+<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
 
-<article>
-  
-<h1><a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a></h1>
-<time datetime="2013-10-21T21:38:00-06:00" pubdate><span class='month'>Oct</span> <span class='day'>21</span> <span class='year'>2013</span></time>
+<p><img src="/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
+</ol>
 
+<!-- more -->
 
-</article>
+<ol>
+<li><p>Configure your new certificate</p>
 
+<p><img src="/images/blog/ca-1.png" alt=""></p>
 
+<ul>
+<li> Name: Self-signed Applications</li>
+<li> Identity Type: Self Signed Root</li>
+<li> Certificate Type: Code Signing</li>
+<li> [x] Let me override defaults</li>
+<li> Continue</li>
+</ul></li>
+<li><p>Change expiration date</p>
 
-<article>
-  
-<h1><a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing my laptop with Boxen</a></h1>
-<time datetime="2013-10-14T22:11:00-06:00" pubdate><span class='month'>Oct</span> <span class='day'>14</span> <span class='year'>2013</span></time>
+<p><img src="/images/blog/ca-2.png" alt=""></p>
 
+<ul>
+<li>Validity Period (days): 3650</li>
+<li>Continue</li>
+</ul></li>
+<li><p>Just keep hitting Continue to accept defaults from here on out</p>
 
-</article>
+<p><img src="/images/blog/ca-last.png" alt=""></p></li>
+</ol>
 
+<p>Note: Xcode seems to cache certificate info on startup. If you had XCode open while you created this certificate, restart it.</p>
 
-
-<article>
-  
-<h1><a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a></h1>
-<time datetime="2013-04-17T21:06:00-06:00" pubdate><span class='month'>Apr</span> <span class='day'>17</span> <span class='year'>2013</span></time>
-
-
-</article>
-
-
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub issues for comments</a></h1>
-<time datetime="2012-04-14T20:22:00-06:00" pubdate><span class='month'>Apr</span> <span class='day'>14</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence</a></h1>
-<time datetime="2012-03-31T15:40:00-06:00" pubdate><span class='month'>Mar</span> <span class='day'>31</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the wrong way to do it</a></h1>
-<time datetime="2012-01-18T21:47:00-07:00" pubdate><span class='month'>Jan</span> <span class='day'>18</span> <span class='year'>2012</span></time>
-
-
-</article>
-
+<p>I have since used this same certificate to build
+<a href="http://growl.info/documentation/developer/growl-source-install.php">Growl</a>
+and a couple of other apps. I&#39;m thinking that I&#39;ll export the public
+certificate and import it on my other OSX hosts so I can share the compiled
+binaries from machine to machine without needing to recompile them.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-21T21:38:00-06:00" pubdate data-updated="true">2013-10-21</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/" data-via="" data-counturl="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/10/14/managing-my-laptop-with-boxen/" title="Previous Post: Managing my laptop with Boxen">&laquo; Managing my laptop with Boxen</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+
+<section id="comments">
+  <header>
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/18">this post's issue page on GitHub</a> to add a comment.</p>
+  </header>
+</section>
 
 </div>
 
@@ -252,6 +302,29 @@ Copyright &copy; 2013 - Bryan Davis
 
 
 
+
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/18/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/18#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
 
 
 

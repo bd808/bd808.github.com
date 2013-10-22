@@ -9,7 +9,8 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the &hellip;">
+  <meta name="description" content="Write a program that prints the numbers from 1 to 100. But for multiples of
+three print &quot;Fizz&quot; instead of the number and for the multiples &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,30 +109,41 @@
 
 
 <div class="entry-content"><blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print &#8220;Fizz&#8221; instead of the number and for the multiples of five print &#8220;Buzz&#8221;. For numbers which are multiples of both three and five print &#8220;FizzBuzz&#8221;. <small><a href='http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/'>imranontech [at] googlemail.com</a></small></p>
+<p>Write a program that prints the numbers from 1 to 100. But for multiples of
+three print &quot;Fizz&quot; instead of the number and for the multiples of five print
+&quot;Buzz&quot;. For numbers which are multiples of both three and five print
+&quot;FizzBuzz&quot;.
+<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
-<!-- more --><figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+
+<!-- more -->
+
+<figure class='code'><figcaption><span>fizzbuzz.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class='c'>#!/usr/bin/env python</span>
-</span><span class='line'><span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>101</span><span class='p'>):</span>
-</span><span class='line'>  <span class='k'>print</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Fizz&quot;</span> <span class='o'>+</span> <span class='p'>(</span><span class='ow'>not</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)</span> <span class='o'>*</span> <span class='s'>&quot;Buzz&quot;</span> <span class='ow'>or</span> <span class='n'>i</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">print</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Fizz&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="s">&quot;Buzz&quot;</span> <span class="ow">or</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span>fizzbuzz.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class='cp'>&lt;?php</span>
-</span><span class='line'><span class='nv'>$p</span> <span class='o'>=</span> <span class='s2'>&quot;printf&quot;</span><span class='p'>;</span> <span class='nv'>$r</span> <span class='o'>=</span> <span class='s2'>&quot;str_repeat&quot;</span><span class='p'>;</span>
-</span><span class='line'><span class='k'>for</span> <span class='p'>(</span><span class='nv'>$i</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span> <span class='nv'>$i</span> <span class='o'>&lt;=</span> <span class='mi'>100</span><span class='p'>;</span> <span class='nv'>$i</span><span class='o'>++</span><span class='p'>)</span> <span class='p'>{</span>
-</span><span class='line'>  <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s</span><span class='se'>\n</span><span class='s2'>&quot;</span><span class='p'>,</span> <span class='nv'>$r</span><span class='p'>(</span><span class='nv'>$i</span><span class='p'>,</span> <span class='nv'>$p</span><span class='p'>(</span><span class='s2'>&quot;%s%s&quot;</span><span class='p'>,</span>
-</span><span class='line'>      <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Fizz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>3</span><span class='p'>)),</span> <span class='nv'>$r</span><span class='p'>(</span><span class='s2'>&quot;Buzz&quot;</span><span class='p'>,</span> <span class='o'>!</span><span class='p'>(</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='mi'>5</span><span class='p'>)))</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>));</span>
-</span><span class='line'><span class='p'>}</span>
-</span></code></pre></td></tr></table></div></figure><figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
-<div class='highlight'><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="nv">$p</span> <span class="o">=</span> <span class="s2">&quot;printf&quot;</span><span class="p">;</span> <span class="nv">$r</span> <span class="o">=</span> <span class="s2">&quot;str_repeat&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$r</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s%s&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)),</span> <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class='code'><figcaption><span>fizzbuzz.sh </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -139,15 +151,16 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class='c'>#!/usr/bin/env bash</span>
-</span><span class='line'><span class='k'>for </span>i in <span class='o'>{</span>1..100<span class='o'>}</span>; <span class='k'>do</span>
-</span><span class='line'><span class='k'>  if</span>   <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span> <span class='m'>15</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;FizzBuzz&quot;</span>;
-</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>3</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Fizz&quot;</span>;
-</span><span class='line'>  <span class='k'>elif</span> <span class='o'>[</span> <span class='nv'>0</span> <span class='o'>=</span> <span class='k'>$((</span><span class='nv'>$i</span> <span class='o'>%</span>  <span class='m'>5</span><span class='k'>))</span> <span class='o'>]</span>; <span class='k'>then </span><span class='nb'>echo</span> <span class='s2'>&quot;Buzz&quot;</span>;
-</span><span class='line'>  <span class='k'>else                       </span><span class='nb'>echo</span> <span class='nv'>$i</span>;
-</span><span class='line'>  <span class='k'>fi</span>
-</span><span class='line'><span class='k'>done</span>
-</span></code></pre></td></tr></table></div></figure></div>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="k">for </span>i in <span class="o">{</span>1..100<span class="o">}</span>; <span class="k">do</span>
+</span><span class='line'><span class="k">  if</span>   <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span> <span class="m">15</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;FizzBuzz&quot;</span>;
+</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">3</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Fizz&quot;</span>;
+</span><span class='line'>  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">5</span><span class="k">))</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Buzz&quot;</span>;
+</span><span class='line'>  <span class="k">else                       </span><span class="nb">echo</span> <span class="nv">$i</span>;
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+</div>
 
 
   <footer>
@@ -212,6 +225,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a>
       </li>
     
@@ -225,10 +242,6 @@
     
       <li class="post">
         <a href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a>
       </li>
     
   </ul>
