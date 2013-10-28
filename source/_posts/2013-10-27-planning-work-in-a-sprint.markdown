@@ -17,7 +17,7 @@ the group is hoping to find new solutions for.
 I started to write a big wall o' text™ email about a particular topic and then
 decided that maybe a blog post would be a better way to work through my idea.
 So dear reader^[1](#n1) <a name="n1-r"></a>, here are some of my highly
-opinionated and mostly unsubstantiated thoughts about one process that a group
+opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (*or really any other iterative
 unit of work)*.
 
@@ -63,16 +63,16 @@ people should be happy.
 This narrative you've created and the work that supports it are the forecast
 for the iteration. The product owner can take this information back to the
 rest of the stakeholders and tell them what to expect to hear about in the
-demonstration meeting at the end of the iteration. Be careful not to tell them
-to expect to see all of this work completed. The team has said they'll try to
-do this but they can't promise that it will get done any more than the CEO can
-promise how much money will be raised or how many new customers will be
-acquired.
+demonstration meeting at the end of the iteration. Be careful not to tell
+them that all of this work will be completed. The team has said they'll try
+to do this but they can't promise that it will get done any more than the
+stakeholders  can promise how much money will be raised or how many new
+customers will be acquired.
 
 Figure out how to do the work
 -----------------------------
 The last step before you close the planning meeting and get back to "real
-work", is to figure out how to actually *do* the work. We're talking about
+work" is to figure out how to actually *do* the work. We're talking about
 agile practices here so nobody should expect a gantt chart chart or
 a architecture document, but <strike>anarchists</strike> agile teams need
 enough of a plan to do today's work efficiently. The product owner doesn't
@@ -89,15 +89,13 @@ of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.
 
 Once you've got the dependencies sorted, start breaking down the most obvious
-"starting point" features. Start making a list of the smaller tasks that need
-to be completed to finish the feature. Keep breaking those tasks down into
-even smaller tasks. Stop when the leaf tasks are "small enough". My rule of
-thumb is that something that feels like it will take 3-5 ideal hours is small
-enough. Getting smaller than that early on is probably a waste of time, but
-but staying larger leaves more uncertainty and risk in the plan. Scrum calls
-this step "story decomposition". If you only have a few features to break down
-do the work as a group. If there are quite a few to get through you can split
-up into appropriately skilled groups and work in parallel.
+starting point features. Make a list of the smaller tasks that need
+to be completed to finish the feature. Repeat the process by breaking those
+tasks down into even smaller tasks. Stop when the leaf tasks are "small
+enough". My rule of thumb is that something that feels like it will take 3-5
+ideal hours is small enough. Getting smaller than that early on is probably
+a waste of time, but staying larger leaves more uncertainty and risk in
+the plan. Scrum calls this step "story decomposition".
 
 The list of decomposed tasks that the team has created is the start of the
 iteration backlog. Just like the product backlog this needs to be put in order
@@ -106,14 +104,18 @@ the next most important thing in their area of expertise off of the backlog.
 You'll reorder the list as the iteration progresses, but get started by
 ordering the tasks you just decomposed.
 
-Depending on your team and the time you have left in the meeting (two hours
-per week of iteration is a suggested total duration), you may have time to
-outline all of the features. You need to at least outline enough to keep
-the whole team occupied for the rest of today and tomorrow. If you have some
-high risk things to accomplish in the iteration try to break them down as
-early as you can so that someone (or some pair) can start on the tech spikes
-or API design or whatever sooner rather than later. Don't forget to put
-a "decompose feature X" task onto the backlog for any stories that you
+If you only have a few features to break down, continue to do the work as
+a group. If there are quite a few to get through you can split up into
+appropriately skilled groups and work in parallel. Depending on your team and
+the time you have left in the meeting (two hours per week of iteration is
+a suggested total duration), you may have time to outline all of the features.
+You need to at least outline enough to keep the whole team occupied for the
+rest of today and tomorrow.
+
+If you have some high risk things to accomplish in the iteration try to break
+them down as early as you can so that someone (or some pair) can start on the
+tech spikes or API design or whatever sooner rather than later. Don't forget
+to put a "decompose feature X" task onto the backlog for any stories that you
 didn't have time to get to by the end of the time box.
 
 
@@ -122,12 +124,12 @@ Get to work
 Now you've got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
-working on. Start at the start and chose the highest priority task that you
-have the skill set to accomplish. When you get **Done**^[3](#n3)
-<a name="n3-r"></a> with the task you've taken come back to the backlog and
-chose another. Don't forget to mark the things you are working on as in
-progress by whatever tracking mechanism the team is using so you and another
-team member don't duplicate the work.
+working on. Start by choosing the highest priority task that you have the
+skill set to accomplish. When you get **Done**^[3](#n3) <a name="n3-r"></a>
+with the task you've taken come back to the backlog and chose another. Don't
+forget to mark the things you are working on as in progress by whatever
+tracking mechanism the team is using so you and another team member don't
+duplicate the work.
 
 Whew. That would have been a nasty email to read. I hope you like it better as
 a blog post. Don't forget to use inspection and adaptation to refine this
