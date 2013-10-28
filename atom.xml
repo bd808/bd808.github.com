@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2013-10-27T23:49:12-06:00</updated>
+  <updated>2013-10-28T09:25:47-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -28,7 +28,7 @@ the group is hoping to find new solutions for.</p>
 <p>I started to write a big wall o&#39; text™ email about a particular topic and then
 decided that maybe a blog post would be a better way to work through my idea.
 So dear reader<sup><a href="#n1">1</a></sup> <a name="n1-r"></a>, here are some of my highly
-opinionated and mostly unsubstantiated thoughts about one process that a group
+opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (<em>or really any other iterative
 unit of work)</em>.</p>
 
@@ -74,16 +74,16 @@ people should be happy.</p>
 <p>This narrative you&#39;ve created and the work that supports it are the forecast
 for the iteration. The product owner can take this information back to the
 rest of the stakeholders and tell them what to expect to hear about in the
-demonstration meeting at the end of the iteration. Be careful not to tell them
-to expect to see all of this work completed. The team has said they&#39;ll try to
-do this but they can&#39;t promise that it will get done any more than the CEO can
-promise how much money will be raised or how many new customers will be
-acquired.</p>
+demonstration meeting at the end of the iteration. Be careful not to tell
+them that all of this work will be completed. The team has said they&#39;ll try
+to do this but they can&#39;t promise that it will get done any more than the
+stakeholders  can promise how much money will be raised or how many new
+customers will be acquired.</p>
 
 <h2 id="toc_2">Figure out how to do the work</h2>
 
 <p>The last step before you close the planning meeting and get back to &quot;real
-work&quot;, is to figure out how to actually <em>do</em> the work. We&#39;re talking about
+work&quot; is to figure out how to actually <em>do</em> the work. We&#39;re talking about
 agile practices here so nobody should expect a gantt chart chart or
 a architecture document, but <strike>anarchists</strike> agile teams need
 enough of a plan to do today&#39;s work efficiently. The product owner doesn&#39;t
@@ -100,15 +100,13 @@ of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.</p>
 
 <p>Once you&#39;ve got the dependencies sorted, start breaking down the most obvious
-&quot;starting point&quot; features. Start making a list of the smaller tasks that need
-to be completed to finish the feature. Keep breaking those tasks down into
-even smaller tasks. Stop when the leaf tasks are &quot;small enough&quot;. My rule of
-thumb is that something that feels like it will take 3-5 ideal hours is small
-enough. Getting smaller than that early on is probably a waste of time, but
-but staying larger leaves more uncertainty and risk in the plan. Scrum calls
-this step &quot;story decomposition&quot;. If you only have a few features to break down
-do the work as a group. If there are quite a few to get through you can split
-up into appropriately skilled groups and work in parallel.</p>
+starting point features. Make a list of the smaller tasks that need
+to be completed to finish the feature. Repeat the process by breaking those
+tasks down into even smaller tasks. Stop when the leaf tasks are &quot;small
+enough&quot;. My rule of thumb is that something that feels like it will take 3-5
+ideal hours is small enough. Getting smaller than that early on is probably
+a waste of time, but staying larger leaves more uncertainty and risk in
+the plan. Scrum calls this step &quot;story decomposition&quot;.</p>
 
 <p>The list of decomposed tasks that the team has created is the start of the
 iteration backlog. Just like the product backlog this needs to be put in order
@@ -117,14 +115,18 @@ the next most important thing in their area of expertise off of the backlog.
 You&#39;ll reorder the list as the iteration progresses, but get started by
 ordering the tasks you just decomposed.</p>
 
-<p>Depending on your team and the time you have left in the meeting (two hours
-per week of iteration is a suggested total duration), you may have time to
-outline all of the features. You need to at least outline enough to keep
-the whole team occupied for the rest of today and tomorrow. If you have some
-high risk things to accomplish in the iteration try to break them down as
-early as you can so that someone (or some pair) can start on the tech spikes
-or API design or whatever sooner rather than later. Don&#39;t forget to put
-a &quot;decompose feature X&quot; task onto the backlog for any stories that you
+<p>If you only have a few features to break down, continue to do the work as
+a group. If there are quite a few to get through you can split up into
+appropriately skilled groups and work in parallel. Depending on your team and
+the time you have left in the meeting (two hours per week of iteration is
+a suggested total duration), you may have time to outline all of the features.
+You need to at least outline enough to keep the whole team occupied for the
+rest of today and tomorrow.</p>
+
+<p>If you have some high risk things to accomplish in the iteration try to break
+them down as early as you can so that someone (or some pair) can start on the
+tech spikes or API design or whatever sooner rather than later. Don&#39;t forget
+to put a &quot;decompose feature X&quot; task onto the backlog for any stories that you
 didn&#39;t have time to get to by the end of the time box.</p>
 
 <h2 id="toc_3">Get to work</h2>
@@ -132,12 +134,12 @@ didn&#39;t have time to get to by the end of the time box.</p>
 <p>Now you&#39;ve got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
-working on. Start at the start and chose the highest priority task that you
-have the skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup>
-<a name="n3-r"></a> with the task you&#39;ve taken come back to the backlog and
-chose another. Don&#39;t forget to mark the things you are working on as in
-progress by whatever tracking mechanism the team is using so you and another
-team member don&#39;t duplicate the work.</p>
+working on. Start by choosing the highest priority task that you have the
+skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup> <a name="n3-r"></a>
+with the task you&#39;ve taken come back to the backlog and chose another. Don&#39;t
+forget to mark the things you are working on as in progress by whatever
+tracking mechanism the team is using so you and another team member don&#39;t
+duplicate the work.</p>
 
 <p>Whew. That would have been a nasty email to read. I hope you like it better as
 a blog post. Don&#39;t forget to use inspection and adaptation to refine this
