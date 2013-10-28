@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sysadmin | bd808.com]]></title>
+  <link href="http://bd808.com/blog/categories/sysadmin/atom.xml" rel="self"/>
+  <link href="http://bd808.com/"/>
+  <updated>2013-10-27T23:49:12-06:00</updated>
+  <id>http://bd808.com/</id>
+  <author>
+    <name><![CDATA[Bryan Davis]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Managing my laptop with Boxen]]></title>
+    <link href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/"/>
+    <updated>2013-10-14T22:11:00-06:00</updated>
+    <id>http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen</id>
+    <content type="html"><![CDATA[<p><a href="https://boxen.github.com/">Boxen</a> is a framework and collection of libraries created by the fine folks
+at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
+repeatable. Rather than a simple set of shell scripts or other provisioning
+tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
+I don&#39;t have the time or space to explain how great Puppet is a configuration
+management is, so you&#39;ll have to trust me or go do your own research.</p>
+
+<p>Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That&#39;s actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that &quot;works for them&quot;; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.</p>
+
+<p>You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let&#39;s get on with a description of what
+I&#39;ve been able to do with it.</p>
+
+<!-- more -->
+
+<p>I&#39;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start
+because I had a brand new laptop that needed to be setup and a brand new tool
+to use to do it. I started by following the <a href="https://github.com/boxen/our-boxen">bootstrapping instructions</a> to
+create <a href="https://github.com/bd808/my-boxen">my own copy of the template project</a>. I made a few changes to the
+<a href="https://github.com/bd808/my-boxen/blob/master/manifests/site.pp">site manifest</a> and then started working on a <a href="https://github.com/bd808/my-boxen/blob/master/modules/people/manifests/bd808.pp">manifest for myself</a>.</p>
+
+<p>Along the way I decided I didn&#39;t like a few of the decisions that the Boxen
+architects had made. As I pointed out earlier, the team behind Boxen
+anticipated this and changing most things is as easy as forking a repo, making
+your change and updating the <a href="https://github.com/bd808/my-boxen/blob/master/Puppetfile">Puppetfile</a> in your Boxen project.</p>
+
+<p>At the moment I have customized or created these repositories:</p>
+
+<ul>
+<li><a href="https://github.com/bd808/my-boxen">my-boxen</a>: My fork of <a href="https://github.com/boxen/our-boxen">boxen/our-boxen</a>.</li>
+<li><a href="https://github.com/bd808/puppet-boxen">puppet-boxen</a>: Fork of the core
+<a href="https://github.com/boxen/puppet-boxen">boxen/puppet-boxen</a> modules that
+installs <a href="http://brew.sh/">Homebrew</a> in <code>/usr/local</code> instead of under
+<code>/opt/boxen</code>.</li>
+<li><a href="https://github.com/bd808/puppet-dnsmasq">puppet-dnsmasq</a>: Fork of
+<a href="https://github.com/boxen/puppet-dnsmasq">boxen/dnsmasq</a> that uses the stock
+Homebrew <code>dnsmasq</code> install and provides <code>dnsmasq::address</code> to configure new
+address mappings.</li>
+<li><a href="https://github.com/bd808/puppet-geektool">puppet-geektool</a>: Original
+module to install <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</li>
+<li><a href="https://github.com/bd808/puppet-git">puppet-git</a>: Fork of
+<a href="https://github.com/boxen/puppet-git">boxen/puppet-git</a> to use the stock
+Homebrew version of <a href="http://git-scm.com/">git</a>.</li>
+<li><a href="https://github.com/bd808/puppet-growl">puppet-growl</a>: Fork of
+<a href="https://github.com/petems/puppet-growl">petems/puppet-growl</a> that installs
+an aging version of <a href="http://growl.info/">Growl</a>. I&#39;ve since abandoned this
+in favor a <a href="http://growl.info/documentation/developer/growl-source-install.php">self-compiled version</a> which I should figure out how to Puppetize.</li>
+<li><a href="https://github.com/bd808/puppet-homebrew">puppet-homebrew</a>: Fork of
+<a href="https://github.com/nybblr/puppet-homebrew">nybblr/puppet-homebrew</a> that
+adds support for installing in <code>/usr/local</code> and using custom Homebrew
+<a href="https://github.com/mxcl/homebrew/wiki/brew-tap">taps</a>.</li>
+<li><a href="https://github.com/bd808/puppet-monolingual">puppet-monolingual</a>: Original
+module to install <a href="http://monolingual.sourceforge.net/">Monolingual</a>.</li>
+<li><a href="https://github.com/bd808/puppet-osx">puppet-osx</a>: Fork of
+<a href="https://github.com/codec/puppet-osx">codec/puppet-osx</a> that pulls in
+patches from <a href="https://github.com/joebadmo/puppet-osx">joebadmo/puppet-osx</a>
+and adds a few system settings of my own.</li>
+<li><a href="https://github.com/bd808/puppet-slimbatterymonitor">puppet-slimbatterymonitor</a>: Original module to install <a href="http://www.orange-carb.org/SBM/">SlimBatteryMonitor</a>.</li>
+</ul>
+
+<p>The one thing I most wish someone would figure out how to do with Boxen/Puppet
+is install apps from the <a href="https://www.apple.com/osx/apps/app-store.html">Mac App Store</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

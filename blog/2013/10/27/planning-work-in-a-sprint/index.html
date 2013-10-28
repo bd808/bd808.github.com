@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Planning Work in a Sprint - bd808.com</title>
+  <meta name="author" content="Bryan Davis">
+
+  
+  <meta name="description" content="We&#39;ve been having some discussions at $DAYJOB about process and
+methodologies. The topic of late is scrum and how it may
+or may not be helpful &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
+<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
+<link rel="openid2.provider" href="http://www.myopenid.com/server" />
+<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18797634-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">bd808.com</a></h1>
+  
+    <h2>FOSS in, FOSS out: software, process and operations</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:bd808.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Planning Work in a Sprint</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-27T20:05:00-06:00" pubdate data-updated="true">2013-10-27</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>We&#39;ve been having some discussions at <code>$DAYJOB</code> about process and
+methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
+or may not be helpful for the particular group I work with. I&#39;ve been
+providing some anecdotal input based my past experience with scrum and other
+methodologies/frameworks/practices and asking questions about what problems
+the group is hoping to find new solutions for.</p>
+
+<p>I started to write a big wall o&#39; text™ email about a particular topic and then
+decided that maybe a blog post would be a better way to work through my idea.
+So dear reader<sup><a href="#n1">1</a></sup> <a name="n1-r"></a>, here are some of my highly
+opinionated and mostly unsubstantiated thoughts about one process that a group
+of people could use to plan a scrum sprint (<em>or really any other iterative
+unit of work)</em>.</p>
+
+<!-- more -->
+
+<h2 id="toc_0">Pick some work you think you can get done</h2>
+
+<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&#39;s
+a damn good question but one that&#39;s going to depend on your environment. For
+the sake of this post let&#39;s assume that you have access to an ordered list of
+features that need to be implemented. Let&#39;s further assume that the team and
+the stakeholders have talked about these features a little and that the team
+has reached a general consensus about how big the top few features are
+relative to features the team has worked on in the past. Scrum calls this
+a &quot;groomed backlog&quot;, but you can call it whatever you&#39;d like.</p>
+
+<p>Now that you know where the work comes from, pick some. How much? Well, as
+much as the team thinks it can get done in the iteration. Without knowing your
+team and the length of the iteration and how tricky the problems are I can&#39;t
+tell you. Just go with your collective gut and pick some. If you pick too
+little you can always come back and get more. If you pick too much the team
+can use that experiential data to adjust when choosing for the next iteration.
+Just pick some work for now and adjust in the future based on what happens
+during the iteration<sup><a href="#n2">2</a></sup> <a name="n2-r"></a>.</p>
+
+<h2 id="toc_1">Figure out what ties the work together</h2>
+
+<p>Step two, come up with a narrative about why you chose the work. A list of
+features and bugs you want to implement is a great start, but you can do
+better. It will be a lot easier for the team to make good choices during the
+iteration if they have a more noble goal than &quot;cross off all the things on
+this list.&quot; If the goal is just to get each item done it&#39;s more likely that
+people will think of each part in isolation rather than thinking about how
+this work builds on what came before and enables more enhancements in the
+future.</p>
+
+<p>This step may lead you to switch out some of the things you&#39;ve chosen with
+other things that are in the backlog to make a more cohesive story. That&#39;s ok
+as long as you keep the most important thing. After all that&#39;s the MOST
+important thing; if you get it done plus some other stuff and everything works
+people should be happy.</p>
+
+<p>This narrative you&#39;ve created and the work that supports it are the forecast
+for the iteration. The product owner can take this information back to the
+rest of the stakeholders and tell them what to expect to hear about in the
+demonstration meeting at the end of the iteration. Be careful not to tell them
+to expect to see all of this work completed. The team has said they&#39;ll try to
+do this but they can&#39;t promise that it will get done any more than the CEO can
+promise how much money will be raised or how many new customers will be
+acquired.</p>
+
+<h2 id="toc_2">Figure out how to do the work</h2>
+
+<p>The last step before you close the planning meeting and get back to &quot;real
+work&quot;, is to figure out how to actually <em>do</em> the work. We&#39;re talking about
+agile practices here so nobody should expect a gantt chart chart or
+a architecture document, but <strike>anarchists</strike> agile teams need
+enough of a plan to do today&#39;s work efficiently. The product owner doesn&#39;t
+need to stick around for this half of the meeting. The team should have enough
+information from the feature descriptions already given to make the tactical
+plan.</p>
+
+<p>I&#39;m sure there are other methods that would work as well, but I&#39;ve personally
+had success with a process that starts with finding dependencies. The team
+looks at the stories and tries to determine their rough interdependencies. The
+goal here is to identify communication interfaces that need to be specified
+and sequential implementation order dependencies. The team also looks for ares
+of uncertainty that could be resolved with tech spikes and/or further
+investigation of the requirements.</p>
+
+<p>Once you&#39;ve got the dependencies sorted, start breaking down the most obvious
+&quot;starting point&quot; features. Start making a list of the smaller tasks that need
+to be completed to finish the feature. Keep breaking those tasks down into
+even smaller tasks. Stop when the leaf tasks are &quot;small enough&quot;. My rule of
+thumb is that something that feels like it will take 3-5 ideal hours is small
+enough. Getting smaller than that early on is probably a waste of time, but
+but staying larger leaves more uncertainty and risk in the plan. Scrum calls
+this step &quot;story decomposition&quot;. If you only have a few features to break down
+do the work as a group. If there are quite a few to get through you can split
+up into appropriately skilled groups and work in parallel.</p>
+
+<p>The list of decomposed tasks that the team has created is the start of the
+iteration backlog. Just like the product backlog this needs to be put in order
+so that when a team member or pair needs more work to do they can just pull
+the next most important thing in their area of expertise off of the backlog.
+You&#39;ll reorder the list as the iteration progresses, but get started by
+ordering the tasks you just decomposed.</p>
+
+<p>Depending on your team and the time you have left in the meeting (two hours
+per week of iteration is a suggested total duration), you may have time to
+outline all of the features. You need to at least outline enough to keep
+the whole team occupied for the rest of today and tomorrow. If you have some
+high risk things to accomplish in the iteration try to break them down as
+early as you can so that someone (or some pair) can start on the tech spikes
+or API design or whatever sooner rather than later. Don&#39;t forget to put
+a &quot;decompose feature X&quot; task onto the backlog for any stories that you
+didn&#39;t have time to get to by the end of the time box.</p>
+
+<h2 id="toc_3">Get to work</h2>
+
+<p>Now you&#39;ve got a list of features to implement, a narrative about why these
+things go together and at least a day or two of granular tasks to start
+working on. Each team member or pair now needs to select one thing to begin
+working on. Start at the start and chose the highest priority task that you
+have the skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup>
+<a name="n3-r"></a> with the task you&#39;ve taken come back to the backlog and
+chose another. Don&#39;t forget to mark the things you are working on as in
+progress by whatever tracking mechanism the team is using so you and another
+team member don&#39;t duplicate the work.</p>
+
+<p>Whew. That would have been a nasty email to read. I hope you like it better as
+a blog post. Don&#39;t forget to use inspection and adaptation to refine this
+process so that it works well for your team. I think I&#39;ve given a reasonable
+outline of a process that has worked for me in the past, but never be afraid
+to look for ways to improve.</p>
+
+<hr>
+
+<ol>
+<li><a name="n1"></a><em>Hi Mom!</em> <a href="#n1-r">↩</a></li>
+<li><a name="n2"></a><em>&quot;Inspect and adapt&quot; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
+<li><a name="n3"></a><em>&quot;Definition of Done&quot; is a topic for another post.</em> <a href="#n3-r">↩</a></li>
+</ol>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-27T20:05:00-06:00" pubdate data-updated="true">2013-10-27</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scrum/'>scrum</a>, <a class='category' href='/blog/categories/sdlc/'>sdlc</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/" data-via="" data-counturl="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/" title="Previous Post: Creating a Self-signed Code Certificate for XCode">&laquo; Creating a Self-signed Code Certificate for XCode</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+<section id="comments">
+  <header>
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/19">this post's issue page on GitHub</a> to add a comment.</p>
+  </header>
+</section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section id="about-me">
+  <h1>About</h1>
+  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
+  highly opinionated geek.</p>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
+    <li><a href="http://claimid.com/bd808">Elsewhere on teh internets</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/27/planning-work-in-a-sprint/">Planning Work in a Sprint</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub Issues for Comments</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+Copyright &copy; 2013 - Bryan Davis
+<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
+<span id="license">
+  <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
+    Commons License"
+    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
+  otherwise noted, content on <span rel="cc:attributionURL"
+    property="cc:attributionName" href="http://bd808.github.com">this
+    site</span> is licensed under a <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+    Attribution-ShareAlike 3.0 Unported License</a>.</span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/19/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/19#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress | bd808.com]]></title>
+  <link href="http://bd808.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://bd808.com/"/>
+  <updated>2013-10-27T23:49:12-06:00</updated>
+  <id>http://bd808.com/</id>
+  <author>
+    <name><![CDATA[Bryan Davis]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using GitHub issues for comments]]></title>
+    <link href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
+    <updated>2012-04-14T20:22:00-06:00</updated>
+    <id>http://bd808.com/blog/2012/04/14/using-github-issues-for-comments</id>
+    <content type="html"><![CDATA[<p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
+
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+
+<!-- more -->
+
+<p>Next I changed the <a href="https://github.com/mojombo/jekyll/wiki/Liquid-Extensions">Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.github_issue_id %}
+</span><span class='line'><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;header&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h2&gt;</span>Comments<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>Visit <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}&quot;</span><span class="nt">&gt;</span>this post<span class="ni">&amp;#39;</span>s issue page on GitHub<span class="nt">&lt;/a&gt;</span> to add a comment.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/header&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If the <code>github_comments: true</code> flag is set and the <a href="https://github.com/mojombo/jekyll/wiki/yaml-front-matter">yaml front
+matter</a> for the post
+contains a <code>github_issue_id: N</code> setting, this block with display a link to
+issue N in the associated GitHub repository.</p>
+
+<p>Next I wanted to display any current comments. I use a slightly tweaked
+version of Ivan&#39;s javascript to do this.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.comments == true %}
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://api.github.com/repos/%7B%7Bsite.github_user%7D%7D/%7B%7Bsite.github_user%7D%7D.github.com/issues/%7B%7Bpage.github_issue_id%7D%7D/comments&quot;</span><span class="o">&gt;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments&lt;/a&gt;&amp;quot;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">method</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">get</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">Accept</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">application</span><span class="o">/</span><span class="nx">vnd</span><span class="p">.</span><span class="nx">github</span><span class="p">.</span><span class="nx">full</span><span class="o">+</span><span class="nx">json</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){}</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">cuser</span><span class="p">,</span> <span class="nx">cuserlink</span><span class="p">,</span> <span class="nx">clink</span><span class="p">,</span> <span class="nx">cbody</span><span class="p">,</span> <span class="nx">cavatarlink</span><span class="p">,</span> <span class="nx">cdate</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">resp</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">cuser</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cuserlink</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/&quot;</span><span class="o">&gt;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/&lt;/a&gt;&amp;quot; + resp[i].user.login;</span>
+</span><span class='line'>        <span class="nx">clink</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/%7B%7Bsite.github_user%7D%7D/%7B%7Bsite.github_user%7D%7D.github.com/issues/%7B%7Bpage.github_issue_id%7D%7D#issuecomment-&quot;</span><span class="o">&gt;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}#issuecomment-&lt;/a&gt;&amp;quot; + resp[i].url.substring(resp[i].url.lastIndexOf(&amp;quot;/&amp;quot;)+1);</span>
+</span><span class='line'>        <span class="nx">cbody</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">body_html</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cavatarlink</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">avatar_url</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">cdate</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">created_at</span><span class="p">)).</span><span class="nx">toLocaleString</span><span class="p">();</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;highlight&quot;</span><span class="o">&gt;&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&gt;</span>    <span class="nx">$</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="err">#</span><span class="nx">comments</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;).</span><span class="nx">append</span><span class="p">(</span><span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">comment</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">comment</span><span class="o">-</span><span class="nx">header</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">a</span> <span class="kr">class</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">comment</span><span class="o">-</span><span class="nx">user</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="nx">href</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span> <span class="o">+</span> <span class="nx">cuserlink</span> <span class="o">+</span> <span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">img</span> <span class="kr">class</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="nx">comment</span><span class="o">-</span><span class="nx">gravatar</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="nx">src</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span> <span class="o">+</span> <span class="nx">cavatarlink</span> <span class="o">+</span> <span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="nx">alt</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="nx">width</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="mi">20</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span> <span class="nx">height</span><span class="o">=&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="mi">20</span><span class="o">&amp;</span><span class="nx">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span> <span class="o">+</span> <span class="nx">cuser</span> <span class="o">+</span> <span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="err">/a&amp;gt;&amp;lt;a class=&amp;quot;comment-date&amp;quot; href=&amp;quot;&amp;#39; + clink + &amp;#39;&amp;quot;&amp;gt;&amp;#39; + cdate + &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div class=&amp;quot;comment-body&amp;quot;&amp;gt;&amp;#39; + cbody + &amp;#39;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;&lt;/div&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>{% endif %}
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I added an include for this new file in source/_includes/after_footer.html to
+get it tacked on to each page:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>source/_includes/after_footer.html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Those changes plus the OAuth application configuration described in Ivan&#39;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#39;t pretty, but they are pragmatic.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Rakefile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">create_comment_issue</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="o">&amp;</span><span class="c1">#39;octopi&amp;#39;</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Octopi</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;authenticated :config =&amp;gt; &amp;quot;_github.yml&amp;quot;  do</span>
+</span><span class='line'><span class="sr">    user = User.find(&amp;quot;bd808&amp;quot;)</span>
+</span><span class='line'><span class="sr">    repo = user.repository(:name =&amp;gt; &amp;quot;bd808.github.com&amp;quot;)&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;highlight&quot;</span><span class="o">&gt;&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&gt;</span><span class="n">issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="o">.</span><span class="n">open</span> <span class="ss">:user</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">repo</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:params</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">:title</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">title</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:body</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="no">Reader</span> <span class="n">comments</span> <span class="n">on</span> <span class="o">[</span><span class="c1">#{title}](#{url})&amp;quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nb">puts</span> <span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="no">Successfully</span> <span class="n">opened</span> <span class="n">issue</span> <span class="p">\</span><span class="c1">##{issue.number}&amp;quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">labels</span> <span class="o">=</span> <span class="n">issue</span><span class="o">.</span><span class="n">add_label</span> <span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">blog</span><span class="o">-</span><span class="n">post</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">number</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span>
+</span><span class='line'><span class="sr">&lt;p&gt;end</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I plugged this function into the existing <code>new_post</code> task so that it will
+create an issue and plug it&#39;s id into the front matter for the new post
+automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
+for Comments&quot;]</code>:</p>
+
+<h2 id="toc_0"><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
+</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="nl">&amp;quot</span><span class="l-Scalar-Plain">;Using GitHub issues for comments&amp;quot;</span>
+</span><span class='line'><span class="l-Scalar-Plain">date</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2012-04-14 20:22</span>
+</span><span class='line'><span class="l-Scalar-Plain">comments</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'><span class="l-Scalar-Plain">github_issue_id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">7&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;h2 id=&quot;toc_1&quot;&gt;categories</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

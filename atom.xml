@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2013-10-21T23:16:04-06:00</updated>
+  <updated>2013-10-27T23:49:12-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -12,6 +12,148 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Planning Work in a Sprint]]></title>
+    <link href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/"/>
+    <updated>2013-10-27T20:05:00-06:00</updated>
+    <id>http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint</id>
+    <content type="html"><![CDATA[<p>We&#39;ve been having some discussions at <code>$DAYJOB</code> about process and
+methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
+or may not be helpful for the particular group I work with. I&#39;ve been
+providing some anecdotal input based my past experience with scrum and other
+methodologies/frameworks/practices and asking questions about what problems
+the group is hoping to find new solutions for.</p>
+
+<p>I started to write a big wall o&#39; text™ email about a particular topic and then
+decided that maybe a blog post would be a better way to work through my idea.
+So dear reader<sup><a href="#n1">1</a></sup> <a name="n1-r"></a>, here are some of my highly
+opinionated and mostly unsubstantiated thoughts about one process that a group
+of people could use to plan a scrum sprint (<em>or really any other iterative
+unit of work)</em>.</p>
+
+<!-- more -->
+
+<h2 id="toc_0">Pick some work you think you can get done</h2>
+
+<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&#39;s
+a damn good question but one that&#39;s going to depend on your environment. For
+the sake of this post let&#39;s assume that you have access to an ordered list of
+features that need to be implemented. Let&#39;s further assume that the team and
+the stakeholders have talked about these features a little and that the team
+has reached a general consensus about how big the top few features are
+relative to features the team has worked on in the past. Scrum calls this
+a &quot;groomed backlog&quot;, but you can call it whatever you&#39;d like.</p>
+
+<p>Now that you know where the work comes from, pick some. How much? Well, as
+much as the team thinks it can get done in the iteration. Without knowing your
+team and the length of the iteration and how tricky the problems are I can&#39;t
+tell you. Just go with your collective gut and pick some. If you pick too
+little you can always come back and get more. If you pick too much the team
+can use that experiential data to adjust when choosing for the next iteration.
+Just pick some work for now and adjust in the future based on what happens
+during the iteration<sup><a href="#n2">2</a></sup> <a name="n2-r"></a>.</p>
+
+<h2 id="toc_1">Figure out what ties the work together</h2>
+
+<p>Step two, come up with a narrative about why you chose the work. A list of
+features and bugs you want to implement is a great start, but you can do
+better. It will be a lot easier for the team to make good choices during the
+iteration if they have a more noble goal than &quot;cross off all the things on
+this list.&quot; If the goal is just to get each item done it&#39;s more likely that
+people will think of each part in isolation rather than thinking about how
+this work builds on what came before and enables more enhancements in the
+future.</p>
+
+<p>This step may lead you to switch out some of the things you&#39;ve chosen with
+other things that are in the backlog to make a more cohesive story. That&#39;s ok
+as long as you keep the most important thing. After all that&#39;s the MOST
+important thing; if you get it done plus some other stuff and everything works
+people should be happy.</p>
+
+<p>This narrative you&#39;ve created and the work that supports it are the forecast
+for the iteration. The product owner can take this information back to the
+rest of the stakeholders and tell them what to expect to hear about in the
+demonstration meeting at the end of the iteration. Be careful not to tell them
+to expect to see all of this work completed. The team has said they&#39;ll try to
+do this but they can&#39;t promise that it will get done any more than the CEO can
+promise how much money will be raised or how many new customers will be
+acquired.</p>
+
+<h2 id="toc_2">Figure out how to do the work</h2>
+
+<p>The last step before you close the planning meeting and get back to &quot;real
+work&quot;, is to figure out how to actually <em>do</em> the work. We&#39;re talking about
+agile practices here so nobody should expect a gantt chart chart or
+a architecture document, but <strike>anarchists</strike> agile teams need
+enough of a plan to do today&#39;s work efficiently. The product owner doesn&#39;t
+need to stick around for this half of the meeting. The team should have enough
+information from the feature descriptions already given to make the tactical
+plan.</p>
+
+<p>I&#39;m sure there are other methods that would work as well, but I&#39;ve personally
+had success with a process that starts with finding dependencies. The team
+looks at the stories and tries to determine their rough interdependencies. The
+goal here is to identify communication interfaces that need to be specified
+and sequential implementation order dependencies. The team also looks for ares
+of uncertainty that could be resolved with tech spikes and/or further
+investigation of the requirements.</p>
+
+<p>Once you&#39;ve got the dependencies sorted, start breaking down the most obvious
+&quot;starting point&quot; features. Start making a list of the smaller tasks that need
+to be completed to finish the feature. Keep breaking those tasks down into
+even smaller tasks. Stop when the leaf tasks are &quot;small enough&quot;. My rule of
+thumb is that something that feels like it will take 3-5 ideal hours is small
+enough. Getting smaller than that early on is probably a waste of time, but
+but staying larger leaves more uncertainty and risk in the plan. Scrum calls
+this step &quot;story decomposition&quot;. If you only have a few features to break down
+do the work as a group. If there are quite a few to get through you can split
+up into appropriately skilled groups and work in parallel.</p>
+
+<p>The list of decomposed tasks that the team has created is the start of the
+iteration backlog. Just like the product backlog this needs to be put in order
+so that when a team member or pair needs more work to do they can just pull
+the next most important thing in their area of expertise off of the backlog.
+You&#39;ll reorder the list as the iteration progresses, but get started by
+ordering the tasks you just decomposed.</p>
+
+<p>Depending on your team and the time you have left in the meeting (two hours
+per week of iteration is a suggested total duration), you may have time to
+outline all of the features. You need to at least outline enough to keep
+the whole team occupied for the rest of today and tomorrow. If you have some
+high risk things to accomplish in the iteration try to break them down as
+early as you can so that someone (or some pair) can start on the tech spikes
+or API design or whatever sooner rather than later. Don&#39;t forget to put
+a &quot;decompose feature X&quot; task onto the backlog for any stories that you
+didn&#39;t have time to get to by the end of the time box.</p>
+
+<h2 id="toc_3">Get to work</h2>
+
+<p>Now you&#39;ve got a list of features to implement, a narrative about why these
+things go together and at least a day or two of granular tasks to start
+working on. Each team member or pair now needs to select one thing to begin
+working on. Start at the start and chose the highest priority task that you
+have the skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup>
+<a name="n3-r"></a> with the task you&#39;ve taken come back to the backlog and
+chose another. Don&#39;t forget to mark the things you are working on as in
+progress by whatever tracking mechanism the team is using so you and another
+team member don&#39;t duplicate the work.</p>
+
+<p>Whew. That would have been a nasty email to read. I hope you like it better as
+a blog post. Don&#39;t forget to use inspection and adaptation to refine this
+process so that it works well for your team. I think I&#39;ve given a reasonable
+outline of a process that has worked for me in the past, but never be afraid
+to look for ways to improve.</p>
+
+<hr>
+
+<ol>
+<li><a name="n1"></a><em>Hi Mom!</em> <a href="#n1-r">↩</a></li>
+<li><a name="n2"></a><em>&quot;Inspect and adapt&quot; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
+<li><a name="n3"></a><em>&quot;Definition of Done&quot; is a topic for another post.</em> <a href="#n3-r">↩</a></li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating a Self-signed Code Certificate for XCode]]></title>
@@ -26,8 +168,7 @@ building multiple applications.</p>
 <ol>
 <li><p>Open the &quot;Keychain Access&quot; application</p>
 <div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
-</code></pre>
-</div></li>
+</code></pre></div></li>
 <li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
 
 <p><img src="http://bd808.com/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
