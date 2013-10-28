@@ -3,7 +3,7 @@ layout: post
 title: "FizzBuzz &mdash; the wrong way to do it"
 date: 2012-01-18 21:47
 comments: true
-categories: 
+categories: algorithms
 ---
 > Write a program that prints the numbers from 1 to 100. But for multiples of
 > three print "Fizz" instead of the number and for the multiples of five print

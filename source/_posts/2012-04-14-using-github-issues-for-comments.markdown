@@ -4,7 +4,7 @@ title: "Using GitHub issues for comments"
 date: 2012-04-14 20:22
 comments: true
 github_issue_id: 7
-categories: 
+categories: hacks github octopress howto
 ---
 
 I was inspired by [Ivan Zuzak's post](http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html) to try using GitHub issues on the [repository for this blog](https://github.com/bd808/bd808.github.com) to collect and display reader comments. I'm using [Octopress](http://octopress.org/) to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.

@@ -4,7 +4,7 @@ title: "Hacking GitHub Contributions Calendar"
 date: 2013-04-17 21:06
 comments: true
 github_issue_id: 13
-categories: 
+categories: hacks github howto
 ---
 
 GitHub profile pages include a neat visualization of commit history that they

@@ -4,7 +4,7 @@ title: "Creating a Self-signed Code Certificate for XCode"
 date: 2013-10-21 21:38
 comments: true
 github_issue_id: 18
-categories: 
+categories: osx xcode howto
 ---
 I wanted to make my own build of [Textual](http://www.codeux.com/textual/)
 the other day and needed a code signing certificate to complete the build.

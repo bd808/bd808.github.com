@@ -4,7 +4,7 @@ title: "Generating an Apparently Random Unique Sequence"
 date: 2012-03-31 15:40
 comments: true
 github_issue_id: 5
-categories: 
+categories: algorithms
 ---
 
 Using a sequentially increasing counter to generate an id token is easy.

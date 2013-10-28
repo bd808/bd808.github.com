@@ -4,7 +4,7 @@ title: "Managing my laptop with Boxen"
 date: 2013-10-14 22:11
 comments: true
 github_issue_id: 17
-categories: 
+categories: osx boxen puppet sysadmin
 ---
 
 [Boxen][] is a framework and collection of libraries created by the fine folks
