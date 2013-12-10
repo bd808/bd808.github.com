@@ -9,9 +9,9 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="I&#39;m glad to announce that I finally got around to releasing the bug fix
-version of the YAML PECL module that
-I announced on 2013-04-23. Version 1 &hellip;">
+  <meta name="description" content="Mac OS X 10.7 introduced a whole disk encryption service called
+FileVault2. This allows you to use AES 128 encryption to protect your
+data. This is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,56 @@ I announced on 2013-04-23. Version 1 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-09T21:35:52-07:00" pubdate data-updated="true">2013-12-09</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac OS X 10.7 introduced a whole disk encryption service called
+<a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
+data. This is a great feature but it has a few small drawbacks. It uses the
+password of your primary user account to unlock the system. I&#39;m a fan of
+strong passwords but for encryption I&#39;d prefer to use a longer pass phrase for
+increased entropy. Second the EFI-boot screen that is used to get the password
+to decrypt the disk shows the display name of all usersthat can unlock the
+system rather than blank fields for both username and password. This leaks
+information that I would really rather not leak. Fortunately I&#39;ve found
+a little hack to work around both of these issues.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/09/file-vault2-hacks/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -513,6 +563,10 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
       </li>
     
@@ -526,10 +580,6 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
     
       <li class="post">
         <a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a>
       </li>
     
   </ul>
