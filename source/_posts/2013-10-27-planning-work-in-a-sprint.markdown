@@ -84,8 +84,8 @@ I'm sure there are other methods that would work as well, but I've personally
 had success with a process that starts with finding dependencies. The team
 looks at the stories and tries to determine their rough interdependencies. The
 goal here is to identify communication interfaces that need to be specified
-and sequential implementation order dependencies. The team also looks for ares
-of uncertainty that could be resolved with tech spikes and/or further
+and sequential implementation order dependencies. The team also looks for
+areas of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.
 
 Once you've got the dependencies sorted, start breaking down the most obvious
@@ -140,4 +140,6 @@ to look for ways to improve.
 ---
 1. <a name="n1"></a>*Hi Mom!* [↩](#n1-r)
 2. <a name="n2"></a>*"Inspect and adapt" is a common refrain in scrum.* [↩](#n2-r)
-3. <a name="n3"></a>*"Definition of Done" is a topic for another post.* [↩](#n3-r)
+3. <a name="n3"></a>*"Definition of Done" is a topic for [another post][].* [↩](#n3-r)
+
+[another post]: /blog/2014/01/14/how-do-you-know-when-youre-done/
