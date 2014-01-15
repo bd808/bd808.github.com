@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How do you know when you're done? - bd808.com</title>
+  <meta name="author" content="Bryan Davis">
+
+  
+  <meta name="description" content="In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
+Done&quot;. The definition of done is roughly a list of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
+<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
+<link rel="openid2.provider" href="http://www.myopenid.com/server" />
+<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18797634-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">bd808.com</a></h1>
+  
+    <h2>FOSS in, FOSS out: software, process and operations</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:bd808.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How Do You Know When You're Done?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-14T21:48:20-07:00" pubdate data-updated="true">2014-01-14</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
+Done&quot;. The definition of done is roughly a list of requirements that all parts
+of the software increment must adhere to to be called complete. Like most
+things in scrum the implementation details are left to the team to decide.
+When I was first working with scrum I had a hard time finding examples of what
+a typical definition of done would include. Most scrum authors (and even many
+trainers) wave their hands and say that it&#39;s too specific to the team and
+their environment to generalize.</p>
+
+<!-- more -->
+
+<p>Intellectually I agree with this, but pragmatically I think that having some
+sort of rough draft of ideas to start from makes writing the first draft
+easier. This particular definition of Done is written from the perspective of
+a cross functional team responsible for implementing features in a product. It
+does not include Done criteria for the operations or support teams that will
+maintain the deployed software or assist customers in its use. It does however
+include deliverables that must be produced by the development team to support
+those additional teams.</p>
+
+<p>This list taken as a whole looks pretty daunting. It turns out that producing
+production ready software is hard work. It is such hard work that it takes
+a group of well trained individuals working as a team to complete properly.
+This list is a recipe that can and should be used by the team to ensure that
+they produce an increment that is worthy of their combined energy. When used
+properly it will increase the reputation and worth of the team, their product
+and the organization.</p>
+
+<h2 id="toc_0">Done with grooming a story</h2>
+
+<p>A groomed story is <strong><em>clear, feasible and testable</em></strong>.</p>
+
+<dl>
+<dt>Business Goal described</dt>
+<dd>Why will we build this?</dd>
+<dt>Acceptance criteria defined</dt>
+<dd>What will it do?</dd>
+<dt>Tasks identified</dt>
+<dd>How will we do it?</dd>
+<dt>Story points estimated</dt>
+<dd>What will it cost?</dd>
+</dl>
+
+<p>It may take several iterations to achieve this level of clarity. In fact
+anything that can be quickly groomed is necessarily trivial. It may still take
+significant time to implement, but it would have to be a variation on work
+that has already been done that is understood by the whole team.</p>
+
+<p>Themes, Epics and large stories will need to be decomposed into smaller parts.
+This must happen recursively until the smallest parts are describable using
+the criteria established above.</p>
+
+<p>Spikes or other research may need to be done to remove uncertainty about new
+tech or legacy impact. These things are stories in their own right and should
+be treated as such. R&amp;D must be traceable expense and is just as important as
+the final product/feature.</p>
+
+<h2 id="toc_1">Done with a story</h2>
+
+<dl>
+<dt>Everything from &#8220;Done with grooming a story&#8221;</dt>
+<dd>A story must be groomed before it can be implemented.</dd>
+<dt>Design complete</dt>
+<dd>Design is not one size fits all. Some stories must have UML and detailed
+functional descriptions. Others will only need a statement of &#8220;do this just
+like we always do an X feature.&#8221; The level of design required should be
+determined during grooming by the team.</dd>
+<dt>Design artifacts in wiki/bug tracker/other</dt>
+<dd>Design isn&#8217;t complete until it&#8217;s tangible artifacts are available to the
+team and the business.</dd>
+<dt>Design reviewed by peers</dt>
+<dd>Similar to a code review, design should get a once over by at least one
+tangentially involved party to ensure that the level of detail is appropriate
+to the story and that the proposed implementation makes sense.</dd>
+<dt>Code complete</dt>
+<dd>All code for the story has been written.</dd>
+<dt>Unit tests written</dt>
+<dd>Unit tests have been written to verify that the code works at the most basic
+level. This can be done via TDD or code-then-test as best suits the team and
+the story.</dd>
+<dt>All code checked into version control</dt>
+<dd>Feature code and tests are committed to version control.</dd>
+<dt>All unit tests passing</dt>
+<dd>Unit tests are passing in all testable environments.</dd>
+<dt>Automated code checks passing</dt>
+<dd>Coding style, lint and other common automated code quality measurements are passing
+according to the organization&#8217;s definition of passing.</dd>
+<dt>CI tests passing</dt>
+<dd>Automated tests in the continuous integration environment are passing.</dd>
+<dt>Peer code review completed</dt>
+<dd>A code review has been completed involving at least one tangentially
+involved party.</dd>
+<dt>Material defects from code review addressed</dt>
+<dd>All questions and defects raised in the code review have been addressed.</dd>
+<dt>All acceptance tests (manual and automated) identified, written and passing.</dt>
+<dd>Given/When/Then style or other detailed acceptance tests for the story have
+been written and verified either with automated tests or manual testing.
+Automated tests are preferred as they do not increase the overall manual
+testing load of the product.</dd>
+<dt>Help/documentation updated</dt>
+<dd>&#8220;Just enough&#8221; help and documentation has been produced so that the feature
+can be used by clients, maintained by developers and supported by customer
+service and operations.</dd>
+<dt>Release notes updated</dt>
+<dd>Deliverable artifacts and deployment procedures have been documented.</dd>
+</dl>
+
+<h2 id="toc_2">Done with a sprint</h2>
+
+<dl>
+<dt>Everything from &#8220;Done with a story&#8221;</dt>
+<dd>All stories in the sprint must be done (or returned to the backlog) for the
+sprint to be done.</dd>
+<dt>Released to beta/integration environment</dt>
+<dd>The deliverables identified in the release notes for the Sprint must be
+deployed in the beta/integration environment. </dd>
+<dt>Demoed in beta/integration environment (UAT)</dt>
+<dd>The demonstration of the increment to Product Owner and other Stakeholders
+must be performed from the beta/integration environment.</dd>
+<dt>Approved by Stakeholders</dt>
+<dd>The increment must be approved following UAT.</dd>
+<dt>CI/automated tests passing</dt>
+<dd>All automated tests against the product must be passing. </dd>
+<dt>Integration tests passing</dt>
+<dd>Manual integration tests for the product must be passing.</dd>
+<dt>Regression tests passing</dt>
+<dd>Manual regression tests for the product must be passing.</dd>
+<dt>Code coverage for automated tests meets acceptable guidelines.</dt>
+<dd>Code coverage measurements for unit tests must be within acceptable ranges.</dd>
+<dt>Performance tests passing</dt>
+<dd>Performance/scaling tests must return results within acceptable ranges.</dd>
+<dt>Diagrams/documentation updated to match final state</dt>
+<dd>Documentation for design, implementation, deployment, support and use must
+be updated to match the completed increment.</dd>
+<dt>Bugs closed or pushed into backlog</dt>
+<dd>Defects identified in UAT, QA and development must be resolved or appended
+to the backlog for Product Owner triage.</dd>
+<dt>Unfinished stories pushed into backlog</dt>
+<dd>Any work in the sprint which does not meet this definition of done will be
+returned to the backlog. The Sprint isn&#8217;t done as long as any non-done issues
+are associated with it.</dd>
+</dl>
+
+<h2 id="toc_3">Done with a QA/staging release</h2>
+
+<dl>
+<dt>Everything from &#8220;Done with a sprint&#8221;</dt>
+<dd>All Sprints that are to be included in the release must be Done.</dd>
+<dt>Operations guide updated and approved by Ops</dt>
+<dd>The support documentation delivered to Ops via the wiki must be updated and
+those updates must be approved (UAT) by the Operations team.</dd>
+<dt>Automated tests passing</dt>
+<dd>All automated tests available for the QA/Staging environment must be
+passing.</dd>
+</dl>
+
+<h2 id="toc_4">Done with a production release</h2>
+
+<dl>
+<dt>Everything from &#8220;Done with a QA/Staging Release&#8221;</dt>
+<dd>A successful QA/Staging release is a prerequisite for a Production release.</dd>
+<dt>Stress/Load tests passing</dt>
+<dd>Stress/Load testing in the QA/Staging environment must return results within
+acceptable ranges.</dd>
+<dt>Network/Component diagrams updated</dt>
+<dd>Documentation for design, implementation, deployment, support and use must
+be updated to match the proposed release.</dd>
+</dl>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-14T21:48:20-07:00" pubdate data-updated="true">2014-01-14</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scrum/'>scrum</a>, <a class='category' href='/blog/categories/sdlc/'>sdlc</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/" data-via="" data-counturl="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/09/file-vault2-hacks/" title="Previous Post: FileVault2 Hacks">&laquo; FileVault2 Hacks</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+<section id="comments">
+  <header>
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/22">this post's issue page on GitHub</a> to add a comment.</p>
+  </header>
+</section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section id="about-me">
+  <h1>About</h1>
+  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
+  highly opinionated geek.</p>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
+    <li><a href="http://claimid.com/bd808">Elsewhere on teh internets</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You're Done?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/27/planning-work-in-a-sprint/">Planning Work in a Sprint</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+Copyright &copy; 2014 - Bryan Davis
+<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
+<span id="license">
+  <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
+    Commons License"
+    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
+  otherwise noted, content on <span rel="cc:attributionURL"
+    property="cc:attributionName" href="http://bd808.github.com">this
+    site</span> is licensed under a <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+    Attribution-ShareAlike 3.0 Unported License</a>.</span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/22/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/22#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
+
+
+
+
+</body>
+</html>

@@ -9,9 +9,8 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Mac OS X 10.7 introduced a whole disk encryption service called
-FileVault2. This allows you to use AES 128 encryption to protect your
-data. This is a &hellip;">
+  <meta name="description" content="In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
+Done&quot;. The definition of done is roughly a list of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,54 @@ data. This is a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-14T21:48:20-07:00" pubdate data-updated="true">2014-01-14</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
+Done&quot;. The definition of done is roughly a list of requirements that all parts
+of the software increment must adhere to to be called complete. Like most
+things in scrum the implementation details are left to the team to decide.
+When I was first working with scrum I had a hard time finding examples of what
+a typical definition of done would include. Most scrum authors (and even many
+trainers) wave their hands and say that it&#39;s too specific to the team and
+their environment to generalize.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/14/how-do-you-know-when-youre-done/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -291,257 +338,9 @@ building multiple applications.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-14T22:11:00-06:00" pubdate data-updated="true">2013-10-14</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://boxen.github.com/">Boxen</a> is a framework and collection of libraries created by the fine folks
-at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
-repeatable. Rather than a simple set of shell scripts or other provisioning
-tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
-I don&#39;t have the time or space to explain how great Puppet is a configuration
-management is, so you&#39;ll have to trust me or go do your own research.</p>
-
-<p>Anybody could take a stab at rolling their own collection of Puppet manifests
-to manage their laptop or their corporate install base. That&#39;s actually
-exactly what GitHub did to create Boxen. Having tried (and failed) at doing
-just that before I was pretty impressed when I gave Boxen a test drive. GitHub
-has not only provided a system that &quot;works for them&quot;; they have also managed
-to engineer a reasonably extensible solution for a very complex problem.</p>
-
-<p>You can use your favorite search engine to find folks who can wax poetic about
-the magnitude of this accomplishment. Let&#39;s get on with a description of what
-I&#39;ve been able to do with it.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/14/managing-my-laptop-with-boxen/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/17/hacking-github-contributions-graph/">Hacking GitHub Contributions Calendar</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-17T21:06:00-06:00" pubdate data-updated="true">2013-04-17</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they
-call the &quot;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&quot;. This 53x7 grid shows the number of
-commits and other GitHub interactions that the user performed on each day for
-the last year.</p>
-
-<p><img src="/images/blog/timeline.png" alt="Example graph"></p>
-
-<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
-correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
-<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/17/hacking-github-contributions-graph/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/using-github-issues-for-comments/">Using GitHub Issues for Comments</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T20:22:00-06:00" pubdate data-updated="true">2012-04-14</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
-
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/04/14/using-github-issues-for-comments/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-31T15:40:00-06:00" pubdate data-updated="true">2012-03-31</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy.
-Database sequences and auto-number columns make it fairly trivial to
-implement. If that isn&#39;t available a simple file or shared memory counter can
-be implemented in minutes. Displaying such a number to a client however may
-give them more information than you would really like them to have about the
-number of ids you are allocating per unit time. We&#39;d really like  to obfuscate
-the id somehow while retaining the uniqueness of the original sequence.</p>
-
-<p>One way to do this is to use a combination of multiplication and modulo
-arithmetic to map the sequence number into a constrained set. With careful
-choice of the multiplicative constant and the modulo value the resulting
-number can be made to wander rather effectively over the entire space of the
-target set.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T21:47:00-07:00" pubdate data-updated="true">2012-01-18</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of
-three print &quot;Fizz&quot; instead of the number and for the multiples of five print
-&quot;Buzz&quot;. For numbers which are multiples of both three and five print
-&quot;FizzBuzz&quot;.
-<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
-</blockquote>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -563,6 +362,10 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
       </li>
     
@@ -576,10 +379,6 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
     
       <li class="post">
         <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/14/managing-my-laptop-with-boxen/">Managing My Laptop With Boxen</a>
       </li>
     
   </ul>
@@ -598,7 +397,7 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
     </div>
   </div>
   <footer role="contentinfo"><p>
-Copyright &copy; 2013 - Bryan Davis
+Copyright &copy; 2014 - Bryan Davis
 <span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
 <span id="license">
   <a rel="license"
