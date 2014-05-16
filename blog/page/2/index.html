@@ -9,8 +9,9 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Boxen is a framework and collection of libraries created by the fine folks
-at GitHub to make setting up and managing Mac OS X computers easy and &hellip;">
+  <meta name="description" content="I wanted to make my own build of Textual
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,59 @@ at GitHub to make setting up and managing Mac OS X computers easy and &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-21T21:38:00-06:00" pubdate data-updated="true">2013-10-21</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I wanted to make my own build of <a href="http://www.codeux.com/textual/">Textual</a>
+the other day and needed a code signing certificate to complete the build.
+I decided to make single, long-lived certificate to that I could reuse for
+building multiple applications.</p>
+
+<ol>
+<li><p>Open the &quot;Keychain Access&quot; application</p>
+<div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
+</code></pre></div></li>
+<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
+
+<p><img src="/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
+</ol>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -286,54 +340,9 @@ target set.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">FizzBuzz &mdash; the Wrong Way to Do It</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T21:47:00-07:00" pubdate data-updated="true">2012-01-18</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of
-three print &quot;Fizz&quot; instead of the number and for the multiples of five print
-&quot;Buzz&quot;. For numbers which are multiples of both three and five print
-&quot;FizzBuzz&quot;.
-<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
-</blockquote>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -357,6 +366,10 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
       </li>
     
@@ -370,10 +383,6 @@ three print &quot;Fizz&quot; instead of the number and for the multiples of five
     
       <li class="post">
         <a href="/blog/2013/10/27/planning-work-in-a-sprint/">Planning Work in a Sprint</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">Creating a Self-signed Code Certificate for XCode</a>
       </li>
     
   </ul>
