@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-05-15T23:04:25-06:00</updated>
+  <updated>2014-09-29T23:51:11-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -89,7 +89,7 @@ EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
   <entry>
     <title type="html"><![CDATA[How do you know when you're done?]]></title>
     <link href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"/>
-    <updated>2014-01-14T21:48:20-07:00</updated>
+    <updated>2014-01-14T22:48:20-06:00</updated>
     <id>http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done</id>
     <content type="html"><![CDATA[<p>In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
 Done&quot;. The definition of done is roughly a list of requirements that all parts
@@ -265,7 +265,7 @@ be updated to match the proposed release.</dd>
   <entry>
     <title type="html"><![CDATA[FileVault2 Hacks]]></title>
     <link href="http://bd808.com/blog/2013/12/09/file-vault2-hacks/"/>
-    <updated>2013-12-09T21:35:52-07:00</updated>
+    <updated>2013-12-09T22:35:52-06:00</updated>
     <id>http://bd808.com/blog/2013/12/09/file-vault2-hacks</id>
     <content type="html"><![CDATA[<p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
@@ -335,7 +335,7 @@ I chose to make a small application that executes this apple script command:</p>
   <entry>
     <title type="html"><![CDATA[Yaml 1.1.1 PECL Module Released]]></title>
     <link href="http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/"/>
-    <updated>2013-11-18T22:20:43-07:00</updated>
+    <updated>2013-11-18T23:20:43-06:00</updated>
     <id>http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released</id>
     <content type="html"><![CDATA[<p>I&#39;m glad to announce that I finally got around to releasing the bug fix
 version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
@@ -690,7 +690,7 @@ the cells would color like this:</p>
 <p>A tweet got me interested in the possibility of gaming the interaction data to
 control the display:</p>
 
-<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&#39;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="http://bd808.com//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&#39;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 
 <p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &quot;WILL&quot; over and over.
 Looking at his contribution activity list it was pretty obvious that this
@@ -1044,7 +1044,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
   <entry>
     <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
     <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
-    <updated>2012-01-18T21:47:00-07:00</updated>
+    <updated>2012-01-18T21:47:00-06:00</updated>
     <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
     <content type="html"><![CDATA[<blockquote>
 <p>Write a program that prints the numbers from 1 to 100. But for multiples of

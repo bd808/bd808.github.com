@@ -4,7 +4,7 @@
   <title><![CDATA[Category: yaml | bd808.com]]></title>
   <link href="http://bd808.com/blog/categories/yaml/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-05-15T23:04:25-06:00</updated>
+  <updated>2014-09-29T23:51:11-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Yaml 1.1.1 PECL Module Released]]></title>
     <link href="http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/"/>
-    <updated>2013-11-18T22:20:43-07:00</updated>
+    <updated>2013-11-18T23:20:43-06:00</updated>
     <id>http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released</id>
     <content type="html"><![CDATA[<p>I&#39;m glad to announce that I finally got around to releasing the bug fix
 version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
