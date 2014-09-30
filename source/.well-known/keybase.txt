@@ -1,0 +1,81 @@
+==================================================================
+https://keybase.io/bd808
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://bd808.com
+  * I am bd808 (https://keybase.io/bd808) on keybase.
+  * I have a public key with fingerprint 7DFA 4AEF AC15 8BFC 151D  2DD8 C139 E10F D9F2 0FC1
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.2"
+        },
+        "key": {
+            "fingerprint": "7dfa4aefac158bfc151d2dd8c139e10fd9f20fc1",
+            "host": "keybase.io",
+            "key_id": "C139E10FD9F20FC1",
+            "uid": "df1bf935ef9140f9f162b082340f2e00",
+            "username": "bd808"
+        },
+        "merkle_root": {
+            "ctime": 1412049861,
+            "hash": "dd85233d33bedf54fb2aaa68bc0eca486a4f6a20409f5ec6a60036dae7bd6106465ec2b7793e22d766327c8e94b73fe940b74146e4a8728a754bc8a9b960ccee",
+            "seqno": 65959
+        },
+        "service": {
+            "hostname": "bd808.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1412049924,
+    "expire_in": 157680000,
+    "prev": "2459ee43f9c62fdfd6cade52c1ef615b06c7e73dfa978c3517c71a091b5533a0",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owFVkntQFVUcx++FCwPXcCBzhoJmaIPBCPCcfS+PMjBgohwfCIwp132cheVx93Lv
+hWQudwZNmigg4o8goXgUDAYRKmmipRZiKSkDSJJGjg4wovGqmGpGaZehSfeP3T2/
+8/l9f7/vOb8aP0+D2Zjyav3cp6bZXuOlO4IhLSLS5MIEVSrBYlyYmK8gq1P/s/IF
+CIvB8lCJwDtQtKKGWFUJRec6QlaZSKwY2R2KatUoEM1E45g7Usf1ZFmxZiO7za7o
+WhgjyTzJI5kXIcUKsvaGEi5JrAgJDkEgS5yMAy2sSeaoDucjVbEVTYsiadFEjX8Z
+gqTNXBIOkhJ1vmhlQ5KhIHMEhWQOkkDmZEjjAmBxQlvgCAAddCD7qiVBYgGrN1uA
+7Hn5yGJX1RXHolPR9yEJcUByLA21dnhHjq4vsRROEBJBCEiSKVIWcJ7naVYQARJ5
+kqV5UqZ5LQtwMoVEmqcBIGiJR4wg0RDQJK1FcYFhOALhuMTQNIEzIos4UmAIWfsA
+gSEhSSOSZxmc5RmKFESW5wSOBqKIkNa/AxVaVSyGpjiKc+tLe7EiIr1t/cgedhYt
+qgVags2uOlVRzdfCOU6nLUY37Cyx6dgbSLCsCrRbBMUqabf18HVCDX30MDicjMTQ
+PptiRxZFJyiGZoH26HVQsaaJkxSHEEnInEjjsiRLtMhLiMJFiGQaUgKgRQYxhDYJ
+HMOKBAUZkYE84KBAUQTBg/8tapWcfLYm6VCyrbyzyI4wd4VHsMlgNBu8vTz0eTWY
+ff3/G+LUEH9D79nGndd76oJD52rcU1jqSDFUDE+ELxrLW5vHB+uC7kXM5kbtAgvK
+5AW4i3SElwdW7Tk/nRE/1bpwbilytK7y1ERy1VdN/esNrWP1Dxr9WsM/T14K2PRB
+lmfjWs8PQzzu1wy874OVbloYCWTOpmQ1L36ENTzXk1k7swa5jK5t79IzP530SBhi
+AsW7+Pdd9T+DcHWgjcLfHGeve7keX+wf/u3kexSM3rvu9pGYyd6S9M1RP5YM/vJr
+4dvxx1KrDhG5ykRK3vOxcPv+vIiyJ4919Jw+Yw54Jj2s2/Tnuumb80WfxHkEV4OS
+i7P7N6ZVNHoNxR4pbXxQt3tNY8p8tdWUMNyasETBGxer3Q0zd1+JaWor8k33rYwM
+e/3W5du7h8rWtgQ0pW5pGO+jap2nfZI7M0+U93abH4OhsUfjKzpPHZipWz7qjUuL
+pfjTfW2Dfr7+c9uOd/gIN25mNW/99qDrQH/oDy3ilQ3nxxjTdOfS4fjRsrDPrt2a
+sjUMDmwYvnb40tWv48eCqshD3rW+Qe8UPNWeiCq7WtqMy69NlvV9s1yHnXgxLrPL
+MnamcsJjj1zactmdvPhdUfK+hrdG5tu7X0rp2LtjtmVL7NzHGfctw4X/jP5hDr2T
+HZchdvy+va+rPurCl/d2xid1qzteaD7eNvz3+rRnD8YWtcKxL67SW0HLlb/sWec2
+Ti3/Cw==
+=Hk+E
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bd808
+
+==================================================================
