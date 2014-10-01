@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sysadmin | bd808.com]]></title>
   <link href="http://bd808.com/blog/categories/sysadmin/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-09-30T20:21:49-06:00</updated>
+  <updated>2014-09-30T22:36:28-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Puppet file recurse pitfall]]></title>
+    <link href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/"/>
+    <updated>2014-09-30T20:44:13-06:00</updated>
+    <id>http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall</id>
+    <content type="html"><![CDATA[<p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
+it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
+for our production infrastructure management. I took quite a while for me to
+get the hang of how Puppet does what it does, but today I&rsquo;d say I&rsquo;m a fairly
+decent Puppet programmer. Every once in a while however I stumble on something
+new and surprising.</p>
+
+<p>A couple of weeks ago I got an interesting bug report from a user about
+a collection of Puppet manifests I help manage. The bug was that his testing
+server was pegged at 99% CPU utilization for multiple minutes during each
+<code>puppet agent</code> run. The bug reporter did a great job of investigating and had
+also found that <code>strace</code> showed a repetitive stream of <code>stat()</code> calls while
+the process was hogging the CPU.</p>
+
+<p>This also turned out to the be the great kind of bug that was reproducible.
+The first testing server I tried the steps from the bug report on showed the
+exact same symptoms. I grabbed some very verbose logs by turning on the
+<code>--debug</code> logging in <code>puppet agent</code> and logging all of the system calls with
+<code>strace</code> at the same time:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ TZ</span><span class="o">=</span>UTC strace /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
+   --no-daemonize --no-splay --debug 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
+   tee /tmp/loud-puppet-strace.log
+</code></pre></div>
+<!-- MORE -->
+
+<p>Looking at the <code>strace</code> messages there was clearly a pattern of <code>stat()</code> calls
+for <code>.rb</code> files in unexpected numbers. Puppet was pretty obviously searching
+for ruby files that were related to several <a href="https://docs.puppetlabs.com/learning/definedtypes.html">defined types</a> implemented in
+our manifests. The log was full of lines like
+<code>stat(&quot;/var/lib/puppet/lib/puppet/type/git::clone.rb&quot;)</code>. A little
+searching led me to <a href="https://tickets.puppetlabs.com/browse/PUP-2924">PUP-2924</a> which explained that Puppet was checking to
+see if the type had been implemented as a <a href="https://docs.puppetlabs.com/guides/custom_types.html">custom type</a> in Ruby code first
+before looking for a defined type in the Puppet manifests. In our case, there
+were 17 possible paths for a Ruby class to be loaded from which led to 17
+failed stat calls for each defined type in the manifest.</p>
+
+<p>What this did not explain however what why there were so many checks for our
+<code>git::clone</code> resource. Two million, two hundred ninety three thousand, six
+hundred and seventy seven calls to <code>stat()</code> for the same collection of files
+in this one puppet run. Insanity!</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>grep stat<span class="se">\(</span> loud-puppet-strace.log <span class="p">|</span> grep git::clone <span class="p">|</span> wc -l
+2293677
+</code></pre></div>
+<p>So now I knew what was happening, but I needed to dig deeper to try and figure
+out why it was happening. For this I wanted even more verbose <code>puppet agent</code>
+output.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ TZ</span><span class="o">=</span>UTC /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
+     --no-daemonize --no-splay --debug --trace --evaltrace --noop 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
+     tee /tmp/puppet-noop.log
+</code></pre></div>
+<p>I watched this run happen in real time and took note of what was logged just
+before the long pause in logging which accompanied each CPU utilization spike
+that I now knew correlated to the outrageous number of <code>stat()</code> calls.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Info: Git::Clone[vagrant]: Starting to evaluate the resource
+Info: Git::Clone[vagrant]: Evaluated in 0.01 seconds
+[... long pause here ...]
+Info: /Stage[main]/Labs_vagrant/File[/srv/vagrant]: Starting to evaluate the resource
+Info: /Stage[main]/Labs_vagrant/File[/srv/vagrant]: Evaluated in 0.00 seconds
+</code></pre></div>
+<p>This led to my ah ha moment and an eventual fix. The <code>File[/srv/vagrant]</code>
+resource had a definition that looked something like this:</p>
+<div class="highlight"><pre><code class="language-puppet" data-lang="puppet"><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant&#39;</span><span class="p">:</span>
+    <span class="na">recurse</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The intent of this was to recursively manage the ownership of files in the
+/srv/vagrant directory. Seems pretty simple right? <code>chown -R vagrant:www-data
+/srv/vagrant</code> would do the same thing at a command prompt.</p>
+
+<p>It turns out however that what Puppet does under the hood is more complicated.
+The <code>recurse =&gt; true</code> flag makes Puppet do the equivalent of a <code>find</code> command
+on the /srv/vagrant directory and then create a new File resource for each file
+and directory found that replicates the other settings of the parent type.</p>
+<div class="highlight"><pre><code class="language-puppet" data-lang="puppet"><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/file1&#39;</span><span class="p">:</span>
+    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/file2&#39;</span><span class="p">:</span>
+    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+<span class="p">}</span><span class="c"></span>
+<span class="c"># ... Lots and lots more file resources here ...</span>
+<span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/subdir/subdir/subdir/fileN&#39;</span><span class="p">:</span>
+    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>All of these resources are added to the internal DAG (Directed Acyclic Graph)
+and then evaluated one by one. Our /srv/vagrant directory can have a lot of
+files beneath it. In my testing server there turned out to be about 135,000
+files. So Puppet added 135,000 extra nodes to the DAG and as it placed each
+one it called <code>stat()</code> 17 times to see if there was a Ruby class providing the
+<code>git::clone</code> resource that Puppet wanted to ensure that the new File resource
+followed.</p>
+
+<p><strong><em>YIKES!</em></strong></p>
+
+<p>I think there are probably several opportunities here for optimizations in the
+Puppet implementation itself. Caching the implementation of the <code>git::clone</code>
+resource would be one that comes to mind pretty quickly. Making recursive File
+resources operate based on one node rather than N would be another. There is
+probably some kind of graph insertion change that could be made as well. If
+I was more comfortable with Ruby I might take a stab at one or more of these
+myself.</p>
+
+<p>To fix the bug at hand however I looked around and found that we really didn&rsquo;t
+need to bother with the recursive <code>chown</code> at all, so I was able to remove the
+whole <code>File[/srv/vagrant]</code> resource from the manifest and let our <code>git::clone</code>
+implementation create the directory when it performed the initial git
+repository clone operation.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Managing my laptop with Boxen]]></title>

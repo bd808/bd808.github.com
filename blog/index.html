@@ -9,7 +9,8 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="Blog Archives About Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek. Résumé Recent Posts GnuPG Key &hellip;">
+  <meta name="description" content="Puppet has become my go to system management tool in no small part because
+it is the tool that the operations group at $DAYJOB has standardized on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +83,229 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-30T20:44:13-06:00'><span class='date'>2014-09-30</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
+it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
+for our production infrastructure management. I took quite a while for me to
+get the hang of how Puppet does what it does, but today I&rsquo;d say I&rsquo;m a fairly
+decent Puppet programmer. Every once in a while however I stumble on something
+new and surprising.</p>
+
+<p>A couple of weeks ago I got an interesting bug report from a user about
+a collection of Puppet manifests I help manage. The bug was that his testing
+server was pegged at 99% CPU utilization for multiple minutes during each
+<code>puppet agent</code> run. The bug reporter did a great job of investigating and had
+also found that <code>strace</code> showed a repetitive stream of <code>stat()</code> calls while
+the process was hogging the CPU.</p>
+
+<p>This also turned out to the be the great kind of bug that was reproducible.
+The first testing server I tried the steps from the bug report on showed the
+exact same symptoms. I grabbed some very verbose logs by turning on the
+<code>--debug</code> logging in <code>puppet agent</code> and logging all of the system calls with
+<code>strace</code> at the same time:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ TZ</span><span class="o">=</span>UTC strace /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
+</span><span class='line'>   --no-daemonize --no-splay --debug 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
+</span><span class='line'>   tee /tmp/loud-puppet-strace.log
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/30/puppet-file-recurse-pitfall/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-15T22:33:39-06:00'><span class='date'>2014-05-15</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/15/gnupg-key-transition-statement/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-14T22:48:20-06:00'><span class='date'>2014-01-14</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
+Done&rdquo;. The definition of done is roughly a list of requirements that all parts
+of the software increment must adhere to to be called complete. Like most
+things in scrum the implementation details are left to the team to decide.
+When I was first working with scrum I had a hard time finding examples of what
+a typical definition of done would include. Most scrum authors (and even many
+trainers) wave their hands and say that it&rsquo;s too specific to the team and
+their environment to generalize.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/14/how-do-you-know-when-youre-done/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-09T22:35:52-06:00'><span class='date'>2013-12-09</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac OS X 10.7 introduced a whole disk encryption service called
+<a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
+data. This is a great feature but it has a few small drawbacks. It uses the
+password of your primary user account to unlock the system. I&rsquo;m a fan of
+strong passwords but for encryption I&rsquo;d prefer to use a longer pass phrase for
+increased entropy. Second the EFI-boot screen that is used to get the password
+to decrypt the disk shows the display name of all usersthat can unlock the
+system rather than blank fields for both username and password. This leaks
+information that I would really rather not leak. Fortunately I&rsquo;ve found
+a little hack to work around both of these issues.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/09/file-vault2-hacks/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-18T23:20:43-06:00'><span class='date'>2013-11-18</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;m glad to announce that I finally got around to releasing the bug fix
+version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
+I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
+
+<ul>
+<li><a href="https://bugs.php.net/bug.php?id=61770">#61770</a> Crash on nonunicode character</li>
+<li><a href="https://bugs.php.net/bug.php?id=61923">#61923</a> Detect_scalar_type() is not aware of base 60 representation</li>
+<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling PHP with YAML as static extension fails</li>
+<li><a href="https://bugs.php.net/bug.php?id=64019">#64019</a> Segmentation fault if yaml anchor ends with a colon</li>
+<li><a href="https://bugs.php.net/bug.php?id=64694">#64694</a> Segfault when array used as mapping key</li>
+</ul>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -103,6 +326,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
       </li>
     
@@ -116,10 +343,6 @@
     
       <li class="post">
         <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/27/planning-work-in-a-sprint/">Planning Work in a Sprint</a>
       </li>
     
   </ul>

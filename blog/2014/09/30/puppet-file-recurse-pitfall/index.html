@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Puppet file recurse pitfall - bd808.com</title>
+  <meta name="author" content="Bryan Davis">
+
+  
+  <meta name="description" content="Puppet has become my go to system management tool in no small part because
+it is the tool that the operations group at $DAYJOB has standardized on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
+<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
+<link rel="openid2.provider" href="http://www.myopenid.com/server" />
+<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18797634-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">bd808.com</a></h1>
+  
+    <h2>FOSS in, FOSS out: software, process and operations</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:bd808.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Puppet File Recurse Pitfall</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-30T20:44:13-06:00'><span class='date'>2014-09-30</span> <span class='time'></span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
+it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
+for our production infrastructure management. I took quite a while for me to
+get the hang of how Puppet does what it does, but today I&rsquo;d say I&rsquo;m a fairly
+decent Puppet programmer. Every once in a while however I stumble on something
+new and surprising.</p>
+
+<p>A couple of weeks ago I got an interesting bug report from a user about
+a collection of Puppet manifests I help manage. The bug was that his testing
+server was pegged at 99% CPU utilization for multiple minutes during each
+<code>puppet agent</code> run. The bug reporter did a great job of investigating and had
+also found that <code>strace</code> showed a repetitive stream of <code>stat()</code> calls while
+the process was hogging the CPU.</p>
+
+<p>This also turned out to the be the great kind of bug that was reproducible.
+The first testing server I tried the steps from the bug report on showed the
+exact same symptoms. I grabbed some very verbose logs by turning on the
+<code>--debug</code> logging in <code>puppet agent</code> and logging all of the system calls with
+<code>strace</code> at the same time:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ TZ</span><span class="o">=</span>UTC strace /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
+</span><span class='line'>   --no-daemonize --no-splay --debug 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
+</span><span class='line'>   tee /tmp/loud-puppet-strace.log
+</span></code></pre></td></tr></table></div></figure>
+
+<!-- MORE -->
+
+<p>Looking at the <code>strace</code> messages there was clearly a pattern of <code>stat()</code> calls
+for <code>.rb</code> files in unexpected numbers. Puppet was pretty obviously searching
+for ruby files that were related to several <a href="https://docs.puppetlabs.com/learning/definedtypes.html">defined types</a> implemented in
+our manifests. The log was full of lines like
+<code>stat(&quot;/var/lib/puppet/lib/puppet/type/git::clone.rb&quot;)</code>. A little
+searching led me to <a href="https://tickets.puppetlabs.com/browse/PUP-2924">PUP-2924</a> which explained that Puppet was checking to
+see if the type had been implemented as a <a href="https://docs.puppetlabs.com/guides/custom_types.html">custom type</a> in Ruby code first
+before looking for a defined type in the Puppet manifests. In our case, there
+were 17 possible paths for a Ruby class to be loaded from which led to 17
+failed stat calls for each defined type in the manifest.</p>
+
+<p>What this did not explain however what why there were so many checks for our
+<code>git::clone</code> resource. Two million, two hundred ninety three thousand, six
+hundred and seventy seven calls to <code>stat()</code> for the same collection of files
+in this one puppet run. Insanity!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>grep stat<span class="se">\(</span> loud-puppet-strace.log <span class="p">|</span> grep git::clone <span class="p">|</span> wc -l
+</span><span class='line'>2293677
+</span></code></pre></td></tr></table></div></figure>
+
+<p>So now I knew what was happening, but I needed to dig deeper to try and figure
+out why it was happening. For this I wanted even more verbose <code>puppet agent</code>
+output.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ TZ</span><span class="o">=</span>UTC /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
+</span><span class='line'>     --no-daemonize --no-splay --debug --trace --evaltrace --noop 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
+</span><span class='line'>     tee /tmp/puppet-noop.log
+</span></code></pre></td></tr></table></div></figure>
+
+<p>I watched this run happen in real time and took note of what was logged just
+before the long pause in logging which accompanied each CPU utilization spike
+that I now knew correlated to the outrageous number of <code>stat()</code> calls.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Info: Git::Clone<span class="o">[</span>vagrant<span class="o">]</span>: Starting to evaluate the resource
+</span><span class='line'>Info: Git::Clone<span class="o">[</span>vagrant<span class="o">]</span>: Evaluated in 0.01 seconds
+</span><span class='line'><span class="o">[</span>... long pause here ...<span class="o">]</span>
+</span><span class='line'>Info: /Stage<span class="o">[</span>main<span class="o">]</span>/Labs_vagrant/File<span class="o">[</span>/srv/vagrant<span class="o">]</span>: Starting to evaluate the resource
+</span><span class='line'>Info: /Stage<span class="o">[</span>main<span class="o">]</span>/Labs_vagrant/File<span class="o">[</span>/srv/vagrant<span class="o">]</span>: Evaluated in 0.00 seconds
+</span></code></pre></td></tr></table></div></figure>
+
+<p>This led to my ah ha moment and an eventual fix. The <code>File[/srv/vagrant]</code>
+resource had a definition that looked something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='puppet'><span class='line'><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="na">recurse</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The intent of this was to recursively manage the ownership of files in the
+/srv/vagrant directory. Seems pretty simple right? <code>chown -R vagrant:www-data
+/srv/vagrant</code> would do the same thing at a command prompt.</p>
+
+<p>It turns out however that what Puppet does under the hood is more complicated.
+The <code>recurse =&gt; true</code> flag makes Puppet do the equivalent of a <code>find</code> command
+on the /srv/vagrant directory and then create a new File resource for each file
+and directory found that replicates the other settings of the parent type.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='puppet'><span class='line'><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/file1&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/file2&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">}</span><span class="c"></span>
+</span><span class='line'><span class="c"># ... Lots and lots more file resources here ...</span>
+</span><span class='line'><span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/srv/vagrant/subdir/subdir/subdir/fileN&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="na">owner</span>   <span class="o">=&gt;</span> <span class="s">&#39;vagrant&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">group</span>   <span class="o">=&gt;</span> <span class="s">&#39;www-data&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="na">require</span> <span class="o">=&gt;</span> <span class="na">Git</span><span class="p">::</span><span class="na">Clone</span><span class="p">[</span><span class="s">&#39;vagrant&#39;</span><span class="p">],</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>All of these resources are added to the internal DAG (Directed Acyclic Graph)
+and then evaluated one by one. Our /srv/vagrant directory can have a lot of
+files beneath it. In my testing server there turned out to be about 135,000
+files. So Puppet added 135,000 extra nodes to the DAG and as it placed each
+one it called <code>stat()</code> 17 times to see if there was a Ruby class providing the
+<code>git::clone</code> resource that Puppet wanted to ensure that the new File resource
+followed.</p>
+
+<p><strong><em>YIKES!</em></strong></p>
+
+<p>I think there are probably several opportunities here for optimizations in the
+Puppet implementation itself. Caching the implementation of the <code>git::clone</code>
+resource would be one that comes to mind pretty quickly. Making recursive File
+resources operate based on one node rather than N would be another. There is
+probably some kind of graph insertion change that could be made as well. If
+I was more comfortable with Ruby I might take a stab at one or more of these
+myself.</p>
+
+<p>To fix the bug at hand however I looked around and found that we really didn&rsquo;t
+need to bother with the recursive <code>chown</code> at all, so I was able to remove the
+whole <code>File[/srv/vagrant]</code> resource from the manifest and let our <code>git::clone</code>
+implementation create the directory when it performed the initial git
+repository clone operation.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-09-30T20:44:13-06:00'><span class='date'>2014-09-30</span> <span class='time'></span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/puppet/'>puppet</a>, <a class='category' href='/blog/categories/sysadmin/'>sysadmin</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/" data-via="" data-counturl="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/05/15/gnupg-key-transition-statement/" title="Previous Post: GnuPG key transition statement">&laquo; GnuPG key transition statement</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+<section id="comments">
+  <header>
+    <h2>Comments</h2>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/24">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
+  </header>
+</section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section id="about-me">
+  <h1>About</h1>
+  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
+  highly opinionated geek.</p>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+Copyright &copy; 2014 - Bryan Davis
+<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
+<span id="license">
+  <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
+    Commons License"
+    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
+  otherwise noted, content on <span rel="cc:attributionURL"
+    property="cc:attributionName" href="http://bd808.github.com">this
+    site</span> is licensed under a <a rel="license"
+    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+    Attribution-ShareAlike 3.0 Unported License</a>.</span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/24/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , dataType: 'json'
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/24#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
+
+
+
+
+</body>
+</html>
