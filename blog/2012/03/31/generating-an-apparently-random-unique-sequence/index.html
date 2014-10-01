@@ -94,14 +94,7 @@ Database sequences and auto-number columns make it fairly trivial to &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-03-31T15:40:00-06:00" pubdate data-updated="true">2012-03-31</time>
+<time class='entry-date' datetime='2012-03-31T15:40:00-06:00'><span class='date'>2012-03-31</span> <span class='time'></span></time>
         
       </p>
     
@@ -110,10 +103,10 @@ Database sequences and auto-number columns make it fairly trivial to &hellip;">
 
 <div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy.
 Database sequences and auto-number columns make it fairly trivial to
-implement. If that isn&#39;t available a simple file or shared memory counter can
+implement. If that isn&rsquo;t available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
 give them more information than you would really like them to have about the
-number of ids you are allocating per unit time. We&#39;d really like  to obfuscate
+number of ids you are allocating per unit time. We&rsquo;d really like  to obfuscate
 the id somehow while retaining the uniqueness of the original sequence.</p>
 
 <p>One way to do this is to use a combination of multiplication and modulo
@@ -134,7 +127,7 @@ target set.</p>
 
 <p><code>p</code> and <code>q</code> must be chosen such that:
 - p &lt; q
-- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &#8230; depending on the precision of the underlying system)
+- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)
 - p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</p>
 
 <p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br>
@@ -143,7 +136,7 @@ target set.</p>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table></p>
 
-<p>Change <code>p</code> to 7 and you&#39;ll get:<br>
+<p>Change <code>p</code> to 7 and you&rsquo;ll get:<br>
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
@@ -160,11 +153,11 @@ evenly.</p>
 <p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output
 of the function and maintaining the uniqueness of the result. One easy way to
 ensure that the chosen coefficients are coprime is to make them both be prime
-powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &#8230;).</p>
+powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &hellip;).</p>
 
 <p>This method is a type of <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear congruential generator</a> almost exactly equivalent to the <a href="https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG">Park–Miller random number generator</a>.</p>
 
-<h2 id="toc_0">Examples</h2>
+<h2 id="examples">Examples</h2>
 
 <figure class='code'><figcaption><span>PHP </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -206,7 +199,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
 
 <hr>
 
-<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&#39;t getting.</p>
+<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&rsquo;t getting.</p>
 
 <p>*[GCD]: Greatest Common Divisor</p>
 </div>
@@ -224,14 +217,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-03-31T15:40:00-06:00" pubdate data-updated="true">2012-03-31</time>
+<time class='entry-date' datetime='2012-03-31T15:40:00-06:00'><span class='date'>2012-03-31</span> <span class='time'></span></time>
       
 
 <span class="categories">
@@ -267,7 +253,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
 <section id="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/5">this post's issue page on GitHub</a> to add a comment.</p>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/5">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
 </section>
 
@@ -292,7 +278,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You're Done?</a>
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
       </li>
     
       <li class="post">

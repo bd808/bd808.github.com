@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-09-29T23:51:11-06:00</updated>
+  <updated>2014-09-30T20:21:49-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -91,13 +91,13 @@ EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
     <link href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"/>
     <updated>2014-01-14T22:48:20-06:00</updated>
     <id>http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done</id>
-    <content type="html"><![CDATA[<p>In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
-Done&quot;. The definition of done is roughly a list of requirements that all parts
+    <content type="html"><![CDATA[<p>In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
+Done&rdquo;. The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
 things in scrum the implementation details are left to the team to decide.
 When I was first working with scrum I had a hard time finding examples of what
 a typical definition of done would include. Most scrum authors (and even many
-trainers) wave their hands and say that it&#39;s too specific to the team and
+trainers) wave their hands and say that it&rsquo;s too specific to the team and
 their environment to generalize.</p>
 
 <!-- more -->
@@ -119,7 +119,7 @@ they produce an increment that is worthy of their combined energy. When used
 properly it will increase the reputation and worth of the team, their product
 and the organization.</p>
 
-<h2 id="toc_0">Done with grooming a story</h2>
+<h2 id="done-with-grooming-a-story">Done with grooming a story</h2>
 
 <p>A groomed story is <strong><em>clear, feasible and testable</em></strong>.</p>
 
@@ -148,18 +148,18 @@ tech or legacy impact. These things are stories in their own right and should
 be treated as such. R&amp;D must be traceable expense and is just as important as
 the final product/feature.</p>
 
-<h2 id="toc_1">Done with a story</h2>
+<h2 id="done-with-a-story">Done with a story</h2>
 
 <dl>
-<dt>Everything from &#8220;Done with grooming a story&#8221;</dt>
+<dt>Everything from &ldquo;Done with grooming a story&rdquo;</dt>
 <dd>A story must be groomed before it can be implemented.</dd>
 <dt>Design complete</dt>
 <dd>Design is not one size fits all. Some stories must have UML and detailed
-functional descriptions. Others will only need a statement of &#8220;do this just
-like we always do an X feature.&#8221; The level of design required should be
+functional descriptions. Others will only need a statement of &ldquo;do this just
+like we always do an X feature.&rdquo; The level of design required should be
 determined during grooming by the team.</dd>
 <dt>Design artifacts in wiki/bug tracker/other</dt>
-<dd>Design isn&#8217;t complete until it&#8217;s tangible artifacts are available to the
+<dd>Design isn&rsquo;t complete until it&rsquo;s tangible artifacts are available to the
 team and the business.</dd>
 <dt>Design reviewed by peers</dt>
 <dd>Similar to a code review, design should get a once over by at least one
@@ -177,7 +177,7 @@ the story.</dd>
 <dd>Unit tests are passing in all testable environments.</dd>
 <dt>Automated code checks passing</dt>
 <dd>Coding style, lint and other common automated code quality measurements are passing
-according to the organization&#8217;s definition of passing.</dd>
+according to the organization&rsquo;s definition of passing.</dd>
 <dt>CI tests passing</dt>
 <dd>Automated tests in the continuous integration environment are passing.</dd>
 <dt>Peer code review completed</dt>
@@ -191,17 +191,17 @@ been written and verified either with automated tests or manual testing.
 Automated tests are preferred as they do not increase the overall manual
 testing load of the product.</dd>
 <dt>Help/documentation updated</dt>
-<dd>&#8220;Just enough&#8221; help and documentation has been produced so that the feature
+<dd>&ldquo;Just enough&rdquo; help and documentation has been produced so that the feature
 can be used by clients, maintained by developers and supported by customer
 service and operations.</dd>
 <dt>Release notes updated</dt>
 <dd>Deliverable artifacts and deployment procedures have been documented.</dd>
 </dl>
 
-<h2 id="toc_2">Done with a sprint</h2>
+<h2 id="done-with-a-sprint">Done with a sprint</h2>
 
 <dl>
-<dt>Everything from &#8220;Done with a story&#8221;</dt>
+<dt>Everything from &ldquo;Done with a story&rdquo;</dt>
 <dd>All stories in the sprint must be done (or returned to the backlog) for the
 sprint to be done.</dd>
 <dt>Released to beta/integration environment</dt>
@@ -230,14 +230,14 @@ be updated to match the completed increment.</dd>
 to the backlog for Product Owner triage.</dd>
 <dt>Unfinished stories pushed into backlog</dt>
 <dd>Any work in the sprint which does not meet this definition of done will be
-returned to the backlog. The Sprint isn&#8217;t done as long as any non-done issues
+returned to the backlog. The Sprint isn&rsquo;t done as long as any non-done issues
 are associated with it.</dd>
 </dl>
 
-<h2 id="toc_3">Done with a QA/staging release</h2>
+<h2 id="done-with-a-qa/staging-release">Done with a QA/staging release</h2>
 
 <dl>
-<dt>Everything from &#8220;Done with a sprint&#8221;</dt>
+<dt>Everything from &ldquo;Done with a sprint&rdquo;</dt>
 <dd>All Sprints that are to be included in the release must be Done.</dd>
 <dt>Operations guide updated and approved by Ops</dt>
 <dd>The support documentation delivered to Ops via the wiki must be updated and
@@ -247,10 +247,10 @@ those updates must be approved (UAT) by the Operations team.</dd>
 passing.</dd>
 </dl>
 
-<h2 id="toc_4">Done with a production release</h2>
+<h2 id="done-with-a-production-release">Done with a production release</h2>
 
 <dl>
-<dt>Everything from &#8220;Done with a QA/Staging Release&#8221;</dt>
+<dt>Everything from &ldquo;Done with a QA/Staging Release&rdquo;</dt>
 <dd>A successful QA/Staging release is a prerequisite for a Production release.</dd>
 <dt>Stress/Load tests passing</dt>
 <dd>Stress/Load testing in the QA/Staging environment must return results within
@@ -270,12 +270,12 @@ be updated to match the proposed release.</dd>
     <content type="html"><![CDATA[<p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
-password of your primary user account to unlock the system. I&#39;m a fan of
-strong passwords but for encryption I&#39;d prefer to use a longer pass phrase for
+password of your primary user account to unlock the system. I&rsquo;m a fan of
+strong passwords but for encryption I&rsquo;d prefer to use a longer pass phrase for
 increased entropy. Second the EFI-boot screen that is used to get the password
 to decrypt the disk shows the display name of all usersthat can unlock the
 system rather than blank fields for both username and password. This leaks
-information that I would really rather not leak. Fortunately I&#39;ve found
+information that I would really rather not leak. Fortunately I&rsquo;ve found
 a little hack to work around both of these issues.</p>
 
 <!-- more -->
@@ -287,12 +287,12 @@ a little hack to work around both of these issues.</p>
 computer after an unlock-enabled user has started or unlocked the drive.
 Once unlocked, the drive remains unlocked and available to all users, until
 the computer is restarted.
-<small><a href="http://support.apple.com/kb/ht4790">&quot;OS X: About FileVault 2&quot;</a></small></p>
+<small><a href="http://support.apple.com/kb/ht4790">&ldquo;OS X: About FileVault 2&rdquo;</a></small></p>
 </blockquote>
 
 <p>My fix is to create a new local user account that will only be used to unlock
 the disk encryption key. This will provide a fix for both issues. Since this
-account won&#39;t be my primary account I can give it a much longer password
+account won&rsquo;t be my primary account I can give it a much longer password
 without risk of <a href="https://en.wikipedia.org/wiki/Repetitive_strain_injury">RSI</a> every time that OS X prompts me for an administrator
 password to install or update software. I can also give the user an innocuous
 display name to be shown on the unlock screen.</p>
@@ -311,7 +311,7 @@ user as the only user who can unlock the disk.</li>
 </ol>
 
 <p>If you already have FileVault 2 enabled you will need to remove the decryption
-right from the existing users. The easiest way I&#39;ve found to do this is using
+right from the existing users. The easiest way I&rsquo;ve found to do this is using
 the <code>fdesetup</code> command line tool. <code>sudo fdesetup list</code> will show you the
 accounts that are enabled. <code>sudo fdesetup remove -user bd808</code> will remove the
 certificate for the <em>bd808</em> user.</p>
@@ -337,7 +337,7 @@ I chose to make a small application that executes this apple script command:</p>
     <link href="http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/"/>
     <updated>2013-11-18T23:20:43-06:00</updated>
     <id>http://bd808.com/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released</id>
-    <content type="html"><![CDATA[<p>I&#39;m glad to announce that I finally got around to releasing the bug fix
+    <content type="html"><![CDATA[<p>I&rsquo;m glad to announce that I finally got around to releasing the bug fix
 version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
 I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
 
@@ -368,9 +368,9 @@ install.</p>
     <link href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/"/>
     <updated>2013-10-27T20:05:00-06:00</updated>
     <id>http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint</id>
-    <content type="html"><![CDATA[<p>We&#39;ve been having some discussions at <code>$DAYJOB</code> about process and
+    <content type="html"><![CDATA[<p>We&rsquo;ve been having some discussions at <code>$DAYJOB</code> about process and
 methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
-or may not be helpful for the particular group I work with. I&#39;ve been
+or may not be helpful for the particular group I work with. I&rsquo;ve been
 providing some anecdotal input based my past experience with scrum and other
 methodologies/frameworks/practices and asking questions about what problems
 the group is hoping to find new solutions for.</p>
@@ -384,64 +384,64 @@ unit of work)</em>.</p>
 
 <!-- more -->
 
-<h2 id="toc_0">Pick some work you think you can get done</h2>
+<h2 id="pick-some-work-you-think-you-can-get-done">Pick some work you think you can get done</h2>
 
-<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&#39;s
-a damn good question but one that&#39;s going to depend on your environment. For
-the sake of this post let&#39;s assume that you have access to an ordered list of
-features that need to be implemented. Let&#39;s further assume that the team and
+<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&rsquo;s
+a damn good question but one that&rsquo;s going to depend on your environment. For
+the sake of this post let&rsquo;s assume that you have access to an ordered list of
+features that need to be implemented. Let&rsquo;s further assume that the team and
 the stakeholders have talked about these features a little and that the team
 has reached a general consensus about how big the top few features are
 relative to features the team has worked on in the past. Scrum calls this
-a &quot;groomed backlog&quot;, but you can call it whatever you&#39;d like.</p>
+a &ldquo;groomed backlog&rdquo;, but you can call it whatever you&rsquo;d like.</p>
 
 <p>Now that you know where the work comes from, pick some. How much? Well, as
 much as the team thinks it can get done in the iteration. Without knowing your
-team and the length of the iteration and how tricky the problems are I can&#39;t
+team and the length of the iteration and how tricky the problems are I can&rsquo;t
 tell you. Just go with your collective gut and pick some. If you pick too
 little you can always come back and get more. If you pick too much the team
 can use that experiential data to adjust when choosing for the next iteration.
 Just pick some work for now and adjust in the future based on what happens
 during the iteration<sup><a href="#n2">2</a></sup> <a name="n2-r"></a>.</p>
 
-<h2 id="toc_1">Figure out what ties the work together</h2>
+<h2 id="figure-out-what-ties-the-work-together">Figure out what ties the work together</h2>
 
 <p>Step two, come up with a narrative about why you chose the work. A list of
 features and bugs you want to implement is a great start, but you can do
 better. It will be a lot easier for the team to make good choices during the
-iteration if they have a more noble goal than &quot;cross off all the things on
-this list.&quot; If the goal is just to get each item done it&#39;s more likely that
+iteration if they have a more noble goal than &ldquo;cross off all the things on
+this list.&rdquo; If the goal is just to get each item done it&rsquo;s more likely that
 people will think of each part in isolation rather than thinking about how
 this work builds on what came before and enables more enhancements in the
 future.</p>
 
-<p>This step may lead you to switch out some of the things you&#39;ve chosen with
-other things that are in the backlog to make a more cohesive story. That&#39;s ok
-as long as you keep the most important thing. After all that&#39;s the MOST
+<p>This step may lead you to switch out some of the things you&rsquo;ve chosen with
+other things that are in the backlog to make a more cohesive story. That&rsquo;s ok
+as long as you keep the most important thing. After all that&rsquo;s the MOST
 important thing; if you get it done plus some other stuff and everything works
 people should be happy.</p>
 
-<p>This narrative you&#39;ve created and the work that supports it are the forecast
+<p>This narrative you&rsquo;ve created and the work that supports it are the forecast
 for the iteration. The product owner can take this information back to the
 rest of the stakeholders and tell them what to expect to hear about in the
 demonstration meeting at the end of the iteration. Be careful not to tell
-them that all of this work will be completed. The team has said they&#39;ll try
-to do this but they can&#39;t promise that it will get done any more than the
+them that all of this work will be completed. The team has said they&rsquo;ll try
+to do this but they can&rsquo;t promise that it will get done any more than the
 stakeholders  can promise how much money will be raised or how many new
 customers will be acquired.</p>
 
-<h2 id="toc_2">Figure out how to do the work</h2>
+<h2 id="figure-out-how-to-do-the-work">Figure out how to do the work</h2>
 
-<p>The last step before you close the planning meeting and get back to &quot;real
-work&quot; is to figure out how to actually <em>do</em> the work. We&#39;re talking about
+<p>The last step before you close the planning meeting and get back to &ldquo;real
+work&rdquo; is to figure out how to actually <em>do</em> the work. We&rsquo;re talking about
 agile practices here so nobody should expect a gantt chart chart or
 a architecture document, but <strike>anarchists</strike> agile teams need
-enough of a plan to do today&#39;s work efficiently. The product owner doesn&#39;t
+enough of a plan to do today&rsquo;s work efficiently. The product owner doesn&rsquo;t
 need to stick around for this half of the meeting. The team should have enough
 information from the feature descriptions already given to make the tactical
 plan.</p>
 
-<p>I&#39;m sure there are other methods that would work as well, but I&#39;ve personally
+<p>I&rsquo;m sure there are other methods that would work as well, but I&rsquo;ve personally
 had success with a process that starts with finding dependencies. The team
 looks at the stories and tries to determine their rough interdependencies. The
 goal here is to identify communication interfaces that need to be specified
@@ -449,20 +449,20 @@ and sequential implementation order dependencies. The team also looks for
 areas of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.</p>
 
-<p>Once you&#39;ve got the dependencies sorted, start breaking down the most obvious
+<p>Once you&rsquo;ve got the dependencies sorted, start breaking down the most obvious
 starting point features. Make a list of the smaller tasks that need
 to be completed to finish the feature. Repeat the process by breaking those
-tasks down into even smaller tasks. Stop when the leaf tasks are &quot;small
-enough&quot;. My rule of thumb is that something that feels like it will take 3-5
+tasks down into even smaller tasks. Stop when the leaf tasks are &ldquo;small
+enough&rdquo;. My rule of thumb is that something that feels like it will take 3-5
 ideal hours is small enough. Getting smaller than that early on is probably
 a waste of time, but staying larger leaves more uncertainty and risk in
-the plan. Scrum calls this step &quot;story decomposition&quot;.</p>
+the plan. Scrum calls this step &ldquo;story decomposition&rdquo;.</p>
 
 <p>The list of decomposed tasks that the team has created is the start of the
 iteration backlog. Just like the product backlog this needs to be put in order
 so that when a team member or pair needs more work to do they can just pull
 the next most important thing in their area of expertise off of the backlog.
-You&#39;ll reorder the list as the iteration progresses, but get started by
+You&rsquo;ll reorder the list as the iteration progresses, but get started by
 ordering the tasks you just decomposed.</p>
 
 <p>If you only have a few features to break down, continue to do the work as
@@ -475,25 +475,25 @@ rest of today and tomorrow.</p>
 
 <p>If you have some high risk things to accomplish in the iteration try to break
 them down as early as you can so that someone (or some pair) can start on the
-tech spikes or API design or whatever sooner rather than later. Don&#39;t forget
-to put a &quot;decompose feature X&quot; task onto the backlog for any stories that you
-didn&#39;t have time to get to by the end of the time box.</p>
+tech spikes or API design or whatever sooner rather than later. Don&rsquo;t forget
+to put a &ldquo;decompose feature X&rdquo; task onto the backlog for any stories that you
+didn&rsquo;t have time to get to by the end of the time box.</p>
 
-<h2 id="toc_3">Get to work</h2>
+<h2 id="get-to-work">Get to work</h2>
 
-<p>Now you&#39;ve got a list of features to implement, a narrative about why these
+<p>Now you&rsquo;ve got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
 working on. Start by choosing the highest priority task that you have the
 skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup> <a name="n3-r"></a>
-with the task you&#39;ve taken come back to the backlog and chose another. Don&#39;t
+with the task you&rsquo;ve taken come back to the backlog and chose another. Don&rsquo;t
 forget to mark the things you are working on as in progress by whatever
-tracking mechanism the team is using so you and another team member don&#39;t
+tracking mechanism the team is using so you and another team member don&rsquo;t
 duplicate the work.</p>
 
 <p>Whew. That would have been a nasty email to read. I hope you like it better as
-a blog post. Don&#39;t forget to use inspection and adaptation to refine this
-process so that it works well for your team. I think I&#39;ve given a reasonable
+a blog post. Don&rsquo;t forget to use inspection and adaptation to refine this
+process so that it works well for your team. I think I&rsquo;ve given a reasonable
 outline of a process that has worked for me in the past, but never be afraid
 to look for ways to improve.</p>
 
@@ -501,8 +501,8 @@ to look for ways to improve.</p>
 
 <ol>
 <li><a name="n1"></a><em>Hi Mom!</em> <a href="#n1-r">↩</a></li>
-<li><a name="n2"></a><em>&quot;Inspect and adapt&quot; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
-<li><a name="n3"></a><em>&quot;Definition of Done&quot; is a topic for <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em> <a href="#n3-r">↩</a></li>
+<li><a name="n2"></a><em>&ldquo;Inspect and adapt&rdquo; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
+<li><a name="n3"></a><em>&ldquo;Definition of Done&rdquo; is a topic for <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em> <a href="#n3-r">↩</a></li>
 </ol>
 ]]></content>
   </entry>
@@ -518,10 +518,10 @@ I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.</p>
 
 <ol>
-<li><p>Open the &quot;Keychain Access&quot; application</p>
-<div class="highlight"><pre><code class="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
+<li><p>Open the &ldquo;Keychain Access&rdquo; application</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">open -a <span class="s2">&quot;Keychain Access&quot;</span>
 </code></pre></div></li>
-<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&#8230;</p>
+<li><p>Application menu &gt; Certificate Assistant &gt; Create a Certificate&hellip;</p>
 
 <p><img src="http://bd808.com/images/blog/create-certificate-menu.png" alt="Create a Certificate"></p></li>
 </ol>
@@ -557,7 +557,7 @@ building multiple applications.</p>
 
 <p>I have since used this same certificate to build
 <a href="http://growl.info/documentation/developer/growl-source-install.php">Growl</a>
-and a couple of other apps. I&#39;m thinking that I&#39;ll export the public
+and a couple of other apps. I&rsquo;m thinking that I&rsquo;ll export the public
 certificate and import it on my other OSX hosts so I can share the compiled
 binaries from machine to machine without needing to recompile them.</p>
 ]]></content>
@@ -572,29 +572,29 @@ binaries from machine to machine without needing to recompile them.</p>
 at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
 repeatable. Rather than a simple set of shell scripts or other provisioning
 tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
-I don&#39;t have the time or space to explain how great Puppet is a configuration
-management is, so you&#39;ll have to trust me or go do your own research.</p>
+I don&rsquo;t have the time or space to explain how great Puppet is a configuration
+management is, so you&rsquo;ll have to trust me or go do your own research.</p>
 
 <p>Anybody could take a stab at rolling their own collection of Puppet manifests
-to manage their laptop or their corporate install base. That&#39;s actually
+to manage their laptop or their corporate install base. That&rsquo;s actually
 exactly what GitHub did to create Boxen. Having tried (and failed) at doing
 just that before I was pretty impressed when I gave Boxen a test drive. GitHub
-has not only provided a system that &quot;works for them&quot;; they have also managed
+has not only provided a system that &ldquo;works for them&rdquo;; they have also managed
 to engineer a reasonably extensible solution for a very complex problem.</p>
 
 <p>You can use your favorite search engine to find folks who can wax poetic about
-the magnitude of this accomplishment. Let&#39;s get on with a description of what
-I&#39;ve been able to do with it.</p>
+the magnitude of this accomplishment. Let&rsquo;s get on with a description of what
+I&rsquo;ve been able to do with it.</p>
 
 <!-- more -->
 
-<p>I&#39;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start
+<p>I&rsquo;m using Boxen to manage my <code>$DAYJOB</code> laptop. This was a great place to start
 because I had a brand new laptop that needed to be setup and a brand new tool
 to use to do it. I started by following the <a href="https://github.com/boxen/our-boxen">bootstrapping instructions</a> to
 create <a href="https://github.com/bd808/my-boxen">my own copy of the template project</a>. I made a few changes to the
 <a href="https://github.com/bd808/my-boxen/blob/master/manifests/site.pp">site manifest</a> and then started working on a <a href="https://github.com/bd808/my-boxen/blob/master/modules/people/manifests/bd808.pp">manifest for myself</a>.</p>
 
-<p>Along the way I decided I didn&#39;t like a few of the decisions that the Boxen
+<p>Along the way I decided I didn&rsquo;t like a few of the decisions that the Boxen
 architects had made. As I pointed out earlier, the team behind Boxen
 anticipated this and changing most things is as easy as forking a repo, making
 your change and updating the <a href="https://github.com/bd808/my-boxen/blob/master/Puppetfile">Puppetfile</a> in your Boxen project.</p>
@@ -618,7 +618,7 @@ module to install <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>
 Homebrew version of <a href="http://git-scm.com/">git</a>.</li>
 <li><a href="https://github.com/bd808/puppet-growl">puppet-growl</a>: Fork of
 <a href="https://github.com/petems/puppet-growl">petems/puppet-growl</a> that installs
-an aging version of <a href="http://growl.info/">Growl</a>. I&#39;ve since abandoned this
+an aging version of <a href="http://growl.info/">Growl</a>. I&rsquo;ve since abandoned this
 in favor a <a href="http://growl.info/documentation/developer/growl-source-install.php">self-compiled version</a> which I should figure out how to Puppetize.</li>
 <li><a href="https://github.com/bd808/puppet-homebrew">puppet-homebrew</a>: Fork of
 <a href="https://github.com/nybblr/puppet-homebrew">nybblr/puppet-homebrew</a> that
@@ -644,7 +644,7 @@ is install apps from the <a href="https://www.apple.com/osx/apps/app-store.html"
     <updated>2013-04-17T21:06:00-06:00</updated>
     <id>http://bd808.com/blog/2013/04/17/hacking-github-contributions-graph</id>
     <content type="html"><![CDATA[<p>GitHub profile pages include a neat visualization of commit history that they
-call the &quot;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&quot;. This 53x7 grid shows the number of
+call the &ldquo;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&rdquo;. This 53x7 grid shows the number of
 commits and other GitHub interactions that the user performed on each day for
 the last year.</p>
 
@@ -661,50 +661,50 @@ the cells would color like this:</p>
 
 <table><thead>
 <tr>
-<th align="left">Contributions</th>
-<th align="center">Color</th>
+<th style="text-align: left">Contributions</th>
+<th style="text-align: center">Color</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="left">0</td>
-<td align="center"><img src="http://bd808.com/images/blog/eeeeee.png" alt="gray" title="#eeeeee"></td>
+<td style="text-align: left">0</td>
+<td style="text-align: center"><img src="http://bd808.com/images/blog/eeeeee.png" alt="gray" title="#eeeeee"></td>
 </tr>
 <tr>
-<td align="left">1  - 24</td>
-<td align="center"><img src="http://bd808.com/images/blog/d6e685.png" alt="pale green" title="#d6e685"></td>
+<td style="text-align: left">1  - 24</td>
+<td style="text-align: center"><img src="http://bd808.com/images/blog/d6e685.png" alt="pale green" title="#d6e685"></td>
 </tr>
 <tr>
-<td align="left">25 - 49</td>
-<td align="center"><img src="http://bd808.com/images/blog/8cc665.png" alt="light green" title="#8cc665"></td>
+<td style="text-align: left">25 - 49</td>
+<td style="text-align: center"><img src="http://bd808.com/images/blog/8cc665.png" alt="light green" title="#8cc665"></td>
 </tr>
 <tr>
-<td align="left">50 - 74</td>
-<td align="center"><img src="http://bd808.com/images/blog/44a340.png" alt="green" title="#44a340"></td>
+<td style="text-align: left">50 - 74</td>
+<td style="text-align: center"><img src="http://bd808.com/images/blog/44a340.png" alt="green" title="#44a340"></td>
 </tr>
 <tr>
-<td align="left">75+</td>
-<td align="center"><img src="http://bd808.com/images/blog/1e6823.png" alt="dark green" title="#1e6823"></td>
+<td style="text-align: left">75+</td>
+<td style="text-align: center"><img src="http://bd808.com/images/blog/1e6823.png" alt="dark green" title="#1e6823"></td>
 </tr>
 </tbody></table>
 
 <p>A tweet got me interested in the possibility of gaming the interaction data to
 control the display:</p>
 
-<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&#39;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&rsquo;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 
-<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &quot;WILL&quot; over and over.
+<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &ldquo;WILL&rdquo; over and over.
 Looking at his contribution activity list it was pretty obvious that this
 trick had something to do with the <a href="https://github.com/will/githubprofilecheat">will/githubprofilecheat</a> and/or
 <a href="https://github.com/will/githubprofilecheat2">will/githubprofilecheat2</a> repositories.</p>
 
 <p>I did some digging in the <a href="http://git-scm.com/docs">git documentation</a> to see how hard it is to fake
-the date on a commit. It turns out that it&#39;s as easy as setting an environment
+the date on a commit. It turns out that it&rsquo;s as easy as setting an environment
 variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables
 can be used to provide <a href="http://git-scm.com/docs/git-commit-tree#_commit_information">git-commit-tree</a> with dates for the author and
 commit dates that are attached to each commit object.</p>
 
 <p>Armed with this bit of trivia I decided that I would try to do something
-interesting with my contributions graph. I didn&#39;t just want to copy <a href="https://github.com/will">@will</a>
+interesting with my contributions graph. I didn&rsquo;t just want to copy <a href="https://github.com/will">@will</a>
 and write my name in the graph. I decided that I would pay homage to my
 gravatar instead and make a series of <a href="https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29">gliders</a> that ran across the
 timeline. The result of my experiment can be seen in the image at the top of
@@ -721,9 +721,9 @@ arguments.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 <p>The pattern file is expected to be in the <a href="http://www.conwaylife.com/wiki/Plaintext">plaintext</a> Life format. This
-format allows you to specify an on/off pattern. When a cell is &quot;on&quot; the script
-will output 23 commits (one per hour) for the corresponding day. &quot;Off&quot; cells
-won&#39;t generate any commit activity.</p>
+format allows you to specify an on/off pattern. When a cell is &ldquo;on&rdquo; the script
+will output 23 commits (one per hour) for the corresponding day. &ldquo;Off&rdquo; cells
+won&rsquo;t generate any commit activity.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -769,9 +769,9 @@ every time. For now these additions are left as an exercise for the reader. :)</
     <link href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
     <updated>2012-04-14T20:22:00-06:00</updated>
     <id>http://bd808.com/blog/2012/04/14/using-github-issues-for-comments</id>
-    <content type="html"><![CDATA[<p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
+    <content type="html"><![CDATA[<p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&rsquo;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&rsquo;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&rsquo;s ideas easy for me.</p>
 
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&rsquo;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
 
 <!-- more -->
 
@@ -802,7 +802,7 @@ contains a <code>github_issue_id: N</code> setting, this block with display a li
 issue N in the associated GitHub repository.</p>
 
 <p>Next I wanted to display any current comments. I use a slightly tweaked
-version of Ivan&#39;s javascript to do this.</p>
+version of Ivan&rsquo;s javascript to do this.</p>
 
 <figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -861,7 +861,7 @@ get it tacked on to each page:</p>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
 
-<p>Those changes plus the OAuth application configuration described in Ivan&#39;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#39;t pretty, but they are pragmatic.</p>
+<p>Those changes plus the OAuth application configuration described in Ivan&rsquo;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&rsquo;t pretty, but they are pragmatic.</p>
 
 <figure class='code'><figcaption><span>Rakefile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -907,11 +907,11 @@ get it tacked on to each page:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 <p>I plugged this function into the existing <code>new_post</code> task so that it will
-create an issue and plug it&#39;s id into the front matter for the new post
+create an issue and plug it&rsquo;s id into the front matter for the new post
 automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
 
-<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
+<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -939,10 +939,10 @@ for Comments&quot;]</code>:</p>
     <id>http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence</id>
     <content type="html"><![CDATA[<p>Using a sequentially increasing counter to generate an id token is easy.
 Database sequences and auto-number columns make it fairly trivial to
-implement. If that isn&#39;t available a simple file or shared memory counter can
+implement. If that isn&rsquo;t available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
 give them more information than you would really like them to have about the
-number of ids you are allocating per unit time. We&#39;d really like  to obfuscate
+number of ids you are allocating per unit time. We&rsquo;d really like  to obfuscate
 the id somehow while retaining the uniqueness of the original sequence.</p>
 
 <p>One way to do this is to use a combination of multiplication and modulo
@@ -963,7 +963,7 @@ target set.</p>
 
 <p><code>p</code> and <code>q</code> must be chosen such that:
 - p &lt; q
-- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &#8230; depending on the precision of the underlying system)
+- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)
 - p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</p>
 
 <p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br>
@@ -972,7 +972,7 @@ target set.</p>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table></p>
 
-<p>Change <code>p</code> to 7 and you&#39;ll get:<br>
+<p>Change <code>p</code> to 7 and you&rsquo;ll get:<br>
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
@@ -989,11 +989,11 @@ evenly.</p>
 <p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output
 of the function and maintaining the uniqueness of the result. One easy way to
 ensure that the chosen coefficients are coprime is to make them both be prime
-powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &#8230;).</p>
+powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &hellip;).</p>
 
 <p>This method is a type of <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear congruential generator</a> almost exactly equivalent to the <a href="https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG">Park–Miller random number generator</a>.</p>
 
-<h2 id="toc_0">Examples</h2>
+<h2 id="examples">Examples</h2>
 
 <figure class='code'><figcaption><span>PHP </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1035,7 +1035,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
 
 <hr>
 
-<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&#39;t getting.</p>
+<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&rsquo;t getting.</p>
 
 <p>*[GCD]: Greatest Common Divisor</p>
 ]]></content>
@@ -1048,9 +1048,9 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
     <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
     <content type="html"><![CDATA[<blockquote>
 <p>Write a program that prints the numbers from 1 to 100. But for multiples of
-three print &quot;Fizz&quot; instead of the number and for the multiples of five print
-&quot;Buzz&quot;. For numbers which are multiples of both three and five print
-&quot;FizzBuzz&quot;.
+three print &ldquo;Fizz&rdquo; instead of the number and for the multiples of five print
+&ldquo;Buzz&rdquo;. For numbers which are multiples of both three and five print
+&ldquo;FizzBuzz&rdquo;.
 <small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
 

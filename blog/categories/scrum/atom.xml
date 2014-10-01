@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scrum | bd808.com]]></title>
   <link href="http://bd808.com/blog/categories/scrum/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-09-29T23:51:11-06:00</updated>
+  <updated>2014-09-30T20:21:49-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -18,13 +18,13 @@
     <link href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"/>
     <updated>2014-01-14T22:48:20-06:00</updated>
     <id>http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done</id>
-    <content type="html"><![CDATA[<p>In scrum a story is &quot;Done&quot; when it meets the team&#39;s shared &quot;Definition of
-Done&quot;. The definition of done is roughly a list of requirements that all parts
+    <content type="html"><![CDATA[<p>In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
+Done&rdquo;. The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
 things in scrum the implementation details are left to the team to decide.
 When I was first working with scrum I had a hard time finding examples of what
 a typical definition of done would include. Most scrum authors (and even many
-trainers) wave their hands and say that it&#39;s too specific to the team and
+trainers) wave their hands and say that it&rsquo;s too specific to the team and
 their environment to generalize.</p>
 
 <!-- more -->
@@ -46,7 +46,7 @@ they produce an increment that is worthy of their combined energy. When used
 properly it will increase the reputation and worth of the team, their product
 and the organization.</p>
 
-<h2 id="toc_0">Done with grooming a story</h2>
+<h2 id="done-with-grooming-a-story">Done with grooming a story</h2>
 
 <p>A groomed story is <strong><em>clear, feasible and testable</em></strong>.</p>
 
@@ -75,18 +75,18 @@ tech or legacy impact. These things are stories in their own right and should
 be treated as such. R&amp;D must be traceable expense and is just as important as
 the final product/feature.</p>
 
-<h2 id="toc_1">Done with a story</h2>
+<h2 id="done-with-a-story">Done with a story</h2>
 
 <dl>
-<dt>Everything from "Done with grooming a story"</dt>
+<dt>Everything from &ldquo;Done with grooming a story&rdquo;</dt>
 <dd>A story must be groomed before it can be implemented.</dd>
 <dt>Design complete</dt>
 <dd>Design is not one size fits all. Some stories must have UML and detailed
-functional descriptions. Others will only need a statement of "do this just
-like we always do an X feature." The level of design required should be
+functional descriptions. Others will only need a statement of &ldquo;do this just
+like we always do an X feature.&rdquo; The level of design required should be
 determined during grooming by the team.</dd>
 <dt>Design artifacts in wiki/bug tracker/other</dt>
-<dd>Design isn't complete until it's tangible artifacts are available to the
+<dd>Design isn&rsquo;t complete until it&rsquo;s tangible artifacts are available to the
 team and the business.</dd>
 <dt>Design reviewed by peers</dt>
 <dd>Similar to a code review, design should get a once over by at least one
@@ -104,7 +104,7 @@ the story.</dd>
 <dd>Unit tests are passing in all testable environments.</dd>
 <dt>Automated code checks passing</dt>
 <dd>Coding style, lint and other common automated code quality measurements are passing
-according to the organization's definition of passing.</dd>
+according to the organization&rsquo;s definition of passing.</dd>
 <dt>CI tests passing</dt>
 <dd>Automated tests in the continuous integration environment are passing.</dd>
 <dt>Peer code review completed</dt>
@@ -118,17 +118,17 @@ been written and verified either with automated tests or manual testing.
 Automated tests are preferred as they do not increase the overall manual
 testing load of the product.</dd>
 <dt>Help/documentation updated</dt>
-<dd>"Just enough" help and documentation has been produced so that the feature
+<dd>&ldquo;Just enough&rdquo; help and documentation has been produced so that the feature
 can be used by clients, maintained by developers and supported by customer
 service and operations.</dd>
 <dt>Release notes updated</dt>
 <dd>Deliverable artifacts and deployment procedures have been documented.</dd>
 </dl>
 
-<h2 id="toc_2">Done with a sprint</h2>
+<h2 id="done-with-a-sprint">Done with a sprint</h2>
 
 <dl>
-<dt>Everything from "Done with a story"</dt>
+<dt>Everything from &ldquo;Done with a story&rdquo;</dt>
 <dd>All stories in the sprint must be done (or returned to the backlog) for the
 sprint to be done.</dd>
 <dt>Released to beta/integration environment</dt>
@@ -157,14 +157,14 @@ be updated to match the completed increment.</dd>
 to the backlog for Product Owner triage.</dd>
 <dt>Unfinished stories pushed into backlog</dt>
 <dd>Any work in the sprint which does not meet this definition of done will be
-returned to the backlog. The Sprint isn't done as long as any non-done issues
+returned to the backlog. The Sprint isn&rsquo;t done as long as any non-done issues
 are associated with it.</dd>
 </dl>
 
-<h2 id="toc_3">Done with a QA/staging release</h2>
+<h2 id="done-with-a-qa/staging-release">Done with a QA/staging release</h2>
 
 <dl>
-<dt>Everything from "Done with a sprint"</dt>
+<dt>Everything from &ldquo;Done with a sprint&rdquo;</dt>
 <dd>All Sprints that are to be included in the release must be Done.</dd>
 <dt>Operations guide updated and approved by Ops</dt>
 <dd>The support documentation delivered to Ops via the wiki must be updated and
@@ -174,10 +174,10 @@ those updates must be approved (UAT) by the Operations team.</dd>
 passing.</dd>
 </dl>
 
-<h2 id="toc_4">Done with a production release</h2>
+<h2 id="done-with-a-production-release">Done with a production release</h2>
 
 <dl>
-<dt>Everything from "Done with a QA/Staging Release"</dt>
+<dt>Everything from &ldquo;Done with a QA/Staging Release&rdquo;</dt>
 <dd>A successful QA/Staging release is a prerequisite for a Production release.</dd>
 <dt>Stress/Load tests passing</dt>
 <dd>Stress/Load testing in the QA/Staging environment must return results within
@@ -194,9 +194,9 @@ be updated to match the proposed release.</dd>
     <link href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/"/>
     <updated>2013-10-27T20:05:00-06:00</updated>
     <id>http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint</id>
-    <content type="html"><![CDATA[<p>We&#39;ve been having some discussions at <code>$DAYJOB</code> about process and
+    <content type="html"><![CDATA[<p>We&rsquo;ve been having some discussions at <code>$DAYJOB</code> about process and
 methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
-or may not be helpful for the particular group I work with. I&#39;ve been
+or may not be helpful for the particular group I work with. I&rsquo;ve been
 providing some anecdotal input based my past experience with scrum and other
 methodologies/frameworks/practices and asking questions about what problems
 the group is hoping to find new solutions for.</p>
@@ -210,64 +210,64 @@ unit of work)</em>.</p>
 
 <!-- more -->
 
-<h2 id="toc_0">Pick some work you think you can get done</h2>
+<h2 id="pick-some-work-you-think-you-can-get-done">Pick some work you think you can get done</h2>
 
-<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&#39;s
-a damn good question but one that&#39;s going to depend on your environment. For
-the sake of this post let&#39;s assume that you have access to an ordered list of
-features that need to be implemented. Let&#39;s further assume that the team and
+<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&rsquo;s
+a damn good question but one that&rsquo;s going to depend on your environment. For
+the sake of this post let&rsquo;s assume that you have access to an ordered list of
+features that need to be implemented. Let&rsquo;s further assume that the team and
 the stakeholders have talked about these features a little and that the team
 has reached a general consensus about how big the top few features are
 relative to features the team has worked on in the past. Scrum calls this
-a &quot;groomed backlog&quot;, but you can call it whatever you&#39;d like.</p>
+a &ldquo;groomed backlog&rdquo;, but you can call it whatever you&rsquo;d like.</p>
 
 <p>Now that you know where the work comes from, pick some. How much? Well, as
 much as the team thinks it can get done in the iteration. Without knowing your
-team and the length of the iteration and how tricky the problems are I can&#39;t
+team and the length of the iteration and how tricky the problems are I can&rsquo;t
 tell you. Just go with your collective gut and pick some. If you pick too
 little you can always come back and get more. If you pick too much the team
 can use that experiential data to adjust when choosing for the next iteration.
 Just pick some work for now and adjust in the future based on what happens
 during the iteration<sup><a href="#n2">2</a></sup> <a name="n2-r"></a>.</p>
 
-<h2 id="toc_1">Figure out what ties the work together</h2>
+<h2 id="figure-out-what-ties-the-work-together">Figure out what ties the work together</h2>
 
 <p>Step two, come up with a narrative about why you chose the work. A list of
 features and bugs you want to implement is a great start, but you can do
 better. It will be a lot easier for the team to make good choices during the
-iteration if they have a more noble goal than &quot;cross off all the things on
-this list.&quot; If the goal is just to get each item done it&#39;s more likely that
+iteration if they have a more noble goal than &ldquo;cross off all the things on
+this list.&rdquo; If the goal is just to get each item done it&rsquo;s more likely that
 people will think of each part in isolation rather than thinking about how
 this work builds on what came before and enables more enhancements in the
 future.</p>
 
-<p>This step may lead you to switch out some of the things you&#39;ve chosen with
-other things that are in the backlog to make a more cohesive story. That&#39;s ok
-as long as you keep the most important thing. After all that&#39;s the MOST
+<p>This step may lead you to switch out some of the things you&rsquo;ve chosen with
+other things that are in the backlog to make a more cohesive story. That&rsquo;s ok
+as long as you keep the most important thing. After all that&rsquo;s the MOST
 important thing; if you get it done plus some other stuff and everything works
 people should be happy.</p>
 
-<p>This narrative you&#39;ve created and the work that supports it are the forecast
+<p>This narrative you&rsquo;ve created and the work that supports it are the forecast
 for the iteration. The product owner can take this information back to the
 rest of the stakeholders and tell them what to expect to hear about in the
 demonstration meeting at the end of the iteration. Be careful not to tell
-them that all of this work will be completed. The team has said they&#39;ll try
-to do this but they can&#39;t promise that it will get done any more than the
+them that all of this work will be completed. The team has said they&rsquo;ll try
+to do this but they can&rsquo;t promise that it will get done any more than the
 stakeholders  can promise how much money will be raised or how many new
 customers will be acquired.</p>
 
-<h2 id="toc_2">Figure out how to do the work</h2>
+<h2 id="figure-out-how-to-do-the-work">Figure out how to do the work</h2>
 
-<p>The last step before you close the planning meeting and get back to &quot;real
-work&quot; is to figure out how to actually <em>do</em> the work. We&#39;re talking about
+<p>The last step before you close the planning meeting and get back to &ldquo;real
+work&rdquo; is to figure out how to actually <em>do</em> the work. We&rsquo;re talking about
 agile practices here so nobody should expect a gantt chart chart or
 a architecture document, but <strike>anarchists</strike> agile teams need
-enough of a plan to do today&#39;s work efficiently. The product owner doesn&#39;t
+enough of a plan to do today&rsquo;s work efficiently. The product owner doesn&rsquo;t
 need to stick around for this half of the meeting. The team should have enough
 information from the feature descriptions already given to make the tactical
 plan.</p>
 
-<p>I&#39;m sure there are other methods that would work as well, but I&#39;ve personally
+<p>I&rsquo;m sure there are other methods that would work as well, but I&rsquo;ve personally
 had success with a process that starts with finding dependencies. The team
 looks at the stories and tries to determine their rough interdependencies. The
 goal here is to identify communication interfaces that need to be specified
@@ -275,20 +275,20 @@ and sequential implementation order dependencies. The team also looks for
 areas of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.</p>
 
-<p>Once you&#39;ve got the dependencies sorted, start breaking down the most obvious
+<p>Once you&rsquo;ve got the dependencies sorted, start breaking down the most obvious
 starting point features. Make a list of the smaller tasks that need
 to be completed to finish the feature. Repeat the process by breaking those
-tasks down into even smaller tasks. Stop when the leaf tasks are &quot;small
-enough&quot;. My rule of thumb is that something that feels like it will take 3-5
+tasks down into even smaller tasks. Stop when the leaf tasks are &ldquo;small
+enough&rdquo;. My rule of thumb is that something that feels like it will take 3-5
 ideal hours is small enough. Getting smaller than that early on is probably
 a waste of time, but staying larger leaves more uncertainty and risk in
-the plan. Scrum calls this step &quot;story decomposition&quot;.</p>
+the plan. Scrum calls this step &ldquo;story decomposition&rdquo;.</p>
 
 <p>The list of decomposed tasks that the team has created is the start of the
 iteration backlog. Just like the product backlog this needs to be put in order
 so that when a team member or pair needs more work to do they can just pull
 the next most important thing in their area of expertise off of the backlog.
-You&#39;ll reorder the list as the iteration progresses, but get started by
+You&rsquo;ll reorder the list as the iteration progresses, but get started by
 ordering the tasks you just decomposed.</p>
 
 <p>If you only have a few features to break down, continue to do the work as
@@ -301,25 +301,25 @@ rest of today and tomorrow.</p>
 
 <p>If you have some high risk things to accomplish in the iteration try to break
 them down as early as you can so that someone (or some pair) can start on the
-tech spikes or API design or whatever sooner rather than later. Don&#39;t forget
-to put a &quot;decompose feature X&quot; task onto the backlog for any stories that you
-didn&#39;t have time to get to by the end of the time box.</p>
+tech spikes or API design or whatever sooner rather than later. Don&rsquo;t forget
+to put a &ldquo;decompose feature X&rdquo; task onto the backlog for any stories that you
+didn&rsquo;t have time to get to by the end of the time box.</p>
 
-<h2 id="toc_3">Get to work</h2>
+<h2 id="get-to-work">Get to work</h2>
 
-<p>Now you&#39;ve got a list of features to implement, a narrative about why these
+<p>Now you&rsquo;ve got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
 working on. Start by choosing the highest priority task that you have the
 skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup> <a name="n3-r"></a>
-with the task you&#39;ve taken come back to the backlog and chose another. Don&#39;t
+with the task you&rsquo;ve taken come back to the backlog and chose another. Don&rsquo;t
 forget to mark the things you are working on as in progress by whatever
-tracking mechanism the team is using so you and another team member don&#39;t
+tracking mechanism the team is using so you and another team member don&rsquo;t
 duplicate the work.</p>
 
 <p>Whew. That would have been a nasty email to read. I hope you like it better as
-a blog post. Don&#39;t forget to use inspection and adaptation to refine this
-process so that it works well for your team. I think I&#39;ve given a reasonable
+a blog post. Don&rsquo;t forget to use inspection and adaptation to refine this
+process so that it works well for your team. I think I&rsquo;ve given a reasonable
 outline of a process that has worked for me in the past, but never be afraid
 to look for ways to improve.</p>
 
@@ -327,8 +327,8 @@ to look for ways to improve.</p>
 
 <ol>
 <li><a name="n1"></a><em>Hi Mom!</em> <a href="#n1-r">↩</a></li>
-<li><a name="n2"></a><em>&quot;Inspect and adapt&quot; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
-<li><a name="n3"></a><em>&quot;Definition of Done&quot; is a topic for <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em> <a href="#n3-r">↩</a></li>
+<li><a name="n2"></a><em>&ldquo;Inspect and adapt&rdquo; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
+<li><a name="n3"></a><em>&ldquo;Definition of Done&rdquo; is a topic for <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em> <a href="#n3-r">↩</a></li>
 </ol>
 ]]></content>
   </entry>

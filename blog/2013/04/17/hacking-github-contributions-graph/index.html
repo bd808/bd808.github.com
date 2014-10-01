@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="GitHub profile pages include a neat visualization of commit history that they
-call the &quot;contributions calendar&quot;. This 53x7 grid shows the &hellip;">
+call the &ldquo;contributions calendar&rdquo;. This 53x7 grid shows the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,14 +94,7 @@ call the &quot;contributions calendar&quot;. This 53x7 grid shows the &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-04-17T21:06:00-06:00" pubdate data-updated="true">2013-04-17</time>
+<time class='entry-date' datetime='2013-04-17T21:06:00-06:00'><span class='date'>2013-04-17</span> <span class='time'></span></time>
         
       </p>
     
@@ -109,7 +102,7 @@ call the &quot;contributions calendar&quot;. This 53x7 grid shows the &hellip;">
 
 
 <div class="entry-content"><p>GitHub profile pages include a neat visualization of commit history that they
-call the &quot;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&quot;. This 53x7 grid shows the number of
+call the &ldquo;<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>&rdquo;. This 53x7 grid shows the number of
 commits and other GitHub interactions that the user performed on each day for
 the last year.</p>
 
@@ -126,50 +119,50 @@ the cells would color like this:</p>
 
 <table><thead>
 <tr>
-<th align="left">Contributions</th>
-<th align="center">Color</th>
+<th style="text-align: left">Contributions</th>
+<th style="text-align: center">Color</th>
 </tr>
 </thead><tbody>
 <tr>
-<td align="left">0</td>
-<td align="center"><img src="/images/blog/eeeeee.png" alt="gray" title="#eeeeee"></td>
+<td style="text-align: left">0</td>
+<td style="text-align: center"><img src="/images/blog/eeeeee.png" alt="gray" title="#eeeeee"></td>
 </tr>
 <tr>
-<td align="left">1  - 24</td>
-<td align="center"><img src="/images/blog/d6e685.png" alt="pale green" title="#d6e685"></td>
+<td style="text-align: left">1  - 24</td>
+<td style="text-align: center"><img src="/images/blog/d6e685.png" alt="pale green" title="#d6e685"></td>
 </tr>
 <tr>
-<td align="left">25 - 49</td>
-<td align="center"><img src="/images/blog/8cc665.png" alt="light green" title="#8cc665"></td>
+<td style="text-align: left">25 - 49</td>
+<td style="text-align: center"><img src="/images/blog/8cc665.png" alt="light green" title="#8cc665"></td>
 </tr>
 <tr>
-<td align="left">50 - 74</td>
-<td align="center"><img src="/images/blog/44a340.png" alt="green" title="#44a340"></td>
+<td style="text-align: left">50 - 74</td>
+<td style="text-align: center"><img src="/images/blog/44a340.png" alt="green" title="#44a340"></td>
 </tr>
 <tr>
-<td align="left">75+</td>
-<td align="center"><img src="/images/blog/1e6823.png" alt="dark green" title="#1e6823"></td>
+<td style="text-align: left">75+</td>
+<td style="text-align: center"><img src="/images/blog/1e6823.png" alt="dark green" title="#1e6823"></td>
 </tr>
 </tbody></table>
 
 <p>A tweet got me interested in the possibility of gaming the interaction data to
 control the display:</p>
 
-<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&#39;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p><blockquote class="twitter-tweet"><p>GitHub users might find this guy&rsquo;s contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 
-<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &quot;WILL&quot; over and over.
+<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell &ldquo;WILL&rdquo; over and over.
 Looking at his contribution activity list it was pretty obvious that this
 trick had something to do with the <a href="https://github.com/will/githubprofilecheat">will/githubprofilecheat</a> and/or
 <a href="https://github.com/will/githubprofilecheat2">will/githubprofilecheat2</a> repositories.</p>
 
 <p>I did some digging in the <a href="http://git-scm.com/docs">git documentation</a> to see how hard it is to fake
-the date on a commit. It turns out that it&#39;s as easy as setting an environment
+the date on a commit. It turns out that it&rsquo;s as easy as setting an environment
 variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables
 can be used to provide <a href="http://git-scm.com/docs/git-commit-tree#_commit_information">git-commit-tree</a> with dates for the author and
 commit dates that are attached to each commit object.</p>
 
 <p>Armed with this bit of trivia I decided that I would try to do something
-interesting with my contributions graph. I didn&#39;t just want to copy <a href="https://github.com/will">@will</a>
+interesting with my contributions graph. I didn&rsquo;t just want to copy <a href="https://github.com/will">@will</a>
 and write my name in the graph. I decided that I would pay homage to my
 gravatar instead and make a series of <a href="https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29">gliders</a> that ran across the
 timeline. The result of my experiment can be seen in the image at the top of
@@ -186,9 +179,9 @@ arguments.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 <p>The pattern file is expected to be in the <a href="http://www.conwaylife.com/wiki/Plaintext">plaintext</a> Life format. This
-format allows you to specify an on/off pattern. When a cell is &quot;on&quot; the script
-will output 23 commits (one per hour) for the corresponding day. &quot;Off&quot; cells
-won&#39;t generate any commit activity.</p>
+format allows you to specify an on/off pattern. When a cell is &ldquo;on&rdquo; the script
+will output 23 commits (one per hour) for the corresponding day. &ldquo;Off&rdquo; cells
+won&rsquo;t generate any commit activity.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -241,14 +234,7 @@ every time. For now these additions are left as an exercise for the reader. :)</
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-04-17T21:06:00-06:00" pubdate data-updated="true">2013-04-17</time>
+<time class='entry-date' datetime='2013-04-17T21:06:00-06:00'><span class='date'>2013-04-17</span> <span class='time'></span></time>
       
 
 <span class="categories">
@@ -284,7 +270,7 @@ every time. For now these additions are left as an exercise for the reader. :)</
 <section id="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/13">this post's issue page on GitHub</a> to add a comment.</p>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/13">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
 </section>
 
@@ -309,7 +295,7 @@ every time. For now these additions are left as an exercise for the reader. :)</
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You're Done?</a>
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
       </li>
     
       <li class="post">

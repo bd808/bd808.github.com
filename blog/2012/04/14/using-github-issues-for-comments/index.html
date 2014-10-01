@@ -9,7 +9,7 @@
   <meta name="author" content="Bryan Davis">
 
   
-  <meta name="description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m &hellip;">
+  <meta name="description" content="I was inspired by Ivan Zuzak&rsquo;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&rsquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,23 +93,16 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T20:22:00-06:00" pubdate data-updated="true">2012-04-14</time>
+<time class='entry-date' datetime='2012-04-14T20:22:00-06:00'><span class='date'>2012-04-14</span> <span class='time'></span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&#39;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&#39;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me.</p>
+<div class="entry-content"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&rsquo;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&rsquo;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&rsquo;s ideas easy for me.</p>
 
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&rsquo;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
 
 <!-- more -->
 
@@ -140,7 +133,7 @@ contains a <code>github_issue_id: N</code> setting, this block with display a li
 issue N in the associated GitHub repository.</p>
 
 <p>Next I wanted to display any current comments. I use a slightly tweaked
-version of Ivan&#39;s javascript to do this.</p>
+version of Ivan&rsquo;s javascript to do this.</p>
 
 <figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -199,7 +192,7 @@ get it tacked on to each page:</p>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
 </span></code></pre></td></tr></table></div></figure>
 
-<p>Those changes plus the OAuth application configuration described in Ivan&#39;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&#39;t pretty, but they are pragmatic.</p>
+<p>Those changes plus the OAuth application configuration described in Ivan&rsquo;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&rsquo;t pretty, but they are pragmatic.</p>
 
 <figure class='code'><figcaption><span>Rakefile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -245,11 +238,11 @@ get it tacked on to each page:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 <p>I plugged this function into the existing <code>new_post</code> task so that it will
-create an issue and plug it&#39;s id into the front matter for the new post
+create an issue and plug it&rsquo;s id into the front matter for the new post
 automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
 for Comments&quot;]</code>:</p>
 
-<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</span></figcaption>
+<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -282,14 +275,7 @@ for Comments&quot;]</code>:</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T20:22:00-06:00" pubdate data-updated="true">2012-04-14</time>
+<time class='entry-date' datetime='2012-04-14T20:22:00-06:00'><span class='date'>2012-04-14</span> <span class='time'></span></time>
       
 
 <span class="categories">
@@ -325,7 +311,7 @@ for Comments&quot;]</code>:</p>
 <section id="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/7">this post's issue page on GitHub</a> to add a comment.</p>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/7">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
 </section>
 
@@ -350,7 +336,7 @@ for Comments&quot;]</code>:</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You're Done?</a>
+        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
       </li>
     
       <li class="post">
