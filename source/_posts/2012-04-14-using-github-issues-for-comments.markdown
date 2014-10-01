@@ -97,7 +97,8 @@ create an issue and plug it's id into the front matter for the new post
 automatically when I run a command like `rake new_post["Using GitHub Issues
 for Comments"]`:
 
-{% codeblock source/_posts/2012-04-14-using-github-issues-for-comments.markdown lang:yaml%}{% raw %}
+{% codeblock source/_posts/2012-04-14-using-github-issues-for-comments.markdown lang:yaml %}{% raw %}
+
 ---
 layout: post
 title: "Using GitHub issues for comments"
