@@ -9,7 +9,7 @@ categories: puppet sysadmin
 
 [Puppet][] has become my go to system management tool in no small part because
 it is the tool that the operations group at [$DAYJOB][] has standardized on
-for our production infrastructure management. I took quite a while for me to
+for our production infrastructure management. It took quite a while for me to
 get the hang of how Puppet does what it does, but today I'd say I'm a fairly
 decent Puppet programmer. Every once in a while however I stumble on something
 new and surprising.
