@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-11-16T10:43:36-07:00</updated>
+  <updated>2014-11-16T10:49:26-07:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -20,7 +20,7 @@
     <id>http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall</id>
     <content type="html"><![CDATA[<p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
 it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
-for our production infrastructure management. I took quite a while for me to
+for our production infrastructure management. It took quite a while for me to
 get the hang of how Puppet does what it does, but today I&rsquo;d say I&rsquo;m a fairly
 decent Puppet programmer. Every once in a while however I stumble on something
 new and surprising.</p>
