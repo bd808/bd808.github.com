@@ -120,17 +120,17 @@ target set.</p>
 <p>The basic math looks like this:  <code>f(n) := (n * p) % q</code></p>
 
 <ul>
-<li>n := input sequence value</li>
-<li>p := step size</li>
-<li>q := maximum result size</li>
+<li><code>n</code> := input sequence value</li>
+<li><code>p</code> := step size</li>
+<li><code>q</code> := maximum result size</li>
 </ul>
 
 <p><code>p</code> and <code>q</code> must be chosen such that:</p>
 
 <ul>
-<li>p &lt; q</li>
-<li>p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)</li>
-<li>p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</li>
+<li><code>p</code> &lt; <code>q</code></li>
+<li><code>p</code> * <code>q</code> &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)</li>
+<li><code>p</code> ⊥ <code>q</code> (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</li>
 </ul>
 
 <p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:
@@ -150,7 +150,7 @@ initial multiplication will approach <code>p * q</code> and if this calculation 
 the available precision the result will wrap back into a previously traversed
 space causing duplication. The same sort of thing will occur if <code>p</code> and <code>q</code>
 are not coprime. The result of the modulo will exhibit a period equivalent to
-the GCD of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code>
+the GCD<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code>
 evenly.</p>
 
 <p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output
@@ -204,7 +204,16 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
 
 <p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&rsquo;t getting.</p>
 
-<p>*[GCD]: Greatest Common Divisor</p>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>Greatest Common Divisor&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
 </div>
 
 
