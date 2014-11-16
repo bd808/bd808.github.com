@@ -62,7 +62,7 @@ the criteria established above.
 
 Spikes or other research may need to be done to remove uncertainty about new
 tech or legacy impact. These things are stories in their own right and should
-be treated as such. R&D must be traceable expense and is just as important as
+be treated as such. R&D must be a traceable expense and is just as important as
 the final product/feature.
 
 
