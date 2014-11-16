@@ -25,23 +25,24 @@ target set.
 
 The basic math looks like this:  `f(n) := (n * p) % q`
 
-- n := input sequence value
-- p := step size
-- q := maximum result size
+- `n` := input sequence value
+- `p` := step size
+- `q` := maximum result size
 
 `p` and `q` must be chosen such that:
-- p < q
-- p * q < arithmetic limit (2^31, 2^32, 2^63, 2^64, ... depending on the precision of the underlying system)
-- p ⊥ q ([coprime](https://en.wikipedia.org/wiki/Coprime) or relatively prime)
 
-With `p := 5` and `q := 12` our function will generate this output:  
+- `p` < `q`
+- `p` * `q` < arithmetic limit (2^31, 2^32, 2^63, 2^64, ... depending on the precision of the underlying system)
+- `p` ⊥ `q` ([coprime](https://en.wikipedia.org/wiki/Coprime) or relatively prime)
+
+With `p := 5` and `q := 12` our function will generate this output:
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table>
 
 
-Change `p` to 7 and you'll get:  
+Change `p` to 7 and you'll get:
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
@@ -52,7 +53,7 @@ initial multiplication will approach `p * q` and if this calculation overflows
 the available precision the result will wrap back into a previously traversed
 space causing duplication. The same sort of thing will occur if `p` and `q`
 are not coprime. The result of the modulo will exhibit a period equivalent to
-the GCD of `p` and `q` rather than mapping the entire range of `q`
+the GCD[^GCD] of `p` and `q` rather than mapping the entire range of `q`
 evenly.
 
 Careful choice of `p` and `q` are key to getting a good spread in the output
@@ -90,4 +91,4 @@ END f;
 ----
 Thanks to [Tim](http://www.timbarber.org/) for explaining all of this to me several times without becoming annoyed at the parts I wasn't getting.
 
-*[GCD]: Greatest Common Divisor
+[^GCD]: Greatest Common Divisor
