@@ -4,7 +4,7 @@
   <title><![CDATA[Category: algorithms | bd808.com]]></title>
   <link href="http://bd808.com/blog/categories/algorithms/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-09-30T22:36:28-06:00</updated>
+  <updated>2014-11-16T10:34:19-07:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -42,18 +42,21 @@ target set.</p>
 <li>q := maximum result size</li>
 </ul>
 
-<p><code>p</code> and <code>q</code> must be chosen such that:
-- p &lt; q
-- p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)
-- p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</p>
+<p><code>p</code> and <code>q</code> must be chosen such that:</p>
 
-<p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:<br>
+<ul>
+<li>p &lt; q</li>
+<li>p * q &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)</li>
+<li>p ⊥ q (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</li>
+</ul>
+
+<p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table></p>
 
-<p>Change <code>p</code> to 7 and you&rsquo;ll get:<br>
+<p>Change <code>p</code> to 7 and you&rsquo;ll get:
 <table class="border padded">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
@@ -125,7 +128,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
   <entry>
     <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
     <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
-    <updated>2012-01-18T21:47:00-06:00</updated>
+    <updated>2012-01-18T21:47:00-07:00</updated>
     <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
     <content type="html"><![CDATA[<blockquote>
 <p>Write a program that prints the numbers from 1 to 100. But for multiples of

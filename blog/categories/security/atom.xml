@@ -4,7 +4,7 @@
   <title><![CDATA[Category: security | bd808.com]]></title>
   <link href="http://bd808.com/blog/categories/security/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-09-30T22:36:28-06:00</updated>
+  <updated>2014-11-16T10:34:19-07:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -91,7 +91,7 @@ EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
   <entry>
     <title type="html"><![CDATA[FileVault2 Hacks]]></title>
     <link href="http://bd808.com/blog/2013/12/09/file-vault2-hacks/"/>
-    <updated>2013-12-09T22:35:52-06:00</updated>
+    <updated>2013-12-09T21:35:52-07:00</updated>
     <id>http://bd808.com/blog/2013/12/09/file-vault2-hacks</id>
     <content type="html"><![CDATA[<p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
