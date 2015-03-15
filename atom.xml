@@ -4,7 +4,7 @@
   <title><![CDATA[bd808.com]]></title>
   <link href="http://bd808.com/atom.xml" rel="self"/>
   <link href="http://bd808.com/"/>
-  <updated>2014-11-16T10:55:03-07:00</updated>
+  <updated>2015-03-15T15:37:17-06:00</updated>
   <id>http://bd808.com/</id>
   <author>
     <name><![CDATA[Bryan Davis]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Puppet file recurse pitfall]]></title>
+    <title type="html"><![CDATA[Puppet File Recurse Pitfall]]></title>
     <link href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/"/>
     <updated>2014-09-30T20:44:13-06:00</updated>
     <id>http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall</id>
@@ -185,7 +185,7 @@ repository clone operation.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[GnuPG key transition statement]]></title>
+    <title type="html"><![CDATA[GnuPG Key Transition Statement]]></title>
     <link href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/"/>
     <updated>2014-05-15T22:33:39-06:00</updated>
     <id>http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement</id>
@@ -260,7 +260,7 @@ EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How do you know when you're done?]]></title>
+    <title type="html"><![CDATA[How Do You Know When You're Done?]]></title>
     <link href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"/>
     <updated>2014-01-14T21:48:20-07:00</updated>
     <id>http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done</id>
@@ -737,7 +737,7 @@ binaries from machine to machine without needing to recompile them.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Managing my laptop with Boxen]]></title>
+    <title type="html"><![CDATA[Managing My Laptop With Boxen]]></title>
     <link href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/"/>
     <updated>2013-10-14T22:11:00-06:00</updated>
     <id>http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen</id>
@@ -938,7 +938,7 @@ every time. For now these additions are left as an exercise for the reader. :)</
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Using GitHub issues for comments]]></title>
+    <title type="html"><![CDATA[Using GitHub Issues for Comments]]></title>
     <link href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
     <updated>2012-04-14T20:22:00-06:00</updated>
     <id>http://bd808.com/blog/2012/04/14/using-github-issues-for-comments</id>
@@ -1227,7 +1227,7 @@ powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[FizzBuzz &mdash; the wrong way to do it]]></title>
+    <title type="html"><![CDATA[FizzBuzz &mdash; the Wrong Way to Do It]]></title>
     <link href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
     <updated>2012-01-18T21:47:00-07:00</updated>
     <id>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it</id>
