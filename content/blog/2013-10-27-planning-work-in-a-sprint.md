@@ -1,5 +1,5 @@
 Layout: post
-Title: "Planning Work in a Sprint"
+Title: Planning Work in a Sprint
 Date: 2013-10-27 20:05
 Comments: true
 Github_issue_id: 19
@@ -14,12 +14,10 @@ the group is hoping to find new solutions for.
 
 I started to write a big wall o' text™ email about a particular topic and then
 decided that maybe a blog post would be a better way to work through my idea.
-So dear reader^[1](#n1) <a name="n1-r"></a>, here are some of my highly
+So dear reader[^1], here are some of my highly
 opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (*or really any other iterative
 unit of work)*.
-
-<!-- more -->
 
 Pick some work you think you can get done
 -----------------------------------------
@@ -39,7 +37,7 @@ tell you. Just go with your collective gut and pick some. If you pick too
 little you can always come back and get more. If you pick too much the team
 can use that experiential data to adjust when choosing for the next iteration.
 Just pick some work for now and adjust in the future based on what happens
-during the iteration^[2](#n2) <a name="n2-r"></a>.
+during the iteration[^2].
 
 Figure out what ties the work together
 --------------------------------------
@@ -123,11 +121,10 @@ Now you've got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
 working on. Start by choosing the highest priority task that you have the
-skill set to accomplish. When you get **Done**^[3](#n3) <a name="n3-r"></a>
-with the task you've taken come back to the backlog and chose another. Don't
-forget to mark the things you are working on as in progress by whatever
-tracking mechanism the team is using so you and another team member don't
-duplicate the work.
+skill set to accomplish. When you get **Done**[^3] with the task you've taken
+come back to the backlog and chose another. Don't forget to mark the things
+you are working on as in progress by whatever tracking mechanism the team is
+using so you and another team member don't duplicate the work.
 
 Whew. That would have been a nasty email to read. I hope you like it better as
 a blog post. Don't forget to use inspection and adaptation to refine this
@@ -136,8 +133,8 @@ outline of a process that has worked for me in the past, but never be afraid
 to look for ways to improve.
 
 ---
-1. <a name="n1"></a>*Hi Mom!* [↩](#n1-r)
-2. <a name="n2"></a>*"Inspect and adapt" is a common refrain in scrum.* [↩](#n2-r)
-3. <a name="n3"></a>*"Definition of Done" is a topic for [another post][].* [↩](#n3-r)
+[^1]: *Hi Mom!*
+[^2]: *"Inspect and adapt" is a common refrain in scrum.*
+[^3]: *"Definition of Done" is a topic for [another post][].*
 
 [another post]: /blog/2014/01/14/how-do-you-know-when-youre-done/

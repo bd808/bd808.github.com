@@ -1,5 +1,5 @@
 Layout: post
-Title: "Puppet file recurse pitfall"
+Title: Puppet file recurse pitfall
 Date: 2014-09-30 20:44:13 -0600
 Comments: true
 Github_issue_id: 24
@@ -30,8 +30,6 @@ $ TZ=UTC strace /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose \
    --no-daemonize --no-splay --debug 2>&1 |
    tee /tmp/loud-puppet-strace.log
 ```
-
-<!-- MORE -->
 
 Looking at the `strace` messages there was clearly a pattern of `stat()` calls
 for `.rb` files in unexpected numbers. Puppet was pretty obviously searching

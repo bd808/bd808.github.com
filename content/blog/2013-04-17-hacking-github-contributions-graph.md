@@ -1,5 +1,5 @@
 Layout: post
-Title: "Hacking GitHub Contributions Calendar"
+Title: Hacking GitHub Contributions Calendar
 Date: 2013-04-17 21:06
 Comments: true
 Github_issue_id: 13

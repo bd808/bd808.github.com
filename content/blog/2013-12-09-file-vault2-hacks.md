@@ -1,5 +1,5 @@
 Layout: post
-Title: "FileVault2 Hacks"
+Title: FileVault2 Hacks
 Date: 2013-12-09 21:35:52 -0700
 Comments: true
 Github_issue_id: 21
@@ -15,8 +15,6 @@ to decrypt the disk shows the display name of all usersthat can unlock the
 system rather than blank fields for both username and password. This leaks
 information that I would really rather not leak. Fortunately I've found
 a little hack to work around both of these issues.
-
-<!-- more -->
 
 The key to my fix lies in this statement from the documentation:
 > Users not enabled for FileVault unlock are only able to log into the
@@ -52,11 +50,12 @@ configure the login screen to display username and password prompts instead of
 a list of local user accounts. There are probably several ways to do this, but
 I chose to make a small application that executes this apple script command:
 
-{% codeblock logout %}
+*logout*
+``` AppleScript
 ignoring application responses
   tell application "loginwindow" to «event aevtlogo»
 end ignoring
-{% endcodeblock %}
+```
 
 [fv2]: http://support.apple.com/kb/ht4790
 [RSI]: https://en.wikipedia.org/wiki/Repetitive_strain_injury

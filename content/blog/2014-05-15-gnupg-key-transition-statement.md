@@ -1,12 +1,11 @@
 Layout: post
-Title: "GnuPG key transition statement"
+Title: GnuPG key transition statement
 Date: 2014-05-15 22:33:39 -0600
 Comments: true
 Github_issue_id: 23
 Tags: gpg, security
 
-<!-- MORE -->
-<pre><code>
+```
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1,SHA512
 
@@ -70,4 +69,4 @@ EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
 1HCfl3sQmGkYZ1f3DPrcur0jm+PkHPB4Jw29wogBFU0d7dDJQ0qv
 =l8Kz
 -----END PGP SIGNATURE-----
-</code></pre>
+```

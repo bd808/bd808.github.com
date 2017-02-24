@@ -1,5 +1,5 @@
 Layout: post
-Title: "Generating an Apparently Random Unique Sequence"
+Title: Generating an Apparently Random Unique Sequence
 Date: 2012-03-31 15:40
 Comments: true
 Github_issue_id: 5
@@ -34,14 +34,14 @@ The basic math looks like this:  `f(n) := (n * p) % q`
 - `p` ⊥ `q` ([coprime](https://en.wikipedia.org/wiki/Coprime) or relatively prime)
 
 With `p := 5` and `q := 12` our function will generate this output:
-<table class="border padded">
+<table class="table table-bordered">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table>
 
 
 Change `p` to 7 and you'll get:
-<table class="border padded">
+<table class="table table-bordered">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
 </table>
@@ -64,7 +64,8 @@ This method is a type of [Linear congruential generator](https://en.wikipedia.or
 Examples
 --------
 
-{% codeblock PHP lang:php %}
+*PHP*
+```php
 <?php
 /**
  * Obfuscate an id generated from a linear sequence.
@@ -77,14 +78,15 @@ Examples
 function obfuscate_id ($n, $p, $q) {
   return ($n * $p) % $q;
 }
-{% endcodeblock %}
+```
 
-{% codeblock PL/SQL lang:sql %}
+*PL/SQL*
+```sql
 FUNCTION obfuscate_id (n NUMBER, p NUMBER, q NUMBER) RETURN NUMBER IS
 BEGIN
   RETURN MOD(n * p, q);
 END f;
-{% endcodeblock %}
+```
 
 ----
 Thanks to [Tim](http://www.timbarber.org/) for explaining all of this to me several times without becoming annoyed at the parts I wasn't getting.

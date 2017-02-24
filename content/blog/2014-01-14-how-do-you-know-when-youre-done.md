@@ -1,5 +1,5 @@
 Layout: post
-Title: "How do you know when you're done?"
+Title: How do you know when you're done?
 Date: 2014-01-14 21:48:20 -0700
 Comments: true
 Github_issue_id: 22
@@ -13,8 +13,6 @@ When I was first working with scrum I had a hard time finding examples of what
 a typical definition of done would include. Most scrum authors (and even many
 trainers) wave their hands and say that it's too specific to the team and
 their environment to generalize.
-
-<!-- more -->
 
 Intellectually I agree with this, but pragmatically I think that having some
 sort of rough draft of ideas to start from makes writing the first draft

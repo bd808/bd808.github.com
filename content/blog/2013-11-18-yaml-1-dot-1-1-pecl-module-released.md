@@ -1,5 +1,5 @@
 Layout: post
-Title: "Yaml 1.1.1 PECL Module Released"
+Title: Yaml 1.1.1 PECL Module Released
 Date: 2013-11-18 22:20:43 -0700
 Comments: true
 Github_issue_id: 20
@@ -14,8 +14,6 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:
 - [#63086](https://bugs.php.net/bug.php?id=63086) Compiling PHP with YAML as static extension fails
 - [#64019](https://bugs.php.net/bug.php?id=64019) Segmentation fault if yaml anchor ends with a colon
 - [#64694](https://bugs.php.net/bug.php?id=64694) Segfault when array used as mapping key
-
-<!-- more -->
 
 It also includes a small but important patch from a community member who
 discovered that I had left the `yaml_emit_file()` method marked as

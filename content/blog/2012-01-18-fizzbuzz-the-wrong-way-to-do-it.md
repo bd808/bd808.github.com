@@ -1,5 +1,5 @@
 Layout: post
-Title: "FizzBuzz &mdash; the wrong way to do it"
+Title: FizzBuzz &mdash; the wrong way to do it
 Date: 2012-01-18 21:47
 Comments: true
 Tags: algorithms
@@ -12,22 +12,25 @@ Tags: algorithms
 
 <!-- more -->
 
-{% codeblock fizzbuzz.py %}
+*Python*
+```python
 #!/usr/bin/env python
 for i in xrange(1, 101):
   print (not i % 3) * "Fizz" + (not i % 5) * "Buzz" or i
-{% endcodeblock %}
+```
 
-{% codeblock fizzbuzz.php %}
+*PHP*
+```php
 <?php
 $p = "printf"; $r = "str_repeat";
 for ($i = 1; $i <= 100; $i++) {
   $p("%s\n", $r($i, $p("%s%s",
       $r("Fizz", !($i % 3)), $r("Buzz", !($i % 5))) == 0));
 }
-{% endcodeblock %}
+```
 
-{% codeblock fizzbuzz.sh %}
+*Bash*
+```bash
 #!/usr/bin/env bash
 for i in {1..100}; do
   if   [ 0 = $(($i % 15)) ]; then echo "FizzBuzz";
@@ -36,4 +39,4 @@ for i in {1..100}; do
   else                       echo $i;
   fi
 done
-{% endcodeblock %}
+```

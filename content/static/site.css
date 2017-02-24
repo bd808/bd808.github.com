@@ -11,3 +11,7 @@
 #sidebar .list-group-item {
   padding: .25em;
 }
+
+table.highlighttable .code {
+  width:100%;
+}

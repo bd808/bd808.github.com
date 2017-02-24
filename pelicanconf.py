@@ -92,7 +92,7 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
 AVATAR = 'static/6af4be9e5e433d21909a0eb60fc258bc.png'
 CC_LICENSE = 'CC-BY-SA'
 
-PYGMENTS_STYLE = 'solarizeddark'
+PYGMENTS_STYLE = 'solarizedlight'
 
 USE_PAGER = True
 DISPLAY_BREADCRUMBS = False
@@ -116,3 +116,14 @@ PLUGINS = [
 JINJA_EXTENSIONS = [
     'jinja2.ext.i18n',
 ]
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {
+            'css_class': 'highlight',
+            'linenums': True,
+        },
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+    'output_format': 'html5',
+}

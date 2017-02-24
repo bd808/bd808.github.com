@@ -1,5 +1,5 @@
 Layout: post
-Title: "Managing my laptop with Boxen"
+Title: Managing my laptop with Boxen
 Date: 2013-10-14 22:11
 Comments: true
 Github_issue_id: 17
