@@ -1,0 +1,4 @@
+Markdown
+pelican
+PyYAML
+typogrify

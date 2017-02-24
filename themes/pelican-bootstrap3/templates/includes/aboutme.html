@@ -1,0 +1,13 @@
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      {% if ABOUT_ME %}
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">{{ _('About') }}</span></h4>
+      {% endif %}
+      <p>
+        {% if AVATAR %}<img width="80" class="avatar img-thumbnail" src="{{ SITEURL }}/{{ AVATAR }}">{% endif %}
+        {% if ABOUT_ME %}{{ ABOUT_ME }}{% endif %}
+      </p>
+    </li>
+  </ul>
+</section>
