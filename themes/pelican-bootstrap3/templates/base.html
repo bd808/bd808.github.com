@@ -167,12 +167,14 @@
 {% endif %}
 <!-- End Banner -->
 <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
-    <article role="article">
+    <div class="row">
+      <div class="col-xs-12">
       {% block breadcrumbs %}
       {% endblock %}
       {% block content %}
       {% endblock %}
-    </article>
+      </div>
+    </div>
     {% if not HIDE_SIDEBAR or ABOUT_ME or AVATAR %}
     <aside id="sidebar" class="row">
     {% if ABOUT_ME or AVATAR %}
