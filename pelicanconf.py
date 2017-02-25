@@ -106,10 +106,29 @@ DISPLAY_ARTICLE_INFO_ON_INDEX = True
 TWITTER_CARDS = True
 TWITTER_USERNAME = 'bd808'
 
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'pages': 0.5,
+        'indexes': 0.5,
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'pages': 'monthly',
+        'indexes': 'daily',
+    },
+    'exclude': ['blog/tag/', 'blog/category/'],
+}
+
+TAG_CLOUD_SORTING = 'alphabetically'
+
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
+    'better_codeblock_line_numbering',
     'i18n_subsites',
     'liquid_tags.img',
+    'sitemap',
     'summary',
     'tag_cloud',
 ]
@@ -120,7 +139,7 @@ MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {
             'css_class': 'highlight',
-            'linenums': True,
+            'linenums': False,
         },
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
