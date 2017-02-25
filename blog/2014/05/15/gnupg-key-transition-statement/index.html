@@ -1,325 +1,359 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>GnuPG Key Transition Statement - bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>GnuPG key transition statement - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="-----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1,SHA512 I am transitioning GPG keys from an old 1024-bit DSA key to a new
-4096-bit RSA key. The old key &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="gpg,security" />
+        <meta name="description" content="-----BEGIN PGP SIGNED MESSAGE----- Hash: SHA1,SHA512 I am transitioning GPG keys from an old 1024-bit DSA key to a new 4096-bit RSA key. The old key will continue to be valid for some time, but I prefer all new correspondence to be encrypted to the new key, and will …" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="GnuPG key transition statement"/>
+        <meta property="og:url" content="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/"/>
+        <meta property="og:description" content="-----BEGIN PGP SIGNED MESSAGE----- Hash: SHA1,SHA512 I am transitioning GPG keys from an old 1024-bit DSA key to a new 4096-bit RSA key. The old key will continue to be valid for some time, but I prefer all new correspondence to be encrypted to the new key, and will …"/>
+        <meta property="article:published_time" content="2014-05-15" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="gpg" />
+            <meta property="article:tag" content="security" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/"
+                       rel="bookmark"
+                       title="Permalink to GnuPG key transition statement">
+                        GnuPG key transition statement
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-05-15T22:33:39-06:00"> 2014-05-15</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/gpg/">gpg</a>
+        /
+	<a href="http://bd808.com/blog/tags/security/">security</a>
     
-      <h1 class="entry-title">GnuPG Key Transition Statement</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-15T22:33:39-06:00'><span class='date'>2014-05-15</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><!-- MORE -->
-
-<pre><code>
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1,SHA512
-
-I am transitioning GPG keys from an old 1024-bit DSA key to a new
-4096-bit RSA key.  The old key will continue to be valid for some time,
-but I prefer all new correspondence to be encrypted to the new key, and
-will be making all signatures going forward with the new key.
-
-This transition document is signed with both keys to validate the
-transition.
-
-If you have signed my old key, I would appreciate signatures on my new
-key as well, provided that your signing policy permits that without
-re-authenticating me.
-
-The old key, which I am transitioning away from, is:
-
-  pub   1024D/0x41E5C23F0F8E76D6 [created: 2004-10-14]
-    Key fingerprint = FE97 560A 1C17 F268 1A20  5B80 41E5 C23F 0F8E 76D6
-
-The new key, to which I am transitioning, is:
-
-  pub   4096R/0xC139E10FD9F20FC1 [created: 2014-05-16]
-    Key fingerprint = 7DFA 4AEF AC15 8BFC 151D  2DD8 C139 E10F D9F2 0FC1
-
-To fetch the full new key from a public key server using GnuPG, run:
-
-  gpg --keyserver keys.gnupg.net --recv-key 0xC139E10FD9F20FC1
-
-If you have already validated my old key, you can then validate that the
-new key is signed by my old key:
-
-  gpg --check-sigs 0xC139E10FD9F20FC1
-
-If you then want to sign my new key, a simple and safe way to do that is
-by using caff as follows:
-
-  caff 0xC139E10FD9F20FC1
-
-Please contact me via e-mail at &lt;bd808@bd808.com&gt; if you have any
-questions about this document or this transition.
-
-Bryan Davis
-&lt;bd808@bd808.com&gt;
-2014-05-15
-
------BEGIN PGP SIGNATURE-----
-
-iEYEARECAAYFAlN1m3cACgkQQeXCPw+OdtYXEwCfXUThM0JsPacy1bCBQ6rZpWRY
-dAcAoIMg91zhQlgo2DJCu3o9BUzCqEJuiQIcBAEBCgAGBQJTdZt3AAoJEEhMmO+k
-BO60xv0QAJEV8VYVqpIdEoZWRYw6sGJVmkTCs2rC4OC68/W+1e41hgPqE+i+6ACU
-2MhwusMQhsBu1QpyeWXTOEPMU4rvwwlMeQnIlg+DEFGn2k3qJfxeYooO1Ni9n0US
-fb676RByWnaAZUYPebNrmTvk5bv/M5BSU8XDfPmDsFk5hzeOa1j1kw9Loffr74LL
-LJozHb8Uj9fMZj1f8SzqlhyqPVUWqF3AEE3Dl14Wl2FH507ZzpMwuOetj65KxeiJ
-Iee2Hhu6TvQcqs6erxMrsVFxuYz9s1eJzo7feEL22Z8Nm46KSF6x43lpt8ebiKDU
-zxzdjLBRQOYf3KcCHE2HvbGxPqEfKkwmCJcd1a3Bd/7sgPXrKsJbeCg8LD2x8aTT
-DHGXUEVbMv8r3qMAlKXxJ8iBJ9AvdG0nKneVJ8gB6YkCPlSuDlh2bL3CrMPQ5Db+
-vtI0EwuGHSMocWX5cns3t31/iWdoOJ/8lvXJoauT+TVmenmhQ0mU71+whVlnahhr
-fhKqsZHM4Nryve8LOntndzAIRUK9EZom1ZGfxzEgfgheg0boMfbk9+dS38zVxjmx
-EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05
-1HCfl3sQmGkYZ1f3DPrcur0jm+PkHPB4Jw29wogBFU0d7dDJQ0qv
-=l8Kz
------END PGP SIGNATURE-----
-</code></pre>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2014-05-15T22:33:39-06:00'><span class='date'>2014-05-15</span> <span class='time'></span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/gpg/'>gpg</a>, <a class='category' href='/blog/categories/security/'>security</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/" data-via="" data-counturl="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/01/14/how-do-you-know-when-youre-done/" title="Previous Post: How do you know when you're done?">&laquo; How do you know when you&#8217;re done?</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/09/30/puppet-file-recurse-pitfall/" title="Next Post: Puppet file recurse pitfall">Puppet file recurse pitfall &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-<section id="comments">
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div class="highlight"><pre><span class="code-line"><span></span>-----BEGIN PGP SIGNED MESSAGE-----</span>
+<span class="code-line">Hash: SHA1,SHA512</span>
+<span class="code-line"></span>
+<span class="code-line">I am transitioning GPG keys from an old 1024-bit DSA key to a new</span>
+<span class="code-line">4096-bit RSA key.  The old key will continue to be valid for some time,</span>
+<span class="code-line">but I prefer all new correspondence to be encrypted to the new key, and</span>
+<span class="code-line">will be making all signatures going forward with the new key.</span>
+<span class="code-line"></span>
+<span class="code-line">This transition document is signed with both keys to validate the</span>
+<span class="code-line">transition.</span>
+<span class="code-line"></span>
+<span class="code-line">If you have signed my old key, I would appreciate signatures on my new</span>
+<span class="code-line">key as well, provided that your signing policy permits that without</span>
+<span class="code-line">re-authenticating me.</span>
+<span class="code-line"></span>
+<span class="code-line">The old key, which I am transitioning away from, is:</span>
+<span class="code-line"></span>
+<span class="code-line">  pub   1024D/0x41E5C23F0F8E76D6 [created: 2004-10-14]</span>
+<span class="code-line">    Key fingerprint = FE97 560A 1C17 F268 1A20  5B80 41E5 C23F 0F8E 76D6</span>
+<span class="code-line"></span>
+<span class="code-line">The new key, to which I am transitioning, is:</span>
+<span class="code-line"></span>
+<span class="code-line">  pub   4096R/0xC139E10FD9F20FC1 [created: 2014-05-16]</span>
+<span class="code-line">    Key fingerprint = 7DFA 4AEF AC15 8BFC 151D  2DD8 C139 E10F D9F2 0FC1</span>
+<span class="code-line"></span>
+<span class="code-line">To fetch the full new key from a public key server using GnuPG, run:</span>
+<span class="code-line"></span>
+<span class="code-line">  gpg --keyserver keys.gnupg.net --recv-key 0xC139E10FD9F20FC1</span>
+<span class="code-line"></span>
+<span class="code-line">If you have already validated my old key, you can then validate that the</span>
+<span class="code-line">new key is signed by my old key:</span>
+<span class="code-line"></span>
+<span class="code-line">  gpg --check-sigs 0xC139E10FD9F20FC1</span>
+<span class="code-line"></span>
+<span class="code-line">If you then want to sign my new key, a simple and safe way to do that is</span>
+<span class="code-line">by using caff as follows:</span>
+<span class="code-line"></span>
+<span class="code-line">  caff 0xC139E10FD9F20FC1</span>
+<span class="code-line"></span>
+<span class="code-line">Please contact me via e-mail at &amp;lt;bd808@bd808.com&amp;gt; if you have any</span>
+<span class="code-line">questions about this document or this transition.</span>
+<span class="code-line"></span>
+<span class="code-line">Bryan Davis</span>
+<span class="code-line">&amp;lt;bd808@bd808.com&amp;gt;</span>
+<span class="code-line">2014-05-15</span>
+<span class="code-line"></span>
+<span class="code-line">-----BEGIN PGP SIGNATURE-----</span>
+<span class="code-line"></span>
+<span class="code-line">iEYEARECAAYFAlN1m3cACgkQQeXCPw+OdtYXEwCfXUThM0JsPacy1bCBQ6rZpWRY</span>
+<span class="code-line">dAcAoIMg91zhQlgo2DJCu3o9BUzCqEJuiQIcBAEBCgAGBQJTdZt3AAoJEEhMmO+k</span>
+<span class="code-line">BO60xv0QAJEV8VYVqpIdEoZWRYw6sGJVmkTCs2rC4OC68/W+1e41hgPqE+i+6ACU</span>
+<span class="code-line">2MhwusMQhsBu1QpyeWXTOEPMU4rvwwlMeQnIlg+DEFGn2k3qJfxeYooO1Ni9n0US</span>
+<span class="code-line">fb676RByWnaAZUYPebNrmTvk5bv/M5BSU8XDfPmDsFk5hzeOa1j1kw9Loffr74LL</span>
+<span class="code-line">LJozHb8Uj9fMZj1f8SzqlhyqPVUWqF3AEE3Dl14Wl2FH507ZzpMwuOetj65KxeiJ</span>
+<span class="code-line">Iee2Hhu6TvQcqs6erxMrsVFxuYz9s1eJzo7feEL22Z8Nm46KSF6x43lpt8ebiKDU</span>
+<span class="code-line">zxzdjLBRQOYf3KcCHE2HvbGxPqEfKkwmCJcd1a3Bd/7sgPXrKsJbeCg8LD2x8aTT</span>
+<span class="code-line">DHGXUEVbMv8r3qMAlKXxJ8iBJ9AvdG0nKneVJ8gB6YkCPlSuDlh2bL3CrMPQ5Db+</span>
+<span class="code-line">vtI0EwuGHSMocWX5cns3t31/iWdoOJ/8lvXJoauT+TVmenmhQ0mU71+whVlnahhr</span>
+<span class="code-line">fhKqsZHM4Nryve8LOntndzAIRUK9EZom1ZGfxzEgfgheg0boMfbk9+dS38zVxjmx</span>
+<span class="code-line">EZ4JuTVvAUv4ZgG553JaKed278wNPxdXSqaXggV+HAceFkaW80M6uQhvOCXX+T05</span>
+<span class="code-line">1HCfl3sQmGkYZ1f3DPrcur0jm+PkHPB4Jw29wogBFU0d7dDJQ0qv</span>
+<span class="code-line">=l8Kz</span>
+<span class="code-line">-----END PGP SIGNATURE-----</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/23">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/23">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
+        </article>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
-
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 <script type="text/javascript">
 $.ajax({
     url: "https://api.github.com/repos/bd808/bd808.github.com/issues/23/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
-  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
@@ -331,14 +365,10 @@ $.ajax({
         cavatarlink = resp[i].user.avatar_url;
         cdate = (new Date(resp[i].created_at)).toLocaleString();
 
-        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
       }
     }
 });
 </script>
-
-
-
-
 </body>
 </html>

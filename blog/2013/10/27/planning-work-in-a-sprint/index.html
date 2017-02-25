@@ -1,204 +1,195 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>Planning Work in a Sprint - bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>Planning Work in a Sprint - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="We&rsquo;ve been having some discussions at $DAYJOB about process and
-methodologies. The topic of late is scrum and how it may
-or may not be helpful &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="scrum,sdlc" />
+        <meta name="description" content="We&#39;ve been having some discussions at $DAYJOB about process and methodologies. The topic of late is scrum and how it may or may not be helpful for the particular group I work with. I&#39;ve been providing some anecdotal input based my past experience with scrum and other methodologies/frameworks/practices …" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Planning Work in a Sprint"/>
+        <meta property="og:url" content="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/"/>
+        <meta property="og:description" content="We&#39;ve been having some discussions at $DAYJOB about process and methodologies. The topic of late is scrum and how it may or may not be helpful for the particular group I work with. I&#39;ve been providing some anecdotal input based my past experience with scrum and other methodologies/frameworks/practices …"/>
+        <meta property="article:published_time" content="2013-10-27" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="scrum" />
+            <meta property="article:tag" content="sdlc" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/"
+                       rel="bookmark"
+                       title="Permalink to Planning Work in a Sprint">
+                        Planning Work in a Sprint
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-10-27T20:05:00+00:00"> 2013-10-27</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/scrum/">scrum</a>
+        /
+	<a href="http://bd808.com/blog/tags/sdlc/">sdlc</a>
     
-      <h1 class="entry-title">Planning Work in a Sprint</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-10-27T20:05:00-06:00'><span class='date'>2013-10-27</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>We&rsquo;ve been having some discussions at <code>$DAYJOB</code> about process and
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>We've been having some discussions at <code>$DAYJOB</code> about process and
 methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
-or may not be helpful for the particular group I work with. I&rsquo;ve been
+or may not be helpful for the particular group I work with. I've been
 providing some anecdotal input based my past experience with scrum and other
 methodologies/frameworks/practices and asking questions about what problems
 the group is hoping to find new solutions for.</p>
-
-<p>I started to write a big wall o&#39; text™ email about a particular topic and then
+<p>I started to write a big wall o' text™ email about a particular topic and then
 decided that maybe a blog post would be a better way to work through my idea.
-So dear reader<sup><a href="#n1">1</a></sup> <a name="n1-r"></a>, here are some of my highly
+So dear reader<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>, here are some of my highly
 opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (<em>or really any other iterative
 unit of work)</em>.</p>
-
-<!-- more -->
-
-<h2 id="pick-some-work-you-think-you-can-get-done">Pick some work you think you can get done</h2>
-
-<p>Step one, pick some work. Sounds easy, but pick it from where? Well that&rsquo;s
-a damn good question but one that&rsquo;s going to depend on your environment. For
-the sake of this post let&rsquo;s assume that you have access to an ordered list of
-features that need to be implemented. Let&rsquo;s further assume that the team and
+<h2>Pick some work you think you can get done</h2>
+<p>Step one, pick some work. Sounds easy, but pick it from where? Well that's
+a damn good question but one that's going to depend on your environment. For
+the sake of this post let's assume that you have access to an ordered list of
+features that need to be implemented. Let's further assume that the team and
 the stakeholders have talked about these features a little and that the team
 has reached a general consensus about how big the top few features are
 relative to features the team has worked on in the past. Scrum calls this
-a &ldquo;groomed backlog&rdquo;, but you can call it whatever you&rsquo;d like.</p>
-
+a "groomed backlog", but you can call it whatever you'd like.</p>
 <p>Now that you know where the work comes from, pick some. How much? Well, as
 much as the team thinks it can get done in the iteration. Without knowing your
-team and the length of the iteration and how tricky the problems are I can&rsquo;t
+team and the length of the iteration and how tricky the problems are I can't
 tell you. Just go with your collective gut and pick some. If you pick too
 little you can always come back and get more. If you pick too much the team
 can use that experiential data to adjust when choosing for the next iteration.
 Just pick some work for now and adjust in the future based on what happens
-during the iteration<sup><a href="#n2">2</a></sup> <a name="n2-r"></a>.</p>
-
-<h2 id="figure-out-what-ties-the-work-together">Figure out what ties the work together</h2>
-
+during the iteration<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
+<h2>Figure out what ties the work together</h2>
 <p>Step two, come up with a narrative about why you chose the work. A list of
 features and bugs you want to implement is a great start, but you can do
 better. It will be a lot easier for the team to make good choices during the
-iteration if they have a more noble goal than &ldquo;cross off all the things on
-this list.&rdquo; If the goal is just to get each item done it&rsquo;s more likely that
+iteration if they have a more noble goal than "cross off all the things on
+this list." If the goal is just to get each item done it's more likely that
 people will think of each part in isolation rather than thinking about how
 this work builds on what came before and enables more enhancements in the
 future.</p>
-
-<p>This step may lead you to switch out some of the things you&rsquo;ve chosen with
-other things that are in the backlog to make a more cohesive story. That&rsquo;s ok
-as long as you keep the most important thing. After all that&rsquo;s the MOST
+<p>This step may lead you to switch out some of the things you've chosen with
+other things that are in the backlog to make a more cohesive story. That's ok
+as long as you keep the most important thing. After all that's the MOST
 important thing; if you get it done plus some other stuff and everything works
 people should be happy.</p>
-
-<p>This narrative you&rsquo;ve created and the work that supports it are the forecast
+<p>This narrative you've created and the work that supports it are the forecast
 for the iteration. The product owner can take this information back to the
 rest of the stakeholders and tell them what to expect to hear about in the
 demonstration meeting at the end of the iteration. Be careful not to tell
-them that all of this work will be completed. The team has said they&rsquo;ll try
-to do this but they can&rsquo;t promise that it will get done any more than the
+them that all of this work will be completed. The team has said they'll try
+to do this but they can't promise that it will get done any more than the
 stakeholders  can promise how much money will be raised or how many new
 customers will be acquired.</p>
-
-<h2 id="figure-out-how-to-do-the-work">Figure out how to do the work</h2>
-
-<p>The last step before you close the planning meeting and get back to &ldquo;real
-work&rdquo; is to figure out how to actually <em>do</em> the work. We&rsquo;re talking about
+<h2>Figure out how to do the work</h2>
+<p>The last step before you close the planning meeting and get back to "real
+work" is to figure out how to actually <em>do</em> the work. We're talking about
 agile practices here so nobody should expect a gantt chart chart or
 a architecture document, but <strike>anarchists</strike> agile teams need
-enough of a plan to do today&rsquo;s work efficiently. The product owner doesn&rsquo;t
+enough of a plan to do today's work efficiently. The product owner doesn't
 need to stick around for this half of the meeting. The team should have enough
 information from the feature descriptions already given to make the tactical
 plan.</p>
-
-<p>I&rsquo;m sure there are other methods that would work as well, but I&rsquo;ve personally
+<p>I'm sure there are other methods that would work as well, but I've personally
 had success with a process that starts with finding dependencies. The team
 looks at the stories and tries to determine their rough interdependencies. The
 goal here is to identify communication interfaces that need to be specified
 and sequential implementation order dependencies. The team also looks for
 areas of uncertainty that could be resolved with tech spikes and/or further
 investigation of the requirements.</p>
-
-<p>Once you&rsquo;ve got the dependencies sorted, start breaking down the most obvious
+<p>Once you've got the dependencies sorted, start breaking down the most obvious
 starting point features. Make a list of the smaller tasks that need
 to be completed to finish the feature. Repeat the process by breaking those
-tasks down into even smaller tasks. Stop when the leaf tasks are &ldquo;small
-enough&rdquo;. My rule of thumb is that something that feels like it will take 3-5
+tasks down into even smaller tasks. Stop when the leaf tasks are "small
+enough". My rule of thumb is that something that feels like it will take 3-5
 ideal hours is small enough. Getting smaller than that early on is probably
 a waste of time, but staying larger leaves more uncertainty and risk in
-the plan. Scrum calls this step &ldquo;story decomposition&rdquo;.</p>
-
+the plan. Scrum calls this step "story decomposition".</p>
 <p>The list of decomposed tasks that the team has created is the start of the
 iteration backlog. Just like the product backlog this needs to be put in order
 so that when a team member or pair needs more work to do they can just pull
 the next most important thing in their area of expertise off of the backlog.
-You&rsquo;ll reorder the list as the iteration progresses, but get started by
+You'll reorder the list as the iteration progresses, but get started by
 ordering the tasks you just decomposed.</p>
-
 <p>If you only have a few features to break down, continue to do the work as
 a group. If there are quite a few to get through you can split up into
 appropriately skilled groups and work in parallel. Depending on your team and
@@ -206,189 +197,221 @@ the time you have left in the meeting (two hours per week of iteration is
 a suggested total duration), you may have time to outline all of the features.
 You need to at least outline enough to keep the whole team occupied for the
 rest of today and tomorrow.</p>
-
 <p>If you have some high risk things to accomplish in the iteration try to break
 them down as early as you can so that someone (or some pair) can start on the
-tech spikes or API design or whatever sooner rather than later. Don&rsquo;t forget
-to put a &ldquo;decompose feature X&rdquo; task onto the backlog for any stories that you
-didn&rsquo;t have time to get to by the end of the time box.</p>
-
-<h2 id="get-to-work">Get to work</h2>
-
-<p>Now you&rsquo;ve got a list of features to implement, a narrative about why these
+tech spikes or API design or whatever sooner rather than later. Don't forget
+to put a "decompose feature X" task onto the backlog for any stories that you
+didn't have time to get to by the end of the time box.</p>
+<h2>Get to work</h2>
+<p>Now you've got a list of features to implement, a narrative about why these
 things go together and at least a day or two of granular tasks to start
 working on. Each team member or pair now needs to select one thing to begin
 working on. Start by choosing the highest priority task that you have the
-skill set to accomplish. When you get <strong>Done</strong><sup><a href="#n3">3</a></sup> <a name="n3-r"></a>
-with the task you&rsquo;ve taken come back to the backlog and chose another. Don&rsquo;t
-forget to mark the things you are working on as in progress by whatever
-tracking mechanism the team is using so you and another team member don&rsquo;t
-duplicate the work.</p>
-
+skill set to accomplish. When you get <strong>Done</strong><sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup> with the task you've taken
+come back to the backlog and chose another. Don't forget to mark the things
+you are working on as in progress by whatever tracking mechanism the team is
+using so you and another team member don't duplicate the work.</p>
 <p>Whew. That would have been a nasty email to read. I hope you like it better as
-a blog post. Don&rsquo;t forget to use inspection and adaptation to refine this
-process so that it works well for your team. I think I&rsquo;ve given a reasonable
+a blog post. Don't forget to use inspection and adaptation to refine this
+process so that it works well for your team. I think I've given a reasonable
 outline of a process that has worked for me in the past, but never be afraid
 to look for ways to improve.</p>
-
 <hr>
-
+<div class="footnote">
+<hr>
 <ol>
-<li><a name="n1"></a><em>Hi Mom!</em> <a href="#n1-r">↩</a></li>
-<li><a name="n2"></a><em>&ldquo;Inspect and adapt&rdquo; is a common refrain in scrum.</em> <a href="#n2-r">↩</a></li>
-<li><a name="n3"></a><em>&ldquo;Definition of Done&rdquo; is a topic for <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em> <a href="#n3-r">↩</a></li>
+<li id="fn-1">
+<p><em>Hi Mom!</em>&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn-2">
+<p><em>"Inspect and adapt" is a common refrain in scrum.</em>&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn-3">
+<p><em>"Definition of Done" is a topic for <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">another post</a>.</em>&#160;<a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
 </ol>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2013-10-27T20:05:00-06:00'><span class='date'>2013-10-27</span> <span class='time'></span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/scrum/'>scrum</a>, <a class='category' href='/blog/categories/sdlc/'>sdlc</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/" data-via="" data-counturl="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/" title="Previous Post: Creating a Self-signed Code Certificate for XCode">&laquo; Creating a Self-signed Code Certificate for XCode</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/" title="Next Post: Yaml 1.1.1 PECL Module Released">Yaml 1.1.1 PECL Module Released &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-<section id="comments">
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/19">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/19">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
+        </article>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
-
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 <script type="text/javascript">
 $.ajax({
     url: "https://api.github.com/repos/bd808/bd808.github.com/issues/19/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
-  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
@@ -400,14 +423,10 @@ $.ajax({
         cavatarlink = resp[i].user.avatar_url;
         cdate = (new Date(resp[i].created_at)).toLocaleString();
 
-        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
       }
     }
 });
 </script>
-
-
-
-
 </body>
 </html>

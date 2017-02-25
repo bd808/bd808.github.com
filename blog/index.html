@@ -1,405 +1,386 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="Puppet has become my go to system management tool in no small part because
-it is the tool that the operations group at $DAYJOB has standardized on &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com">
+        <meta name="author" content="Bryan Davis" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="bd808.com"/>
+        <meta property="og:url" content="http://bd808.com"/>
+        <meta property="og:description" content="bd808.com"/>
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+            <article>
+                <h2><a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet file recurse pitfall</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-09-30T20:44:13-06:00"> 2014-09-30</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/puppet/">puppet</a>
+        /
+	<a href="http://bd808.com/blog/tags/sysadmin/">sysadmin</a>
     
-      <h1 class="entry-title"><a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-30T20:44:13-06:00'><span class='date'>2014-09-30</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
 it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
 for our production infrastructure management. It took quite a while for me to
-get the hang of how Puppet does what it does, but today I&rsquo;d say I&rsquo;m a fairly
-decent Puppet programmer. Every once in a while however I stumble on something
-new and surprising.</p>
-
-<p>A couple of weeks ago I got an interesting bug report from a user about
-a collection of Puppet manifests I help manage. The bug was that his testing
-server was pegged at 99% CPU utilization for multiple minutes during each
-<code>puppet agent</code> run. The bug reporter did a great job of investigating and had
-also found that <code>strace</code> showed a repetitive stream of <code>stat()</code> calls while
-the process was hogging the CPU.</p>
-
-<p>This also turned out to the be the great kind of bug that was reproducible.
-The first testing server I tried the steps from the bug report on showed the
-exact same symptoms. I grabbed some very verbose logs by turning on the
-<code>--debug</code> logging in <code>puppet agent</code> and logging all of the system calls with
-<code>strace</code> at the same time:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ TZ</span><span class="o">=</span>UTC strace /usr/bin/ruby /usr/bin/puppet agent --onetime --verbose <span class="se">\</span>
-</span><span class='line'>   --no-daemonize --no-splay --debug 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span>
-</span><span class='line'>   tee /tmp/loud-puppet-strace.log
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/30/puppet-file-recurse-pitfall/">More &rarr;</a>
-    </footer>
-  
+get the hang of how Puppet does what it does …</p>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG key transition statement</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-05-15T22:33:39-06:00"> 2014-05-15</time>
+    </span>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/gpg/">gpg</a>
+        /
+	<a href="http://bd808.com/blog/tags/security/">security</a>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a></h1>
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><div class="highlight"><pre><span class="code-line"><span></span>-----BEGIN PGP SIGNED MESSAGE-----</span>
+<span class="code-line">Hash: SHA1,SHA512</span>
+<span class="code-line"></span>
+<span class="code-line">I am transitioning GPG keys from an old 1024-bit DSA key to a new</span>
+<span class="code-line">4096-bit RSA key.  The old key will continue to be valid for some time,</span>
+<span class="code-line">but I prefer all new correspondence to be encrypted to the new key, and</span>
+<span class="code-line">will …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">How do you know when you're done?</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-01-14T21:48:20-07:00"> 2014-01-14</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/scrum/">scrum</a>
+        /
+	<a href="http://bd808.com/blog/tags/sdlc/">sdlc</a>
     
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-15T22:33:39-06:00'><span class='date'>2014-05-15</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/15/gnupg-key-transition-statement/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-14T21:48:20-07:00'><span class='date'>2014-01-14</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
-Done&rdquo;. The definition of done is roughly a list of requirements that all parts
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>In scrum a story is "Done" when it meets the team's shared "Definition of
+Done". The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
-things in scrum the implementation details are left to the team to decide.
-When I was first working with scrum I had a hard time finding examples of what
-a typical definition of done would include. Most scrum authors (and even many
-trainers) wave their hands and say that it&rsquo;s too specific to the team and
-their environment to generalize.</p>
+things in scrum the implementation details are left to …</p>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">FileVault2 Hacks</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-12-09T21:35:52-07:00"> 2013-12-09</time>
+    </span>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/14/how-do-you-know-when-youre-done/">More &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/osx/">osx</a>
+        /
+	<a href="http://bd808.com/blog/tags/security/">security</a>
     
-      <h1 class="entry-title"><a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-12-09T21:35:52-07:00'><span class='date'>2013-12-09</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mac OS X 10.7 introduced a whole disk encryption service called
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
-password of your primary user account to unlock the system. I&rsquo;m a fan of
-strong passwords but for encryption I&rsquo;d prefer to use a longer pass phrase for
-increased entropy. Second the EFI-boot screen that is used to get the password
-to decrypt the disk shows the display name of all usersthat can unlock the
-system rather than blank fields for both username and password. This leaks
-information that I would really rather not leak. Fortunately I&rsquo;ve found
-a little hack to work around both of these issues.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/09/file-vault2-hacks/">More &rarr;</a>
-    </footer>
-  
+password of your primary user account to unlock the system …</p>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-11-18T22:20:43-07:00"> 2013-11-18</time>
+    </span>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/pecl/">pecl</a>
+        /
+	<a href="http://bd808.com/blog/tags/yaml/">yaml</a>
+        /
+	<a href="http://bd808.com/blog/tags/php/">php</a>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-11-18T22:20:43-07:00'><span class='date'>2013-11-18</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;m glad to announce that I finally got around to releasing the bug fix
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>I'm glad to announce that I finally got around to releasing the bug fix
 version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
 I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
-
 <ul>
 <li><a href="https://bugs.php.net/bug.php?id=61770">#61770</a> Crash on nonunicode character</li>
 <li><a href="https://bugs.php.net/bug.php?id=61923">#61923</a> Detect_scalar_type() is not aware of base 60 representation</li>
-<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling PHP with YAML as static extension fails</li>
-<li><a href="https://bugs.php.net/bug.php?id=64019">#64019</a> Segmentation fault if yaml anchor ends with a colon</li>
-<li><a href="https://bugs.php.net/bug.php?id=64694">#64694</a> Segfault when array used as mapping key</li>
-</ul>
+<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling …</li></ul>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">More &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/2">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
+        <ul class="pager">
+                <li class="previous disabled"><a href="#">&larr; Newer</a></li>
+                <li class="next"><a
+                        href="http://bd808.com/blog/2/">Older &rarr;</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 </body>
 </html>

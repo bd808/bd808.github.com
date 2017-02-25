@@ -1,117 +1,122 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>How Do You Know When You&#8217;re Done? - bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>How do you know when you're done? - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
-Done&rdquo;. The definition of done is roughly a &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="scrum,sdlc" />
+        <meta name="description" content="In scrum a story is &#34;Done&#34; when it meets the team&#39;s shared &#34;Definition of Done&#34;. The definition of done is roughly a list of requirements that all parts of the software increment must adhere to to be called complete. Like most things in scrum the implementation details are left to …" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="How do you know when you&#39;re done?"/>
+        <meta property="og:url" content="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"/>
+        <meta property="og:description" content="In scrum a story is &#34;Done&#34; when it meets the team&#39;s shared &#34;Definition of Done&#34;. The definition of done is roughly a list of requirements that all parts of the software increment must adhere to to be called complete. Like most things in scrum the implementation details are left to …"/>
+        <meta property="article:published_time" content="2014-01-14" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="scrum" />
+            <meta property="article:tag" content="sdlc" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/"
+                       rel="bookmark"
+                       title="Permalink to How do you know when you're done?">
+                        How do you know when you're done?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-01-14T21:48:20-07:00"> 2014-01-14</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/scrum/">scrum</a>
+        /
+	<a href="http://bd808.com/blog/tags/sdlc/">sdlc</a>
     
-      <h1 class="entry-title">How Do You Know When You&#8217;re Done?</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-14T21:48:20-07:00'><span class='date'>2014-01-14</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>In scrum a story is &ldquo;Done&rdquo; when it meets the team&rsquo;s shared &ldquo;Definition of
-Done&rdquo;. The definition of done is roughly a list of requirements that all parts
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>In scrum a story is "Done" when it meets the team's shared "Definition of
+Done". The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
 things in scrum the implementation details are left to the team to decide.
 When I was first working with scrum I had a hard time finding examples of what
 a typical definition of done would include. Most scrum authors (and even many
-trainers) wave their hands and say that it&rsquo;s too specific to the team and
+trainers) wave their hands and say that it's too specific to the team and
 their environment to generalize.</p>
-
-<!-- more -->
-
 <p>Intellectually I agree with this, but pragmatically I think that having some
 sort of rough draft of ideas to start from makes writing the first draft
 easier. This particular definition of Done is written from the perspective of
@@ -120,7 +125,6 @@ does not include Done criteria for the operations or support teams that will
 maintain the deployed software or assist customers in its use. It does however
 include deliverables that must be produced by the development team to support
 those additional teams.</p>
-
 <p>This list taken as a whole looks pretty daunting. It turns out that producing
 production ready software is hard work. It is such hard work that it takes
 a group of well trained individuals working as a team to complete properly.
@@ -128,11 +132,8 @@ This list is a recipe that can and should be used by the team to ensure that
 they produce an increment that is worthy of their combined energy. When used
 properly it will increase the reputation and worth of the team, their product
 and the organization.</p>
-
-<h2 id="done-with-grooming-a-story">Done with grooming a story</h2>
-
+<h2>Done with grooming a story</h2>
 <p>A groomed story is <strong><em>clear, feasible and testable</em></strong>.</p>
-
 <dl>
 <dt>Business Goal described</dt>
 <dd>Why will we build this?</dd>
@@ -148,28 +149,24 @@ and the organization.</p>
 anything that can be quickly groomed is necessarily trivial. It may still take
 significant time to implement, but it would have to be a variation on work
 that has already been done that is understood by the whole team.</p>
-
 <p>Themes, Epics and large stories will need to be decomposed into smaller parts.
 This must happen recursively until the smallest parts are describable using
 the criteria established above.</p>
-
 <p>Spikes or other research may need to be done to remove uncertainty about new
 tech or legacy impact. These things are stories in their own right and should
 be treated as such. R&amp;D must be a traceable expense and is just as important as
 the final product/feature.</p>
-
-<h2 id="done-with-a-story">Done with a story</h2>
-
+<h2>Done with a story</h2>
 <dl>
-<dt>Everything from &ldquo;Done with grooming a story&rdquo;</dt>
+<dt>Everything from "Done with grooming a story"</dt>
 <dd>A story must be groomed before it can be implemented.</dd>
 <dt>Design complete</dt>
 <dd>Design is not one size fits all. Some stories must have UML and detailed
-functional descriptions. Others will only need a statement of &ldquo;do this just
-like we always do an X feature.&rdquo; The level of design required should be
+functional descriptions. Others will only need a statement of "do this just
+like we always do an X feature." The level of design required should be
 determined during grooming by the team.</dd>
 <dt>Design artifacts in wiki/bug tracker/other</dt>
-<dd>Design isn&rsquo;t complete until it&rsquo;s tangible artifacts are available to the
+<dd>Design isn't complete until it's tangible artifacts are available to the
 team and the business.</dd>
 <dt>Design reviewed by peers</dt>
 <dd>Similar to a code review, design should get a once over by at least one
@@ -187,7 +184,7 @@ the story.</dd>
 <dd>Unit tests are passing in all testable environments.</dd>
 <dt>Automated code checks passing</dt>
 <dd>Coding style, lint and other common automated code quality measurements are passing
-according to the organization&rsquo;s definition of passing.</dd>
+according to the organization's definition of passing.</dd>
 <dt>CI tests passing</dt>
 <dd>Automated tests in the continuous integration environment are passing.</dd>
 <dt>Peer code review completed</dt>
@@ -201,17 +198,16 @@ been written and verified either with automated tests or manual testing.
 Automated tests are preferred as they do not increase the overall manual
 testing load of the product.</dd>
 <dt>Help/documentation updated</dt>
-<dd>&ldquo;Just enough&rdquo; help and documentation has been produced so that the feature
+<dd>"Just enough" help and documentation has been produced so that the feature
 can be used by clients, maintained by developers and supported by customer
 service and operations.</dd>
 <dt>Release notes updated</dt>
 <dd>Deliverable artifacts and deployment procedures have been documented.</dd>
 </dl>
 
-<h2 id="done-with-a-sprint">Done with a sprint</h2>
-
-<dl>
-<dt>Everything from &ldquo;Done with a story&rdquo;</dt>
+<h2>Done with a sprint</h2>
+<p><dl>
+<dt>Everything from "Done with a story"</dt>
 <dd>All stories in the sprint must be done (or returned to the backlog) for the
 sprint to be done.</dd>
 <dt>Released to beta/integration environment</dt>
@@ -240,14 +236,12 @@ be updated to match the completed increment.</dd>
 to the backlog for Product Owner triage.</dd>
 <dt>Unfinished stories pushed into backlog</dt>
 <dd>Any work in the sprint which does not meet this definition of done will be
-returned to the backlog. The Sprint isn&rsquo;t done as long as any non-done issues
+returned to the backlog. The Sprint isn't done as long as any non-done issues
 are associated with it.</dd>
-</dl>
-
-<h2 id="done-with-a-qa/staging-release">Done with a QA/staging release</h2>
-
-<dl>
-<dt>Everything from &ldquo;Done with a sprint&rdquo;</dt>
+</dl></p>
+<h2>Done with a QA/staging release</h2>
+<p><dl>
+<dt>Everything from "Done with a sprint"</dt>
 <dd>All Sprints that are to be included in the release must be Done.</dd>
 <dt>Operations guide updated and approved by Ops</dt>
 <dd>The support documentation delivered to Ops via the wiki must be updated and
@@ -255,12 +249,10 @@ those updates must be approved (UAT) by the Operations team.</dd>
 <dt>Automated tests passing</dt>
 <dd>All automated tests available for the QA/Staging environment must be
 passing.</dd>
-</dl>
-
-<h2 id="done-with-a-production-release">Done with a production release</h2>
-
-<dl>
-<dt>Everything from &ldquo;Done with a QA/Staging Release&rdquo;</dt>
+</dl></p>
+<h2>Done with a production release</h2>
+<p><dl>
+<dt>Everything from "Done with a QA/Staging Release"</dt>
 <dd>A successful QA/Staging release is a prerequisite for a Production release.</dd>
 <dt>Stress/Load tests passing</dt>
 <dd>Stress/Load testing in the QA/Staging environment must return results within
@@ -268,158 +260,188 @@ acceptable ranges.</dd>
 <dt>Network/Component diagrams updated</dt>
 <dd>Documentation for design, implementation, deployment, support and use must
 be updated to match the proposed release.</dd>
-</dl>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2014-01-14T21:48:20-07:00'><span class='date'>2014-01-14</span> <span class='time'></span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/scrum/'>scrum</a>, <a class='category' href='/blog/categories/sdlc/'>sdlc</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/" data-via="" data-counturl="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/12/09/file-vault2-hacks/" title="Previous Post: FileVault2 Hacks">&laquo; FileVault2 Hacks</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/05/15/gnupg-key-transition-statement/" title="Next Post: GnuPG key transition statement">GnuPG key transition statement &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-<section id="comments">
+</dl></p>
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/22">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/22">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
+        </article>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
-
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 <script type="text/javascript">
 $.ajax({
     url: "https://api.github.com/repos/bd808/bd808.github.com/issues/22/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
-  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
@@ -431,14 +453,10 @@ $.ajax({
         cavatarlink = resp[i].user.avatar_url;
         cdate = (new Date(resp[i].created_at)).toLocaleString();
 
-        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
       }
     }
 });
 </script>
-
-
-
-
 </body>
 </html>

@@ -1,370 +1,375 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>Generating an Apparently Random Unique Sequence - bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>Generating an Apparently Random Unique Sequence - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="Using a sequentially increasing counter to generate an id token is easy.
-Database sequences and auto-number columns make it fairly trivial to &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="algorithms" />
+        <meta name="description" content="Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#39;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them …" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Generating an Apparently Random Unique Sequence"/>
+        <meta property="og:url" content="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/"/>
+        <meta property="og:description" content="Using a sequentially increasing counter to generate an id token is easy. Database sequences and auto-number columns make it fairly trivial to implement. If that isn&#39;t available a simple file or shared memory counter can be implemented in minutes. Displaying such a number to a client however may give them …"/>
+        <meta property="article:published_time" content="2012-03-31" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="algorithms" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/"
+                       rel="bookmark"
+                       title="Permalink to Generating an Apparently Random Unique Sequence">
+                        Generating an Apparently Random Unique Sequence
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-03-31T15:40:00+00:00"> 2012-03-31</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/algorithms/">algorithms</a>
     
-      <h1 class="entry-title">Generating an Apparently Random Unique Sequence</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-03-31T15:40:00-06:00'><span class='date'>2012-03-31</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Using a sequentially increasing counter to generate an id token is easy.
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Using a sequentially increasing counter to generate an id token is easy.
 Database sequences and auto-number columns make it fairly trivial to
-implement. If that isn&rsquo;t available a simple file or shared memory counter can
+implement. If that isn't available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
 give them more information than you would really like them to have about the
-number of ids you are allocating per unit time. We&rsquo;d really like  to obfuscate
+number of ids you are allocating per unit time. We'd really like  to obfuscate
 the id somehow while retaining the uniqueness of the original sequence.</p>
-
 <p>One way to do this is to use a combination of multiplication and modulo
 arithmetic to map the sequence number into a constrained set. With careful
 choice of the multiplicative constant and the modulo value the resulting
 number can be made to wander rather effectively over the entire space of the
 target set.</p>
-
 <!-- more -->
 
 <p>The basic math looks like this:  <code>f(n) := (n * p) % q</code></p>
-
 <ul>
 <li><code>n</code> := input sequence value</li>
 <li><code>p</code> := step size</li>
 <li><code>q</code> := maximum result size</li>
 </ul>
-
 <p><code>p</code> and <code>q</code> must be chosen such that:</p>
-
 <ul>
 <li><code>p</code> &lt; <code>q</code></li>
-<li><code>p</code> * <code>q</code> &lt; arithmetic limit (2<sup>31,</sup> 2<sup>32,</sup> 2<sup>63,</sup> 2<sup>64,</sup> &hellip; depending on the precision of the underlying system)</li>
+<li><code>p</code> * <code>q</code> &lt; arithmetic limit (2^31, 2^32, 2^63, 2^64, ... depending on the precision of the underlying system)</li>
 <li><code>p</code> ⊥ <code>q</code> (<a href="https://en.wikipedia.org/wiki/Coprime">coprime</a> or relatively prime)</li>
 </ul>
-
 <p>With <code>p := 5</code> and <code>q := 12</code> our function will generate this output:
-<table class="border padded">
+<table class="table table-bordered">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>5 </td><td> 10 </td><td> 3 </td><td> 8 </td><td> 1 </td><td> 6 </td><td> 11 </td><td> 4 </td><td> 9 </td><td> 2 </td><td> 7 </td></tr>
 </table></p>
-
-<p>Change <code>p</code> to 7 and you&rsquo;ll get:
-<table class="border padded">
+<p>Change <code>p</code> to 7 and you'll get:
+<table class="table table-bordered">
   <tr><th>n</th><td>1 </td><td> 2 </td><td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td><td> 7 </td><td> 8 </td><td> 9 </td><td> 10 </td><td> 11 </td></tr>
   <tr><th>f(n)</th><td>7</td><td> 2</td><td> 9</td><td> 4</td><td> 11</td><td> 6</td><td> 1</td><td> 8</td><td> 3</td><td> 10</td><td> 5</td></tr>
 </table></p>
-
 <p>The rational for keeping <code>p * q &lt; limit</code> is that as <code>n</code> approaches <code>q</code> the
 initial multiplication will approach <code>p * q</code> and if this calculation overflows
 the available precision the result will wrap back into a previously traversed
 space causing duplication. The same sort of thing will occur if <code>p</code> and <code>q</code>
 are not coprime. The result of the modulo will exhibit a period equivalent to
-the GCD<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code>
+the GCD<sup id="fnref-GCD"><a class="footnote-ref" href="#fn-GCD">1</a></sup> of <code>p</code> and <code>q</code> rather than mapping the entire range of <code>q</code>
 evenly.</p>
-
 <p>Careful choice of <code>p</code> and <code>q</code> are key to getting a good spread in the output
 of the function and maintaining the uniqueness of the result. One easy way to
 ensure that the chosen coefficients are coprime is to make them both be prime
-powers of prime numbers (eg 9<sup>17,</sup> 13<sup>11,</sup> 13<sup>15,</sup> 19<sup>7,</sup> &hellip;).</p>
-
+powers of prime numbers (eg 9^17, 13^11, 13^15, 19^7, ...).</p>
 <p>This method is a type of <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">Linear congruential generator</a> almost exactly equivalent to the <a href="https://en.wikipedia.org/wiki/Park%E2%80%93Miller_RNG">Park–Miller random number generator</a>.</p>
+<h2>Examples</h2>
+<p><em>PHP</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="cp">&lt;?php</span></span>
+<span class="code-line"><span class="sd">/**</span></span>
+<span class="code-line"><span class="sd"> * Obfuscate an id generated from a linear sequence.</span></span>
+<span class="code-line"><span class="sd"> *</span></span>
+<span class="code-line"><span class="sd"> * @param int $n Input value</span></span>
+<span class="code-line"><span class="sd"> * @param int $p Random walk step size</span></span>
+<span class="code-line"><span class="sd"> * @param int $q Maximum result value</span></span>
+<span class="code-line"><span class="sd"> * @return int Obfuscated result</span></span>
+<span class="code-line"><span class="sd"> */</span></span>
+<span class="code-line"><span class="k">function</span> <span class="nf">obfuscate_id</span> <span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$p</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">*</span> <span class="nv">$p</span><span class="p">)</span> <span class="o">%</span> <span class="nv">$q</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+</pre></div>
 
-<h2 id="examples">Examples</h2>
 
-<figure class='code'><figcaption><span>PHP </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="sd">/**</span>
-</span><span class='line'><span class="sd"> * Obfuscate an id generated from a linear sequence.</span>
-</span><span class='line'><span class="sd"> *</span>
-</span><span class='line'><span class="sd"> * @param int $n Input value</span>
-</span><span class='line'><span class="sd"> * @param int $p Random walk step size</span>
-</span><span class='line'><span class="sd"> * @param int $q Maximum result value</span>
-</span><span class='line'><span class="sd"> * @return int Obfuscated result</span>
-</span><span class='line'><span class="sd"> */</span>
-</span><span class='line'><span class="k">function</span> <span class="nf">obfuscate_id</span> <span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$p</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">*</span> <span class="nv">$p</span><span class="p">)</span> <span class="o">%</span> <span class="nv">$q</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<p><em>PL/SQL</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="k">FUNCTION</span> <span class="n">obfuscate_id</span> <span class="p">(</span><span class="n">n</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">p</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">q</span> <span class="nb">NUMBER</span><span class="p">)</span> <span class="k">RETURN</span> <span class="nb">NUMBER</span> <span class="k">IS</span></span>
+<span class="code-line"><span class="k">BEGIN</span></span>
+<span class="code-line">  <span class="k">RETURN</span> <span class="k">MOD</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span></span>
+<span class="code-line"><span class="k">END</span> <span class="n">f</span><span class="p">;</span></span>
+</pre></div>
 
-<figure class='code'><figcaption><span>PL/SQL </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">FUNCTION</span> <span class="n">obfuscate_id</span> <span class="p">(</span><span class="n">n</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">p</span> <span class="nb">NUMBER</span><span class="p">,</span> <span class="n">q</span> <span class="nb">NUMBER</span><span class="p">)</span> <span class="k">RETURN</span> <span class="nb">NUMBER</span> <span class="k">IS</span>
-</span><span class='line'><span class="k">BEGIN</span>
-</span><span class='line'>  <span class="k">RETURN</span> <span class="k">MOD</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
-</span><span class='line'><span class="k">END</span> <span class="n">f</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
 
 <hr>
-
-<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn&rsquo;t getting.</p>
-
-<div class="footnotes">
+<p>Thanks to <a href="http://www.timbarber.org/">Tim</a> for explaining all of this to me several times without becoming annoyed at the parts I wasn't getting.</p>
+<div class="footnote">
 <hr>
 <ol>
-
-<li id="fn1">
-<p>Greatest Common Divisor&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+<li id="fn-GCD">
+<p>Greatest Common Divisor&#160;<a class="footnote-backref" href="#fnref-GCD" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-
 </ol>
 </div>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2012-03-31T15:40:00-06:00'><span class='date'>2012-03-31</span> <span class='time'></span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithms/'>algorithms</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/" data-via="" data-counturl="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/" title="Previous Post: FizzBuzz &mdash; the wrong way to do it">&laquo; FizzBuzz &mdash; the wrong way to do it</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/04/14/using-github-issues-for-comments/" title="Next Post: Using GitHub issues for comments">Using GitHub issues for comments &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-<section id="comments">
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/5">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/5">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
+        </article>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
-
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 <script type="text/javascript">
 $.ajax({
     url: "https://api.github.com/repos/bd808/bd808.github.com/issues/5/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
-  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
@@ -376,14 +381,10 @@ $.ajax({
         cavatarlink = resp[i].user.avatar_url;
         cdate = (new Date(resp[i].created_at)).toLocaleString();
 
-        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
       }
     }
 });
 </script>
-
-
-
-
 </body>
 </html>

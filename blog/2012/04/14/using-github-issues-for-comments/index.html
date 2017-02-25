@@ -1,416 +1,397 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <title>Using GitHub Issues for Comments - bd808.com</title>
-  <meta name="author" content="Bryan Davis">
+    <title>Using GitHub issues for comments - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta name="description" content="I was inspired by Ivan Zuzak&rsquo;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&rsquo; &hellip;">
-  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://bd808.com/favicon.png" rel="icon">
 
-  
-  <link rel="canonical" href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="bd808.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <meta name="microid" content="mailto+http:sha1:316bf316a019352188fe08195c6eefe8a16e8458" />
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://casadebender.myopenid.com/" />
-<link rel="openid2.local_id" href="http://casadebender.myopenid.com" />
-<link rel="openid2.provider" href="http://www.myopenid.com/server" />
-<meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=casadebender.myopenid.com" />
+<link rel="canonical" href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18797634-3']);
-    _gaq.push(['_trackPageview']);
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="hacks,github,octopress,howto" />
+        <meta name="description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding …" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Using GitHub issues for comments"/>
+        <meta property="og:url" content="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
+        <meta property="og:description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding …"/>
+        <meta property="article:published_time" content="2012-04-14" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="hacks" />
+            <meta property="article:tag" content="github" />
+            <meta property="article:tag" content="octopress" />
+            <meta property="article:tag" content="howto" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
 
 
 </head>
+<body>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">bd808.com</a></h1>
-  
-    <h2>FOSS in, FOSS out: software, process and operations</h2>
-  
-</hgroup>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"
+                       rel="bookmark"
+                       title="Permalink to Using GitHub issues for comments">
+                        Using GitHub issues for comments
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-04-14T20:22:00+00:00"> 2012-04-14</time>
+    </span>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bd808.com">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/hacks/">hacks</a>
+        /
+	<a href="http://bd808.com/blog/tags/github/">github</a>
+        /
+	<a href="http://bd808.com/blog/tags/octopress/">octopress</a>
+        /
+	<a href="http://bd808.com/blog/tags/howto/">howto</a>
     
-      <h1 class="entry-title">Using GitHub Issues for Comments</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-04-14T20:22:00-06:00'><span class='date'>2012-04-14</span> <span class='time'></span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak&rsquo;s post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I&rsquo;m using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan&rsquo;s ideas easy for me.</p>
-
-<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I&rsquo;ll use this configuration switch to turn the new feature on in other places in the codebase.</p>
-
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak's post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I'm using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I'll use this configuration switch to turn the new feature on in other places in the codebase.</p>
 <!-- more -->
 
 <p>Next I changed the <a href="https://github.com/mojombo/jekyll/wiki/Liquid-Extensions">Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
+<p><em>source/_layout/post.html</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="x">{% if site.github_comments and page.github_issue_id %}</span></span>
+<span class="code-line"><span class="x">&lt;section id=&quot;comments&quot;&gt;</span></span>
+<span class="code-line"><span class="x">  &lt;header&gt;</span></span>
+<span class="code-line"><span class="x">    &lt;h2&gt;Comments&lt;/h2&gt;</span></span>
+<span class="code-line"><span class="x">    &lt;p&gt;Visit &lt;a href=&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}&quot;&gt;this post&#39;s issue page on GitHub&lt;/a&gt; to add a comment.&lt;/p&gt;</span></span>
+<span class="code-line"><span class="x">  &lt;/header&gt;</span></span>
+<span class="code-line"><span class="x">&lt;/section&gt;</span></span>
+<span class="code-line"><span class="x">{% endif %}</span></span>
+</pre></div>
 
-<figure class='code'><figcaption><span>source/_layout/post.html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.github_issue_id %}
-</span><span class='line'><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;header&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;h2&gt;</span>Comments<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;p&gt;</span>Visit <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}&quot;</span><span class="nt">&gt;</span>this post&#39;s issue page on GitHub<span class="nt">&lt;/a&gt;</span> to add a comment.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/header&gt;</span>
-</span><span class='line'><span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>{% endif %}
-</span></code></pre></td></tr></table></div></figure>
 
 <p>If the <code>github_comments: true</code> flag is set and the <a href="https://github.com/mojombo/jekyll/wiki/yaml-front-matter">yaml front
 matter</a> for the post
 contains a <code>github_issue_id: N</code> setting, this block with display a link to
 issue N in the associated GitHub repository.</p>
-
 <p>Next I wanted to display any current comments. I use a slightly tweaked
-version of Ivan&rsquo;s javascript to do this.</p>
+version of Ivan's javascript to do this.</p>
+<p><em>source/_includes/github_comments.html</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="x">{% if site.github_comments and page.comments == true %}</span></span>
+<span class="code-line"><span class="x">&lt;script type=&quot;text/javascript&quot;&gt;</span></span>
+<span class="code-line"><span class="x">$.ajax({</span></span>
+<span class="code-line"><span class="x">    url: &quot;https://api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments&quot;</span></span>
+<span class="code-line"><span class="x">  , method: &quot;get&quot;</span></span>
+<span class="code-line"><span class="x">  , headers: { Accept: &quot;application/vnd.github.full+json&quot; }</span></span>
+<span class="code-line"><span class="x">  , error: function(e){}</span></span>
+<span class="code-line"><span class="x">  , success: function(resp){</span></span>
+<span class="code-line"><span class="x">      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;</span></span>
+<span class="code-line"><span class="x">      for (var i=0; i&lt;resp.length; i++) {</span></span>
+<span class="code-line"><span class="x">        cuser = resp[i].user.login;</span></span>
+<span class="code-line"><span class="x">        cuserlink = &quot;https://github.com/&quot; + resp[i].user.login;</span></span>
+<span class="code-line"><span class="x">        clink = &quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}#issuecomment-&quot; + resp[i].url.substring(resp[i].url.lastIndexOf(&quot;/&quot;)+1);</span></span>
+<span class="code-line"><span class="x">        cbody = resp[i].body_html;</span></span>
+<span class="code-line"><span class="x">        cavatarlink = resp[i].user.avatar_url;</span></span>
+<span class="code-line"><span class="x">        cdate = (new Date(resp[i].created_at)).toLocaleString();</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="x">        $(&quot;#comments&quot;).append(&#39;&lt;div class=&quot;comment&quot;&gt;&lt;div class=&quot;comment-header&quot;&gt;&lt;a class=&quot;comment-user&quot; href=&quot;&#39; + cuserlink + &#39;&quot;&gt;&lt;img class=&quot;comment-gravatar&quot; src=&quot;&#39; + cavatarlink + &#39;&quot; alt=&quot;&quot; width=&quot;20&quot; height=&quot;20&quot;&gt; &#39; + cuser + &#39;&lt;/a&gt;&lt;a class=&quot;comment-date&quot; href=&quot;&#39; + clink + &#39;&quot;&gt;&#39; + cdate + &#39;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;comment-body&quot;&gt;&#39; + cbody + &#39;&lt;/div&gt;&lt;/div&gt;&#39;);</span></span>
+<span class="code-line"><span class="x">      }</span></span>
+<span class="code-line"><span class="x">    }</span></span>
+<span class="code-line"><span class="x">});</span></span>
+<span class="code-line"><span class="x">&lt;/script&gt;</span></span>
+<span class="code-line"><span class="x">{% endif %}</span></span>
+</pre></div>
 
-<figure class='code'><figcaption><span>source/_includes/github_comments.html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% if site.github_comments and page.comments == true %}
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;https://api.github.com/repos/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}/comments&quot;</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">Accept</span><span class="o">:</span> <span class="s2">&quot;application/vnd.github.full+json&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){}</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">cuser</span><span class="p">,</span> <span class="nx">cuserlink</span><span class="p">,</span> <span class="nx">clink</span><span class="p">,</span> <span class="nx">cbody</span><span class="p">,</span> <span class="nx">cavatarlink</span><span class="p">,</span> <span class="nx">cdate</span><span class="p">;</span>
-</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">resp</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">cuser</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">cuserlink</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/&quot;</span> <span class="o">+</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">clink</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/{{site.github_user}}/{{site.github_user}}.github.com/issues/{{page.github_issue_id}}#issuecomment-&quot;</span> <span class="o">+</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">url</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">cbody</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">body_html</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">cavatarlink</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">user</span><span class="p">.</span><span class="nx">avatar_url</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">cdate</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">resp</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">created_at</span><span class="p">)).</span><span class="nx">toLocaleString</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#comments&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;comment&quot;&gt;&lt;div class=&quot;comment-header&quot;&gt;&lt;a class=&quot;comment-user&quot; href=&quot;&#39;</span> <span class="o">+</span> <span class="nx">cuserlink</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&lt;img class=&quot;comment-gravatar&quot; src=&quot;&#39;</span> <span class="o">+</span> <span class="nx">cavatarlink</span> <span class="o">+</span> <span class="s1">&#39;&quot; alt=&quot;&quot; width=&quot;20&quot; height=&quot;20&quot;&gt; &#39;</span> <span class="o">+</span> <span class="nx">cuser</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;a class=&quot;comment-date&quot; href=&quot;&#39;</span> <span class="o">+</span> <span class="nx">clink</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">cdate</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;comment-body&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">cbody</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>{% endif %}
-</span></code></pre></td></tr></table></div></figure>
 
 <p>I added an include for this new file in source/_includes/after_footer.html to
 get it tacked on to each page:</p>
+<p><em>source/_includes/after_footer.html</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="x">{% include github_comments.html %}</span></span>
+</pre></div>
 
-<figure class='code'><figcaption><span>source/_includes/after_footer.html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>{% include github_comments.html %}
-</span></code></pre></td></tr></table></div></figure>
 
-<p>Those changes plus the OAuth application configuration described in Ivan&rsquo;s post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren&rsquo;t pretty, but they are pragmatic.</p>
+<p>Those changes plus the OAuth application configuration described in Ivan's post have the blog all setup for comments. The only problem is that I have to remember to manually create an issue on the GitHub side and add it to the yaml front matter for the post. Being a lazy programmer I wanted to get rid of that burden as well. Lucky for me Octopress already has a Rake task that sets up a new blog post. The changes I made here aren't pretty, but they are pragmatic.</p>
+<p><em>Rakefile</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="k">def</span> <span class="nf">create_comment_issue</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span></span>
+<span class="code-line">  <span class="nb">require</span> <span class="s1">&#39;octopi&#39;</span></span>
+<span class="code-line">  <span class="kp">include</span> <span class="no">Octopi</span></span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="n">authenticated</span> <span class="ss">:config</span> <span class="o">=&gt;</span> <span class="s2">&quot;_github.yml&quot;</span>  <span class="k">do</span></span>
+<span class="code-line">    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;bd808&quot;</span><span class="p">)</span></span>
+<span class="code-line">    <span class="n">repo</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">repository</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;bd808.github.com&quot;</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="o">.</span><span class="n">open</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&gt;</span> <span class="n">repo</span><span class="p">,</span></span>
+<span class="code-line">      <span class="ss">:params</span> <span class="o">=&gt;</span> <span class="p">{</span></span>
+<span class="code-line">      <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="n">title</span><span class="p">,</span></span>
+<span class="code-line">      <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;Reader comments on [</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">](</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">)&quot;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line">    <span class="nb">puts</span> <span class="s2">&quot;Successfully opened issue </span><span class="se">\#</span><span class="si">#{</span><span class="n">issue</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">labels</span> <span class="o">=</span> <span class="n">issue</span><span class="o">.</span><span class="n">add_label</span> <span class="s2">&quot;blog-post&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">number</span></span>
+<span class="code-line">  <span class="k">end</span></span>
+<span class="code-line"><span class="k">end</span></span>
+</pre></div>
 
-<figure class='code'><figcaption><span>Rakefile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">create_comment_issue</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;octopi&#39;</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="no">Octopi</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">authenticated</span> <span class="ss">:config</span> <span class="o">=&gt;</span> <span class="s2">&quot;_github.yml&quot;</span>  <span class="k">do</span>
-</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;bd808&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">repo</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">repository</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;bd808.github.com&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">issue</span> <span class="o">=</span> <span class="no">Issue</span><span class="o">.</span><span class="n">open</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&gt;</span> <span class="n">repo</span><span class="p">,</span>
-</span><span class='line'>      <span class="ss">:params</span> <span class="o">=&gt;</span> <span class="p">{</span>
-</span><span class='line'>      <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="n">title</span><span class="p">,</span>
-</span><span class='line'>      <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;Reader comments on [</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">](</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">)&quot;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Successfully opened issue </span><span class="se">\#</span><span class="si">#{</span><span class="n">issue</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">labels</span> <span class="o">=</span> <span class="n">issue</span><span class="o">.</span><span class="n">add_label</span> <span class="s2">&quot;blog-post&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">number</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
 
 <p>I plugged this function into the existing <code>new_post</code> task so that it will
-create an issue and plug it&rsquo;s id into the front matter for the new post
-automatically when I run a command like <code>rake new_post[&quot;Using GitHub Issues
-for Comments&quot;]</code>:</p>
-
-<figure class='code'><figcaption><span>source/_posts/2012-04-14-using-github-issues-for-comments.markdown </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
-</span><span class='line'><span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
-</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="s">&quot;Using</span><span class="nv"> </span><span class="s">GitHub</span><span class="nv"> </span><span class="s">issues</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">comments&quot;</span>
-</span><span class='line'><span class="l-Scalar-Plain">date</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2012-04-14 20:22</span>
-</span><span class='line'><span class="l-Scalar-Plain">comments</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
-</span><span class='line'><span class="l-Scalar-Plain">github_issue_id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">7</span>
-</span><span class='line'><span class="l-Scalar-Plain">categories</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="nn">---</span>
-</span></code></pre></td></tr></table></div></figure>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bryan Davis</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2012-04-14T20:22:00-06:00'><span class='date'>2012-04-14</span> <span class='time'></span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/hacks/'>hacks</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" data-via="" data-counturl="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/03/31/generating-an-apparently-random-unique-sequence/" title="Previous Post: Generating an Apparently Random Unique Sequence">&laquo; Generating an Apparently Random Unique Sequence</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/04/17/hacking-github-contributions-graph/" title="Next Post: Hacking GitHub Contributions Calendar">Hacking GitHub Contributions Calendar &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
-<section id="comments">
+create an issue and plug it's id into the front matter for the new post
+automatically when I run a command like <code>rake new_post["Using GitHub Issues
+for Comments"]</code>:</p>
+<p><em>source/_posts/2012-04-14-using-github-issues-for-comments.markdown</em></p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nn">---</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">layout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">post</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Using</span><span class="nv"> </span><span class="s">GitHub</span><span class="nv"> </span><span class="s">issues</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">comments&quot;</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">date</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2012-04-14 20:22</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">github_issue_id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span></span>
+<span class="code-line"><span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span> </span>
+<span class="code-line"><span class="nn">---</span></span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
   <header>
     <h2>Comments</h2>
-    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/7">this post&#8217;s issue page on GitHub</a> to add a comment.</p>
   </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/7">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
+        </article>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section id="about-me">
-  <h1>About</h1>
-  <p><img src="https://secure.gravatar.com/avatar/6af4be9e5e433d21909a0eb60fc258bc.png" id="gravitar">Code and ramblings from Bryan Davis, coder, software architect, and
-  highly opinionated geek.</p>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/bd808">Résumé</a></li>
-  </ul>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/09/30/puppet-file-recurse-pitfall/">Puppet File Recurse Pitfall</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG Key Transition Statement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/14/how-do-you-know-when-youre-done/">How Do You Know When You&#8217;re Done?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/09/file-vault2-hacks/">FileVault2 Hacks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/18/yaml-1-dot-1-1-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/bd808?count=5&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/bd808">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-  
-</aside>
-
-
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2015 - Bryan Davis
-<span class="credit basic-alignment right">Powered by <a href="http://octopress.org">Octopress</a> &amp; <a href="https://github.com">GitHub</a></span>
-<span id="license">
-  <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative
-    Commons License"
-    src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> Except where
-  otherwise noted, content on <span rel="cc:attributionURL"
-    property="cc:attributionName" href="http://bd808.github.com">this
-    site</span> is licensed under a <a rel="license"
-    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>.</span>
-</p>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
 <script type="text/javascript">
 $.ajax({
     url: "https://api.github.com/repos/bd808/bd808.github.com/issues/7/comments"
   , method: "get"
   , headers: { Accept: "application/vnd.github.full+json" }
-  , dataType: 'json'
   , error: function(e){}
   , success: function(resp){
       var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
@@ -422,14 +403,10 @@ $.ajax({
         cavatarlink = resp[i].user.avatar_url;
         cdate = (new Date(resp[i].created_at)).toLocaleString();
 
-        $("#comments").append('<div class="comment"><div class="comment-header"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a><a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="comment-body">' + cbody + '</div></div>');
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
       }
     }
 });
 </script>
-
-
-
-
 </body>
 </html>

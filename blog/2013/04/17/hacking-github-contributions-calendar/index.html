@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Hacking GitHub Contributions Calendar - bd808.com</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="http://bd808.com/favicon.png" rel="icon">
+
+<link rel="canonical" href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/">
+
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="hacks,github,howto" />
+        <meta name="description" content="GitHub profile pages include a neat visualization of commit history that they call the &#34;contributions calendar&#34;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year. Each cell in the graph is shaded with one of 5 …" />
+
+        <meta property="og:site_name" content="bd808.com" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Hacking GitHub Contributions Calendar"/>
+        <meta property="og:url" content="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/"/>
+        <meta property="og:description" content="GitHub profile pages include a neat visualization of commit history that they call the &#34;contributions calendar&#34;. This 53x7 grid shows the number of commits and other GitHub interactions that the user performed on each day for the last year. Each cell in the graph is shaded with one of 5 …"/>
+        <meta property="article:published_time" content="2013-04-17" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="hacks" />
+            <meta property="article:tag" content="github" />
+            <meta property="article:tag" content="howto" />
+            <meta property="article:author" content="Bryan Davis" />
+
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@bd808">
+        <meta name="twitter:creator" content="@bd808">
+    <meta name="twitter:domain" content="http://bd808.com">
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://bd808.com/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://bd808.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://bd808.com/theme/css/pygments/solarizedlight.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://bd808.com/theme/css/style.css" type="text/css"/>
+        <link href="http://bd808.com/static/site.css" rel="stylesheet">
+
+        <link href="http://bd808.com/atom.xml" type="application/atom+xml" rel="alternate"
+              title="bd808.com ATOM Feed"/>
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://bd808.com/" class="navbar-brand">
+bd808.com            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://bd808.com/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/"
+                       rel="bookmark"
+                       title="Permalink to Hacking GitHub Contributions Calendar">
+                        Hacking GitHub Contributions Calendar
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2013-04-17T21:06:00+00:00"> 2013-04-17</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://bd808.com/blog/tags/hacks/">hacks</a>
+        /
+	<a href="http://bd808.com/blog/tags/github/">github</a>
+        /
+	<a href="http://bd808.com/blog/tags/howto/">howto</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>GitHub profile pages include a neat visualization of commit history that they
+call the "<a href="https://help.github.com/articles/viewing-contributions#contributions-calendar">contributions calendar</a>". This 53x7 grid shows the number of
+commits and other GitHub interactions that the user performed on each day for
+the last year.</p>
+<p><img alt="Example graph" src="/static/blog/timeline.png"></p>
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
+<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+<!-- more -->
+
+<p>If your all time high for the last year was 100 contributions in a single day,
+the cells would color like this:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Contributions</th>
+<th align="center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="center"><img alt="gray" src="/static/blog/eeeeee.png" title="#eeeeee"></td>
+</tr>
+<tr>
+<td align="left">1  - 24</td>
+<td align="center"><img alt="pale green" src="/static/blog/d6e685.png" title="#d6e685"></td>
+</tr>
+<tr>
+<td align="left">25 - 49</td>
+<td align="center"><img alt="light green" src="/static/blog/8cc665.png" title="#8cc665"></td>
+</tr>
+<tr>
+<td align="left">50 - 74</td>
+<td align="center"><img alt="green" src="/static/blog/44a340.png" title="#44a340"></td>
+</tr>
+<tr>
+<td align="left">75+</td>
+<td align="center"><img alt="dark green" src="/static/blog/1e6823.png" title="#1e6823"></td>
+</tr>
+</tbody>
+</table>
+<p>A tweet got me interested in the possibility of gaming the interaction data to
+control the display:</p>
+<blockquote class="twitter-tweet"><p>GitHub users might find this guy's contribution graph interesting/funny: <a href="https://t.co/xOFjLbqUK2" title="https://github.com/will">github.com/will</a></p>&mdash; Peter Cooper (@peterc) <a href="https://twitter.com/peterc/status/322636613018607617">April 12, 2013</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p><a href="https://github.com/will">@will</a> has done something to make his calendar spell "WILL" over and over.
+Looking at his contribution activity list it was pretty obvious that this
+trick had something to do with the <a href="https://github.com/will/githubprofilecheat">will/githubprofilecheat</a> and/or
+<a href="https://github.com/will/githubprofilecheat2">will/githubprofilecheat2</a> repositories.</p>
+<p>I did some digging in the <a href="http://git-scm.com/docs">git documentation</a> to see how hard it is to fake
+the date on a commit. It turns out that it's as easy as setting an environment
+variable. The <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environment variables
+can be used to provide <a href="http://git-scm.com/docs/git-commit-tree#_commit_information">git-commit-tree</a> with dates for the author and
+commit dates that are attached to each commit object.</p>
+<p>Armed with this bit of trivia I decided that I would try to do something
+interesting with my contributions graph. I didn't just want to copy <a href="https://github.com/will">@will</a>
+and write my name in the graph. I decided that I would pay homage to my
+gravatar instead and make a series of <a href="https://en.wikipedia.org/wiki/Glider_%28Conway%27s_Life%29">gliders</a> that ran across the
+timeline. The result of my experiment can be seen in the image at the top of
+this post.</p>
+<p>The script that I used to generate the commits with faked dates is available
+in my <a href="https://github.com/bd808/profile-life">bd808/profile-life</a> repository.</p>
+<p>The script takes the path to a pattern file and an optional start date as
+arguments.</p>
+<div class="highlight"><pre><span class="code-line"><span></span>./bin/pattern-to-commits.sh patterns/glider.cells <span class="m">2012</span>-04-15 <span class="p">|</span> sh</span>
+</pre></div>
+
+
+<p>The pattern file is expected to be in the <a href="http://www.conwaylife.com/wiki/Plaintext">plaintext</a> Life format. This
+format allows you to specify an on/off pattern. When a cell is "on" the script
+will output 23 commits (one per hour) for the corresponding day. "Off" cells
+won't generate any commit activity.</p>
+<div class="highlight"><pre><span class="code-line"><span></span>!Name: Profile Glider Train</span>
+<span class="code-line">!A simulation of a glider cruising across the contributions timeline.</span>
+<span class="code-line">O.O...O.O....O..................................................................</span>
+<span class="code-line">.OO.O.O..OO...O.O.O...O.O....O..................................................</span>
+<span class="code-line">.O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..................................</span>
+<span class="code-line">.................O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..................</span>
+<span class="code-line">.................................O...OO.OO..OOO..OO.O.O..OO...O.O.O...O.O....O..</span>
+<span class="code-line">.................................................O...OO.OO..OOO..OO.O.O..OO...O.</span>
+<span class="code-line">.................................................................O...OO.OO..OOO.</span>
+</pre></div>
+
+
+<p>The script reads in this file a column at a time using the <code>cut</code> command. It
+loops over the characters from the column and when it finds an <code>O</code> it echos
+commit commands to stdout:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">GIT_AUTHOR_DATE</span><span class="o">=</span><span class="s1">&#39;2013-04-17T20:00&#39;</span> <span class="nv">GIT_COMMITTER_DATE</span><span class="o">=</span><span class="s1">&#39;2013-04-17T20:00&#39;</span> <span class="se">\</span></span>
+<span class="code-line">git commit --allow-empty -m <span class="s1">&#39;2013-04-17T20:00&#39;</span></span>
+</pre></div>
+
+
+<p>This output can be piped to bash to apply the commits to the repository.</p>
+<p>An interesting extension of this script would be to support all 5 possible
+colors. It would also be nice if the script read your current contribution
+history to determine how many commits are necessary to hit the 4th quartile
+every time. For now these additions are left as an exercise for the reader. :)</p>
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
+  <header>
+    <h2>Comments</h2>
+  </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/13">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
+</section>
+        </article>
+    </section>
+
+      </div>
+    </div>
+    <aside id="sidebar" class="row">
+<section id="aboutme" class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4><i class="fa fa-address-card fa-lg"></i><span class="icon-label">About</span></h4>
+      <p>
+<img width="80" class="avatar img-thumbnail" src="http://bd808.com/static/6af4be9e5e433d21909a0eb60fc258bc.png">
+Code and ramblings from Bryan Davis, coder, software architect, and highly opinionated geek.
+      </p>
+    </li>
+  </ul>
+</section>
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+      <ul class="list-group" id="recentposts">
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
+            GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
+            Yaml 1.1.1 PECL Module Released
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="col-sm-4">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="http://bd808.com/blog/tags/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+      <ul class="list-group list-inline tagcloud" id="tags">
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/algorithms/">
+            algorithms
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/boxen/">
+            boxen
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/github/">
+            github
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/gpg/">
+            gpg
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/hacks/">
+            hacks
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/howto/">
+            howto
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/octopress/">
+            octopress
+          </a>
+        </li>
+        <li class="list-group-item tag-1">
+          <a href="http://bd808.com/blog/tags/osx/">
+            osx
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/pecl/">
+            pecl
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/php/">
+            php
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/puppet/">
+            puppet
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/scrum/">
+            scrum
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sdlc/">
+            sdlc
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/security/">
+            security
+          </a>
+        </li>
+        <li class="list-group-item tag-2">
+          <a href="http://bd808.com/blog/tags/sysadmin/">
+            sysadmin
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/xcode/">
+            xcode
+          </a>
+        </li>
+        <li class="list-group-item tag-4">
+          <a href="http://bd808.com/blog/tags/yaml/">
+            yaml
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+    </aside>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Bryan Davis
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://bd808.com/theme/js/jquery.min.js"></script>
+<script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
+<script src="http://bd808.com/theme/js/respond.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/13/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/13#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
+</body>
+</html>
