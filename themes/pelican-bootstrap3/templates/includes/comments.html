@@ -39,3 +39,14 @@
 
     </section>
 {% endif %}
+{% if GITHUB_COMMENTS and article.github_issue_id %}
+<section class="comments">
+  <header>
+    <h2>{{ _('Comments') }}</h2>
+  </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/{{GITHUB_USER}}/{{GITHUB_REPO}}/issues/{{article.github_issue_id}}">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
+</section>
+{% endif %}

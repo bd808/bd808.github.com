@@ -106,6 +106,10 @@ DISPLAY_ARTICLE_INFO_ON_INDEX = True
 TWITTER_CARDS = True
 TWITTER_USERNAME = 'bd808'
 
+GITHUB_COMMENTS = True
+GITHUB_USER = 'bd808'
+GITHUB_REPO = 'bd808.github.com'
+
 SITEMAP = {
     'format': 'xml',
     'priorities': {
