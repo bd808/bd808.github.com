@@ -25,17 +25,21 @@ ARCHIVES_SAVE_AS = 'blog/archives/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
-TAG_URL = 'blog/tag/{slug}.html'
-TAG_SAVE_AS = 'blog/tag/{slug}.html'
-
-TAGS_URL = 'blog/tag/'
-TAGS_SAVE_AS = 'blog/tag/index.html'
+TAG_URL = 'blog/tags/{slug}/'
+TAG_SAVE_AS = 'blog/tags/{slug}/index.html'
+TAGS_URL = 'blog/tags/'
+TAGS_SAVE_AS = 'blog/tags/index.html'
 
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
 DIRECT_TEMPLATES = ['index', 'tags', 'archives']
 PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
+
+PAGINATION_PATTERNS = (
+    (1, '{base_name}/', '{base_name}/index.html'),
+    (2, '{base_name}/{number}/', '{base_name}/{number}/index.html'),
+)
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
