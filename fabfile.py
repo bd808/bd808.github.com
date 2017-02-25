@@ -38,7 +38,7 @@ def build():
 
 def rebuild():
     """`build` with the delete switch"""
-    local('pelican -d -s pelicanconf.py')
+    local('pelican -d -s publishconf.py')
 
 def regenerate():
     """Automatically regenerate site upon file modification"""
