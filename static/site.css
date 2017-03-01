@@ -42,3 +42,8 @@ code {
     color: grey;
     text-align: right;
 }
+
+code {
+  background-color: #fdf6e3;
+  color: #586e75;
+}

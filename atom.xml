@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2017-03-01T04:19:06+00:00</updated><entry><title>Switching from Octopress to Pelican</title><link href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/" rel="alternate"></link><published>2017-03-01T04:19:06+00:00</published><updated>2017-03-01T04:19:06+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/switching-from-octopress-to-pelican/</id><summary type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
+<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2017-03-01T06:48:04+00:00</updated><entry><title>SASL auth with python-irc</title><link href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/" rel="alternate"></link><published>2017-03-01T06:48:04+00:00</published><updated>2017-03-01T06:48:04+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/sasl-auth-with-python-irc/</id><summary type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
+&lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot"&gt;Jouncebot&lt;/a&gt; was a bot I started helping with when &lt;a href="https://github.com/mattofak"&gt;@mattofak&lt;/a&gt; moved on to
+other projects. Later I developed &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot"&gt;Stashbot&lt;/a&gt; as a replacement for using the
+&lt;a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html"&gt;Logstash&lt;/a&gt; that collected data for my &lt;a href="https://tools.wmflabs.org/sal/"&gt;SAL&lt;/a&gt; tool in &lt;a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs"&gt;Tool
+Labs …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
+&lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot"&gt;Jouncebot&lt;/a&gt; was a bot I started helping with when &lt;a href="https://github.com/mattofak"&gt;@mattofak&lt;/a&gt; moved on to
+other projects. Later I developed &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot"&gt;Stashbot&lt;/a&gt; as a replacement for using the
+&lt;a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html"&gt;Logstash&lt;/a&gt; that collected data for my &lt;a href="https://tools.wmflabs.org/sal/"&gt;SAL&lt;/a&gt; tool in &lt;a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs"&gt;Tool
+Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Both bots are built using the awesome &lt;a href="https://pypi.python.org/pypi/irc"&gt;irc python library&lt;/a&gt; from &lt;a href="https://github.com/jaraco"&gt;Jason
+Coombs&lt;/a&gt;. I've copied various core irc behaviors from one bot to the other as
+I've discovered and fixed various bugs in how I was using the library.
+I finally got around to extracting these core parts into a Python library of
+it's own that I have named "IRC Bot Behavior Bundle" or &lt;a href="https://python-ib3.readthedocs.io/en/latest/index.html"&gt;IB3&lt;/a&gt; for short.&lt;/p&gt;
+&lt;p&gt;The IB3 library provides a collection of &lt;a href="https://en.wikipedia.org/wiki/Mixin"&gt;mixin&lt;/a&gt; classes that can be used to
+extend an &lt;code&gt;irc.bot.SingleServerIRCBot&lt;/code&gt; instance to do things like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Encrypt connections using SSL&lt;/li&gt;
+&lt;li&gt;Authenticate to Freenode&lt;/li&gt;
+&lt;li&gt;Join channels slowly to avoid flood bans&lt;/li&gt;
+&lt;li&gt;Ping the upstream IRC server to check for connection liveness&lt;/li&gt;
+&lt;li&gt;Rejoin channels when kicked&lt;/li&gt;
+&lt;li&gt;Regain primary nickname after receiving a &lt;code&gt;ERR_NICKNAMEINUSE&lt;/code&gt; message&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of these behaviors are pretty battle tested from months/years of use in
+one or the other of my bots.&lt;/p&gt;
+&lt;p&gt;IB3 has one sexy new addition, &lt;a href="http://ircv3.net/specs/extensions/sasl-3.1.html"&gt;SASL&lt;/a&gt; PLAIN authentication. SASL is an IRC v3
+protocol extension that allows a client to authenticate at the time of
+connection. This method lets you authenticate before your connection becomes
+visible to other clients on the server. It also seems to be a bit faster than
+the normal exchange with NickServ.&lt;/p&gt;
+&lt;p&gt;Making a basic bot that uses SASL auth is pretty easy using the library:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# This program is free software: you can redistribute it and/or modify it&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# under the terms of the GNU General Public License as published by the Free&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Software Foundation, either version 3 of the License, or (at your option)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# any later version.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# This program is distributed in the hope that it will be useful, but WITHOUT&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# more details.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# You should have received a copy of the GNU General Public License along with&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# this program.  If not, see &amp;lt;http://www.gnu.org/licenses/&amp;gt;.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ib3.auth&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;irc.bot&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;NICKNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;your account name here&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;PASSWORD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;your password here&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;CHANNELS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;##sasl_test&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ExampleSaslBot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ib3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SASL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;irc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SingleServerIRCBot&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="c1"&gt;# Add your ``on_*`` handlers here&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;pass&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;bot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ExampleSaslBot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;server_list&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chat.freenode.net&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6667&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;nickname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NICKNAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;realname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NICKNAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;ident_password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PASSWORD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;channels&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;CHANNELS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;bot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;ib3.auth.SASL&lt;/code&gt; mixin will take care of these things for you behind the
+scenes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Send &lt;code&gt;CAP REQ :sasl&lt;/code&gt; as soon as &lt;code&gt;SingleServerIRCBot&lt;/code&gt; knows it has connected&lt;/li&gt;
+&lt;li&gt;Listen for a &lt;code&gt;CAP ACK :sasl&lt;/code&gt; response from the server&lt;/li&gt;
+&lt;li&gt;Send an &lt;code&gt;AUTHENTICATE PLAIN&lt;/code&gt; message to start the auth handshake&lt;/li&gt;
+&lt;li&gt;Wait for an &lt;code&gt;AUTHENTICATE +&lt;/code&gt; response&lt;/li&gt;
+&lt;li&gt;Send &lt;code&gt;AUTHENTICATE &amp;lt;base64 encoded 'username\0username\0password'&amp;gt;&lt;/code&gt; SASL
+  PLAIN request&lt;/li&gt;
+&lt;li&gt;Wait for a &lt;code&gt;903 :SASL authentication successful&lt;/code&gt; response&lt;/li&gt;
+&lt;li&gt;Send a &lt;code&gt;CAP END&lt;/code&gt; message to finish the handshake&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both Jouncebot and Stashbot have been using this code for a few weeks with no
+problems yet. If you try it out and find issues, please &lt;a href="https://github.com/bd808/python-ib3/issues"&gt;report a bug&lt;/a&gt; and
+I'll see if I can figure out how to make things work better.&lt;/p&gt;</content><category term="python"></category><category term="irc"></category><category term="SASL"></category><category term="howto"></category></entry><entry><title>Switching from Octopress to Pelican</title><link href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/" rel="alternate"></link><published>2017-03-01T04:19:06+00:00</published><updated>2017-03-01T04:19:06+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/switching-from-octopress-to-pelican/</id><summary type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
 &lt;a href="https://python-ib3.readthedocs.io/"&gt;my new irc library&lt;/a&gt;, but the &lt;a href="//github.com/rbenv/rbenv"&gt;rbenv&lt;/a&gt; I had setup to run &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; was all
 messed up. I stated poking around to try and remind myself how to get it
 working again …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
