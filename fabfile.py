@@ -1,15 +1,22 @@
 from fabric.api import *
 import fabric.contrib.project as project
+import cgi
+import datetime
+import github
+import json
 import os
+import re
 import shutil
-import sys
 import SocketServer
+import sys
 
 from pelican.server import ComplexHTTPRequestHandler
 
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
 DEPLOY_PATH = env.deploy_path
+env.content_path = 'content'
+CONTENT_PATH = env.content_path
 
 # Remote server configuration
 production = 'root@localhost:22'
@@ -90,3 +97,48 @@ def gh_pages():
     """Publish to GitHub Pages"""
     rebuild()
     local("ghp-import -b {github_pages_branch} {deploy_path} -p".format(**env))
+
+def _slugify(s):
+    """Make a slug string"""
+    s = re.sub(r'[^\w\s]', '', s)
+    s = re.sub(r'\s+', '-', s)
+    return s
+
+def _create_comment_issue(title, url):
+    with open('../.github.json') as jf:
+        config = json.load(jf)
+    gh = github.Github(config['token'])
+    print(gh.get_user().name)
+    repo = gh.get_repo('bd808/bd808.github.com')
+    print(repo.name)
+    issue = repo.create_issue(
+        title=title,
+        body='Reader comments on [{}]({})'.format(title, url),
+        labels=['blog-post'],
+    )
+    print('Successfully opened issue #{}'.format(issue.number))
+    return issue.number
+
+def new_post(title):
+    os.chdir(env.content_path)
+    now = datetime.datetime.utcnow()
+    pname = 'blog/{}-{}.md'.format(
+        now.strftime('%Y-%m-%d'),
+        _slugify(title))
+    if os.path.exists(pname):
+        print('{} exits!'.format(pname))
+        exit(1)
+    with open(pname, 'wb') as post:
+        post.write("Title: {}\n".format(cgi.escape(title, quote=True)))
+        post.write("Date: {}\n".format(now.strftime('%Y-%m-%dT%H:%M:%SZ')))
+        post.write("Comments: True\n")
+        post.write("Github_issue_id: {}\n".format(_create_comment_issue(
+            title,
+            'http://bd808.com/blog/{}/{}/'.format(
+                now.strftime('%Y/%m/%d'),
+                _slugify(title)
+            )
+        )))
+        post.write("Tags: \n".format())
+        post.write("\n")
+

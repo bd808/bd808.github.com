@@ -2,5 +2,6 @@ fabric
 ghp-import
 Markdown
 pelican
+PyGithub
 PyYAML
 typogrify
