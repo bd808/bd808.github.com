@@ -108,9 +108,7 @@ def _create_comment_issue(title, url):
     with open('../.github.json') as jf:
         config = json.load(jf)
     gh = github.Github(config['token'])
-    print(gh.get_user().name)
     repo = gh.get_repo('bd808/bd808.github.com')
-    print(repo.name)
     issue = repo.create_issue(
         title=title,
         body='Reader comments on [{}]({})'.format(title, url),
