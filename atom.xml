@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2014-09-30T20:44:13-06:00</updated><entry><title>Puppet file recurse pitfall</title><link href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/" rel="alternate"></link><published>2014-09-30T20:44:13-06:00</published><updated>2014-09-30T20:44:13-06:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2014-09-30:/blog/2014/09/30/puppet-file-recurse-pitfall/</id><summary type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because
+<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2017-03-01T04:19:06+00:00</updated><entry><title>Switching from Octopress to Pelican</title><link href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/" rel="alternate"></link><published>2017-03-01T04:19:06+00:00</published><updated>2017-03-01T04:19:06+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/switching-from-octopress-to-pelican/</id><summary type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
+&lt;a href="https://python-ib3.readthedocs.io/"&gt;my new irc library&lt;/a&gt;, but the &lt;a href="//github.com/rbenv/rbenv"&gt;rbenv&lt;/a&gt; I had setup to run &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; was all
+messed up. I stated poking around to try and remind myself how to get it
+working again …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
+&lt;a href="https://python-ib3.readthedocs.io/"&gt;my new irc library&lt;/a&gt;, but the &lt;a href="//github.com/rbenv/rbenv"&gt;rbenv&lt;/a&gt; I had setup to run &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; was all
+messed up. I stated poking around to try and remind myself how to get it
+working again and eventually decided that I should really look for a new
+static site generator written in language that I like to use. I ended up
+picking &lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are &lt;a href="https://www.google.com/search?q=octopress+to+pelican"&gt;plenty of blog posts&lt;/a&gt; already that cover the basics, so I won't try
+to give a complete walk through. I mostly used the guides by &lt;a href="https://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican/"&gt;Jake Vanderplas&lt;/a&gt;
+and &lt;a href="http://jhshi.me/2015/10/11/migrating-from-octopress-to-pelican/"&gt;Jinghao Shi&lt;/a&gt; along with the &lt;a href="http://docs.getpelican.com/en/stable/"&gt;manual&lt;/a&gt;. I have blogged before about how
+I setup Octopress to make &lt;a href="/blog/2012/04/14/using-github-issues-for-comments/"&gt;GitHub issues for comments&lt;/a&gt;. I ported this
+functionality to Pelican with a couple of commits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/bd808/bd808.github.com/commit/412c0b3fc45dacda2bd2800ca5b2d8a49d9ee46e"&gt;bd808/bd808.github.com@412c0b3&lt;/a&gt; adds the javascript and template changes
+  needed to render comments and a link to the GitHub issue for a given post.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bd808/bd808.github.com/commit/fe45c78fd96577923f958f1c743f8572c0714829"&gt;bd808/bd808.github.com@fe45c78&lt;/a&gt; adds a &lt;code&gt;new_post&lt;/code&gt; target to my &lt;a href="http://www.fabfile.org/"&gt;fabric&lt;/a&gt;
+  file which creates an issue in the GitHub project and adds the needed
+  metadata to a stub Markdown file.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="github"></category><category term="octopress"></category><category term="pelican"></category><category term="howto"></category></entry><entry><title>Puppet file recurse pitfall</title><link href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/" rel="alternate"></link><published>2014-09-30T20:44:13-06:00</published><updated>2014-09-30T20:44:13-06:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2014-09-30:/blog/2014/09/30/puppet-file-recurse-pitfall/</id><summary type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because
 it is the tool that the operations group at &lt;a href="https://wikimediafoundation.org/wiki/Home"&gt;$DAYJOB&lt;/a&gt; has standardized on
 for our production infrastructure management. It took quite a while for me to
 get the hang of how Puppet does what it does …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because

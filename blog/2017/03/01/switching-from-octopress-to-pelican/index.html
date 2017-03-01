@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>gpg - bd808.com</title>
+    <title>Switching from Octopress to Pelican - bd808.com</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,16 +10,24 @@
 
     <link href="http://bd808.com/favicon.png" rel="icon">
 
+<link rel="canonical" href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/">
 
-    <meta name="author" content="Bryan Davis" />
-    <meta name="keywords" content="gpg" />
+        <meta name="author" content="Bryan Davis" />
+        <meta name="keywords" content="github,octopress,pelican,howto" />
+        <meta name="description" content="I fell down a rabbit hole a few days ago. I wanted to write a blog post about my new irc library, but the rbenv I had setup to run Octopress was all messed up. I stated poking around to try and remind myself how to get it working again …" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="bd808.com" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="bd808.com"/>
-        <meta property="og:url" content="http://bd808.com"/>
-        <meta property="og:description" content="bd808.com"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Switching from Octopress to Pelican"/>
+        <meta property="og:url" content="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/"/>
+        <meta property="og:description" content="I fell down a rabbit hole a few days ago. I wanted to write a blog post about my new irc library, but the rbenv I had setup to run Octopress was all messed up. I stated poking around to try and remind myself how to get it working again …"/>
+        <meta property="article:published_time" content="2017-03-01" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="github" />
+            <meta property="article:tag" content="octopress" />
+            <meta property="article:tag" content="pelican" />
+            <meta property="article:tag" content="howto" />
+            <meta property="article:author" content="Bryan Davis" />
 
     <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@bd808">
@@ -72,13 +80,24 @@ bd808.com            </a>
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-            <article>
-                <h2><a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">GnuPG key transition statement</a></h2>
-                    <div class="well well-sm">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/"
+                       rel="bookmark"
+                       title="Permalink to Switching from Octopress to Pelican">
+                        Switching from Octopress to Pelican
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-05-15T22:33:39-06:00"> 2014-05-15</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-03-01T04:19:06+00:00"> 2017-03-01</time>
     </span>
 
 
@@ -86,22 +105,47 @@ bd808.com            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://bd808.com/blog/tags/gpg/">gpg</a>
+	<a href="http://bd808.com/blog/tags/github/">github</a>
         /
-	<a href="http://bd808.com/blog/tags/security/">security</a>
+	<a href="http://bd808.com/blog/tags/octopress/">octopress</a>
+        /
+	<a href="http://bd808.com/blog/tags/pelican/">pelican</a>
+        /
+	<a href="http://bd808.com/blog/tags/howto/">howto</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary"><div class="highlight"><pre><span class="code-line"><span></span>-----BEGIN PGP SIGNED MESSAGE-----</span>
-<span class="code-line">Hash: SHA1,SHA512</span>
-<span class="code-line"></span>
-<span class="code-line">I am transitioning GPG keys from an old 1024-bit DSA key to a new</span>
-<span class="code-line">4096-bit RSA key.  The old key will continue to be valid for some time,</span>
-<span class="code-line">but I prefer all new correspondence to be encrypted to the new key, and</span>
-<span class="code-line">will …</span></pre></div>
-                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">more ...</a>
                 </div>
-            </article>
-            <hr/>
+                <p>I fell down a rabbit hole a few days ago. I wanted to write a blog post about
+<a href="https://python-ib3.readthedocs.io/">my new irc library</a>, but the <a href="//github.com/rbenv/rbenv">rbenv</a> I had setup to run <a href="http://octopress.org/">Octopress</a> was all
+messed up. I stated poking around to try and remind myself how to get it
+working again and eventually decided that I should really look for a new
+static site generator written in language that I like to use. I ended up
+picking <a href="https://blog.getpelican.com/">Pelican</a>.</p>
+<p>There are <a href="https://www.google.com/search?q=octopress+to+pelican">plenty of blog posts</a> already that cover the basics, so I won't try
+to give a complete walk through. I mostly used the guides by <a href="https://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican/">Jake Vanderplas</a>
+and <a href="http://jhshi.me/2015/10/11/migrating-from-octopress-to-pelican/">Jinghao Shi</a> along with the <a href="http://docs.getpelican.com/en/stable/">manual</a>. I have blogged before about how
+I setup Octopress to make <a href="/blog/2012/04/14/using-github-issues-for-comments/">GitHub issues for comments</a>. I ported this
+functionality to Pelican with a couple of commits:</p>
+<ul>
+<li><a href="https://github.com/bd808/bd808.github.com/commit/412c0b3fc45dacda2bd2800ca5b2d8a49d9ee46e">bd808/bd808.github.com@412c0b3</a> adds the javascript and template changes
+  needed to render comments and a link to the GitHub issue for a given post.</li>
+<li><a href="https://github.com/bd808/bd808.github.com/commit/fe45c78fd96577923f958f1c743f8572c0714829">bd808/bd808.github.com@fe45c78</a> adds a <code>new_post</code> target to my <a href="http://www.fabfile.org/">fabric</a>
+  file which creates an issue in the GitHub project and adds the needed
+  metadata to a stub Markdown file.</li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+<section class="comments">
+  <header>
+    <h2>Comments</h2>
+  </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/25">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
+</section>
+        </article>
+    </section>
 
       </div>
     </div>
@@ -122,8 +166,28 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
     <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
       <ul class="list-group" id="recentposts">
         <li class="list-group-item">
+          <a href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/">
+            Switching from Octopress to Pelican
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">
+            Puppet file recurse pitfall
+          </a>
+        </li>
+        <li class="list-group-item">
           <a href="http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/">
             GnuPG key transition statement
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">
+            How do you know when you're done?
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">
+            FileVault2 Hacks
           </a>
         </li>
       </ul>
@@ -235,7 +299,7 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
    <div class="container-fluid">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 Bryan Davis
+         <div class="col-xs-10">&copy; 2017 Bryan Davis
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
@@ -250,5 +314,26 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
 <script src="http://bd808.com/theme/js/jquery.min.js"></script>
 <script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
 <script src="http://bd808.com/theme/js/respond.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/25/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/25#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
 </body>
 </html>
