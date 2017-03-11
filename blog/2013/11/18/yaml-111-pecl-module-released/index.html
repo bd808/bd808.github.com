@@ -14,13 +14,13 @@
 
         <meta name="author" content="Bryan Davis" />
         <meta name="keywords" content="pecl,yaml,php" />
-        <meta name="description" content="I&#39;m glad to announce that I finally got around to releasing the bug fix version of the YAML PECL module that I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs: #61770 Crash on nonunicode character #61923 Detect_scalar_type() is not aware of base 60 representation #63086 Compiling …" />
+        <meta name="description" content="I&#39;m glad to announce that I finally got around to releasing the bug fix version of the YAML PECL module that I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs: #61770 Crash on nonunicode character #61923 Detect_scalar_type() is not aware of base 60 representation #63086 Compiling PHP with YAML as static extension fails #64019 Segmentation fault if yaml anchor ends with a colon #64694 Segfault when array used as mapping key" />
 
         <meta property="og:site_name" content="bd808.com" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Yaml 1.1.1 PECL Module Released"/>
         <meta property="og:url" content="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/"/>
-        <meta property="og:description" content="I&#39;m glad to announce that I finally got around to releasing the bug fix version of the YAML PECL module that I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs: #61770 Crash on nonunicode character #61923 Detect_scalar_type() is not aware of base 60 representation #63086 Compiling …"/>
+        <meta property="og:description" content="I&#39;m glad to announce that I finally got around to releasing the bug fix version of the YAML PECL module that I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs: #61770 Crash on nonunicode character #61923 Detect_scalar_type() is not aware of base 60 representation #63086 Compiling PHP with YAML as static extension fails #64019 Segmentation fault if yaml anchor ends with a colon #64694 Segfault when array used as mapping key"/>
         <meta property="article:published_time" content="2013-11-18" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="pecl" />
@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -122,6 +122,8 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
 <li><a href="https://bugs.php.net/bug.php?id=64019">#64019</a> Segmentation fault if yaml anchor ends with a colon</li>
 <li><a href="https://bugs.php.net/bug.php?id=64694">#64694</a> Segfault when array used as mapping key</li>
 </ul>
+
+
 <p>It also includes a small but important patch from a community member who
 discovered that I had left the <code>yaml_emit_file()</code> method marked as
 unimplemented when it actually was fully functional.</p>
@@ -132,6 +134,13 @@ a Debian package for the project to make it a little easier for some users to
 install.</p>
             </div>
             <!-- /.entry-content -->
+<section id="article-pager">
+  <ul class="pager">
+    <li class="next"><a
+        href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">FileVault2 Hacks &rarr;</a></li>
+    <li class="previous"><a href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/">&larr; Planning Work in a Sprint</a></li>
+  </ul>
+</section>
 <section class="comments">
   <header>
     <h2>Comments</h2>

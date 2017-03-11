@@ -14,13 +14,13 @@
 
         <meta name="author" content="Bryan Davis" />
         <meta name="keywords" content="hacks,github,octopress,howto" />
-        <meta name="description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding …" />
+        <meta name="description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding a new configuration setting to my _config.yml file: github_comments: true. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase." />
 
         <meta property="og:site_name" content="bd808.com" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Using GitHub issues for comments"/>
         <meta property="og:url" content="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/"/>
-        <meta property="og:description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding …"/>
+        <meta property="og:description" content="I was inspired by Ivan Zuzak&#39;s post to try using GitHub issues on the repository for this blog to collect and display reader comments. I&#39;m using Octopress to generate the site, so I decided to make some customizations to make applying Ivan&#39;s ideas easy for me. I started by adding a new configuration setting to my _config.yml file: github_comments: true. I&#39;ll use this configuration switch to turn the new feature on in other places in the codebase."/>
         <meta property="article:published_time" content="2012-04-14" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="hacks" />
@@ -51,7 +51,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -117,7 +117,7 @@ bd808.com            </a>
                 </div>
                 <p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak's post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I'm using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.</p>
 <p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I'll use this configuration switch to turn the new feature on in other places in the codebase.</p>
-<!-- more -->
+
 
 <p>Next I changed the <a href="https://github.com/mojombo/jekyll/wiki/Liquid-Extensions">Liquid template</a> in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:</p>
 <p><em>source/_layout/post.html</em></p>
@@ -213,6 +213,13 @@ for Comments"]</code>:</p>
 </pre></div>
             </div>
             <!-- /.entry-content -->
+<section id="article-pager">
+  <ul class="pager">
+    <li class="next"><a
+        href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/">Hacking GitHub Contributions Calendar &rarr;</a></li>
+    <li class="previous"><a href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">&larr; Generating an Apparently Random Unique Sequence</a></li>
+  </ul>
+</section>
 <section class="comments">
   <header>
     <h2>Comments</h2>

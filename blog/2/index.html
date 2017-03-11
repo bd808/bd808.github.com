@@ -42,7 +42,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -93,7 +93,14 @@ bd808.com            </a>
                 <div class="summary"><p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
-password of your primary user account to unlock the system …</p>
+password of your primary user account to unlock the system. I'm a fan of
+strong passwords but for encryption I'd prefer to use a longer pass phrase for
+increased entropy. Second the EFI-boot screen that is used to get the password
+to decrypt the disk shows the display name of all usersthat can unlock the
+system rather than blank fields for both username and password. This leaks
+information that I would really rather not leak. Fortunately I've found
+a little hack to work around both of these issues.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">more ...</a>
                 </div>
             </article>
@@ -125,7 +132,11 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
 <ul>
 <li><a href="https://bugs.php.net/bug.php?id=61770">#61770</a> Crash on nonunicode character</li>
 <li><a href="https://bugs.php.net/bug.php?id=61923">#61923</a> Detect_scalar_type() is not aware of base 60 representation</li>
-<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling …</li></ul>
+<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling PHP with YAML as static extension fails</li>
+<li><a href="https://bugs.php.net/bug.php?id=64019">#64019</a> Segmentation fault if yaml anchor ends with a colon</li>
+<li><a href="https://bugs.php.net/bug.php?id=64694">#64694</a> Segfault when array used as mapping key</li>
+</ul>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">more ...</a>
                 </div>
             </article>
@@ -153,7 +164,15 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
 methodologies. The topic of late is <a href="https://scrum.org/">scrum</a> and how it may
 or may not be helpful for the particular group I work with. I've been
 providing some anecdotal input based my past experience with scrum and other
-methodologies/frameworks/practices …</p>
+methodologies/frameworks/practices and asking questions about what problems
+the group is hoping to find new solutions for.</p>
+<p>I started to write a big wall o' text™ email about a particular topic and then
+decided that maybe a blog post would be a better way to work through my idea.
+So dear reader<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>, here are some of my highly
+opinionated and mostly unsubstantiated thoughts about a process that a group
+of people could use to plan a scrum sprint (<em>or really any other iterative
+unit of work)</em>.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/">more ...</a>
                 </div>
             </article>
@@ -183,14 +202,7 @@ methodologies/frameworks/practices …</p>
 the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.</p>
-<ol>
-<li>
-<p>Open the "Keychain Access" application</p>
-<p><code>bash
-open -a "Keychain Access"</code></p>
-</li>
-<li>
-<p>Application menu …</p></li></ol>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">more ...</a>
                 </div>
             </article>
@@ -222,7 +234,18 @@ open -a "Keychain Access"</code></p>
 at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
 repeatable. Rather than a simple set of shell scripts or other provisioning
 tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
-I …</p>
+I don't have the time or space to explain how great Puppet is a configuration
+management is, so you'll have to trust me or go do your own research.</p>
+<p>Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That's actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that "works for them"; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.</p>
+<p>You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let's get on with a description of what
+I've been able to do with it.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/">more ...</a>
                 </div>
             </article>

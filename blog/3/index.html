@@ -42,7 +42,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -97,7 +97,10 @@ call the "<a href="https://help.github.com/articles/viewing-contributions#contri
 commits and other GitHub interactions that the user performed on each day for
 the last year.</p>
 <p><img alt="Example graph" src="/static/blog/timeline.png"></p>
-<p>Each cell in the graph is shaded with one of 5 …</p>
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
+<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/">more ...</a>
                 </div>
             </article>
@@ -126,7 +129,8 @@ the last year.</p>
     
 </footer><!-- /.post-info -->                    </div>
                 <div class="summary"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak's post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I'm using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.</p>
-<p>I started by adding …</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I'll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/">more ...</a>
                 </div>
             </article>
@@ -152,7 +156,15 @@ the last year.</p>
 Database sequences and auto-number columns make it fairly trivial to
 implement. If that isn't available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
-give them …</p>
+give them more information than you would really like them to have about the
+number of ids you are allocating per unit time. We'd really like  to obfuscate
+the id somehow while retaining the uniqueness of the original sequence.</p>
+<p>One way to do this is to use a combination of multiplication and modulo
+arithmetic to map the sequence number into a constrained set. With careful
+choice of the multiplicative constant and the modulo value the resulting
+number can be made to wander rather effectively over the entire space of the
+target set.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">more ...</a>
                 </div>
             </article>
@@ -181,10 +193,7 @@ three print "Fizz" instead of the number and for the multiples of five print
 "FizzBuzz".
 <small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
-<!-- more -->
 
-<p><em>Python</em></p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="ch">#!/usr/bin/env …</span></span></pre></div>
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">more ...</a>
                 </div>
             </article>

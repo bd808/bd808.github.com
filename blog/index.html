@@ -42,7 +42,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -98,7 +98,13 @@ bd808.com            </a>
 <a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot">Jouncebot</a> was a bot I started helping with when <a href="https://github.com/mattofak">@mattofak</a> moved on to
 other projects. Later I developed <a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot">Stashbot</a> as a replacement for using the
 <a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html">Logstash</a> that collected data for my <a href="https://tools.wmflabs.org/sal/">SAL</a> tool in <a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs">Tool
-Labs …</a></p>
+Labs</a>.</p>
+<p>Both bots are built using the awesome <a href="https://pypi.python.org/pypi/irc">irc python library</a> from <a href="https://github.com/jaraco">Jason
+Coombs</a>. I've copied various core irc behaviors from one bot to the other as
+I've discovered and fixed various bugs in how I was using the library.
+I finally got around to extracting these core parts into a Python library of
+it's own that I have named "IRC Bot Behavior Bundle" or <a href="https://python-ib3.readthedocs.io/en/latest/index.html">IB3</a> for short.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/">more ...</a>
                 </div>
             </article>
@@ -129,7 +135,10 @@ Labs …</a></p>
                 <div class="summary"><p>I fell down a rabbit hole a few days ago. I wanted to write a blog post about
 <a href="https://python-ib3.readthedocs.io/">my new irc library</a>, but the <a href="//github.com/rbenv/rbenv">rbenv</a> I had setup to run <a href="http://octopress.org/">Octopress</a> was all
 messed up. I stated poking around to try and remind myself how to get it
-working again …</p>
+working again and eventually decided that I should really look for a new
+static site generator written in language that I like to use. I ended up
+picking <a href="https://blog.getpelican.com/">Pelican</a>.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/">more ...</a>
                 </div>
             </article>
@@ -156,7 +165,10 @@ working again …</p>
                 <div class="summary"><p><a href="http://puppetlabs.com/">Puppet</a> has become my go to system management tool in no small part because
 it is the tool that the operations group at <a href="https://wikimediafoundation.org/wiki/Home">$DAYJOB</a> has standardized on
 for our production infrastructure management. It took quite a while for me to
-get the hang of how Puppet does what it does …</p>
+get the hang of how Puppet does what it does, but today I'd say I'm a fairly
+decent Puppet programmer. Every once in a while however I stumble on something
+new and surprising.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/">more ...</a>
                 </div>
             </article>
@@ -213,7 +225,12 @@ get the hang of how Puppet does what it does …</p>
                 <div class="summary"><p>In scrum a story is "Done" when it meets the team's shared "Definition of
 Done". The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
-things in scrum the implementation details are left to …</p>
+things in scrum the implementation details are left to the team to decide.
+When I was first working with scrum I had a hard time finding examples of what
+a typical definition of done would include. Most scrum authors (and even many
+trainers) wave their hands and say that it's too specific to the team and
+their environment to generalize.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">more ...</a>
                 </div>
             </article>

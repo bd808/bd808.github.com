@@ -14,13 +14,13 @@
 
         <meta name="author" content="Bryan Davis" />
         <meta name="keywords" content="python,irc,SASL,howto" />
-        <meta name="description" content="I maintain a couple of IRC bots that help out with Wikimedia devops tasks. Jouncebot was a bot I started helping with when @mattofak moved on to other projects. Later I developed Stashbot as a replacement for using the Logstash that collected data for my SAL tool in Tool Labs …" />
+        <meta name="description" content="I maintain a couple of IRC bots that help out with Wikimedia devops tasks. Jouncebot was a bot I started helping with when @mattofak moved on to other projects. Later I developed Stashbot as a replacement for using the Logstash that collected data for my SAL tool in Tool Labs. Both bots are built using the awesome irc python library from Jason Coombs. I&#39;ve copied various core irc behaviors from one bot to the other as I&#39;ve discovered and fixed various bugs in how I was using the library. I finally got around to extracting these core parts into a Python library of it&#39;s own that I have named &#34;IRC Bot Behavior Bundle&#34; or IB3 for short." />
 
         <meta property="og:site_name" content="bd808.com" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="SASL auth with python-irc"/>
         <meta property="og:url" content="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/"/>
-        <meta property="og:description" content="I maintain a couple of IRC bots that help out with Wikimedia devops tasks. Jouncebot was a bot I started helping with when @mattofak moved on to other projects. Later I developed Stashbot as a replacement for using the Logstash that collected data for my SAL tool in Tool Labs …"/>
+        <meta property="og:description" content="I maintain a couple of IRC bots that help out with Wikimedia devops tasks. Jouncebot was a bot I started helping with when @mattofak moved on to other projects. Later I developed Stashbot as a replacement for using the Logstash that collected data for my SAL tool in Tool Labs. Both bots are built using the awesome irc python library from Jason Coombs. I&#39;ve copied various core irc behaviors from one bot to the other as I&#39;ve discovered and fixed various bugs in how I was using the library. I finally got around to extracting these core parts into a Python library of it&#39;s own that I have named &#34;IRC Bot Behavior Bundle&#34; or IB3 for short."/>
         <meta property="article:published_time" content="2017-03-01" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="python" />
@@ -51,7 +51,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -125,6 +125,8 @@ Coombs</a>. I've copied various core irc behaviors from one bot to the other as
 I've discovered and fixed various bugs in how I was using the library.
 I finally got around to extracting these core parts into a Python library of
 it's own that I have named "IRC Bot Behavior Bundle" or <a href="https://python-ib3.readthedocs.io/en/latest/index.html">IB3</a> for short.</p>
+
+
 <p>The IB3 library provides a collection of <a href="https://en.wikipedia.org/wiki/Mixin">mixin</a> classes that can be used to
 extend an <code>irc.bot.SingleServerIRCBot</code> instance to do things like:</p>
 <ul>
@@ -195,6 +197,11 @@ problems yet. If you try it out and find issues, please <a href="https://github.
 I'll see if I can figure out how to make things work better.</p>
             </div>
             <!-- /.entry-content -->
+<section id="article-pager">
+  <ul class="pager">
+    <li class="previous"><a href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/">&larr; Switching from Octopress to Pelican</a></li>
+  </ul>
+</section>
 <section class="comments">
   <header>
     <h2>Comments</h2>

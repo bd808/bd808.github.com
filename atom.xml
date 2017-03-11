@@ -3,7 +3,13 @@
 &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot"&gt;Jouncebot&lt;/a&gt; was a bot I started helping with when &lt;a href="https://github.com/mattofak"&gt;@mattofak&lt;/a&gt; moved on to
 other projects. Later I developed &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot"&gt;Stashbot&lt;/a&gt; as a replacement for using the
 &lt;a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html"&gt;Logstash&lt;/a&gt; that collected data for my &lt;a href="https://tools.wmflabs.org/sal/"&gt;SAL&lt;/a&gt; tool in &lt;a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs"&gt;Tool
-Labs …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
+Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Both bots are built using the awesome &lt;a href="https://pypi.python.org/pypi/irc"&gt;irc python library&lt;/a&gt; from &lt;a href="https://github.com/jaraco"&gt;Jason
+Coombs&lt;/a&gt;. I've copied various core irc behaviors from one bot to the other as
+I've discovered and fixed various bugs in how I was using the library.
+I finally got around to extracting these core parts into a Python library of
+it's own that I have named "IRC Bot Behavior Bundle" or &lt;a href="https://python-ib3.readthedocs.io/en/latest/index.html"&gt;IB3&lt;/a&gt; for short.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
 &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot"&gt;Jouncebot&lt;/a&gt; was a bot I started helping with when &lt;a href="https://github.com/mattofak"&gt;@mattofak&lt;/a&gt; moved on to
 other projects. Later I developed &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot"&gt;Stashbot&lt;/a&gt; as a replacement for using the
 &lt;a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html"&gt;Logstash&lt;/a&gt; that collected data for my &lt;a href="https://tools.wmflabs.org/sal/"&gt;SAL&lt;/a&gt; tool in &lt;a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs"&gt;Tool
@@ -13,6 +19,8 @@ Coombs&lt;/a&gt;. I've copied various core irc behaviors from one bot to the oth
 I've discovered and fixed various bugs in how I was using the library.
 I finally got around to extracting these core parts into a Python library of
 it's own that I have named "IRC Bot Behavior Bundle" or &lt;a href="https://python-ib3.readthedocs.io/en/latest/index.html"&gt;IB3&lt;/a&gt; for short.&lt;/p&gt;
+
+
 &lt;p&gt;The IB3 library provides a collection of &lt;a href="https://en.wikipedia.org/wiki/Mixin"&gt;mixin&lt;/a&gt; classes that can be used to
 extend an &lt;code&gt;irc.bot.SingleServerIRCBot&lt;/code&gt; instance to do things like:&lt;/p&gt;
 &lt;ul&gt;
@@ -83,12 +91,17 @@ problems yet. If you try it out and find issues, please &lt;a href="https://gith
 I'll see if I can figure out how to make things work better.&lt;/p&gt;</content><category term="python"></category><category term="irc"></category><category term="SASL"></category><category term="howto"></category></entry><entry><title>Switching from Octopress to Pelican</title><link href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/" rel="alternate"></link><published>2017-03-01T04:19:06+00:00</published><updated>2017-03-01T04:19:06+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/switching-from-octopress-to-pelican/</id><summary type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
 &lt;a href="https://python-ib3.readthedocs.io/"&gt;my new irc library&lt;/a&gt;, but the &lt;a href="//github.com/rbenv/rbenv"&gt;rbenv&lt;/a&gt; I had setup to run &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; was all
 messed up. I stated poking around to try and remind myself how to get it
-working again …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
+working again and eventually decided that I should really look for a new
+static site generator written in language that I like to use. I ended up
+picking &lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I fell down a rabbit hole a few days ago. I wanted to write a blog post about
 &lt;a href="https://python-ib3.readthedocs.io/"&gt;my new irc library&lt;/a&gt;, but the &lt;a href="//github.com/rbenv/rbenv"&gt;rbenv&lt;/a&gt; I had setup to run &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; was all
 messed up. I stated poking around to try and remind myself how to get it
 working again and eventually decided that I should really look for a new
 static site generator written in language that I like to use. I ended up
 picking &lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+
+
 &lt;p&gt;There are &lt;a href="https://www.google.com/search?q=octopress+to+pelican"&gt;plenty of blog posts&lt;/a&gt; already that cover the basics, so I won't try
 to give a complete walk through. I mostly used the guides by &lt;a href="https://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican/"&gt;Jake Vanderplas&lt;/a&gt;
 and &lt;a href="http://jhshi.me/2015/10/11/migrating-from-octopress-to-pelican/"&gt;Jinghao Shi&lt;/a&gt; along with the &lt;a href="http://docs.getpelican.com/en/stable/"&gt;manual&lt;/a&gt;. I have blogged before about how
@@ -103,12 +116,17 @@ functionality to Pelican with a couple of commits:&lt;/p&gt;
 &lt;/ul&gt;</content><category term="github"></category><category term="octopress"></category><category term="pelican"></category><category term="howto"></category></entry><entry><title>Puppet file recurse pitfall</title><link href="http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/" rel="alternate"></link><published>2014-09-30T20:44:13-06:00</published><updated>2014-09-30T20:44:13-06:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2014-09-30:/blog/2014/09/30/puppet-file-recurse-pitfall/</id><summary type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because
 it is the tool that the operations group at &lt;a href="https://wikimediafoundation.org/wiki/Home"&gt;$DAYJOB&lt;/a&gt; has standardized on
 for our production infrastructure management. It took quite a while for me to
-get the hang of how Puppet does what it does …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because
+get the hang of how Puppet does what it does, but today I'd say I'm a fairly
+decent Puppet programmer. Every once in a while however I stumble on something
+new and surprising.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a href="http://puppetlabs.com/"&gt;Puppet&lt;/a&gt; has become my go to system management tool in no small part because
 it is the tool that the operations group at &lt;a href="https://wikimediafoundation.org/wiki/Home"&gt;$DAYJOB&lt;/a&gt; has standardized on
 for our production infrastructure management. It took quite a while for me to
 get the hang of how Puppet does what it does, but today I'd say I'm a fairly
 decent Puppet programmer. Every once in a while however I stumble on something
 new and surprising.&lt;/p&gt;
+
+
 &lt;p&gt;A couple of weeks ago I got an interesting bug report from a user about
 a collection of Puppet manifests I help manage. The bug was that his testing
 server was pegged at 99% CPU utilization for multiple minutes during each
@@ -293,7 +311,12 @@ repository clone operation.&lt;/p&gt;</content><category term="puppet"></categor
 &lt;/pre&gt;&lt;/div&gt;</content><category term="gpg"></category><category term="security"></category></entry><entry><title>How do you know when you're done?</title><link href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/" rel="alternate"></link><published>2014-01-14T21:48:20-07:00</published><updated>2014-01-14T21:48:20-07:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2014-01-14:/blog/2014/01/14/how-do-you-know-when-youre-done/</id><summary type="html">&lt;p&gt;In scrum a story is "Done" when it meets the team's shared "Definition of
 Done". The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
-things in scrum the implementation details are left to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In scrum a story is "Done" when it meets the team's shared "Definition of
+things in scrum the implementation details are left to the team to decide.
+When I was first working with scrum I had a hard time finding examples of what
+a typical definition of done would include. Most scrum authors (and even many
+trainers) wave their hands and say that it's too specific to the team and
+their environment to generalize.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;In scrum a story is "Done" when it meets the team's shared "Definition of
 Done". The definition of done is roughly a list of requirements that all parts
 of the software increment must adhere to to be called complete. Like most
 things in scrum the implementation details are left to the team to decide.
@@ -301,6 +324,8 @@ When I was first working with scrum I had a hard time finding examples of what
 a typical definition of done would include. Most scrum authors (and even many
 trainers) wave their hands and say that it's too specific to the team and
 their environment to generalize.&lt;/p&gt;
+
+
 &lt;p&gt;Intellectually I agree with this, but pragmatically I think that having some
 sort of rough draft of ideas to start from makes writing the first draft
 easier. This particular definition of Done is written from the perspective of
@@ -447,7 +472,14 @@ be updated to match the proposed release.&lt;/dd&gt;
 &lt;/dl&gt;&lt;/p&gt;</content><category term="scrum"></category><category term="sdlc"></category></entry><entry><title>FileVault2 Hacks</title><link href="http://bd808.com/blog/2013/12/09/filevault2-hacks/" rel="alternate"></link><published>2013-12-09T21:35:52-07:00</published><updated>2013-12-09T21:35:52-07:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2013-12-09:/blog/2013/12/09/filevault2-hacks/</id><summary type="html">&lt;p&gt;Mac OS X 10.7 introduced a whole disk encryption service called
 &lt;a href="http://support.apple.com/kb/ht4790"&gt;FileVault2&lt;/a&gt;. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
-password of your primary user account to unlock the system …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Mac OS X 10.7 introduced a whole disk encryption service called
+password of your primary user account to unlock the system. I'm a fan of
+strong passwords but for encryption I'd prefer to use a longer pass phrase for
+increased entropy. Second the EFI-boot screen that is used to get the password
+to decrypt the disk shows the display name of all usersthat can unlock the
+system rather than blank fields for both username and password. This leaks
+information that I would really rather not leak. Fortunately I've found
+a little hack to work around both of these issues.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Mac OS X 10.7 introduced a whole disk encryption service called
 &lt;a href="http://support.apple.com/kb/ht4790"&gt;FileVault2&lt;/a&gt;. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
 password of your primary user account to unlock the system. I'm a fan of
@@ -457,6 +489,8 @@ to decrypt the disk shows the display name of all usersthat can unlock the
 system rather than blank fields for both username and password. This leaks
 information that I would really rather not leak. Fortunately I've found
 a little hack to work around both of these issues.&lt;/p&gt;
+
+
 &lt;p&gt;The key to my fix lies in this statement from the documentation:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Users not enabled for FileVault unlock are only able to log into the
@@ -500,7 +534,11 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:&lt;/p
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=61770"&gt;#61770&lt;/a&gt; Crash on nonunicode character&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=61923"&gt;#61923&lt;/a&gt; Detect_scalar_type() is not aware of base 60 representation&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=63086"&gt;#63086&lt;/a&gt; Compiling …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;I'm glad to announce that I finally got around to releasing the bug fix
+&lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=63086"&gt;#63086&lt;/a&gt; Compiling PHP with YAML as static extension fails&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=64019"&gt;#64019&lt;/a&gt; Segmentation fault if yaml anchor ends with a colon&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=64694"&gt;#64694&lt;/a&gt; Segfault when array used as mapping key&lt;/li&gt;
+&lt;/ul&gt;
+</summary><content type="html">&lt;p&gt;I'm glad to announce that I finally got around to releasing the bug fix
 version of the &lt;a href="http://pecl.php.net/package/yaml"&gt;YAML PECL module&lt;/a&gt; that
 I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:&lt;/p&gt;
 &lt;ul&gt;
@@ -510,6 +548,8 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:&lt;/p
 &lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=64019"&gt;#64019&lt;/a&gt; Segmentation fault if yaml anchor ends with a colon&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://bugs.php.net/bug.php?id=64694"&gt;#64694&lt;/a&gt; Segfault when array used as mapping key&lt;/li&gt;
 &lt;/ul&gt;
+
+
 &lt;p&gt;It also includes a small but important patch from a community member who
 discovered that I had left the &lt;code&gt;yaml_emit_file()&lt;/code&gt; method marked as
 unimplemented when it actually was fully functional.&lt;/p&gt;
@@ -521,7 +561,15 @@ install.&lt;/p&gt;</content><category term="pecl"></category><category term="yam
 methodologies. The topic of late is &lt;a href="https://scrum.org/"&gt;scrum&lt;/a&gt; and how it may
 or may not be helpful for the particular group I work with. I've been
 providing some anecdotal input based my past experience with scrum and other
-methodologies/frameworks/practices …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We've been having some discussions at &lt;code&gt;$DAYJOB&lt;/code&gt; about process and
+methodologies/frameworks/practices and asking questions about what problems
+the group is hoping to find new solutions for.&lt;/p&gt;
+&lt;p&gt;I started to write a big wall o' text™ email about a particular topic and then
+decided that maybe a blog post would be a better way to work through my idea.
+So dear reader&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, here are some of my highly
+opinionated and mostly unsubstantiated thoughts about a process that a group
+of people could use to plan a scrum sprint (&lt;em&gt;or really any other iterative
+unit of work)&lt;/em&gt;.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;We've been having some discussions at &lt;code&gt;$DAYJOB&lt;/code&gt; about process and
 methodologies. The topic of late is &lt;a href="https://scrum.org/"&gt;scrum&lt;/a&gt; and how it may
 or may not be helpful for the particular group I work with. I've been
 providing some anecdotal input based my past experience with scrum and other
@@ -533,6 +581,8 @@ So dear reader&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt
 opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (&lt;em&gt;or really any other iterative
 unit of work)&lt;/em&gt;.&lt;/p&gt;
+
+
 &lt;h2&gt;Pick some work you think you can get done&lt;/h2&gt;
 &lt;p&gt;Step one, pick some work. Sounds easy, but pick it from where? Well that's
 a damn good question but one that's going to depend on your environment. For
@@ -646,17 +696,12 @@ to look for ways to improve.&lt;/p&gt;
 the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Open the "Keychain Access" application&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;bash
-open -a "Keychain Access"&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Application menu …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;I wanted to make my own build of &lt;a href="http://www.codeux.com/textual/"&gt;Textual&lt;/a&gt;
+</summary><content type="html">&lt;p&gt;I wanted to make my own build of &lt;a href="http://www.codeux.com/textual/"&gt;Textual&lt;/a&gt;
 the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.&lt;/p&gt;
+
+
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Open the "Keychain Access" application&lt;/p&gt;
@@ -698,7 +743,18 @@ binaries from machine to machine without needing to recompile them.&lt;/p&gt;</c
 at &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; to make setting up and managing Mac OS X computers easy and
 repeatable. Rather than a simple set of shell scripts or other provisioning
 tools, Boxen uses &lt;a href="https://puppetlabs.com/"&gt;Puppet&lt;/a&gt; to automate installing and configuring software.
-I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://boxen.github.com/"&gt;Boxen&lt;/a&gt; is a framework and collection of libraries created by the fine folks
+I don't have the time or space to explain how great Puppet is a configuration
+management is, so you'll have to trust me or go do your own research.&lt;/p&gt;
+&lt;p&gt;Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That's actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that "works for them"; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.&lt;/p&gt;
+&lt;p&gt;You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let's get on with a description of what
+I've been able to do with it.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a href="https://boxen.github.com/"&gt;Boxen&lt;/a&gt; is a framework and collection of libraries created by the fine folks
 at &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; to make setting up and managing Mac OS X computers easy and
 repeatable. Rather than a simple set of shell scripts or other provisioning
 tools, Boxen uses &lt;a href="https://puppetlabs.com/"&gt;Puppet&lt;/a&gt; to automate installing and configuring software.
@@ -713,7 +769,7 @@ to engineer a reasonably extensible solution for a very complex problem.&lt;/p&g
 &lt;p&gt;You can use your favorite search engine to find folks who can wax poetic about
 the magnitude of this accomplishment. Let's get on with a description of what
 I've been able to do with it.&lt;/p&gt;
-&lt;!-- more --&gt;
+
 
 &lt;p&gt;I'm using Boxen to manage my &lt;code&gt;$DAYJOB&lt;/code&gt; laptop. This was a great place to start
 because I had a brand new laptop that needed to be setup and a brand new tool
@@ -762,7 +818,10 @@ call the "&lt;a href="https://help.github.com/articles/viewing-contributions#con
 commits and other GitHub interactions that the user performed on each day for
 the last year.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Example graph" src="/static/blog/timeline.png"&gt;&lt;/p&gt;
-&lt;p&gt;Each cell in the graph is shaded with one of 5 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;GitHub profile pages include a neat visualization of commit history that they
+&lt;p&gt;Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the &lt;a href="https://en.wikipedia.org/wiki/Quartile"&gt;quartiles&lt;/a&gt; of the &lt;a href="https://en.wikipedia.org/wiki/Normal_distribution"&gt;normal distribution&lt;/a&gt; over the range
+&lt;code&gt;[0, max(v)]&lt;/code&gt; where &lt;code&gt;v&lt;/code&gt; is the sum of issues opened, pull requests proposed and commits authored per day.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;GitHub profile pages include a neat visualization of commit history that they
 call the "&lt;a href="https://help.github.com/articles/viewing-contributions#contributions-calendar"&gt;contributions calendar&lt;/a&gt;". This 53x7 grid shows the number of
 commits and other GitHub interactions that the user performed on each day for
 the last year.&lt;/p&gt;
@@ -770,7 +829,7 @@ the last year.&lt;/p&gt;
 &lt;p&gt;Each cell in the graph is shaded with one of 5 possible colors. These colors
 correspond to the &lt;a href="https://en.wikipedia.org/wiki/Quartile"&gt;quartiles&lt;/a&gt; of the &lt;a href="https://en.wikipedia.org/wiki/Normal_distribution"&gt;normal distribution&lt;/a&gt; over the range
 &lt;code&gt;[0, max(v)]&lt;/code&gt; where &lt;code&gt;v&lt;/code&gt; is the sum of issues opened, pull requests proposed and commits authored per day.&lt;/p&gt;
-&lt;!-- more --&gt;
+
 
 &lt;p&gt;If your all time high for the last year was 100 contributions in a single day,
 the cells would color like this:&lt;/p&gt;
@@ -862,9 +921,10 @@ commit commands to stdout:&lt;/p&gt;
 colors. It would also be nice if the script read your current contribution
 history to determine how many commits are necessary to hit the 4th quartile
 every time. For now these additions are left as an exercise for the reader. :)&lt;/p&gt;</content><category term="hacks"></category><category term="github"></category><category term="howto"></category></entry><entry><title>Using GitHub issues for comments</title><link href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/" rel="alternate"></link><published>2012-04-14T20:22:00+00:00</published><updated>2012-04-14T20:22:00+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2012-04-14:/blog/2012/04/14/using-github-issues-for-comments/</id><summary type="html">&lt;p&gt;I was inspired by &lt;a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html"&gt;Ivan Zuzak's post&lt;/a&gt; to try using GitHub issues on the &lt;a href="https://github.com/bd808/bd808.github.com"&gt;repository for this blog&lt;/a&gt; to collect and display reader comments. I'm using &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.&lt;/p&gt;
-&lt;p&gt;I started by adding …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was inspired by &lt;a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html"&gt;Ivan Zuzak's post&lt;/a&gt; to try using GitHub issues on the &lt;a href="https://github.com/bd808/bd808.github.com"&gt;repository for this blog&lt;/a&gt; to collect and display reader comments. I'm using &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.&lt;/p&gt;
 &lt;p&gt;I started by adding a new configuration setting to my &lt;code&gt;_config.yml&lt;/code&gt; file: &lt;code&gt;github_comments: true&lt;/code&gt;. I'll use this configuration switch to turn the new feature on in other places in the codebase.&lt;/p&gt;
-&lt;!-- more --&gt;
+</summary><content type="html">&lt;p&gt;I was inspired by &lt;a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html"&gt;Ivan Zuzak's post&lt;/a&gt; to try using GitHub issues on the &lt;a href="https://github.com/bd808/bd808.github.com"&gt;repository for this blog&lt;/a&gt; to collect and display reader comments. I'm using &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt; to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.&lt;/p&gt;
+&lt;p&gt;I started by adding a new configuration setting to my &lt;code&gt;_config.yml&lt;/code&gt; file: &lt;code&gt;github_comments: true&lt;/code&gt;. I'll use this configuration switch to turn the new feature on in other places in the codebase.&lt;/p&gt;
+
 
 &lt;p&gt;Next I changed the &lt;a href="https://github.com/mojombo/jekyll/wiki/Liquid-Extensions"&gt;Liquid template&lt;/a&gt; in source/_layout/post.html to include a link to the comment thread for the post. I added this block right after the existing disqus rendering block:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;source/_layout/post.html&lt;/em&gt;&lt;/p&gt;
@@ -961,7 +1021,15 @@ for Comments"]&lt;/code&gt;:&lt;/p&gt;
 Database sequences and auto-number columns make it fairly trivial to
 implement. If that isn't available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
-give them …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using a sequentially increasing counter to generate an id token is easy.
+give them more information than you would really like them to have about the
+number of ids you are allocating per unit time. We'd really like  to obfuscate
+the id somehow while retaining the uniqueness of the original sequence.&lt;/p&gt;
+&lt;p&gt;One way to do this is to use a combination of multiplication and modulo
+arithmetic to map the sequence number into a constrained set. With careful
+choice of the multiplicative constant and the modulo value the resulting
+number can be made to wander rather effectively over the entire space of the
+target set.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Using a sequentially increasing counter to generate an id token is easy.
 Database sequences and auto-number columns make it fairly trivial to
 implement. If that isn't available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
@@ -973,7 +1041,7 @@ arithmetic to map the sequence number into a constrained set. With careful
 choice of the multiplicative constant and the modulo value the resulting
 number can be made to wander rather effectively over the entire space of the
 target set.&lt;/p&gt;
-&lt;!-- more --&gt;
+
 
 &lt;p&gt;The basic math looks like this:  &lt;code&gt;f(n) := (n * p) % q&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1050,17 +1118,14 @@ three print "Fizz" instead of the number and for the multiples of five print
 "FizzBuzz".
 &lt;small&gt;&lt;a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/"&gt;imranontech [at] googlemail.com&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;!-- more --&gt;
-
-&lt;p&gt;&lt;em&gt;Python&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env …&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;blockquote&gt;
+</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;Write a program that prints the numbers from 1 to 100. But for multiples of
 three print "Fizz" instead of the number and for the multiples of five print
 "Buzz". For numbers which are multiples of both three and five print
 "FizzBuzz".
 &lt;small&gt;&lt;a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/"&gt;imranontech [at] googlemail.com&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;!-- more --&gt;
+
 
 &lt;p&gt;&lt;em&gt;Python&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;&lt;/span&gt;

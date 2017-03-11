@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -93,7 +93,15 @@ bd808.com            </a>
 Database sequences and auto-number columns make it fairly trivial to
 implement. If that isn't available a simple file or shared memory counter can
 be implemented in minutes. Displaying such a number to a client however may
-give them …</p>
+give them more information than you would really like them to have about the
+number of ids you are allocating per unit time. We'd really like  to obfuscate
+the id somehow while retaining the uniqueness of the original sequence.</p>
+<p>One way to do this is to use a combination of multiplication and modulo
+arithmetic to map the sequence number into a constrained set. With careful
+choice of the multiplicative constant and the modulo value the resulting
+number can be made to wander rather effectively over the entire space of the
+target set.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">more ...</a>
                 </div>
             </article>
@@ -122,10 +130,7 @@ three print "Fizz" instead of the number and for the multiples of five print
 "FizzBuzz".
 <small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
 </blockquote>
-<!-- more -->
 
-<p><em>Python</em></p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="ch">#!/usr/bin/env …</span></span></pre></div>
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">more ...</a>
                 </div>
             </article>

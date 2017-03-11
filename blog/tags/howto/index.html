@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -99,7 +99,13 @@ bd808.com            </a>
 <a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot">Jouncebot</a> was a bot I started helping with when <a href="https://github.com/mattofak">@mattofak</a> moved on to
 other projects. Later I developed <a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot">Stashbot</a> as a replacement for using the
 <a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html">Logstash</a> that collected data for my <a href="https://tools.wmflabs.org/sal/">SAL</a> tool in <a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs">Tool
-Labs …</a></p>
+Labs</a>.</p>
+<p>Both bots are built using the awesome <a href="https://pypi.python.org/pypi/irc">irc python library</a> from <a href="https://github.com/jaraco">Jason
+Coombs</a>. I've copied various core irc behaviors from one bot to the other as
+I've discovered and fixed various bugs in how I was using the library.
+I finally got around to extracting these core parts into a Python library of
+it's own that I have named "IRC Bot Behavior Bundle" or <a href="https://python-ib3.readthedocs.io/en/latest/index.html">IB3</a> for short.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/">more ...</a>
                 </div>
             </article>
@@ -130,7 +136,10 @@ Labs …</a></p>
                 <div class="summary"><p>I fell down a rabbit hole a few days ago. I wanted to write a blog post about
 <a href="https://python-ib3.readthedocs.io/">my new irc library</a>, but the <a href="//github.com/rbenv/rbenv">rbenv</a> I had setup to run <a href="http://octopress.org/">Octopress</a> was all
 messed up. I stated poking around to try and remind myself how to get it
-working again …</p>
+working again and eventually decided that I should really look for a new
+static site generator written in language that I like to use. I ended up
+picking <a href="https://blog.getpelican.com/">Pelican</a>.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/">more ...</a>
                 </div>
             </article>
@@ -160,14 +169,7 @@ working again …</p>
 the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.</p>
-<ol>
-<li>
-<p>Open the "Keychain Access" application</p>
-<p><code>bash
-open -a "Keychain Access"</code></p>
-</li>
-<li>
-<p>Application menu …</p></li></ol>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">more ...</a>
                 </div>
             </article>
@@ -198,7 +200,10 @@ call the "<a href="https://help.github.com/articles/viewing-contributions#contri
 commits and other GitHub interactions that the user performed on each day for
 the last year.</p>
 <p><img alt="Example graph" src="/static/blog/timeline.png"></p>
-<p>Each cell in the graph is shaded with one of 5 …</p>
+<p>Each cell in the graph is shaded with one of 5 possible colors. These colors
+correspond to the <a href="https://en.wikipedia.org/wiki/Quartile">quartiles</a> of the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> over the range
+<code>[0, max(v)]</code> where <code>v</code> is the sum of issues opened, pull requests proposed and commits authored per day.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/">more ...</a>
                 </div>
             </article>
@@ -227,7 +232,8 @@ the last year.</p>
     
 </footer><!-- /.post-info -->                    </div>
                 <div class="summary"><p>I was inspired by <a href="http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html">Ivan Zuzak's post</a> to try using GitHub issues on the <a href="https://github.com/bd808/bd808.github.com">repository for this blog</a> to collect and display reader comments. I'm using <a href="http://octopress.org/">Octopress</a> to generate the site, so I decided to make some customizations to make applying Ivan's ideas easy for me.</p>
-<p>I started by adding …</p>
+<p>I started by adding a new configuration setting to my <code>_config.yml</code> file: <code>github_comments: true</code>. I'll use this configuration switch to turn the new feature on in other places in the codebase.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/">more ...</a>
                 </div>
             </article>

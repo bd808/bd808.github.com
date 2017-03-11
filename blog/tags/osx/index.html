@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -94,7 +94,14 @@ bd808.com            </a>
                 <div class="summary"><p>Mac OS X 10.7 introduced a whole disk encryption service called
 <a href="http://support.apple.com/kb/ht4790">FileVault2</a>. This allows you to use AES 128 encryption to protect your
 data. This is a great feature but it has a few small drawbacks. It uses the
-password of your primary user account to unlock the system …</p>
+password of your primary user account to unlock the system. I'm a fan of
+strong passwords but for encryption I'd prefer to use a longer pass phrase for
+increased entropy. Second the EFI-boot screen that is used to get the password
+to decrypt the disk shows the display name of all usersthat can unlock the
+system rather than blank fields for both username and password. This leaks
+information that I would really rather not leak. Fortunately I've found
+a little hack to work around both of these issues.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/12/09/filevault2-hacks/">more ...</a>
                 </div>
             </article>
@@ -124,14 +131,7 @@ password of your primary user account to unlock the system …</p>
 the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.</p>
-<ol>
-<li>
-<p>Open the "Keychain Access" application</p>
-<p><code>bash
-open -a "Keychain Access"</code></p>
-</li>
-<li>
-<p>Application menu …</p></li></ol>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/">more ...</a>
                 </div>
             </article>
@@ -163,7 +163,18 @@ open -a "Keychain Access"</code></p>
 at <a href="https://github.com/">GitHub</a> to make setting up and managing Mac OS X computers easy and
 repeatable. Rather than a simple set of shell scripts or other provisioning
 tools, Boxen uses <a href="https://puppetlabs.com/">Puppet</a> to automate installing and configuring software.
-I …</p>
+I don't have the time or space to explain how great Puppet is a configuration
+management is, so you'll have to trust me or go do your own research.</p>
+<p>Anybody could take a stab at rolling their own collection of Puppet manifests
+to manage their laptop or their corporate install base. That's actually
+exactly what GitHub did to create Boxen. Having tried (and failed) at doing
+just that before I was pretty impressed when I gave Boxen a test drive. GitHub
+has not only provided a system that "works for them"; they have also managed
+to engineer a reasonably extensible solution for a very complex problem.</p>
+<p>You can use your favorite search engine to find folks who can wax poetic about
+the magnitude of this accomplishment. Let's get on with a description of what
+I've been able to do with it.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/">more ...</a>
                 </div>
             </article>

@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -99,7 +99,13 @@ bd808.com            </a>
 <a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot">Jouncebot</a> was a bot I started helping with when <a href="https://github.com/mattofak">@mattofak</a> moved on to
 other projects. Later I developed <a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot">Stashbot</a> as a replacement for using the
 <a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html">Logstash</a> that collected data for my <a href="https://tools.wmflabs.org/sal/">SAL</a> tool in <a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs">Tool
-Labs …</a></p>
+Labs</a>.</p>
+<p>Both bots are built using the awesome <a href="https://pypi.python.org/pypi/irc">irc python library</a> from <a href="https://github.com/jaraco">Jason
+Coombs</a>. I've copied various core irc behaviors from one bot to the other as
+I've discovered and fixed various bugs in how I was using the library.
+I finally got around to extracting these core parts into a Python library of
+it's own that I have named "IRC Bot Behavior Bundle" or <a href="https://python-ib3.readthedocs.io/en/latest/index.html">IB3</a> for short.</p>
+
                     <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/">more ...</a>
                 </div>
             </article>

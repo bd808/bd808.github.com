@@ -14,13 +14,13 @@
 
         <meta name="author" content="Bryan Davis" />
         <meta name="keywords" content="osx,security" />
-        <meta name="description" content="Mac OS X 10.7 introduced a whole disk encryption service called FileVault2. This allows you to use AES 128 encryption to protect your data. This is a great feature but it has a few small drawbacks. It uses the password of your primary user account to unlock the system …" />
+        <meta name="description" content="Mac OS X 10.7 introduced a whole disk encryption service called FileVault2. This allows you to use AES 128 encryption to protect your data. This is a great feature but it has a few small drawbacks. It uses the password of your primary user account to unlock the system. I&#39;m a fan of strong passwords but for encryption I&#39;d prefer to use a longer pass phrase for increased entropy. Second the EFI-boot screen that is used to get the password to decrypt the disk shows the display name of all usersthat can unlock the system rather than blank fields for both username and password. This leaks information that I would really rather not leak. Fortunately I&#39;ve found a little hack to work around both of these issues." />
 
         <meta property="og:site_name" content="bd808.com" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="FileVault2 Hacks"/>
         <meta property="og:url" content="http://bd808.com/blog/2013/12/09/filevault2-hacks/"/>
-        <meta property="og:description" content="Mac OS X 10.7 introduced a whole disk encryption service called FileVault2. This allows you to use AES 128 encryption to protect your data. This is a great feature but it has a few small drawbacks. It uses the password of your primary user account to unlock the system …"/>
+        <meta property="og:description" content="Mac OS X 10.7 introduced a whole disk encryption service called FileVault2. This allows you to use AES 128 encryption to protect your data. This is a great feature but it has a few small drawbacks. It uses the password of your primary user account to unlock the system. I&#39;m a fan of strong passwords but for encryption I&#39;d prefer to use a longer pass phrase for increased entropy. Second the EFI-boot screen that is used to get the password to decrypt the disk shows the display name of all usersthat can unlock the system rather than blank fields for both username and password. This leaks information that I would really rather not leak. Fortunately I&#39;ve found a little hack to work around both of these issues."/>
         <meta property="article:published_time" content="2013-12-09" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="osx" />
@@ -49,7 +49,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -119,6 +119,8 @@ to decrypt the disk shows the display name of all usersthat can unlock the
 system rather than blank fields for both username and password. This leaks
 information that I would really rather not leak. Fortunately I've found
 a little hack to work around both of these issues.</p>
+
+
 <p>The key to my fix lies in this statement from the documentation:</p>
 <blockquote>
 <p>Users not enabled for FileVault unlock are only able to log into the
@@ -159,6 +161,13 @@ I chose to make a small application that executes this apple script command:</p>
 </pre></div>
             </div>
             <!-- /.entry-content -->
+<section id="article-pager">
+  <ul class="pager">
+    <li class="next"><a
+        href="http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/">How do you know when you're done? &rarr;</a></li>
+    <li class="previous"><a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">&larr; Yaml 1.1.1 PECL Module Released</a></li>
+  </ul>
+</section>
 <section class="comments">
   <header>
     <h2>Comments</h2>
