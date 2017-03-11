@@ -14,6 +14,8 @@ a typical definition of done would include. Most scrum authors (and even many
 trainers) wave their hands and say that it's too specific to the team and
 their environment to generalize.
 
+<!-- more -->
+
 Intellectually I agree with this, but pragmatically I think that having some
 sort of rough draft of ideas to start from makes writing the first draft
 easier. This particular definition of Done is written from the perspective of

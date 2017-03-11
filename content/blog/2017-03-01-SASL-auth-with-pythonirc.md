@@ -16,6 +16,8 @@ I've discovered and fixed various bugs in how I was using the library.
 I finally got around to extracting these core parts into a Python library of
 it's own that I have named "IRC Bot Behavior Bundle" or [IB3] for short.
 
+<!-- more -->
+
 The IB3 library provides a collection of [mixin] classes that can be used to
 extend an `irc.bot.SingleServerIRCBot` instance to do things like:
 

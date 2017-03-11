@@ -10,6 +10,8 @@ the other day and needed a code signing certificate to complete the build.
 I decided to make single, long-lived certificate to that I could reuse for
 building multiple applications.
 
+<!-- more -->
+
 1.  Open the "Keychain Access" application
 
     ``` bash

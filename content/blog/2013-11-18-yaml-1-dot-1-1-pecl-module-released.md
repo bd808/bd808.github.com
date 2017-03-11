@@ -15,6 +15,8 @@ I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:
 - [#64019](https://bugs.php.net/bug.php?id=64019) Segmentation fault if yaml anchor ends with a colon
 - [#64694](https://bugs.php.net/bug.php?id=64694) Segfault when array used as mapping key
 
+<!-- more -->
+
 It also includes a small but important patch from a community member who
 discovered that I had left the `yaml_emit_file()` method marked as
 unimplemented when it actually was fully functional.

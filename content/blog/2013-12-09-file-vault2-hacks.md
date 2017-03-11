@@ -16,6 +16,8 @@ system rather than blank fields for both username and password. This leaks
 information that I would really rather not leak. Fortunately I've found
 a little hack to work around both of these issues.
 
+<!-- more -->
+
 The key to my fix lies in this statement from the documentation:
 > Users not enabled for FileVault unlock are only able to log into the
 > computer after an unlock-enabled user has started or unlocked the drive.

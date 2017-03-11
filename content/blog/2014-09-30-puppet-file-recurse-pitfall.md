@@ -12,6 +12,8 @@ get the hang of how Puppet does what it does, but today I'd say I'm a fairly
 decent Puppet programmer. Every once in a while however I stumble on something
 new and surprising.
 
+<!-- more -->
+
 A couple of weeks ago I got an interesting bug report from a user about
 a collection of Puppet manifests I help manage. The bug was that his testing
 server was pegged at 99% CPU utilization for multiple minutes during each

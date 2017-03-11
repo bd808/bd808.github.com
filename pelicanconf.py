@@ -151,3 +151,5 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
+
+SUMMARY_END_MARKER = '<!-- more -->'

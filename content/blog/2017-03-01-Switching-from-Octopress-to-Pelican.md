@@ -11,6 +11,8 @@ working again and eventually decided that I should really look for a new
 static site generator written in language that I like to use. I ended up
 picking [Pelican].
 
+<!-- more -->
+
 There are [plenty of blog posts] already that cover the basics, so I won't try
 to give a complete walk through. I mostly used the guides by [Jake Vanderplas]
 and [Jinghao Shi] along with the [manual]. I have blogged before about how

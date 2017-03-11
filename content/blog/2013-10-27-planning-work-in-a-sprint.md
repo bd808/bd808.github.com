@@ -19,6 +19,8 @@ opinionated and mostly unsubstantiated thoughts about a process that a group
 of people could use to plan a scrum sprint (*or really any other iterative
 unit of work)*.
 
+<!-- more -->
+
 Pick some work you think you can get done
 -----------------------------------------
 Step one, pick some work. Sounds easy, but pick it from where? Well that's
