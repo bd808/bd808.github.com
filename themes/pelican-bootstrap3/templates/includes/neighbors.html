@@ -1,0 +1,13 @@
+{% if article.next_article or article.prev_article %}
+<section id="article-pager">
+  <ul class="pager">
+    {% if article.next_article %}
+    <li class="next"><a
+        href="{{ SITEURL }}/{{ article.next_article.url }}">{{ article.next_article.title }} &rarr;</a></li>
+    {% endif %}
+    {% if article.prev_article %}
+    <li class="previous"><a href="{{ SITEURL }}/{{ article.prev_article.url }}">&larr; {{ article.prev_article.title }}</a></li>
+    {% endif %}
+  </ul>
+</section>
+{% endif %}

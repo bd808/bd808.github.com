@@ -132,6 +132,7 @@ PLUGINS = [
     'better_codeblock_line_numbering',
     'i18n_subsites',
     'liquid_tags.img',
+    'neighbors',
     'sitemap',
     'summary',
     'tag_cloud',
