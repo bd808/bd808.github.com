@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>FizzBuzz — the wrong way to do it - bd808.com</title>
+    <title>Making Django migrations that work with MySQL 5.5 and utf8mb4 - bd808.com</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,20 +10,24 @@
 
     <link href="http://bd808.com/favicon.png" rel="icon">
 
-<link rel="canonical" href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/">
+<link rel="canonical" href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/">
 
         <meta name="author" content="Bryan Davis" />
-        <meta name="keywords" content="algorithms" />
-        <meta name="description" content="Write a program that prints the numbers from 1 to 100. But for multiples of three print &#34;Fizz&#34; instead of the number and for the multiples of five print &#34;Buzz&#34;. For numbers which are multiples of both three and five print &#34;FizzBuzz&#34;. imranontech [at] googlemail.com" />
+        <meta name="keywords" content="python,django,mysql,unicode,hacks" />
+        <meta name="description" content="I like Django, MySQL, and Unicode, but getting all three to play together nicely can sometimes be a bit challenging. One of the more annoying things is getting Django to make a migration that will create a 255 character CharField that is encoded using the utf8mb4 character set and indexed." />
 
         <meta property="og:site_name" content="bd808.com" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="FizzBuzz — the wrong way to do it"/>
-        <meta property="og:url" content="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"/>
-        <meta property="og:description" content="Write a program that prints the numbers from 1 to 100. But for multiples of three print &#34;Fizz&#34; instead of the number and for the multiples of five print &#34;Buzz&#34;. For numbers which are multiples of both three and five print &#34;FizzBuzz&#34;. imranontech [at] googlemail.com"/>
-        <meta property="article:published_time" content="2012-01-18" />
+        <meta property="og:title" content="Making Django migrations that work with MySQL 5.5 and utf8mb4"/>
+        <meta property="og:url" content="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/"/>
+        <meta property="og:description" content="I like Django, MySQL, and Unicode, but getting all three to play together nicely can sometimes be a bit challenging. One of the more annoying things is getting Django to make a migration that will create a 255 character CharField that is encoded using the utf8mb4 character set and indexed."/>
+        <meta property="article:published_time" content="2017-04-17" />
             <meta property="article:section" content="blog" />
-            <meta property="article:tag" content="algorithms" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="django" />
+            <meta property="article:tag" content="mysql" />
+            <meta property="article:tag" content="unicode" />
+            <meta property="article:tag" content="hacks" />
             <meta property="article:author" content="Bryan Davis" />
 
     <meta name="twitter:card" content="summary">
@@ -81,10 +85,10 @@ bd808.com            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/"
+                    <a href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/"
                        rel="bookmark"
-                       title="Permalink to FizzBuzz — the wrong way to do it">
-                        FizzBuzz &mdash; the wrong way to do it
+                       title="Permalink to Making Django migrations that work with MySQL 5.5 and utf8mb4">
+                        Making Django migrations that work with MySQL 5.5 and utf8mb4
                     </a>
                 </h1>
             </header>
@@ -94,7 +98,7 @@ bd808.com            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2012-01-18T21:47:00+00:00"> 2012-01-18</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-04-17T04:18:24+00:00"> 2017-04-17</time>
     </span>
 
 
@@ -102,53 +106,74 @@ bd808.com            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://bd808.com/blog/tags/algorithms/">algorithms</a>
+	<a href="http://bd808.com/blog/tags/python/">python</a>
+        /
+	<a href="http://bd808.com/blog/tags/django/">django</a>
+        /
+	<a href="http://bd808.com/blog/tags/mysql/">mysql</a>
+        /
+	<a href="http://bd808.com/blog/tags/unicode/">unicode</a>
+        /
+	<a href="http://bd808.com/blog/tags/hacks/">hacks</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <blockquote>
-<p>Write a program that prints the numbers from 1 to 100. But for multiples of
-three print "Fizz" instead of the number and for the multiples of five print
-"Buzz". For numbers which are multiples of both three and five print
-"FizzBuzz".
-<small><a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">imranontech [at] googlemail.com</a></small></p>
-</blockquote>
+                <p>I like <a href="https://en.wikipedia.org/wiki/Django_(web_framework)">Django</a>, <a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a>, and <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>, but getting all three to play together
+nicely can sometimes be a bit challenging. One of the more annoying things is
+getting Django to make a <a href="https://docs.djangoproject.com/en/1.8/topics/migrations/">migration</a> that will create a 255 character
+<code>CharField</code> that is encoded using the <a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html">utf8mb4</a> character set and indexed.</p>
 
 
-<p><em>Python</em></p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="ch">#!/usr/bin/env python</span></span>
-<span class="code-line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span></span>
-<span class="code-line">  <span class="k">print</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot;Fizz&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot;Buzz&quot;</span> <span class="ow">or</span> <span class="n">i</span></span>
-</pre></div>
-
-
-<p><em>PHP</em></p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="cp">&lt;?php</span></span>
-<span class="code-line"><span class="nv">$p</span> <span class="o">=</span> <span class="s2">&quot;printf&quot;</span><span class="p">;</span> <span class="nv">$r</span> <span class="o">=</span> <span class="s2">&quot;str_repeat&quot;</span><span class="p">;</span></span>
-<span class="code-line"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></span>
-<span class="code-line">  <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$r</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$p</span><span class="p">(</span><span class="s2">&quot;%s%s&quot;</span><span class="p">,</span></span>
-<span class="code-line">      <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)),</span> <span class="nv">$r</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="o">!</span><span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span></span>
-<span class="code-line"><span class="p">}</span></span>
-</pre></div>
-
-
-<p><em>Bash</em></p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="ch">#!/usr/bin/env bash</span></span>
-<span class="code-line"><span class="k">for</span> i in <span class="o">{</span><span class="m">1</span>..100<span class="o">}</span><span class="p">;</span> <span class="k">do</span></span>
-<span class="code-line">  <span class="k">if</span>   <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span> <span class="m">15</span><span class="k">))</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;FizzBuzz&quot;</span><span class="p">;</span></span>
-<span class="code-line">  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">3</span><span class="k">))</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">;</span></span>
-<span class="code-line">  <span class="k">elif</span> <span class="o">[</span> <span class="nv">0</span> <span class="o">=</span> <span class="k">$((</span><span class="nv">$i</span> <span class="o">%</span>  <span class="m">5</span><span class="k">))</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;Buzz&quot;</span><span class="p">;</span></span>
-<span class="code-line">  <span class="k">else</span>                       <span class="nb">echo</span> <span class="nv">$i</span><span class="p">;</span></span>
-<span class="code-line">  <span class="k">fi</span></span>
-<span class="code-line"><span class="k">done</span></span>
+<p>Out of the box, MySQL's <a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-storage-engine.html">InnoDB</a> table type has a maximum index length or 767
+bytes. This is enough to index 255 characters in the <a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8.html">utf8</a> encoding, but that
+encoding won't work for storing any Unicode data from the <a href="https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane">Supplementary
+Multilingual Plane</a>. That means you can't put a <a href="http://emojipedia.org/unicorn-face/">unicorn face</a> (🦄) or
+a <a href="http://emojipedia.org/slice-of-pizza/">slice of pizza</a> (🍕) into a column using this encoding. Changing to the
+utf8mb4 character set will allow you to store four byte code points, but only
+index 191 characters.</p>
+<p>With MySQL 5.5.14 and later you can raise this limit to 3072 bytes by using
+the <a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-parameters.html#sysvar_innodb_large_prefix">innodb_large_prefix</a> setting along with the Barracuda file format, file
+per table storage, and dynamic row format. The first three can all be set
+server wide, but the row format for the table needs to be provided in
+a <code>CREATE TABLE</code> or <code>ALTER TABLE</code> statement as a <code>ROW_FORMAT=DYNAMIC</code>
+attribute.</p>
+<p>Django does not have a feature flag or setting for adding the
+needed attribute. I've worked around this before by using manual database
+hacking, but today I figured out a hack that you can manually apply to your
+Django migration files to work around it. The trick is to edit the migration
+so that the initial field creation uses a length that will fit in the 767 byte
+limit, and then add a <code>RunSQL</code> to change the table's row format and an
+<code>AlterField</code> to increase the field length.</p>
+<div class="highlight"><pre><span class="code-line"><span></span> <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span></span>
+<span class="code-line">     <span class="n">migrations</span><span class="o">.</span><span class="n">CreateModel</span><span class="p">(</span></span>
+<span class="code-line">         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;UnicodeHack&#39;</span><span class="p">,</span></span>
+<span class="code-line">         <span class="n">fields</span><span class="o">=</span><span class="p">[</span></span>
+<span class="code-line">             <span class="p">(</span><span class="s1">&#39;hack&#39;</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)),</span></span>
+<span class="code-line">         <span class="p">],</span></span>
+<span class="code-line">     <span class="p">),</span></span>
+<span class="code-line">     <span class="n">migrations</span><span class="o">.</span><span class="n">RunSQL</span><span class="p">(</span><span class="s1">&#39;ALTER TABLE unicodehack ROW_FORMAT = DYNAMIC;&#39;</span><span class="p">),</span></span>
+<span class="code-line">     <span class="n">migrations</span><span class="o">.</span><span class="n">AlterField</span><span class="p">(</span></span>
+<span class="code-line">         <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;unicodehack&#39;</span><span class="p">,</span></span>
+<span class="code-line">         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;hack&#39;</span><span class="p">,</span></span>
+<span class="code-line">         <span class="n">field</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">),</span></span>
+<span class="code-line">     <span class="p">),</span></span>
+<span class="code-line"> <span class="p">]</span></span>
 </pre></div>
             </div>
             <!-- /.entry-content -->
 <section id="article-pager">
   <ul class="pager">
-    <li class="next"><a
-        href="http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/">Generating an Apparently Random Unique Sequence &rarr;</a></li>
+    <li class="previous"><a href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/">&larr; SASL auth with python-irc</a></li>
   </ul>
+</section>
+<section class="comments">
+  <header>
+    <h2>Comments</h2>
+  </header>
+  <div id="comments" class="panel-group"></div>
+  <footer>
+    <p>Visit <a href="https://github.com/bd808/bd808.github.com/issues/27">this post's issue page on GitHub</a> to add a comment.</p>
+  </footer>
 </section>
         </article>
     </section>
@@ -350,5 +375,26 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
 <script src="http://bd808.com/theme/js/jquery.min.js"></script>
 <script src="http://bd808.com/theme/js/bootstrap.min.js"></script>
 <script src="http://bd808.com/theme/js/respond.min.js"></script>
+<script type="text/javascript">
+$.ajax({
+    url: "https://api.github.com/repos/bd808/bd808.github.com/issues/27/comments"
+  , method: "get"
+  , headers: { Accept: "application/vnd.github.full+json" }
+  , error: function(e){}
+  , success: function(resp){
+      var cuser, cuserlink, clink, cbody, cavatarlink, cdate;
+      for (var i=0; i<resp.length; i++) {
+        cuser = resp[i].user.login;
+        cuserlink = "https://github.com/" + resp[i].user.login;
+        clink = "https://github.com/bd808/bd808.github.com/issues/27#issuecomment-" + resp[i].url.substring(resp[i].url.lastIndexOf("/")+1);
+        cbody = resp[i].body_html;
+        cavatarlink = resp[i].user.avatar_url;
+        cdate = (new Date(resp[i].created_at)).toLocaleString();
+
+        $("#comments").append('<div class="panel panel-default"><div class="panel-heading"><a class="comment-user" href="' + cuserlink + '"><img class="comment-gravatar" src="' + cavatarlink + '" alt="" width="20" height="20"> ' + cuser + '</a> commented <a class="comment-date" href="' + clink + '">' + cdate + '</a></div><div class="panel-body">' + cbody + '</div></div>');
+      }
+    }
+});
+</script>
 </body>
 </html>

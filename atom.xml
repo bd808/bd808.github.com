@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2017-03-01T06:48:04+00:00</updated><entry><title>SASL auth with python-irc</title><link href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/" rel="alternate"></link><published>2017-03-01T06:48:04+00:00</published><updated>2017-03-01T06:48:04+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/sasl-auth-with-python-irc/</id><summary type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>bd808.com</title><link href="http://bd808.com/" rel="alternate"></link><link href="http://bd808.com/atom.xml" rel="self"></link><id>http://bd808.com/</id><updated>2017-04-17T04:18:24+00:00</updated><entry><title>Making Django migrations that work with MySQL 5.5 and utf8mb4</title><link href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/" rel="alternate"></link><published>2017-04-17T04:18:24+00:00</published><updated>2017-04-17T04:18:24+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-04-17:/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/</id><summary type="html">&lt;p&gt;I like &lt;a href="https://en.wikipedia.org/wiki/Django_(web_framework)"&gt;Django&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/MySQL"&gt;MySQL&lt;/a&gt;, and &lt;a href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt;, but getting all three to play together
+nicely can sometimes be a bit challenging. One of the more annoying things is
+getting Django to make a &lt;a href="https://docs.djangoproject.com/en/1.8/topics/migrations/"&gt;migration&lt;/a&gt; that will create a 255 character
+&lt;code&gt;CharField&lt;/code&gt; that is encoded using the &lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html"&gt;utf8mb4&lt;/a&gt; character set and indexed.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I like &lt;a href="https://en.wikipedia.org/wiki/Django_(web_framework)"&gt;Django&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/MySQL"&gt;MySQL&lt;/a&gt;, and &lt;a href="https://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt;, but getting all three to play together
+nicely can sometimes be a bit challenging. One of the more annoying things is
+getting Django to make a &lt;a href="https://docs.djangoproject.com/en/1.8/topics/migrations/"&gt;migration&lt;/a&gt; that will create a 255 character
+&lt;code&gt;CharField&lt;/code&gt; that is encoded using the &lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html"&gt;utf8mb4&lt;/a&gt; character set and indexed.&lt;/p&gt;
+
+
+&lt;p&gt;Out of the box, MySQL's &lt;a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-storage-engine.html"&gt;InnoDB&lt;/a&gt; table type has a maximum index length or 767
+bytes. This is enough to index 255 characters in the &lt;a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8.html"&gt;utf8&lt;/a&gt; encoding, but that
+encoding won't work for storing any Unicode data from the &lt;a href="https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane"&gt;Supplementary
+Multilingual Plane&lt;/a&gt;. That means you can't put a &lt;a href="http://emojipedia.org/unicorn-face/"&gt;unicorn face&lt;/a&gt; (🦄) or
+a &lt;a href="http://emojipedia.org/slice-of-pizza/"&gt;slice of pizza&lt;/a&gt; (🍕) into a column using this encoding. Changing to the
+utf8mb4 character set will allow you to store four byte code points, but only
+index 191 characters.&lt;/p&gt;
+&lt;p&gt;With MySQL 5.5.14 and later you can raise this limit to 3072 bytes by using
+the &lt;a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-parameters.html#sysvar_innodb_large_prefix"&gt;innodb_large_prefix&lt;/a&gt; setting along with the Barracuda file format, file
+per table storage, and dynamic row format. The first three can all be set
+server wide, but the row format for the table needs to be provided in
+a &lt;code&gt;CREATE TABLE&lt;/code&gt; or &lt;code&gt;ALTER TABLE&lt;/code&gt; statement as a &lt;code&gt;ROW_FORMAT=DYNAMIC&lt;/code&gt;
+attribute.&lt;/p&gt;
+&lt;p&gt;Django does not have a feature flag or setting for adding the
+needed attribute. I've worked around this before by using manual database
+hacking, but today I figured out a hack that you can manually apply to your
+Django migration files to work around it. The trick is to edit the migration
+so that the initial field creation uses a length that will fit in the 767 byte
+limit, and then add a &lt;code&gt;RunSQL&lt;/code&gt; to change the table's row format and an
+&lt;code&gt;AlterField&lt;/code&gt; to increase the field length.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CreateModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;UnicodeHack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;             &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="p"&gt;],&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunSQL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ALTER TABLE unicodehack ROW_FORMAT = DYNAMIC;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AlterField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="n"&gt;model_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;unicodehack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;         &lt;span class="n"&gt;field&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="django"></category><category term="mysql"></category><category term="unicode"></category><category term="hacks"></category></entry><entry><title>SASL auth with python-irc</title><link href="http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/" rel="alternate"></link><published>2017-03-01T06:48:04+00:00</published><updated>2017-03-01T06:48:04+00:00</updated><author><name>Bryan Davis</name></author><id>tag:bd808.com,2017-03-01:/blog/2017/03/01/sasl-auth-with-python-irc/</id><summary type="html">&lt;p&gt;I maintain a couple of IRC bots that help out with Wikimedia devops tasks.
 &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Jouncebot"&gt;Jouncebot&lt;/a&gt; was a bot I started helping with when &lt;a href="https://github.com/mattofak"&gt;@mattofak&lt;/a&gt; moved on to
 other projects. Later I developed &lt;a href="https://wikitech.wikimedia.org/wiki/Tool:Stashbot"&gt;Stashbot&lt;/a&gt; as a replacement for using the
 &lt;a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-irc.html"&gt;Logstash&lt;/a&gt; that collected data for my &lt;a href="https://tools.wmflabs.org/sal/"&gt;SAL&lt;/a&gt; tool in &lt;a href="https://wikitech.wikimedia.org/wiki/Portal:Tool_Labs"&gt;Tool

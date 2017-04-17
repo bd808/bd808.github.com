@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>pecl - bd808.com</title>
+    <title>django - bd808.com</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 
 
     <meta name="author" content="Bryan Davis" />
-    <meta name="keywords" content="pecl" />
+    <meta name="keywords" content="django" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="bd808.com" />
@@ -73,12 +73,12 @@ bd808.com            </a>
     <div class="row">
       <div class="col-xs-12">
             <article>
-                <h2><a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">Yaml 1.1.1 PECL Module Released</a></h2>
+                <h2><a href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/">Making Django migrations that work with MySQL 5.5 and utf8mb4</a></h2>
                     <div class="well well-sm">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2013-11-18T22:20:43-07:00"> 2013-11-18</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-04-17T04:18:24+00:00"> 2017-04-17</time>
     </span>
 
 
@@ -86,25 +86,23 @@ bd808.com            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://bd808.com/blog/tags/pecl/">pecl</a>
+	<a href="http://bd808.com/blog/tags/python/">python</a>
         /
-	<a href="http://bd808.com/blog/tags/yaml/">yaml</a>
+	<a href="http://bd808.com/blog/tags/django/">django</a>
         /
-	<a href="http://bd808.com/blog/tags/php/">php</a>
+	<a href="http://bd808.com/blog/tags/mysql/">mysql</a>
+        /
+	<a href="http://bd808.com/blog/tags/unicode/">unicode</a>
+        /
+	<a href="http://bd808.com/blog/tags/hacks/">hacks</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>I'm glad to announce that I finally got around to releasing the bug fix
-version of the <a href="http://pecl.php.net/package/yaml">YAML PECL module</a> that
-I announced on 2013-04-23. Version 1.1.1 fixes several long standing bugs:</p>
-<ul>
-<li><a href="https://bugs.php.net/bug.php?id=61770">#61770</a> Crash on nonunicode character</li>
-<li><a href="https://bugs.php.net/bug.php?id=61923">#61923</a> Detect_scalar_type() is not aware of base 60 representation</li>
-<li><a href="https://bugs.php.net/bug.php?id=63086">#63086</a> Compiling PHP with YAML as static extension fails</li>
-<li><a href="https://bugs.php.net/bug.php?id=64019">#64019</a> Segmentation fault if yaml anchor ends with a colon</li>
-<li><a href="https://bugs.php.net/bug.php?id=64694">#64694</a> Segfault when array used as mapping key</li>
-</ul>
+                <div class="summary"><p>I like <a href="https://en.wikipedia.org/wiki/Django_(web_framework)">Django</a>, <a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a>, and <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>, but getting all three to play together
+nicely can sometimes be a bit challenging. One of the more annoying things is
+getting Django to make a <a href="https://docs.djangoproject.com/en/1.8/topics/migrations/">migration</a> that will create a 255 character
+<code>CharField</code> that is encoded using the <a href="https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html">utf8mb4</a> character set and indexed.</p>
 
-                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">more ...</a>
+                    <a class="btn btn-default btn-xs" href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -128,8 +126,8 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
     <li class="list-group-item"><h4><i class="fa fa-sticky-note fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
       <ul class="list-group" id="recentposts">
         <li class="list-group-item">
-          <a href="http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/">
-            Yaml 1.1.1 PECL Module Released
+          <a href="http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/">
+            Making Django migrations that work with MySQL 5.5 and utf8mb4
           </a>
         </li>
       </ul>
@@ -271,7 +269,7 @@ Code and ramblings from Bryan Davis, coder, software architect, and highly opini
    <div class="container-fluid">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2013 Bryan Davis
+         <div class="col-xs-10">&copy; 2017 Bryan Davis
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
