@@ -4,287 +4,287 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://bd808.com/</loc>
-<lastmod>2017-04-16T23:28:08-00:00</lastmod>
+<loc>https://bd808.com/</loc>
+<lastmod>2018-05-03T23:31:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/</loc>
-<lastmod>2017-04-16T23:28:08-00:00</lastmod>
+<loc>https://bd808.com/</loc>
+<lastmod>2018-05-03T23:31:24-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/</loc>
+<loc>https://bd808.com/blog/2017/04/17/making-django-migrations-that-work-with-mysql-55-and-utf8mb4/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/</loc>
+<loc>https://bd808.com/blog/2017/03/01/sasl-auth-with-python-irc/</loc>
 <lastmod>2017-03-01T06:48:04+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/</loc>
+<loc>https://bd808.com/blog/2017/03/01/switching-from-octopress-to-pelican/</loc>
 <lastmod>2017-03-01T04:19:06+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/</loc>
+<loc>https://bd808.com/blog/2014/09/30/puppet-file-recurse-pitfall/</loc>
 <lastmod>2014-09-30T20:44:13-06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/</loc>
+<loc>https://bd808.com/blog/2014/05/15/gnupg-key-transition-statement/</loc>
 <lastmod>2014-05-15T22:33:39-06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/</loc>
+<loc>https://bd808.com/blog/2014/01/14/how-do-you-know-when-youre-done/</loc>
 <lastmod>2014-01-14T21:48:20-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/12/09/filevault2-hacks/</loc>
+<loc>https://bd808.com/blog/2013/12/09/filevault2-hacks/</loc>
 <lastmod>2013-12-09T21:35:52-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/</loc>
+<loc>https://bd808.com/blog/2013/11/18/yaml-111-pecl-module-released/</loc>
 <lastmod>2013-11-18T22:20:43-07:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/</loc>
+<loc>https://bd808.com/blog/2013/10/27/planning-work-in-a-sprint/</loc>
 <lastmod>2013-10-27T20:05:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/</loc>
+<loc>https://bd808.com/blog/2013/10/21/creating-a-self-signed-code-certificate-for-xcode/</loc>
 <lastmod>2013-10-21T21:38:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/</loc>
+<loc>https://bd808.com/blog/2013/10/14/managing-my-laptop-with-boxen/</loc>
 <lastmod>2013-10-14T22:11:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/</loc>
+<loc>https://bd808.com/blog/2013/04/17/hacking-github-contributions-calendar/</loc>
 <lastmod>2013-04-17T21:06:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2012/04/14/using-github-issues-for-comments/</loc>
+<loc>https://bd808.com/blog/2012/04/14/using-github-issues-for-comments/</loc>
 <lastmod>2012-04-14T20:22:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/</loc>
+<loc>https://bd808.com/blog/2012/03/31/generating-an-apparently-random-unique-sequence/</loc>
 <lastmod>2012-03-31T15:40:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/</loc>
+<loc>https://bd808.com/blog/2012/01/18/fizzbuzz-the-wrong-way-to-do-it/</loc>
 <lastmod>2012-01-18T21:47:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/pelican/</loc>
+<loc>https://bd808.com/blog/tags/pelican/</loc>
 <lastmod>2017-03-01T04:19:06+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/octopress/</loc>
+<loc>https://bd808.com/blog/tags/octopress/</loc>
 <lastmod>2017-03-01T04:19:06+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/osx/</loc>
+<loc>https://bd808.com/blog/tags/osx/</loc>
 <lastmod>2013-12-09T21:35:52+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/xcode/</loc>
+<loc>https://bd808.com/blog/tags/xcode/</loc>
 <lastmod>2013-10-21T21:38:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/hacks/</loc>
+<loc>https://bd808.com/blog/tags/hacks/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/sysadmin/</loc>
+<loc>https://bd808.com/blog/tags/sysadmin/</loc>
 <lastmod>2014-09-30T20:44:13+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/puppet/</loc>
+<loc>https://bd808.com/blog/tags/puppet/</loc>
 <lastmod>2014-09-30T20:44:13+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/unicode/</loc>
+<loc>https://bd808.com/blog/tags/unicode/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/mysql/</loc>
+<loc>https://bd808.com/blog/tags/mysql/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/gpg/</loc>
+<loc>https://bd808.com/blog/tags/gpg/</loc>
 <lastmod>2014-05-15T22:33:39+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/yaml/</loc>
+<loc>https://bd808.com/blog/tags/yaml/</loc>
 <lastmod>2013-11-18T22:20:43+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/sdlc/</loc>
+<loc>https://bd808.com/blog/tags/sdlc/</loc>
 <lastmod>2014-01-14T21:48:20+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/irc/</loc>
+<loc>https://bd808.com/blog/tags/irc/</loc>
 <lastmod>2017-03-01T06:48:04+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/python/</loc>
+<loc>https://bd808.com/blog/tags/python/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/scrum/</loc>
+<loc>https://bd808.com/blog/tags/scrum/</loc>
 <lastmod>2014-01-14T21:48:20+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/howto/</loc>
+<loc>https://bd808.com/blog/tags/howto/</loc>
 <lastmod>2017-03-01T06:48:04+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/boxen/</loc>
+<loc>https://bd808.com/blog/tags/boxen/</loc>
 <lastmod>2013-10-14T22:11:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/php/</loc>
+<loc>https://bd808.com/blog/tags/php/</loc>
 <lastmod>2013-11-18T22:20:43+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/pecl/</loc>
+<loc>https://bd808.com/blog/tags/pecl/</loc>
 <lastmod>2013-11-18T22:20:43+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/github/</loc>
+<loc>https://bd808.com/blog/tags/github/</loc>
 <lastmod>2017-03-01T04:19:06+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/django/</loc>
+<loc>https://bd808.com/blog/tags/django/</loc>
 <lastmod>2017-04-17T04:18:24+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/algorithms/</loc>
+<loc>https://bd808.com/blog/tags/algorithms/</loc>
 <lastmod>2012-03-31T15:40:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/sasl/</loc>
+<loc>https://bd808.com/blog/tags/sasl/</loc>
 <lastmod>2017-03-01T06:48:04+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://bd808.com/blog/tags/security/</loc>
+<loc>https://bd808.com/blog/tags/security/</loc>
 <lastmod>2014-05-15T22:33:39+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
