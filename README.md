@@ -1,7 +1,7 @@
 bd808.com
 =========
 
-Source for [bd808.com](http://bd808.com/).
+Source for [bd808.com](https://bd808.com/).
 
 Built using [Pelican](http://getpelican.com/).
 

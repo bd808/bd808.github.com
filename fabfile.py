@@ -132,7 +132,7 @@ def new_post(title):
         post.write("Comments: True\n")
         post.write("Github_issue_id: {}\n".format(_create_comment_issue(
             title,
-            'http://bd808.com/blog/{}/{}/'.format(
+            'https://bd808.com/blog/{}/{}/'.format(
                 now.strftime('%Y/%m/%d'),
                 _slugify(title)
             )
